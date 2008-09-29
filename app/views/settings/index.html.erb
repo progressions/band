@@ -1,0 +1,65 @@
+<% @page_title = "Modules" %>
+
+<div id="settings">
+
+<% if @global_settings.promo %>
+<div id="current_promo">
+  
+  <p>Current promo: <%= @global_settings.promo.title %> </p>
+  <div>
+    <%= @global_settings.promo.body %>
+  </div>
+  
+</div> <!-- end DIV "current_promo" -->
+<% end %>
+
+<div  id="modules">
+  
+<% form_for(@setting) do |f| %>
+  <h4>Activate module:</h4>
+<ul>
+    <li>
+    <%= f.check_box :show_blog %> blog
+
+		</li>
+    <li><%= f.check_box :show_news %> news
+
+		</li>
+    <li><%= f.check_box :show_music %> music
+
+		</li>
+    <li><%= f.check_box :show_videos %> videos
+
+		</li>
+    <li><%= f.check_box :show_shows %> calendar
+
+		</li>
+    <li><%= f.check_box :show_fans %> mailing list
+
+		</li>
+    <li><%= f.check_box :show_lyrics %> lyrics
+
+		</li>
+    <li><%= f.check_box :show_promo %> promo</li>
+  </ul>
+
+    <%= f.submit "Update" %>
+<% end %>
+
+</div> <!-- end DIV "modules" -->
+
+<div  id="statistics">
+  <h4>Statistics</h4>
+  <ul>
+      <li><%= pluralize @blogs.length, "blog" %></li>
+      <li><%= pluralize @comments.length, "comment" %></li>
+      <li><%= pluralize @entries.length, "news entry" %></li>
+      <li><%= pluralize @lyrics.length, "lyric" %></li>
+      <li><%= pluralize @fans.length, "fan" %></li>
+  </ul>
+</div> <!-- end DIV "statistics" -->
+
+</div> <!-- end DIV "settings" -->
+
+
+

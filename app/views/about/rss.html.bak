@@ -1,0 +1,8 @@
+
+<h1>Items</h1>
+
+<%= link_to "RSS", "/rss.rss" %>
+
+<% for @item in @items %>
+<p><%= @item.class %>: <strong><%= link_to @item.title, @item %></strong> posted on <%= @item.created_at.strftime("%b %d %Y") %> in <%= @item.class.to_s.pluralize.downcase %> </p>
+<% end %>

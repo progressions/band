@@ -1,0 +1,21 @@
+<% @page_title = "Music" %>
+
+<div  id="music">
+  <h2>Music</h2>
+  
+  <p>In November we went into the studio with "Comfortable Billy" Leger and recorded "Panic".  Here it is:</p>
+  <dl class="music">
+      <dt class="music_player"><%= link_to "Panic", mp3_link("panic") %></dt>
+      <dd><%= music_player("panic", 1) %></dd>
+  </dl>
+    
+  <p>Before we started playing out as much, we devoted more time to home recording.  Here are our first few recordings:</p>  
+	<dl class="music">
+    <dt><%= link_to "Sylvia", mp3_link("sylvia") %></dt>
+    <dd class="music_player"><%= music_player("sylvia", 2) %></dd>
+    <dt><%= link_to "Heartbreaker", mp3_link("heartbreaker") %></dt>
+    <dd class="music_player"><%= music_player("heartbreaker", 2) %></dd>
+    <dt><%= link_to "Potential", mp3_link("potential") %></dt>
+    <dd class="music_player"><%= music_player("potential", 3) %></dd>
+	</dl>
+</div> <!-- end DIV "music" -->

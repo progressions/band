@@ -1,0 +1,34 @@
+
+<div id="admin">
+  <!-- <p>Welcome, <strong><%= current_user.login %></strong>!</p> -->
+  <p><span class="admin_new"><strong>New:</strong> 
+    
+    <% if @global_settings.show_blog? %>
+      <%= link_to_unless_current "Blog", new_blog_path(:admin => true) %> | 
+    <% end %>    
+    <% if @global_settings.show_news? %>
+      <%= link_to_unless_current "News", new_entry_path(:admin => true) %> | 
+    <% end %>    
+    <% if @global_settings.show_lyrics? %>
+      <%= link_to_unless_current "Lyric", new_lyric_path(:admin => true) %> | 
+    <% end %></span> 
+    
+    <% # TODO: Manage users %>
+    
+    <span class="admin_manage">    
+    <strong>Manage:</strong> 
+    <%= link_to_unless_current "Profile", profile_path(:admin => true) %> | 
+    <%= link_to_unless_current "Modules", admin_path(:admin => true) %> | 
+    <%= link_to_unless_current "Colors", colors_path(:admin => true) %> | 
+    <%= link_to_unless_current "Fans", fans_path(:admin => true) %> | 
+    <%= link_to_unless_current "Mail", mails_path(:admin => true) %> | 
+    <%= link_to_unless_current "Songs", songs_path(:admin => true) %> | 
+    <%= link_to_unless_current "Shows", shows_path(:admin => true) %> | 
+    <%= link_to_unless_current "Promos", promos_path(:admin => true) %> |
+    <%= link_to_unless_current "Members", members_path(:admin => true) %> | 
+    <%= link_to_unless_current "Pages", pages_path(:admin => true) %> |
+    <%= link_to_unless_current "Users", users_path(:admin => true) %>
+    
+    <span class="divider">|</span> <%= link_to "Log Out", logout_path %> </span></p>
+  
+</div> <!-- end DIV admin -->

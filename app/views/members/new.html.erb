@@ -1,0 +1,26 @@
+<% @page_title = "New Member" %>
+
+<%= javascript_include_tag :fckeditor %>
+<h1>New member</h1>
+
+<%= error_messages_for :member %>
+
+<% form_for(@member) do |f| %>
+  <p>
+		<%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+		<%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+		<%= f.label :instruments %><br />
+    <%= f.text_field :instruments %>
+  </p>
+
+    <%= fckeditor_tag("member") %>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

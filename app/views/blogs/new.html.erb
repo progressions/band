@@ -1,0 +1,25 @@
+<%= javascript_include_tag :fckeditor %>
+<% @page_title = "New blog" %>
+
+<h1>New blog</h1>
+
+  <% if params[:preview_button] %>
+    <%= render :partial => @blog, :locals => {:show_byline => :false} %>
+  <% end %>
+  
+<%= error_messages_for :blog %>
+
+<% form_for(@blog) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+    <%= fckeditor_tag("blog") %>
+
+    <p>
+      <%= f.submit "Preview", :name => "preview_button" %>
+      <%= f.submit "Create" %> 
+    </p>
+<% end %>
+

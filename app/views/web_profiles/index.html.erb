@@ -1,0 +1,28 @@
+<% @page_title = "Web Profiles" %>
+
+<h1>Listing web_profiles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+    <th>Image</th>
+    <th>Setting</th>
+  </tr>
+
+<% for web_profile in @web_profiles %>
+  <tr>
+    <td><%=h web_profile.name %></td>
+    <td><%=h web_profile.url %></td>
+    <td><%=h web_profile.image %></td>
+    <td><%=h web_profile.setting_id %></td>
+    <td><%= link_to 'Show', web_profile %></td>
+    <td><%= link_to 'Edit', edit_web_profile_path(web_profile) %></td>
+    <td><%= link_to 'Destroy', web_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New web_profile', new_web_profile_path %>

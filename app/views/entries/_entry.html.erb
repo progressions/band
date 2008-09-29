@@ -1,0 +1,23 @@
+<div class="entry">
+
+<div class="post" id="post_<%= @entry.id %>">
+  
+  <h3 class="post_title"><%= link_to_unless_current @entry.title, entry_path(@entry) %></h3>
+  <div class="post_body" id="post_body_<%= @entry.id %>">
+
+      <%= @entry.body %>
+
+  </div>
+ 
+  <% unless @show_byline == false %>
+    <p class="byline">
+      posted on <%= @entry.created_at.strftime("%b %d %Y") %> by <strong><%= @entry.user.full_name %></strong>.
+      <% if logged_in? %>
+        (<%= link_to "edit", edit_entry_path(@entry) %> | <%= link_to 'delete', @entry, :confirm => 'Are you sure?', :method => :delete %>)
+      <% end %>
+    </p>
+  <% end %>
+  
+</div>
+
+</div>

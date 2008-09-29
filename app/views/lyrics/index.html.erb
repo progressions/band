@@ -1,0 +1,27 @@
+<% @page_title = "Lyrics" %>
+
+<div id="lyrics">
+
+<% form_tag lyrics_path, :method => 'get' do %>
+  <p>Search lyrics 
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<p>Sort: <%= link_to_unless_current "Title", lyrics_path(:sort => "title") %> | <%= link_to_unless_current "Recent", lyrics_path(:sort => "recent") %></p>
+
+<%= will_paginate %>
+
+  <div id="index">
+    
+    <% for @lyric in @lyrics do %>
+    
+    <%= render :partial => @lyric, :locals => {:show_body => false } %>  
+        
+    <% end %>
+
+  </div> <!-- end DIV "lyric" -->
+  
+<%= will_paginate %>
+</div> <!-- end DIV "lyrics" -->

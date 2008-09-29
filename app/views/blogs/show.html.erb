@@ -1,0 +1,15 @@
+<% @page_title = truncate(@blog.title,30) %>
+
+
+<div  id="blog">
+  
+<%= render :partial => @blog %>
+
+<div  id="comments">
+  
+<%= render :partial => 'comments' %>
+
+<%= render :partial => '/comments/new' %>
+
+</div> <!-- end DIV "comments" -->
+</div> <!-- end DIV "blog" -->

@@ -1,0 +1,294 @@
+
+	<%
+	@background_color = "black"
+	@background_image = "/images/bg.jpg"
+	
+	@sessions_text = "#fff"
+	@sessions_bgcolor = "#9dbacf"
+	@sessions_bg_img = ""
+	@sessions_box_bgcolor = "#9dbacf"
+	@sessions_box_bg_img = "/images/sidebar_bg.png"
+	@sessions_border = "#fff"	
+	
+	@body_text = "#444"
+	@heading = "#1e5b88"
+	@bright_heading = "#a60c01"
+	@link_hover = "#ce102b"
+	@byline = "#888"
+	@light_text = "#555"
+	
+	@body_font = '"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;'
+	@heading_font = 'Georgia,"Times New Roman",Times,serif;'
+	
+	@link_text = "#1e5b88"
+	@link_visited = "#395d78"
+	@link_hover = "#ce102b"
+
+	@section_header = "#1e5b88"	
+	@section_header_bg_img = "/images/header.png"
+	@section_header_bgcolor = "#c9d1de"	
+	
+	@lyric_composer = "#aaa"	
+
+	@video_bg_img = "/images/video_bg.png"
+	@video_bgcolor = "#102e46"
+	@video_text = "#fff"
+	
+	@inside_wrap_img = "/iimages/sidebar_bg.png"
+	@inside_wrap_color = "#9dbacf"
+	@inside_wrap_border = "#fff"
+	
+	@main_bgcolor = "#fff"
+	@main_bg_img = ""
+	
+	@sidebar_bg_img = "/iimages/sidebar_bg.png"
+	@sidebar_bgcolor = "#9dbacf"
+	
+	@nav_bg_img = "/images/nav_wide_bg.png"
+	@nav_bg_color = "#fff"
+	
+	@nav_text = "#888"
+	@nav_link_text = "#1e5b88"
+	@nav_link_visited = ""
+	@nav_link_hover = "#ce102b"
+	@nav_link_bg_img = "/images/nav_bg.png"
+	@nav_link_bg_color = "#fff"
+	
+	@notice_text = "#fff"
+	@notice_bg = "#ce102b"
+	
+	@admin_bgcolor = "#edba4c"
+	@admin_text = "#523d11"
+	@admin_link = "#ce102b"
+	@admin_hover = "#590b05"
+	%>
+	
+
+	body,
+	html {
+		color: <%= @body_text %>;
+		font-family: <%= @body_font %>
+	}
+	body {	  
+		background: <%= @background_color %> url(<%= @background_image %>) no-repeat scroll 50% 0pt;
+	}
+	body.sessions, 
+	html body.sessions {
+    background: url(<%= @sessions_bg_img %>) <%= @sessions_bgcolor %> top left repeat-x;
+	}
+	#sessions {
+    background: url(<%= @sessions_box_bg_img %>) <%= @sessions_box_bgcolor %> top left repeat-x;
+    border: 1px solid <%= @sessions_border %>;
+	  color: <%= @sessions_text %>;
+	}
+	
+	a {
+	  color: <%= @link_text %>;
+	}
+	a:visited {
+	  color: <%= @link_visited %>;
+	}
+	a:hover {
+	  color: <%= @link_hover %>;
+	}
+	
+	#inside-wrap {
+    background: url(<%= @inside_wrap_img %>) <%= @inside_wrap_color %> top left repeat-x;
+    border: 1px solid <%= @inside_wrap_border %>;
+	}
+	
+	/* MAIN and SIDEBAR are the two columns */
+	
+
+	#main {
+	  background: url(<%= @main_bg_img %>) <%= @main_bgcolor %> top left repeat-x;
+	}
+	
+	#sidebar {
+	  background: url(<%= @sidebar_bg_img %>) <%= @sidebar_bg_color %> top left repeat-x;
+	}
+	
+	#nav ul
+  {
+    background: url(<%= @nav_bg_img %>) <%= @nav_bg_color %> bottom left repeat-x;
+  }
+  
+  #nav li
+  {
+    color: <%= @nav_text %>;
+  }
+  #nav li a {
+    color: <%= @nav_link_text %>;
+  }
+  #nav li a:visited {
+    color: <%= @nav_link_visited %>;
+  }
+  #nav li a:hover
+  { 
+    background: url(<%= @nav_link_bg_img %>) <%= @nav_link_bg_color %> bottom left repeat-x;
+	  color: <%= @nav_link_hover %>;
+  }
+  
+  
+  .lyric h4.composer {
+    color: <%= @lyric_composer %>;
+  }
+
+
+	#notice {
+	  background-color: <%= @notice_bg %>;
+	  color: <%= @notice_text %>; 
+	}
+	body.sessions #notice {	  
+    border: 1px solid <%= @notice_text %>;
+	  color: <%= @notice_text %>;	  
+	}
+	
+	#video {
+    background: url(<%= @video_bg_img %>) <%=	@video_bgcolor %> top left repeat-x;
+    color: <%= @video_text %>;
+	}
+	
+	h1.header {
+    background: url(<%= @section_header_bg_img %>) <%= @section_header_bgcolor %> top left repeat-x;
+	  color: <%= @section_header %>;
+	}
+	h1.header span.type {
+	  color: <%= @bright_heading %>;
+	}
+	h1.header a, h1.header a:visited {
+	  color:  <%= @heading %>;
+	}
+	
+	
+	h3 {
+	  color: <%= @heading %>;
+	  font-family: <%= @heading_font %>
+	}
+	
+	h3.post_title {
+	  color:  <%= @heading %>;
+	  font-family: <%= @heading_font %>
+	}
+	#news h3.post_title a {
+	  color: <%= @bright_heading %>;
+	}
+	#news h3.post_title a:hover {
+	  color: <%= @link_hover %>;
+	}
+	#archive h2 {
+	  bborder-bottom: 1px solid  <%= @heading %>;
+	  color:  <%= @heading %>;
+	}
+	p.byline {
+	  color: <%= @status_text %>;
+	}
+	
+	
+	#admin {
+	  background-color: <%= @admin_bgcolor %>;
+	  color: <%= @admin_text %>;
+	}
+	#admin a {
+	  color: <%= @admin_link %>;
+	}
+	#admin a:hover {
+	  color: <%= @admin_hover %>;
+	}
+	
+	.pagination {  
+	  background-color: <%= @pagination %>;
+	  border: 1px solid #aaa;
+	}
+
+
+  #comments {
+    color: <%= @light_text %>;
+  }
+  #comments p.post_date {
+    color: <%= @status_text %>;
+  }
+  .comment {
+    bborder-bottom: 1px solid #ccc;
+  }
+  .comment_body {
+		color: <%= @body_text %>;
+		font-family: <%= @body_font %>
+	}
+  #mails p.send_mail a {
+	  color: <%= @bright_heading %>;
+	}
+	#mails p.send_mail a:hover {
+	  color: #590b05;
+	}
+  
+  #new_comment dl { 
+    color: <%= @light_text %>;   
+  }
+  #shows .show_date .time,
+  #shows .show_date .address {
+    color: <%= @status_text %>;
+  }
+  
+  #edit_profile dl {
+    color: <%= @light_text %>;    
+  }
+  #edit_profile dl dt input {
+    color: <%= @light_text %>;
+  }
+  #edit_profile dl.names dt input {
+    color: <%= @light_text %>;
+  }
+	
+		
+	#sidebar div.module {
+	  background: <%= @main_bgcolor %>;
+	  color:  <%= @heading %>;
+	}
+	#sidebar div.module h3 {
+	  bbackground: #c9d1de;
+		font-family: <%= @body_font %>	  
+	}
+	#sidebar div.module h3 a:visited {
+	  color:  <%= @heading %>;
+	}
+	
+	#sidebar div.module h3:hover a,
+	#sidebar div.module h3:hover a:hover,
+	#sidebar div.module h3:hover {
+	  color: white;
+	}
+	#sidebar div.module h3:hover {
+    bbackground: url(/images/sidebar_head_bg.png) #1f5c8b top left repeat-x;
+  }
+	#sidebar div.module h5.more:hover a, 
+	#sidebar div.module h5.more:hover {
+	  bbackground: #c9d1de;
+	  color: <%= @link_hover %>;
+  }
+	
+	#footer {
+    bbackground: url(/images/footer_bg.png) #000 top left repeat-x;
+    color: #bbb;
+	}
+	#footer a:visited,
+	#footer a {
+	  color: white;
+	}	
+	#footer a:hover {	  
+	  color: <%= @link_hover %>;
+	}
+	#footer #copyright_notice {
+	  color: #999;
+	}
+	
+  input#email, input#zip_code {    
+    bborder: 1px solid black;
+    bbackground-color: #9dbacf;
+    color: white;
+  }
+  #mailing_list {
+    color: white;
+  }
+  
+  

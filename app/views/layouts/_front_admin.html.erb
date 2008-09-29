@@ -1,0 +1,9 @@
+
+<div id="admin">
+  <!-- <p>Welcome, <strong><%= current_user.login %></strong>!</p> -->
+  <p><span class="admin_new"><strong>New:</strong> <%= link_to_unless_current "Blog", new_blog_path(:admin => true) %> | <%= link_to_unless_current "News", new_entry_path(:admin => true) %> | <%= link_to_unless_current "Lyric", new_lyric_path(:admin => true) %> | <%= link_to_unless_current "Mail", new_mail_path(:admin => true) %> | <%= link_to_unless_current "Show", new_show_path(:admin => true) %> | <%= link_to_unless_current "Promo", new_promo_path(:admin => true) %></span> 
+    
+    <span class="admin_manage">    
+    <strong>Manage:</strong> <%= link_to_unless_current "Profile", profile_path(:admin => true) %> | <%= link_to_unless_current "Fans", fans_path(:admin => true) %> | <%= link_to_unless_current "Mail", mails_path(:admin => true) %> | <%= link_to_unless_current "Shows", shows_path(:admin => true) %> | <%= link_to_unless_current "Promos", promos_path(:admin => true) %> <span class="divider">|</span> </span><%= link_to "Log Out", logout_path %></p>
+  
+</div> <!-- end DIV admin -->

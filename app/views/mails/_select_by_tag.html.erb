@@ -1,0 +1,6 @@
+<p>Select by tags:
+  <%= text_field_tag 'fans_by_tags' %>
+</p>
+
+
+<%= observe_field("fans_by_tags", :frequency => 1, :on => 'change', :url => { :action => :update_fan_count}, :with => 'fans_by_tags') %>

@@ -1,0 +1,57 @@
+
+<% form_remote_for :fan, :url => { :action => "tag" }, :html => {:id => 'tag_fans'} do |f| %>
+
+<p class="tag_options">Select: <%= link_to_remote "All", :url => { :action => "check_all" } %> | <%= link_to_remote "None", :url => { :action => "check_none" } %> 
+    
+   | <%= link_to "Import Fans", import_fans_path %> | 
+    <%= link_to "Export Fans", export_fans_path %>&nbsp;&nbsp;| 
+  
+    <%= submit_tag('Delete', :name => 'delete') %>  
+
+
+  Listing <%= fan_count %> of <%= pluralize(fan_total, "fan") %>.
+  
+</p>
+
+
+<table>
+  <tr>
+    <th class="check"></th>
+    <th class="first"><%= link_to "First", fans_path(:sort => "Firstname") %></th>
+    <th class="last"><%= link_to "Last", fans_path(:sort => "Lastname") %></th>
+    <th class="email"><%= link_to "Email", fans_path(:sort => "Email") %></th>
+    <th class="city"><%= link_to "City", fans_path(:sort => "City") %></th>
+    <th class="state"><%= link_to "State", fans_path(:sort => "State") %></th>
+    <th class="zipcode"><%= link_to "ZIP", fans_path(:sort => "Zipcode") %></th>
+    <th class="created_at"><%= link_to "Joined", fans_path(:sort => "created_at") %></th>
+  </tr>
+
+<% unless fans.empty? %>
+  <% for fan in fans %>
+    <tr>
+      <td class="check"><%= check_box_tag "fans[#{fan.id}]", fan.id %></td>
+      <td class="first"><%=h fan.firstname %></td>
+      <td class="last"><%=h fan.lastname %></td>
+      <td class="email"><%= link_to fan.email, edit_fan_path(fan) %></td>
+      <td class="city"><%= fan.city %></td>
+      <td class="state"><%=h fan.state %></td>
+      <td class="zipcode"><%=h fan.zipcode %></td>
+      <td class="created_at"><%= fan.created_at.strftime("%b %d %Y") unless fan.created_at.nil? %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+
+<% end %> <!-- form -->
+
+<p><%= will_paginate @fans %></p>
+
+
+
+<%
+  observe_form("tag_fans", :on => :change, :frequency => 1, :url => {:action => :update_select})
+%>
+ 
+ 
+ 
+ 

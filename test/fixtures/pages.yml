@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString
+  url: fun_stuff
+  body: MyText
+  active: true
+
+two:
+  id: 2
+  name: A fun page about yeah
+  url: yeah
+  body: MyText
+  active: true

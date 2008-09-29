@@ -1,0 +1,6 @@
+<p>New fan signup</p>
+
+<p><%= @fan.email %> has subscribed to the <%= @global_settings.artist_name %> mailing list.  View their details <%= link_to "here", fan_url(@fan, :host => @global_settings.url) %>.</p>
+
+<p>If you don't want them to receive emails, <%= link_to "unsubscribe", unsubscribe_url(@fan, :f => @fan.crypted_email, :host => @global_settings.url) %> them.</p>
+

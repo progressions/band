@@ -1,0 +1,22 @@
+<% @page_title = "New Page" %>
+
+<%= javascript_include_tag :fckeditor %>
+<h1>New Page</h1>
+
+<%= error_messages_for :page %>
+
+<% form_for(@page) do |f| %>
+  <p>
+		<%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+		<%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+
+    <%= fckeditor_tag("page") %>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

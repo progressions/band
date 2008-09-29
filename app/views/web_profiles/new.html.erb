@@ -1,0 +1,29 @@
+<% @page_title = "New Web Profile" %>
+
+<h1>New Web Profile</h1>
+
+<%= error_messages_for :web_profile %>
+
+<% form_for(@web_profile) do |f| %>
+  <p>
+		<%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+		<%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+		<%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>
+  <p>
+		<%= f.label :setting_id %><br />
+    <%= f.text_field :setting_id %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', web_profiles_path %>

@@ -1,0 +1,29 @@
+
+<div id="new_comment">
+  <h3>Leave a comment</h3>
+  
+  <% if params[:preview_button] %>
+    <%= render :partial => @comment, :locals => {:show_byline => :false} %>
+  <% end %>
+    
+  <%= error_messages_for :new_comment %>
+  
+  <% form_for(:comment, @new_comment, :url => comments_path(:blog => @blog)) do |f| %>
+    <dl>
+      <dt><%= f.text_field :name %></dt><dd>Name (required)</dd>
+      <dt><%= f.text_field :email %></dt><dd>Mail (will not be published) (required) </dd>    
+      <dt><%= f.text_field :website %></dt><dd>Website</dd>
+    </dl>
+    <%= f.text_area :body %>
+    
+    <p><%= check_box_tag "subscribe", "1", @subscribe %> Notify me by email of further comments to this post.</p>
+
+    <p>
+      <%= f.submit "Preview", :name => "preview_button" %>
+      <%= f.submit "Create" %> 
+    </p>
+  <% end %>
+  <% if @blog.subscribed(cookies[:email]) %>
+    <p><%= link_to "Unsubscribe", unsubscribe_blog_path(@blog, :email => cookies[:email]) %> from notification of further comments to this post.</p>
+  <% end %>
+</div>

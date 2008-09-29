@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  body: I love this blog so much I wrote a comment about it!
+  blog_id: 1
+  name: The Phantom
+  email: me@yahoo.com
+  website: www.mywebsite.com
+  created_at: <%= Time.now.to_s(:db) %>
+
+two:
+  id: 2
+  body: This is an interesting blog, except I'm not going to comment on it.
+  blog_id: 1
+  name: Jake
+  email: metoo@yahoo.com
+  website: www.yahoo.com
+  created_at: <%= Time.now.to_s(:db) %>
+
+three:
+  id: 3
+  body: This is a blog with dangerous content!\"><script>alert('what do you know!')<\/script><!--
+  blog_id: 2
+  name: \"><script>alert('what do you know!')<\/script><!--
+  email: methree@yahoo.com
+  website: \"><script>alert('what do you know!')<\/script><!--
+

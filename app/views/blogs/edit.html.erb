@@ -1,0 +1,32 @@
+<%= javascript_include_tag :fckeditor %>
+
+<% @page_title = "Edit blog post" %>
+
+<h1>Edit post</h1>
+
+<%= preview @blog, params %>
+
+<%= error_messages_for :blog %>
+
+<% form_for(@blog) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+  
+  <% if @edit_html %>
+  
+    <%= f.text_area :body %>
+  
+  <% else %>
+
+
+    <%= fckeditor_tag("blog") %>
+
+  <% end %>
+  <p>
+    <%= f.submit "Preview", :name => "preview_button" %>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+

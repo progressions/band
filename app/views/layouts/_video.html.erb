@@ -1,0 +1,13 @@
+
+
+<div id="video">
+<% heading ||= "" %>
+<% unless heading.blank? %>
+  <h1><%= heading %></h1>
+<% end %>
+<%= youtube(:full_video => video.url) %>
+<h5 class="subtitle">
+  <%= video.title %>
+</h5>
+
+</div>	<!-- end div "video" -->

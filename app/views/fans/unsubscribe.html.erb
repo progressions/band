@@ -1,0 +1,11 @@
+<% @page_title = "Unsubscribe" %>
+
+<h1>Unsubscribe</h1>
+
+<p>Click the button below to unsubscribe <strong><%= @fan.email %></strong> from the <%= @global_settings.artist_name %> mailing list.</p>
+
+<% form_for(@fan, :url => fan_path(@fan, :f => @fan.crypted_email), :html => {:method => :delete}) do |f| %>
+  <p>
+    <%= submit_tag "Unsubscribe" %>
+  </p>
+<% end %>

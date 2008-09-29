@@ -1,0 +1,34 @@
+<% @page_title = "Promos" %>
+
+<h1>Promos</h1>
+<p>A <strong>Promo</strong> is a promotional block shown on the homepage if the "Promos" module is enabled.  Use it to advertise or announce anything of primary importance to your audience.</p>
+
+<%= link_to 'New promo', new_promo_path %>
+
+<p>Choose promo to display on homepage: <br />
+
+<% form_for(@setting) do |f| %>
+  
+<%= f.collection_select :promo_id, Promo.find(:all, :order => "created_at DESC"), :id, :title, :prompt => true %>
+ 
+    <%= f.submit "Update" %>
+<% end %></p>
+
+<p></p>
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% for promo in @promos %>
+  <tr>
+    <td><%=h promo.title %></td>
+    <td><%= link_to 'Show', promo %></td>
+    <td><%= link_to 'Edit', edit_promo_path(promo) %></td>
+    <td><%= link_to 'Destroy', promo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

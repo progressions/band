@@ -1,0 +1,100 @@
+<% 
+	@body = "#444"
+	@heading = "#1e5b88"
+	@news_heading = "#a60c01"
+	
+	@link = "#395d78"
+	@link_visited = "#395d78"
+	@link_hover = "#ce102b"
+	
+	@utility = "#888"
+	
+	@main_bgcolor = "#fff"
+	@sidebar_bgcolor = "#9dbacf"
+	@module_bgcolor = "#fff"
+	
+	@module_heading = "#fff"
+	@module_heading_bg = "#c9d1de"
+	@module_heading_bg_hover = "#1f5c8b"
+	
+	@footer = "#bbb"
+	@footer_link = "#fff"
+	@footer_bg = "#000"
+%>
+
+  body, html {
+    color: <%= @body_text %>;
+  }
+
+  h1.header span.type, 
+	#news h3.post_title a {
+    color: <%= @news_heading %>;
+	}
+	
+	#sidebar div.module,
+  #shows .show_date h3,
+  #shows .show_date .time,
+  #shows .show_date .address,
+	h1.header a, 
+	h1.header a:visited,
+  a {
+    color: <%= @link %>;
+  }
+  a:visited {
+    color: <%= @link_visited %>;
+  }
+  a:hover,  
+	#news h3.post_title a:hover {
+    color: <%= @link_hover %>;
+  }
+	
+	#archive h2,
+	p.byline, 	
+  .lyric h4.composer {
+    color: <%= @utility_text %>;
+	}
+	#archive h2 {
+	  border-bottom: 1px solid <%= @utility_text %>;
+  }
+	
+	#main {
+    background-color: <%= @main_bgcolor %>;
+	}
+	
+	#sidebar {
+    background-color: <%= @sidebar_bgcolor %>;
+	}
+	#sidebar div.module {
+    background-color: <%= @module_bgcolor %>;
+	}
+	
+	
+	#sidebar div.module h2,
+	#sidebar div.module h2:hover a,
+	#sidebar div.module h2 a:visited,
+	#sidebar div.module h2:hover a:hover,
+	#sidebar div.module h2:hover {
+    color: <%= @module_heading %>;
+	}
+	#sidebar div.module h2:hover {
+    background-color: <%= @module_heading_bg_hover %>;
+  }
+  #sidebar div.module h2 {
+    background-color: <%= @module_heading_bg %>;    
+  }
+  
+  #footer {
+    background-color: <%= @footer_bg %>;
+  }
+  
+  #footer, 
+	#footer #copyright_notice {
+    color: <%= @footer %>;
+  }
+	
+  #footer a,
+  #footer a:visited {    
+    color: <%= @footer_link %>;
+  }
+  
+  

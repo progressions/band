@@ -1,0 +1,76 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+<% email = "fred@yahoo.com"
+salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--")
+crypted_email = Digest::SHA1.hexdigest("--#{salt}--#{email}--") %>
+
+one:
+  id: 1
+  firstname: Fred
+  lastname: Simpson
+  email: <%= email %>
+  city: Austin
+  state: TX
+  zipcode: 78704
+  salt: <%= salt %>
+  crypted_email: <%= crypted_email %>
+
+<% email = "jones@yahoo.com"
+salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--")
+crypted_email = Digest::SHA1.hexdigest("--#{salt}--#{email}--") %>
+
+two:
+  id: 2
+  firstname: Homer
+  lastname: Flintstone
+  email: <%= email %>
+  city: Austin
+  state: TX
+  zipcode: 78704
+  salt: <%= salt %>
+  crypted_email: <%= crypted_email %>
+
+<% email = "newDA@gmail.com"
+salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--")
+crypted_email = Digest::SHA1.hexdigest("--#{salt}--#{email}--") %>
+
+three:
+  id: 3
+  firstname: Sam
+  lastname: Waterston
+  email: <%= email %>
+  city: Austin
+  state: TX
+  zipcode: 78745
+  salt: <%= salt %>
+  crypted_email: <%= crypted_email %>
+  
+<% email = "moe@hotmail.com"
+salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--")
+crypted_email = Digest::SHA1.hexdigest("--#{salt}--#{email}--") %>
+
+four:
+  id: 4
+  firstname: Michael
+  lastname: Moriarty
+  email: <%= email %>
+  city: New York
+  state: NY
+  zipcode: 10001
+  salt: <%= salt %>
+  crypted_email: <%= crypted_email %>
+  
+<% email = "angieharmon@yahoo.com"
+salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--")
+crypted_email = Digest::SHA1.hexdigest("--#{salt}--#{email}--") %>
+
+five:
+  id: 5
+  firstname: Angie
+  lastname: Harmon
+  email: <%= email %>
+  city: New York
+  state: NY
+  zipcode: 10003
+  salt: <%= salt %>
+  crypted_email: <%= crypted_email %>

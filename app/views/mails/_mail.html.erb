@@ -1,0 +1,30 @@
+<% show_body = true if show_body.nil? %>
+<% show_byline = true if show_byline.nil? %>
+
+
+  <% title = show_body ? @mail.title : truncate(@mail.title, 30) %>
+  <h3 class="post_title">
+    <%= link_to_unless_current @mail.title, @mail %>
+  </h3>
+    <p class="send_mail"><%= link_to "Send", select_mail_path(@mail) %></p>
+    
+    <% unless show_body == false %>
+      <div id="post_body">
+        <%= @mail.body %>
+      </div> <!-- end DIV "post_body" -->
+    <% end %>
+    
+    <% unless show_byline == false %>
+  <p class="byline">
+    created on <%= @mail.created_at.strftime("%b %d %Y") %>
+    <% unless @mail.user.nil? %>
+     by <strong><%= @mail.user.full_name %></strong>. 
+     <% end %>
+      <% unless @mail.sent_at.nil? %>
+        sent on <%= @mail.sent_at.strftime("%b %d %Y %I:%M%p") %>
+      <% end %>
+      <% if logged_in? %>
+      (<%= link_to "edit", edit_mail_path(@mail) %> | <%= link_to 'delete', @mail, :confirm => 'Are you sure?', :method => :delete %>)
+    <% end %>
+  </p>
+  <% end %>

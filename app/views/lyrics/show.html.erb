@@ -1,0 +1,14 @@
+<% @page_title = "#{@lyric.title} - Lyrics" %>
+
+<div  id="lyrics">
+  
+  <% form_tag lyrics_path, :method => 'get' do %>
+  <p>Search lyrics 
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <% end %>
+
+<%= render :partial => @lyric %>
+
+</div> <!-- end DIV "lyrics" -->

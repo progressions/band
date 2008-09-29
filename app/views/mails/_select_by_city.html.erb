@@ -1,0 +1,6 @@
+<p><%= collection_select("fans_by_city", :city, Fan.find(:all, :select => 'DISTINCT city'), :city, :city, {:prompt => "Select a city"})
+ %>
+</p>
+
+
+<%= observe_field("fans_by_city_city", :frequency => 1, :on => 'select', :url => { :action => :update_fan_count}, :with => 'fans_by_city') %>

@@ -1,0 +1,1 @@
+require 'colour_picker'

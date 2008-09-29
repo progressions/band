@@ -1,0 +1,51 @@
+
+  
+  <!-- PROMO -->
+  <% if @global_settings.show_promo? && @global_settings.promo %>
+    <div  id="promo">
+      <% image_tag "/images/FEB-SHOW-PROMO.jpg" %>    
+      <%= @global_settings.promo.body %>
+    </div> <!-- end DIV "promo" -->
+  <% end %>
+  <!-- END PROMO -->
+  
+    
+  <!-- NEWS -->
+  <% if @global_settings.show_news && !@entries.empty? %>
+  <div id="news">
+    <%= header "News", entries_path %>    
+    <% for @entry in @first_entry %>
+      <%= render :partial => @entry, :locals => {:show_byline => true} %>
+    <% end %>
+    
+    <div id="archive">
+    <h2 id="latest_headlines">Latest headlines</h2>
+      <% for entry in @entries %> 
+        <div class="entry">
+            <h3 class="post_title"><%= link_to_unless_current entry.title, entry %></h3>
+          <p class="byline">
+            <%= @entry.created_at.strftime("%b %d %Y") %>
+            <% if logged_in? %>
+              (<%= link_to "edit", edit_entry_path(entry) %> | <%= link_to 'delete', entry, :confirm => 'Are you sure?', :method => :delete %>)
+            <% end %>
+          </p>
+        </div> <!-- end DIV "entry" -->
+      <% end %>    
+    <p class="archive_link"><%= link_to "news archive...", entries_path %> </p>
+  </div> <!-- end DIV "archive" -->
+</div> <!-- end DIV "news" -->
+  <% end %>
+  <!-- END NEWS -->
+  
+  <!-- BLOG -->
+  <% if @global_settings.show_blog && !@blogs.empty? %>
+  <div id="blog">
+    <%= header "Blog", blogs_path %>    
+    <% for @blog in @blogs %>          
+        <%= render :partial => @blog, :locals => {:show_byline => true} %>    
+    <% end %>    
+    <p class="archive_link"><%= link_to "blog archive...", blogs_path %></p>
+  </div> <!-- end DIV "blog" -->
+  <% end %>
+  <!-- END BLOG -->
+

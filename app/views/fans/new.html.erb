@@ -1,0 +1,32 @@
+<% @page_title = "New Fan" %>
+
+<h1>New fan</h1>
+
+<%= error_messages_for :fan %>
+
+<% form_for(@fan) do |f| %>
+  <p>
+    <b>Firstname</b><br />
+    <%= f.text_field :firstname %>
+  </p>
+
+  <p>
+    <b>Lastname</b><br />
+    <%= f.text_field :lastname %>
+  </p>
+
+  <p>
+    <b>Email</b><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <b>Zipcode</b><br />
+    <%= f.text_field :zipcode %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

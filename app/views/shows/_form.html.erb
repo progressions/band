@@ -1,0 +1,77 @@
+ 
+  <p>
+  <% fields_for @venue do |v| %>
+    <%= f.collection_select :venue_id, Venue.find(:all), :id, :name, :prompt => "Select a Venue" %>
+  or create one:
+  <%= v.text_field :name %>
+  <% end %>
+  </p>
+  
+  <%= fckeditor_textarea("show", "body", :toolbarSet => 'Basic', :width => '100%', :height => '200px') %>
+  
+  <p>
+		<%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+		<%= f.label :time %><br />
+    <%= f.time_select :time, {:include_seconds => false, :minute_step => 15} %>
+  </p>
+  <p>
+		<%= f.label :cover %><br />
+    <%= f.text_field :cover %>
+  </p>
+  
+  <% fields_for @venue do |v| %>
+  <p>
+		<%= v.label :address %><br />
+    <%= v.text_field :address %>
+  </p>
+  <p>
+		<%= v.label :city %><br />
+    <%= v.text_field :city %>
+  </p>
+  <p>
+		<%= v.label :state %><br />
+    <%= v.text_field :state %>
+  </p>
+  <p>
+		<%= v.label :zipcode %><br />
+    <%= v.text_field :zipcode %>
+  </p>
+  <% end %> <p>
+		<%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  
+  <%= fckeditor_textarea("show", "body", :toolbarSet => 'Basic', :width => '100%', :height => '200px') %>
+  
+  <p>
+		<%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+		<%= f.label :time %><br />
+    <%= f.time_select :time, {:include_seconds => false, :minute_step => 15} %>
+  </p>
+  <p>
+		<%= f.label :venue %><br />
+    <%= f.text_field :venue %>
+  </p>
+  <p>
+		<%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+		<%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+		<%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+		<%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </p>
+  

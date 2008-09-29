@@ -1,0 +1,15 @@
+<% @page_title = "Blog" %>
+
+  
+  <div id="blog">
+    
+    <%= header "Blog", archive_path %>
+    <%= will_paginate %>
+    
+    <% for @blog in @blogs %>
+        <%= render :partial => @blog %>
+    <% end %>
+    
+    <%= will_paginate %>
+  
+  </div> <!-- end DIV "blog" -->      

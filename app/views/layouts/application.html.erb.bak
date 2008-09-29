@@ -1,0 +1,92 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+       
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">       
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <% @page_title += " - " unless @page_title.blank? %>
+  <title><%= @page_title %>World Racketeering Squad - Rock and Roll Pop Music from the Future</title>
+  <%= stylesheet_link_tag 'styles' %>
+
+<%= auto_discovery_link_tag(:rss, "/blogs.rss", {:title => "World Racketeering Squad Blog"})  %>
+<%= auto_discovery_link_tag(:rss, "/entries.rss", {:title => "World Racketeering Squad News"})  %>
+<%= auto_discovery_link_tag(:rss, "/lyrics.rss", {:title => "World Racketeering Squad Lyrics"})  %>
+
+</head>
+<body class="<%= @body_style %>">
+
+<div id="wrap">
+	<div id="header">
+    <div id="logo">  
+      <%= link_to_unless_current(image_tag("/images/logo_cartoon.png"), home_path) %>
+    </div> <!-- end DIV 'logo' -->
+    
+    <% unless @body_style == "fans" %>
+	  <div id="mailing_list">
+	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>
+	    
+	    <% form_for(@fan) do |f| %>
+        <p><%= f.text_field :email, :id => "email", :value => "Email Address" %><br />
+        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %><br />
+        <%= f.submit "SIGN UP", :class =>"signup" %></p>
+      <% end %>
+	    
+	  </div> <!-- end DIV 'mailing_list' -->
+    <% end %>
+	</div> <!-- end DIV 'header' -->
+	<div id="inside-wrap">
+  
+  	<div id="nav">
+  		<ul>
+  			<li><%= link_to_unless_current "News", entries_path %></li>
+  			<li><%= link_to_unless_current "BLOG", blogs_path %></li>
+  			<li><%= link_to_unless_current "videos", videos_path %></li>
+  			<li><%= link_to_unless_current "music", music_path %></li>
+  			<li><%= link_to_unless_current "lyrics", lyrics_path %></li>
+  			<!--<li><%= link_to_unless_current "photos", photos_path %></li>-->
+  			<li><%= link_to_unless_current "SHOWS", shows_path %></li>
+  			<!-- <li><%= link_to_unless_current "ABOUT", about_path %></li> -->
+  		</ul>
+  	</div> <!-- end DIV 'nav' -->
+  	
+  	<div id="main">
+  	  
+  	<% if flash[:notice] %>
+  	  <div id="notice"><p><%= flash[:notice] %></p></div>
+  	<% else %>
+  	<div id="no_notice">  	  
+  	</div> <!-- end DIV name -->
+  	<% end %>
+  	
+ 
+      <% yield %>       
+      
+  	</div> <!-- end DIV "main" -->
+  	<%= sidebar @page_title if true or (@show_sidebar.nil? || @show_sidebar != false) %>
+  		
+	</div> <!-- end DIV 'inside-wrap' -->
+  	<div id="footer">
+  	  <!--
+  	  <ul>
+	      <li>About:</li>
+	      <li><%= link_to "World Racketeering Squad", about_path %> | </li>
+	      <li><%= link_to "Reed Oliver", reed_path %> | </li>
+	      <li><%= link_to "Isaac Priestley", isaac_path %></li>
+  	  </ul>
+	    -->
+  	  <p>About: 
+  	    <%= link_to "World Racketeering Squad", about_path %> | 
+  	    <%= link_to "Reed Oliver", reed_path %> | 
+  	    <%= link_to "Isaac Priestley", isaac_path %></p>
+  	  <p id="copyright_notice">Copyright 2008 World Racketeering Squad</p>
+  	  <p>Subscribe: <%= link_to "Blog", formatted_blogs_url(:rss) %> | 
+  	  <%= link_to "News", formatted_entries_url(:rss) %> | 
+  	  <%= link_to "Lyrics", formatted_lyrics_url(:rss) %></p>
+	  </div><!-- end DIV 'footer' -->
+		  
+</div> <!-- end DIV 'wrap' -->
+</body>
+</html>

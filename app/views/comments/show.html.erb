@@ -1,0 +1,18 @@
+<p>
+  <b>Body:</b>
+  <%=h @comment.body %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @comment.created_by %>
+</p>
+
+<p>
+  <b>Blog:</b>
+  <%=h @comment.blog_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

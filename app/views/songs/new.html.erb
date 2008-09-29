@@ -1,0 +1,28 @@
+<% @page_title = "New Song" %>
+
+<%= javascript_include_tag :fckeditor %>
+
+<h1>New song</h1>
+
+<%= error_messages_for :song %>
+
+<% form_for(@song) do |f| %>
+  <p>
+    <b>Title (required)</b><br />
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <b>Filename</b><br />
+    <%= f.text_field :filename %>
+  </p>
+  
+  <p>Description:</p>
+  <%= fckeditor_tag("song") %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', songs_path %>

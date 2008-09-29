@@ -1,0 +1,34 @@
+<% @page_title = "New Lyric" %>
+
+<%= javascript_include_tag :fckeditor %>
+
+<h1>New lyric</h1>
+
+<%= error_messages_for :lyric %>
+
+<% form_for(@lyric) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+
+    <%= fckeditor_tag("lyric") %>
+
+  <p>
+    <b>Composer</b><br />
+    <%= f.text_field :composer %>
+  </p>
+  
+  <% if @global_settings.show_blog? %>
+  <p>
+    <b>Post a blog about new lyric?</b><br />
+    <%= check_box_tag "post_blog", "yes", true %>
+  </p>
+  <% end %>
+  
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

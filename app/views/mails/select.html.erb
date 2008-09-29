@@ -1,0 +1,31 @@
+<% @page_title = "Send mail - #{truncate(@mail.title,20)}" %>
+
+<h1>Send mail</h1>
+
+<p>Send this email to fans:</p>
+
+<% form_for(@mail, :url => deliver_mail_path(@mail), :html => {:method => :put}) do |f| %>
+  
+<div>
+  
+  <%= improved_select_tag("select_fans", @fans_options) %>
+  
+
+  
+  <div id="select_options">    
+  </div> <!-- end DIV "select_options" -->
+  
+</div> <!-- end DIV "select_fans" -->
+
+<div id="fan_count">
+  <%= render :partial => "fan_count", :locals => {:fan_count => Fan.count} %>
+</div> <!-- end DIV "fan_count" -->
+
+<p>Click the button below to send <strong><%= @mail.title %></strong> to the <%= @global_settings.artist_name %> mailing list.</p>
+
+  <p>
+    <%= submit_tag "Send", :name => "deliver_button" %>
+  </p>
+<% end %>
+
+<%= observe_field("select_fans", :frequency => 1, :on => 'select', :url => { :action => :select_fans_options }, :with => 'select_fans') %>

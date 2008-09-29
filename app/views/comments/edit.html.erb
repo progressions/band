@@ -1,0 +1,19 @@
+<h1>Editing comment</h1>
+
+<%= error_messages_for :comment %>
+
+  <% form_for(@comment) do |f| %>
+    <dl>
+      <dt><%= f.text_field :name %></dt><dd>Name (required)</dd>
+      <dt><%= f.text_field :email %></dt><dd>Mail (will not be published) (required) </dd>    
+      <dt><%= f.text_field :website %></dt><dd>Website</dd>
+    </dl>
+    <%= f.text_area :body %>
+    
+    <p>
+      <%= f.submit "SUBMIT" %>
+    </p>
+  <% end %>
+
+<%= link_to 'Show', @comment %> |
+<%= link_to 'Back', comments_path %>

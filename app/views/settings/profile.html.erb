@@ -1,0 +1,70 @@
+<% @page_title = "Edit Profile" %>
+
+<div  id="edit_profile">
+<h1>Edit Profile</h1>
+
+<%= error_messages_for :setting %>
+
+<% form_for(@setting) do |f| %>
+  <dl class="names">
+  <dd class="label">Artist name</dd>
+  <dd class="description">Your name, or the name of your band.</dd>
+  <dt><%= f.text_field :artist_name %></dt>
+  <dd class="label">Website title</dd>
+  <dd class="description">Full name to display in the title bar of the website.</dd>
+  <dt><%= f.text_field :site_name %></dt>
+  </dl>
+    
+  <dl class="email">
+		<dd class="label">Contact email:</dd>
+		<dd class="description">Your public email address, will be listed as the sender of all emails sent from your website.</dd>
+    <dt><%= f.text_field :email %></dt>
+    <dd class="label">Administrative email:</dd>
+		<dd class="description">Your private email address, will be used to send you updates from the website.</dd>
+    <dt><%= f.text_field :admin_email %></dt>
+  </dl>
+  
+ <dl class="misc">
+		<dd class="label">Website URL:</dd>
+		<dd class="description">The address of your website.  Example: www.thebeatles.com, www.greenday.com</dd>
+    <dt><%= f.text_field :url %></dt>
+    
+    <dd class="label">Mailing list announcement tag:</dd>
+		<dd class="description">A short identifier included in the subject of all your mailing list emails.  Example: "WRS" becomes "[WRS] Three new gigs coming up!"</dd>
+    <dt><%= f.text_field :mail_tag %></dt>
+  </dl>
+    
+    <h3 id="your_social_networks">Your social networks</h3>
+
+  <dl>
+		<dd class="label">YouTube:</dd>
+		<dd class="description">Your YouTube username, to allow the website to automatically fetch your YouTube videos and include them in your content.</dd>
+    <dt><%= f.text_field :youtube_profile %></dt>
+
+		<dd class="label">Featured playlist:</dd>
+		<dd class="description">The ID of the YouTube playlist to feature on your Videos page.</dd>
+    <dt><%= f.text_field :featured_playlist %></dt>
+  </dl>  
+  
+  <dl>
+		<dd class="label">Songs host:</dd>
+		<dd class="description">The website where your mp3s are hosted.  Leave this blank unless your mp3s are hosted on a different server than the website.</dd>
+    <dt><%= f.text_field :songs_host %></dt>
+    
+		<dd class="label">Header:</dd>
+		<dd class="description">Header code, appears at the top of the website.  Use this to display an ad banner.</dd>
+    <dt><%= f.text_area :header %></dt>
+    
+		<dd class="label">Footer:</dd>
+		<dd class="description">Footer code, appears at the bottom of the website.  Use this to display an ad banner or any tracking code.</dd>
+    <dt><%= f.text_area :footer %></dt>
+    
+  </dl>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+
+  
+</div> <!-- end DIV "edit_profile" -->

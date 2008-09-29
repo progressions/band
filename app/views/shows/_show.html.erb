@@ -1,0 +1,44 @@
+<% show_byline = true unless show_byline == false %>
+<% show_body ||= true unless show_body == false %>
+<% show_map ||= true unless show_map == false %>
+<% show_year ||= true unless show_year == false %>
+
+<div class="show_date">
+	<h3><%= @show.date.strftime("%A %b") + " " + strip_leading_zero(@show.date.strftime("%d"))  + " " + ("#{@show.date.strftime("%Y") unless show_year == false}") %></h3> 
+	<ul>
+	    <% unless @show.title.blank? %>
+	      <li class="title"><%= h @show.title %></li>
+	    <% end %>
+	    <% unless @show.venue.nil? %>
+  	    <% unless @show.venue.name.blank? %>
+  	      <li class="venue"><%= h @show.venue.name %></li>
+  	    <% end %>
+  	    <% unless @show.venue.address.blank? %>
+  	      <li class="address"><%= h @show.venue.address %></li>
+  	    <% end %>
+  	    <% unless @show.venue.city_state_zip.blank? %>
+  	      <li class="address"><%= h @show.venue.city_state_zip %>
+  	      <% unless show_map == false %>
+  	         (<%= link_to "map", map_from_address(@show.venue) %>)
+  	      <% end %>
+  	         </li>
+  	    <% end %>
+	    <% end %>
+	    <li class="time"><%= strip_leading_zero(@show.date.strftime("%I:%M%p").downcase) %> 
+	      <% unless @show.end_time.blank? %>
+	        - <%= strip_leading_zero(@show.end_time.strftime("%I:%M%p").downcase) %> 
+	      <% end %>
+	      <%= h @show.cover %></li>
+	    <% unless @show.body.blank? || show_body == false %>
+	      <li class="body"><%= @show.body %></li>
+	    <% end %>
+	</ul>
+	<% unless show_byline == false %>
+  <p class="byline">
+posted on <%= @show.created_at.strftime("%b %d %Y") %>   by <strong><%= @show.user.full_name %></strong>. 
+    <% if logged_in? %>
+      (<%= link_to "edit", edit_show_path(@show) %> | <%= link_to 'delete', @show, :confirm => 'Are you sure?', :method => :delete %>)
+    <% end %>
+  </p>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<% @page_title = "Edit News Entry" %>
+
+<%= javascript_include_tag :fckeditor %>
+
+<h1>Edit News Entry</h1>
+
+<%= error_messages_for :entry %>
+
+<% if params[:preview_button] %>
+  <%= render :partial => "entry" %>
+<% end %>
+
+<% form_for(@entry) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+    <%= fckeditor_tag("entry") %>
+  <p>
+    <%= f.submit "Preview", :name => "preview_button" %>
+    <%= f.submit "Update" %> 
+  </p>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Unsubscribe</h1>
+<p>Click the button below to unsubscribe <strong><%= @subscription.email %></strong> from the blog posting '<%= sanitize(@blog.title) %>'.</p>
+
+<% form_for(@blog, :url => unsubscribe_blog_path(@blog, :email => @subscription.email), :html => {:method => :get}) do |f| %>
+  <p><%= hidden_field_tag "email", @subscription.email %>
+    <%= submit_tag "Unsubscribe", :name => "unsubscribe" %>
+  </p>
+<% end %>

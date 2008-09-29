@@ -1,0 +1,24 @@
+<% @venue ||= venue %>
+
+  
+  <% fields_for @venue do |v| %>
+
+  <p><%= v.text_field :name %>
+  </p>
+  <p>
+		<%= v.label :address %><br />
+    <%= v.text_field :address %>
+  </p>
+  <p>
+		<%= v.label :city %><br />
+    <%= v.text_field :city %>
+  </p>
+  <p>
+		<%= v.label :state %><br />
+    <%= v.text_field :state %>
+  </p>
+  <p>
+		<%= v.label :zipcode %><br />
+    <%= v.text_field :zipcode %>
+  </p>
+  <% end %>

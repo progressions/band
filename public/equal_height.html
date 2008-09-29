@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" >
+<head>
+	<title>The Right Menu 2 column Liquid Layout. Pixel widths. Cross-Browser. Equal Height Columns.</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<meta name="description" content="The Right Menu 2 column Liquid Layout. Pixel widths. Cross-Browser. Equal Height Columns." />
+	<meta name="keywords" content="The Right Menu 2 column Liquid Layout. Pixel widths. Cross-Browser. Equal Height Columns." />
+	<meta name="robots" content="index, follow" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <style media="screen" type="text/css">
+    /* <!-- */
+    /* General styles */
+    body {
+        margin:0;
+        padding:0;
+        border:0;			/* This removes the border around the viewport in old versions of IE */
+        width:100%;
+        background:#fff;
+        min-width:600px;    /* Minimum width of layout - remove line if not required */
+							/* The min-width property does not work in old versions of Internet Explorer */
+		font-size:90%;
+    }
+	a {
+    	color:#369;
+	}
+	a:hover {
+		color:#fff;
+		background:#369;
+		text-decoration:none;
+	}
+    h1, h2, h3 {
+        margin:.8em 0 .2em 0;
+        padding:0;
+    }
+    p {
+        margin:.4em 0 .8em 0;
+        padding:0;
+    }
+	img {
+		margin:10px 0 5px;
+	}
+	/* Header styles */
+    #header {
+        clear:both;
+        float:left;
+        width:100%;
+    }
+	#header {
+		border-bottom:1px solid #000;
+	}
+	#header p,
+	#header h1,
+	#header h2 {
+	    padding:.4em 15px 0 15px;
+        margin:0;
+	}
+	#header ul {
+	    clear:left;
+	    float:left;
+	    width:100%;
+	    list-style:none;
+	    margin:10px 0 0 0;
+	    padding:0;
+	}
+	#header ul li {
+	    display:inline;
+	    list-style:none;
+	    margin:0;
+	    padding:0;
+	}
+	#header ul li a {
+	    display:block;
+	    float:left;
+	    margin:0 0 0 1px;
+	    padding:3px 10px;
+	    text-align:center;
+	    background:#eee;
+	    color:#000;
+	    text-decoration:none;
+	    position:relative;
+	    left:15px;
+		line-height:1.3em;
+	}
+	#header ul li a:hover {
+	    background:#369;
+		color:#fff;
+	}
+	#header ul li a.active,
+	#header ul li a.active:hover {
+	    color:#fff;
+	    background:#000;
+	    font-weight:bold;
+	}
+	#header ul li a span {
+	    display:block;
+	}
+	/* 'widths' sub menu */
+	#layoutdims {
+		clear:both;
+		background:#eee;
+		border-top:4px solid #000;
+		margin:0;
+		padding:6px 15px !important;
+		text-align:right;
+	}
+	/* column container */
+	.colmask {
+		position:relative;		/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+	    clear:both;
+	    float:left;
+        width:100%;			/* width of whole page */
+		overflow:hidden;	/* This chops off any overhanging divs */
+	}
+	/* 2 column right menu settings */
+	.rightmenu {
+	    background:#ff9;
+	}
+	.rightmenu .colleft {
+        float:left;
+        width:200%;
+        margin-left:-200px;
+        position:relative;
+        right:100%;
+        background:#fff;
+    }
+    .rightmenu .col1wrap {
+	    float:left;
+	    width:50%;
+	    position:relative;
+	    left:50%;
+	    padding-bottom:1em;
+	}
+	.rightmenu .col1 {
+        margin:0 15px 0 215px;
+        overflow:hidden;
+	}
+    .rightmenu .col2 {
+        float:right;
+        width:170px;
+        position:relative;
+        left:185px;
+    }
+	/* Footer styles */
+	#footer {
+        clear:both;
+        float:left;
+        width:100%;
+		border-top:1px solid #000;
+    }
+    #footer p {
+        padding:10px;
+        margin:0;
+    }
+    /* --> */
+    </style>
+    <!--[if lt IE 7]>
+    <style media="screen" type="text/css">
+    .col1 {
+	    width:100%;
+	}
+    </style>
+    <![endif]-->
+</head>
+<body>
+
+<div id="header">
+    
+    <div id="logo">  
+      <%= link_to_unless_current(image_tag("/images/logo_cartoon.png"), home_path) %>
+    </div> <!-- end DIV 'logo' -->
+    
+    <% unless @body_style == "fans" %>
+	  <div id="mailing_list">
+	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>
+	    
+	    <% form_for(@fan) do |f| %>
+        <p><%= f.text_field :email, :id => "email", :value => "Email Address" %><br />
+        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %><br />
+        <%= f.submit "SIGN UP", :class =>"signup" %></p>
+      <% end %>
+	    
+	  </div> <!-- end DIV 'mailing_list' -->
+    <% end %>
+</div>
+<div class="colmask rightmenu">
+    <div class="colleft">
+        <div class="col1wrap">
+            <div class="col1">
+                <!-- Column 1 start -->
+                <h2>Pixel dimensions of the right menu layout</h2>
+				<img src="http://matthewjamestaylor.com/blog/ultimate-2-column-right-menu-pixels-dimensions.gif" width="350" height="370" alt="Two column right menu layout pixel dimensions" />
+				<p>In this layout the right side column width is in pixels and the main left page adjusts in size to fill the rest of the screen. Vertical dimensions are left unset so they automatically stretch to the height of the content. Layouts that use pixel widths are great for images because you can make them fit perfectly within a column without gaps.</p>
+
+				<h2>The nested div structure</h2>
+				<p>I've colour coded each div so it's easy to see:</p>
+				<img src="http://matthewjamestaylor.com/blog/ultimate-2-column-right-menu-div-structure.gif" width="350" height="369" alt="Two column right menu layout nested div structure" />
+				<p>The header, colmask and footer divs are 100% wide and stacked vertically one after the other. Colleft is inside colmask and the right content column is inside colleft. The main 'left' page needs to be inside the col1wrap div so it can be positioned correctly (This extra div is not required on the <a href="perfect-2-column-right-menu.htm">percentage width version</a>). Notice that the main content column (col1) comes before the left column, this is great for SEO.</p>
+				<h2>Full cross-browser support</h2>
+				<p>The holy grail 3 column liquid Layout has been tested on the following browsers:</p>
+
+				<h3>iPhone &amp; iPod Touch</h3>
+				<ul>
+					<li>Safari</li>
+				</ul>
+				<h3>Mac</h3>
+				<ul>
+
+					<li>Safari</li>
+					<li>Firefox</li>
+					<li>Opera 9.25</li>
+					<li>Netscape 9.0.0.5 &amp; 7.1</li>
+				</ul>
+				<h3>Windows</h3>
+
+				<ul>
+					<li>Firefox 1.5 &amp; 2</li>
+					<li>Safari</li>
+					<li>Opera 8.1 &amp; 9</li>
+					<li>Explorer 5.5, 6 &amp; 7</li>
+
+					<li>Netscape 8</li>
+				</ul>
+                <h2>FREE for anyone to use</h2>
+                <p>You don't have to pay anything. Simply view the source of this page and save the HTML onto your computer. My only suggestion is to put the CSS into a separate file. If you are feeling generous however, link back to this page so other people can find and use this layout too.</p>
+                <h2>Free traffic for your website</h2>
+                <p>If you use this layout for your website <a href="http://matthewjamestaylor.com/about">send me an email</a> with the link and any other information you have so I can add you to my list of example sites. Once I have a few links I'll publish them on my website and you'll get free traffic!</p>
+
+				<!-- Column 1 end -->
+            </div>
+        </div>
+        <div class="col2">
+            <!-- Column 2 start -->
+            <h2>No CSS hacks</h2>
+            <p>The CSS used for this layout is 100% valid and hack free. To overcome Internet Explorer's broken box model, no horizontal padding or margins are used. Instead, this design uses pixel widths and clever relative positioning.</p>
+            <h2>SEO friendly 1-2 column ordering</h2>
+
+            <p>The higher up content is in your page code, the more important it is considered by search engine algorithms. To make your website as optimised as possible your main page content must come before the side columns. This layout does exactly that: The center page comes first, then the left column and finally the right column (see the nested div structure diagram for more info). The columns can also be configured to any other order if required.</p>
+            <h2>Equal height columns</h2>
+            <p>It doesn't matter which column has the longest content, the background colour of all columns will stretch down to meet the footer. This feature was traditionally only available with table based layouts but now with a little CSS trickery we can do exactly the same with divs. Say goodbye to annoying short columns!</p>
+            <h2>No Images</h2>
+			<p>This layout requires no images. Many CSS website designs need images to colour in the column backgrounds but that is not necessary with this design. Why waste bandwidth and precious HTTP requests when you can do everything in pure CSS and XHTML?</p>
+			<h2>No JavaScript</h2>
+
+			<p>JavaScript is not required. Some website layouts rely on JavaScript hacks to resize divs and force elements into place but you won't see any of that nonsense here.</p>
+			<h2>Valid XHTML strict markup</h2>
+			<p>The HTML in this layout validates as XHTML 1.0 strict.</p>
+            <h2>Resizable text compatible</h2>
+			<p>This layout is fully compatible with resizable text. Resizable text is important for web accessibility. People who are vision impaired can make the text larger so it's easier for them to read. It is becoming increasingly more important to make your website resizable text compatible because people are expecting higher levels of web accessibility. Apple have made resizing the text on a website simple with the pinch gesture on their multi-touch trackpad. So far this trackpad is only available on the MacBook Air but it will soon be rolled out to all of their systems. Is your website text-resizing compatible?</p>
+			<!-- Column 2 end -->
+
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <p><a href="http://matthewjamestaylor.com/about">Contact me</a> if you have any problems, suggestions or questions about this layout. View more <a href="http://matthewjamestaylor.com/blog/-website-layouts">website layouts</a> and <a href="http://matthewjamestaylor.com/blog/-web-design">web design articles</a>.</p>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1848067-8";
+urchinTracker();
+</script>
+
+</body>
+</html>

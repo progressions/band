@@ -1,0 +1,50 @@
+<% @page_title = "Settings" %>
+
+<p>
+  <b>Site name:</b>
+  <%=h @setting.site_name %>
+</p>
+
+<p>
+  <b>Artist name:</b>
+  <%=h @setting.artist_name %>
+</p>
+
+<p>
+  <b>Artist description:</b>
+  <%=h @setting.artist_description %>
+</p>
+
+<p>
+  <b>Show blog:</b>
+  <%=h @setting.show_blog %>
+</p>
+
+<p>
+  <b>Show news:</b>
+  <%=h @setting.show_news %>
+</p>
+
+<p>
+  <b>Show music:</b>
+  <%=h @setting.show_music %>
+</p>
+
+<p>
+  <b>Show videos:</b>
+  <%=h @setting.show_videos %>
+</p>
+
+<p>
+  <b>Show shows:</b>
+  <%=h @setting.show_shows %>
+</p>
+
+<p>
+  <b>Show fans:</b>
+  <%=h @setting.show_fans %>
+</p>
+
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>

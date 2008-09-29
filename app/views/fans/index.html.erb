@@ -1,0 +1,33 @@
+
+<% @page_title = "Fans" %>
+
+<div id="fans">
+
+
+<% form_tag fans_path, :method => 'get' do %>
+  <p>Search fans 
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<h1>Listing fans</h1>
+
+<div id="fans_list">
+  <%= render :partial => "fans_list", :locals => {:fans => @fans, :fan_count => @fan_count, :fan_total => @fan_total} %>
+
+</div> <!-- end DIV "fans_list" -->
+
+
+</div> <!-- end DIV "fans" -->
+
+
+<%= javascript_tag %Q{
+  function x_add_tag(fans)
+  {
+    var tag = prompt('Name for new tag', '');
+    if (tag == null) return;
+    #{remote_function :url => tag_fans_path(:fans => @fans_to_tag, :update => "update"), :with => "'tag=' + tag + '&fans=' + fans" }  
+  }
+
+} %>

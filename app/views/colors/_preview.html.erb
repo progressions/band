@@ -1,0 +1,249 @@
+<style type="text/css" media="screen">
+  #preview {
+    background-color: #ccc;
+  }
+  #preview .body {    
+    background: url(/images/sidebar_bg.png) <%= @preview.sidebar_bg %> top left repeat-x;
+    border: 1px solid <%= @preview.main_bg %>;
+    color: <%= @preview.body %>;
+  }
+  #preview .main {
+    background:  <%= @preview.main_bg %> top left repeat-x;
+    padding: 0 5px 5px 5px;
+    width: 218px;
+  }
+  #preview div.body p.byline a,
+  #preview div.body a {
+    color: <%= @preview.link %>;
+  }
+  #preview h2.header a,  
+  #preview h2.header a:visited,
+  #preview .main h2.header a:hover {
+    background: url(/images/header.png) <%= @preview.link %> top left repeat-x;
+	  color: <%= @preview.link %>;
+	  display: block;	
+	  margin: 0 -5px;
+	  font-weight: normal;
+	  text-align: center;
+	  text-transform: uppercase;
+  }
+  #preview h2.header a span.type,  
+  #preview h2.header a:hover span.type,
+  #preview h2.header a:visited span.type {    
+    color: <%= @preview.news_heading %>;
+  }
+  
+  
+  #preview p.byline a:visited,
+  #preview a:visited {
+    color: <%= @preview.link_visited %>;
+  }
+  #preview div.body p.byline a:hover,
+  #preview div.body a:hover {
+    color: <%= @preview.link_hover %>;
+  }
+  #preview .main h3 {
+    color: <%= @preview.heading %>;
+	  font-family:Georgia,"Times New Roman",Times,serif;
+  }
+  #preview .main .news h3 {
+    color: <%= @preview.news_heading %>;
+  }
+  #preview .sidebar {
+    float: right;
+    padding: 10px;
+    width: 150px;
+  }
+  #preview .sidebar div.module {
+    background-color: <%= @preview.module_bg %>;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 140px;    
+  }
+  #preview .sidebar div.module h2 {
+    background-color: <%= @preview.module_heading_bg %>;
+    color: <%= @preview.module_heading %>;
+	  display: block;
+    margin: -5px;
+	  display: block;
+	  font-size: 1em;
+	  font-weight: normal;
+	  letter-spacing: 0.3em;
+	  text-align: center;
+	  text-transform: uppercase;
+  }
+	#preview .sidebar div.module h2 a {
+	  display: block;
+    padding: 3px;
+	}
+  #preview .sidebar div.module h2 a:hover {
+    color: <%= @preview.module_heading_hover %>;
+    background: url(/images/sidebar_head_bg.png) #1f5c8b top left repeat-x;
+  }
+  #preview .footer {
+    background: url(/images/footer_bg.png) <%= @preview.footer_bg %> top left repeat-x;
+    color: <%= @preview.footer %>;
+    padding: 5px;
+  }
+  #preview .footer a {
+    color: <%= @preview.footer_link %>;
+  }
+  #preview p.byline {
+    clear: none;
+    color: <%= @preview.utility %>;
+  }
+
+
+  #preview div.nav ul, 
+	#preview div.nav {
+		width: 398px;
+	}
+
+	#preview div.nav ul
+  {
+    background: url(/images/nav_wide_bg.png) <%= @preview.main_bg %> bottom left repeat-x;
+    height: 28px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #preview div.nav li
+  {
+    float: left;
+    margin: 0;
+    font-weight: normal;
+  }
+  
+  #preview div.nav li
+  {
+    color: <%= @preview.utility %>;
+    display: block;
+    float: left;
+    line-height: 2em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    width: 115px;
+  }
+  #preview div.nav li a {
+    ccolor: <%= @preview.link %>;
+    display: block;
+  }
+  #preview div.nav li a:hover
+  { 
+    background: url(/images/nav_bg.png) <%= @preview.main_bg %> bottom left repeat-x;
+	  ccolor: <%= @preview.link_hover %>;
+  }
+  
+  /* Hide from IE5-Mac \*/
+  #preview div.nav li a
+  {
+   float: none
+  }
+  /* End hide */
+
+  
+  .color_preview {
+    border: 1px solid #ccc;
+    float: left;   
+    height: 22px;
+    margin-right: 5px;
+    width: 22px;
+  }
+  #preview_body {
+    background: <%= @preview.body %>;
+  }
+  #preview_heading {
+    background: <%= @preview.heading %>;
+  }
+  #preview_news_heading {
+    background: <%= @preview.news_heading %>;
+  }
+  #preview_link {
+    background: <%= @preview.link %>;
+  }
+  #preview_link_visited {
+    background: <%= @preview.link_visited %>;
+  }
+  #preview_link_hover {
+    background: <%= @preview.link_hover %>;
+  }
+  #preview_utility {
+    background: <%= @preview.utility %>;
+  }
+  #preview_main_bg {
+    background: <%= @preview.main_bg %>;
+  }
+  #preview_sidebar_bg {
+    background: <%= @preview.sidebar_bg %>;
+  }
+  #preview_module_bg {
+    background: <%= @preview.module_bg %>;
+  }
+  #preview_module_heading {
+    background: <%= @preview.module_heading %>;
+  }
+  #preview_module_heading_hover {
+    background: <%= @preview.module_heading_hover %>;
+  }
+  #preview_module_heading_bg {
+    background: <%= @preview.module_heading_bg %>;
+  }
+  #preview_module_heading_bg_hover {
+    background: <%= @preview.module_heading_bg_hover %>;
+  }
+  #preview_footer {
+    background: <%= @preview.footer %>;
+  }
+  #preview_footer_link {
+    background: <%= @preview.footer_link %>;
+  }
+  #preview_footer_bg {
+    background: <%= @preview.footer_bg %>;
+  }
+  
+
+</style>
+
+<h3>Preview:</h3>
+<div class="body">
+  <div class="nav">
+    <ul>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Shows</a></li>
+    </ul>
+  </div> <!-- end DIV "nav" -->
+    
+  <div class="sidebar">
+    <div class="module">
+    <h2><a href="#">Heading</a></h2>
+    <p>Module text</p>
+    <p>Text with a <a href="#">link</a>.</p>
+    </div> <!-- end DIV "module" -->
+    <div class="module">
+    <h2><a href="#">Shows</a></h2>
+    <p>More module text</p>
+    <p>Text with <a href="#">another link</a>.</p>
+    </div> <!-- end DIV "module" -->
+  </div> <!-- end DIV "preview_sidebar" -->
+  
+  <div class="main">
+    <div class="news">
+    <h2 class="header"><a href="#">Some <span class="type">News</span></a></h2>   
+    <h3>Newsflash!</h3>
+    <p>It's a news entry about some news that happened to the band!</p>
+    <p class="byline">posted on <%= Time.now.strftime("%b %d %Y") %> by <strong><a href="#">jeff</a></strong>. (<a href="#">edit</a> | <a href="#">delete</a>)</p>
+    </div> <!-- end DIV "news" -->
+    <h2 class="header"><a href="#">Some <span class="type">Blogs</span></a></h2>
+    <h3>Blog item: Hooray for penguins!</h3>
+    <p>It's an item about penguins and how great they are.  Aren't they great?  Don't you love penguins?</p>
+    <p class="byline">posted on <%= Time.now.strftime("%b %d %Y") %> by <strong><a href="#">jeff</a></strong>. <a href="#">4 comments</a>. (<a href="#">edit</a> | <a href="#">delete</a>)</p>
+  </div> <!-- end DIV "preview_main" -->
+  <div class="footer">
+    <p>Footer text</p>
+    <p><a href="#">Footer link</a></p>
+  </div> <!-- end DIV "footer" -->
+
+</div> <!-- end DIV "preview_body" -->

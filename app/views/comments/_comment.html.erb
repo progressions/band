@@ -1,0 +1,25 @@
+<% show_byline = true if show_byline.nil?%>
+
+<div class="comment">
+<div class="comment_body"><%= h(sanitize(@comment.body)) %></div>
+
+  <% unless @comment.created_at.nil? %>
+    <p class="post_date">
+      Posted on <%= @comment.created_at.strftime("%b %d %Y") %> by <strong>
+        <% unless @comment.website.blank? %>
+          <% website = sanitize(@comment.website) %>
+          <% unless website.match(/http:\/\//) %>
+            <% website = "http://#{website}" %>
+          <% end %>
+          <%= link_to sanitize(@comment.name), website %>
+        <% else %>
+          <%= sanitize @comment.name %>
+        <% end %>
+        </strong>.
+      <% if logged_in? %>
+        (<%= link_to "edit", edit_comment_path(@comment) %> | <%= link_to 'delete', @comment, :confirm => 'Are you sure?', :method => :delete %>)
+      <% end %>
+    </p>
+  <% end %>
+
+</div>

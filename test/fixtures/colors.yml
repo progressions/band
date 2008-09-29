@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  title: Main colors
+  body: MyString
+  heading: MyString
+  news_heading: MyString
+  link: MyString
+  link_visited: MyString
+  link_hover: MyString
+  utility: MyString
+  main_bg: MyString
+  sidebar_bg: MyString
+  module_bg: MyString
+  module_heading: MyString
+  module_heading_bg: MyString
+  module_heading_bg_hover: MyString
+  footer: MyString
+  footer_link: MyString
+  footer_bg: MyString
+
+two:
+  id: 2
+  title: Funky colors
+  body: MyString
+  heading: MyString
+  news_heading: MyString
+  link: MyString
+  link_visited: MyString
+  link_hover: MyString
+  utility: MyString
+  main_bg: MyString
+  sidebar_bg: MyString
+  module_bg: MyString
+  module_heading: MyString
+  module_heading_bg: MyString
+  module_heading_bg_hover: MyString
+  footer: MyString
+  footer_link: MyString
+  footer_bg: MyString

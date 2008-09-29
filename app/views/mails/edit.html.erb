@@ -1,0 +1,25 @@
+<% @page_title = "Edit Mail" %>
+<%= javascript_include_tag :fckeditor %>
+
+
+<div id="mail">
+<h1>Editing mail</h1>
+
+<%= preview @mail, params %>
+
+<%= error_messages_for :mail %>
+
+<% form_for(@mail) do |f| %>
+  <p>
+		<%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <%= fckeditor_textarea("mail", "body", :toolbarSet => 'Basic', :width => '100%', :height => '400px') %>
+
+    <p>
+      <%= f.submit "Preview", :name => "preview_button" %>
+      <%= f.submit "Update" %> 
+    </p>
+<% end %>
+
+</div> <!-- end DIV "mail" -->

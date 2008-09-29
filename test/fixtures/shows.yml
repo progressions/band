@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  title: A show
+  body: We're playing at Trophy's
+  date: 2008-02-05 00:22:00
+  time: 2008-01-27 00:22:00
+  end_time: 2008-01-27 00:23:00
+  venue_id: 1
+  created_by: 1
+
+two:
+  id: 2
+  title: Another show
+  body: We're playing at Carousel Lounge
+  date: 2008-02-13 00:23:00
+  time: 2008-01-27 00:23:00
+  end_time: 2008-01-27 00:24:00
+  venue_id: 2
+  created_by: 2

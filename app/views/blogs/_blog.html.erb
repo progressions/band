@@ -1,0 +1,22 @@
+
+<div class="blog">
+
+<div class="post" id="post_<%= @blog.id %>">
+  
+  <h3 class="post_title"><%= link_to_unless_current @blog.title, blog_path(@blog) %></h3>
+  <div class="post_body" id="post_body_<%= @blog.id %>">
+    <%= @blog.body %>
+  </div> <!-- end DIV "post_body" -->
+  
+  <% unless @show_byline == false %>
+  <p class="byline">
+posted on <%= @blog.created_at.strftime("%b %d %Y") %>   by <strong><%= link_to(@blog.user.full_name, blogs_path(:author => @blog.user.full_name)) %></strong>. <%= link_to_unless_current pluralize(@blog.comments.length, "comment"), @blog %>.
+    <% if logged_in? %>
+      (<%= link_to "edit", edit_blog_path(@blog) %> | <%= link_to 'delete', @blog, :confirm => 'Are you sure?', :method => :delete %>)
+    <% end %>
+  </p>
+  <% end %>
+
+</div> <!-- end DIV "post" -->
+  
+</div> <!-- end DIV "blog" -->

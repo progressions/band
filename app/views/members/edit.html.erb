@@ -1,0 +1,31 @@
+<% @page_title = "Edit Member" %>
+
+<%= javascript_include_tag :fckeditor %>
+
+<h1>Edit member</h1>
+
+<%= error_messages_for :member %>
+
+<% form_for(@member) do |f| %>
+  <p>
+		<%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+		<%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+		<%= f.label :instruments %><br />
+    <%= f.text_field :instruments %>
+  </p>
+  
+  <p>		
+    <%= f.check_box :active %> <%= f.label :active %> 
+  </p>
+
+    <%= fckeditor_tag("member") %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

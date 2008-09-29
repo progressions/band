@@ -1,0 +1,7 @@
+<p>Thank you for joining!</p>
+
+<p><%= @fan.email %> has subscribed to the <%= @global_settings.artist_name %> mailing list. You'll receive news and updates about what's happening.</p>
+
+<p><%= link_to @global_settings.artist_name, @global_settings.url %></p><p style="font-size: 0.8em">You are receiving these emails because <%= @fan.email %> is subscribed to the <%= @global_settings.artist_name %> mailing list. If you do not want to receive these emails, you can <%= link_to "unsubscribe here", unsubscribe_url(@fan, :f => @fan.crypted_email, :host => @global_settings.url) %> or reply to this email with the word "unsubscribe" in the title.</p>
+
+

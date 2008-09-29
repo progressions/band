@@ -1,0 +1,23 @@
+<% show_byline = true unless show_byline == false %>
+<% show_body = true unless show_body == false %>
+
+<div class="lyric">
+  
+<h3><%= link_to(@lyric.title, lyric_path(@lyric)) %></h3>
+<h4 class="composer"><%= h @lyric.composer %></h4>
+
+<% if show_body==true %>
+<div class="lyrics_body">
+  <%= simple_format @lyric.body %>
+</div>
+<% end %>
+
+<% if show_byline==true %>
+  <p class="byline">
+    posted on <%= @lyric.created_at.strftime("%b %d %Y") %> by <strong><%= @lyric.user.full_name %></strong>. <% if logged_in? %>
+      (<%= link_to "edit", edit_lyric_path(@lyric) %> | <%= link_to 'delete', @lyric, :confirm => 'Are you sure?', :method => :delete %>)
+    <% end %>
+  </p>
+<% end %>
+
+</div> <!-- end DIV "lyric" -->

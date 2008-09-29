@@ -1,0 +1,13 @@
+<% @page_title = "Mails" %>
+
+
+<% @show_byline = true unless @show_byline == false %>
+<% @show_body ||= true %>
+
+<div  id="mails">
+  <h1>Mail</h1>
+  <p><%= link_to "Create New Mail", new_mail_path %></p>
+  <% for @mail in @mails %>
+   <%= render :partial => @mail, :locals => {:show_body => false} %>
+  <% end %>
+</div> <!-- end DIV "mails" -->

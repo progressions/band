@@ -1,0 +1,49 @@
+<% @page_title = "Edit Setting" %>
+<h1>Editing setting</h1>
+
+<%= error_messages_for :setting %>
+
+<% form_for(@setting) do |f| %>
+  <p>
+		<%= f.label :site_name %><br />
+    <%= f.text_field :site_name %>
+  </p>
+  <p>
+		<%= f.label :artist_name %><br />
+    <%= f.text_field :artist_name %>
+  </p>
+  <p>
+		<%= f.label :artist_description %><br />
+    <%= f.text_area :artist_description %>
+  </p>
+  <p>
+		<%= f.label :show_blog %><br />
+    <%= f.text_field :show_blog %>
+  </p>
+  <p>
+		<%= f.label :show_news %><br />
+    <%= f.text_field :show_news %>
+  </p>
+  <p>
+		<%= f.label :show_music %><br />
+    <%= f.text_field :show_music %>
+  </p>
+  <p>
+		<%= f.label :show_videos %><br />
+    <%= f.text_field :show_videos %>
+  </p>
+  <p>
+		<%= f.label :show_shows %><br />
+    <%= f.text_field :show_shows %>
+  </p>
+  <p>
+		<%= f.label :show_fans %><br />
+    <%= f.text_field :show_fans %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @setting %> |
+<%= link_to 'Back', settings_path %>

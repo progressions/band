@@ -1,0 +1,28 @@
+<% @page_title = "Pages" %>
+
+<h1>Pages</h1>
+
+<p>Pages are standalone pages you can put any kind of content on.  Each has a unique url and can be accessed at <strong><%= @global_settings.url %>/pages/<em>page_url</em></strong>.</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+    <th>Active</th>
+  </tr>
+
+<% for page in @pages %>
+  <tr>
+    <td><%=h page.name %></td>
+    <td><%=h page.url %></td>
+    <td><%=h page.active %></td>
+    <td><%= link_to 'Show', page %></td>
+    <td><%= link_to 'Edit', edit_page_path(page) %></td>
+    <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New page', new_page_path %>

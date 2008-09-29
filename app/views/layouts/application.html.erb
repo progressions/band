@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <% @page_title += " - " unless @page_title.blank? %>
+  <title><%= @page_title %><%= @site_name %></title>
+  
+  <%= stylesheet_link_tag 'styles' %>
+  
+  <%= stylesheet_link_tag formatted_color_path(@global_settings.color, "css") %>
+  
+  <%= stylesheet_link_tag 'admin' if params[:admin] && logged_in? %>
+  
+  <% javascript_include_tag :all %>
+  
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'audio-player' %>
+  <%= javascript_include_tag 'controls' %>
+  <%= javascript_include_tag 'dragdrop' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'prototype' %>
+  
+
+
+<%= auto_discovery_link_tag(:rss, "/rss.rss", {:title => "#{@global_settings.artist_name} Unified RSS Feed"})  %>
+
+<!-- Individual RSS Feeds -->
+<!-- Un-comment these to make them available automatically -->
+<% auto_discovery_link_tag(:rss, "/blogs.rss", {:title => "#{@global_settings.artist_name} Blog"})  %>
+<% auto_discovery_link_tag(:rss, "/entries.rss", {:title => "#{@global_settings.artist_name} News"})  %>
+<% auto_discovery_link_tag(:rss, "/lyrics.rss", {:title => "#{@global_settings.artist_name} Lyrics"})  %>
+<% auto_discovery_link_tag(:rss, "http://www.youtube.com/rss/user/#{@global_settings.youtube_profile}/videos.rss", {:title => "#{@global_settings.artist_name} Videos"}) %>
+<!-- end RSS Feeds -->
+
+</head>
+<body class="<%= @body_style %>">
+
+<div id="wrap">
+	<div id="header">
+    <div id="logo">  
+      <%= link_to_unless_current(image_tag("/images/logo_cartoon.png", :size => "505x150"), home_path) %>
+    </div> <!-- end DIV 'logo' -->
+    
+    <% unless !@global_settings.show_fans || @body_style == "fans" %>
+	  <div id="mailing_list">
+	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>
+	    
+	    <% form_for(@fan) do |f| %>
+        <%= f.text_field :email, :id => "email", :value => "Email Address" %>
+        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
+        <%= f.submit "SIGN UP", :class =>"signup" %>
+      <% end %>
+	    
+	  </div> <!-- end DIV 'mailing_list' -->
+    <% end %>
+	</div> <!-- end DIV 'header' -->
+	<div id="inside-wrap">
+  
+  	<div id="nav">
+  		<ul>
+  			<% if @global_settings.show_news? %>
+  			<li><%= link_to_unless_current "News", entries_path %></li>
+  			<% end %>
+  			<% if @global_settings.show_blog? %>
+  			<li><%= link_to_unless_current "BLOG", blogs_path %></li>
+  			<% end %>
+  			<% if @global_settings.show_videos? %>
+  			<li><%= link_to_unless_current "videos", videos_path %></li>
+  			<% end %>
+  			<% if @global_settings.show_music? %>			
+  			<li><%= link_to_unless_current "music", music_path %></li>
+  			<% end %>
+  			<% if @global_settings.show_lyrics? %>
+  			<li><%= link_to_unless_current "lyrics", lyrics_path %></li>		
+  			<!--<li><%= link_to_unless_current "photos", photos_path %></li>-->
+  			<% end %>
+  			<% if @global_settings.show_shows? %>
+  			<li><%= link_to_unless_current "SHOWS", shows_path %></li>
+  			<% end %>
+  			<!--<li><%= link_to_unless_current "ABOUT", about_path %></li>-->
+  		</ul>
+  	</div> <!-- end DIV 'nav' -->
+  	
+  	
+  <%= render :partial => "/layouts/admin" if logged_in? %>
+  	
+  	<div id="main">
+  	  
+  	<% if flash[:notice] %>
+  	  <div id="notice"><p><%= flash[:notice] %></p></div>
+  	<% else %>
+  	<div id="no_notice">  	  
+  	</div> <!-- end DIV name -->
+  	<% end %>
+ 
+      <%= yield %>       
+      
+  	</div> <!-- end DIV "main" -->
+  	<%= sidebar @page_title unless params[:admin] %>
+  	
+  		
+	</div> <!-- end DIV 'inside-wrap' -->
+  	<div id="footer">
+  	    <p><% if @global_settings.show_blog? %>
+    	    Subscribe: <%= link_to "Blog", formatted_blogs_url(:rss) %> | 
+    	  <% end %>
+    	  <% if @global_settings.show_news? %>
+    	    <%= link_to "News", formatted_entries_url(:rss) %> | 
+    	  <% end %>
+    	  <% if @global_settings.show_lyrics? %>
+    	    <%= link_to "Lyrics", formatted_lyrics_url(:rss) %> | 
+    	  <% end %>
+    	  <% if @global_settings.show_videos? %>
+    	    <%= link_to "Videos (YouTube)", "http://www.youtube.com/rss/user/#{@global_settings.youtube_profile}/videos.rss" %>
+    	  <% end %>
+  	  </p>
+  	  <p id="copyright_notice">Copyright 2008 <%= @global_settings.artist_name %></p>
+	  </div><!-- end DIV 'footer' -->
+		  
+</div> <!-- end DIV 'wrap' -->
+<%= @global_settings.footer %>
+</body>
+</html>

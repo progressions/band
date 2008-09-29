@@ -1,0 +1,21 @@
+<% @page_title = "Videos" %>
+  
+<div id="videos_main">
+ 
+  <%= video(:video => @latest_demo, :heading => "Our latest demo video:") %>
+
+<p>You can see all our videos on <%= link_to "YouTube", "http://www.youtube.com/#{@global_settings.youtube_profile}" %>.</p>
+
+
+<p>Here are our latest videos:</p>
+
+<% for video in @videos %>
+<div class="video">
+  
+<h4><%= link_to video.title, video.link %></h4>
+<%= youtube :full_video => video.url %>
+
+
+</div> <!-- end DIV "video" -->
+<% end %>
+</div> <!-- end DIV "videos_main" -->

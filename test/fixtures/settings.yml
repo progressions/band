@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  site_name: World Racketeering Squad - Rock and Roll Pop Music from the Future
+  artist_name: World Racketeering Squad
+  artist_description: We are a band that rocks.
+  email: us@yahoo.com
+  admin_email: fred@yahoo.com
+  url: www.worldracketeeringsquad.com
+  mail_tag: WRS
+  youtube_profile: worldracketeer
+  featured_playlist: 838EB0386BC516DE
+  latest_playlist: 
+  mail_tag: WRS
+  show_blog: 1
+  show_news: 1
+  show_music: 1
+  show_videos: 1
+  show_shows: 1
+  show_fans: 1

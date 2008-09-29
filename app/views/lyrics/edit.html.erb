@@ -1,0 +1,27 @@
+<% @page_title = "Edit Lyric" %>
+
+<%= javascript_include_tag :fckeditor %>
+
+<h1>Edit Lyric</h1>
+
+<%= error_messages_for :lyric %>
+
+<% form_for(@lyric) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+
+    <%= fckeditor_tag("lyric") %>
+
+  <p>
+    <b>Composer</b><br />
+    <%= f.text_field :composer %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+

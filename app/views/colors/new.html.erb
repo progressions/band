@@ -1,0 +1,125 @@
+<% @page_title = "New Colors" %>
+
+<div id="new_color" class="color">
+  
+<h1>New Colors</h1>
+
+<%= error_messages_for :color %>
+
+<% form_for(@color) do |f| %>
+  
+  <dl>
+    <dt><%= f.text_field :title %></dt>
+    <dd class="label">Title</dd>
+    <dd class="description">Name of this color profile</dd>
+  </dl>  
+  
+  <h2 id="foreground_colors">Main colors</h2>
+  <dl class="foregrounds">    
+    <dt><div class="color_preview" id="preview_body"></div>
+      <%= f.text_field :body %></dt>
+    <dd class="label">Body text</dd>
+    <dd class="description">Foreground color for standard text</dd>
+    
+    <dt><div class="color_preview" id="preview_heading"></div>
+      <%= f.text_field :heading %></dt>
+    <dd class="label">Heading color</dd>
+    <dd class="description">Foreground color for standard headings (blog titles, lyric titles, &amp;c.)</dd>
+    
+    <dt><div class="color_preview" id="preview_news_heading"></div>
+      <%= f.text_field :news_heading %></dt>
+    <dd class="label">News entry heading color</dd>
+    <dd class="description">Foreground color for titles of news headings</dd>
+    
+    <dt><div class="color_preview" id="preview_link"></div>
+      <%= f.text_field :link %></dt>
+    <dd class="label">Link color</dd>
+    <dd class="description">Foreground color for standard text links</dd>
+    
+    <dt><div class="color_preview" id="preview_link_visited"></div>
+      <%= f.text_field :link_visited %></dt>
+    <dd class="label">Visited link color</dd>
+    <dd class="description">Fireground color for visited text links</dd>
+    
+    <dt><div class="color_preview" id="preview_link_hover"></div>
+      <%= f.text_field :link_hover %></dt>
+    <dd class="label">Link hover color</dd>
+    <dd class="description">Foreground hover color for standard text links</dd>
+    
+    <dt><div class="color_preview" id="preview_utility"></div>
+      <%= f.text_field :utility %></dt>
+    <dd class="label">Utility text color</dd>
+    <dd class="description">Foreground color for utility text (blog entry bylines, &amp;c.)</dd>
+  </dl>
+  <h2 id="background_colors">Background colors</h2>
+  <dl class="backgrounds">
+    <dt><div class="color_preview" id="preview_main_bg"></div>
+      <%= f.text_field :main_bg %></dt>
+    <dd class="label">Main background</dd>
+    <dd class="description">Background color for main content area</dd>
+    
+    <dt><div class="color_preview" id="preview_sidebar_bg"></div>
+      <%= f.text_field :sidebar_bg %></dt>
+    <dd class="label">Sidebar background</dd>
+    <dd class="description">Background color for sidebar</dd>
+  </dl>
+  <h2 id="module_colors">Module colors</h2>  <dl class="modules">
+    
+    <dt><div class="color_preview" id="preview_module_bg"></div>
+      <%= f.text_field :module_bg %></dt>
+    <dd class="label">Module background</dd>
+    <dd class="description">Background color for sidebar modules</dd>
+    
+    <dt><div class="color_preview" id="preview_module_heading"></div>
+      <%= f.text_field :module_heading %></dt>  
+    <dd class="label">Module heading color</dd>
+    <dd class="description">Foreground color for module headings</dd>
+    
+    <dt><div class="color_preview" id="preview_module_heading_hover"></div>
+      <%= f.text_field :module_heading_hover %></dt>
+    <dd class="label">Module heading hover color</dd>
+    <dd class="description">Foreground color for hover text on module headings</dd>
+    
+    <dt><div class="color_preview" id="preview_module_heading_bg"></div>
+      <%= f.text_field :module_heading_bg %></dt>
+    <dd class="label">Module heading background</dd>
+    <dd class="description">Background color for module headings</dd>
+    
+    <dt><div class="color_preview" id="preview_module_heading_bg_hover"></div>
+      <%= f.text_field :module_heading_bg_hover %></dt>
+    <dd class="label">Module heading hover background</dd>
+    <dd class="description">Background hover color for module headings</dd>
+  </dl>
+  <h2 id="footer_colors">Footer colors</h2>
+  <dl class="footer">
+    <dt><div class="color_preview" id="preview_footer"></div>
+      <%= f.text_field :footer %></dt>
+    <dd class="label">Footer text color</dd>
+  		<dd class="description">Foreground color for footer</dd>
+    
+    <dt><div class="color_preview" id="preview_footer_link"></div>
+      <%= f.text_field :footer_link %></dt>
+    <dd class="label">Footer link color</dd>
+  		<dd class="description">Link color for footer</dd>
+    
+    <dt><div class="color_preview" id="preview_footer_bg"></div>
+      <%= f.text_field :footer_bg %></dt>
+    <dd class="label">Footer background color</dd>
+  		<dd class="description">Background color for footer</dd>
+  </dl>
+  <p><%= f.submit "Create" %></p>
+<% end %>
+
+</div>
+
+
+
+<div id="preview">
+  <%= render :partial => 'preview' %>
+</div> <!-- end DIV "preview" -->
+
+
+
+<%= observe_form("new_color", :frequency => 1, :on => 'change', :url => { :action => :update_preview }, :with => {:id => @color.id}) %>
+
+

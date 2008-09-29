@@ -1,0 +1,21 @@
+<% @page_title = "Blog" %>
+
+  
+  <div id="blog">
+    
+    <%= header "Blog", blogs_path %>
+    
+    <% unless @user.nil? %>
+    <h2>Blog posts by <%= @user.full_name %></h2>
+    <% end %>
+    
+    <%= will_paginate %>
+    <% unless @blogs.empty? %>    
+      <% for @blog in @blogs %>
+          <%= render :partial => @blog %>
+      <% end %>
+    <% end %>
+    
+    <%= will_paginate %>
+  
+  </div> <!-- end DIV "blog" -->      

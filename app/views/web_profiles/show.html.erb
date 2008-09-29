@@ -1,0 +1,25 @@
+<% @page_title = @web_profile.name %>
+
+<p>
+  <b>Name:</b>
+  <%=h @web_profile.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @web_profile.url %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%=h @web_profile.image %>
+</p>
+
+<p>
+  <b>Setting:</b>
+  <%=h @web_profile.setting_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_web_profile_path(@web_profile) %> |
+<%= link_to 'Back', web_profiles_path %>

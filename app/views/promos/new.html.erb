@@ -1,0 +1,27 @@
+<% @page_title = "New Promo" %>
+
+<%= javascript_include_tag :fckeditor %>
+
+<h1>New promo</h1>
+
+  <% if params[:preview_button] %>
+    <%= render :partial => @promo %>
+  <% end %>
+
+<%= error_messages_for :promo %>
+
+<% form_for(@promo) do |f| %>
+  <p>
+		<%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+    <%= fckeditor_tag("promo", "body", :height => "450px", :width => "560px") %>
+    
+  <p>
+      <%= f.submit "Preview", :name => "preview_button" %>
+      <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', promos_path %>

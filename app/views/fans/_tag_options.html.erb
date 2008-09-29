@@ -1,0 +1,26 @@
+<% remove_tags ||= [] %>
+  <% 
+    select_options = []
+    select_options << content_tag('option',"Apply tag")    
+    Fan.tag_counts.each do |tag|
+      select_options << "<option class='tag'>#{tag}</option>"
+    end
+    unless remove_tags.empty?
+      select_options << content_tag('option',"Remove tag")
+      remove_tags.each do |tag|
+        select_options << "<option class='remove' value='remove #{tag}'>#{tag}</option>"
+      end
+    end
+    select_options << content_tag('option', "New tag")
+  %>  
+  
+  <%= select_tag :tag, select_options.join, :id => "tag_select" %>
+  
+  <% submit_tag('Update', :name => '_commit',
+                :onclick => "Form.getInputs(this.form, null, 
+                'commit')[0].value = 'Update'") %>
+  
+  
+<%=
+  observe_field("tag_select", :on => :select, :frequency => 2, :url => {:action => :tag, :update => 'Update'}, :with => "Form.serialize($('tag_fans'))")
+%>
