@@ -3,6 +3,7 @@ class Blog < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   
+  has_friendly_id :title, :use_slug => true
   
   # TODO: Allow tagging of blog posts by the poster
   
