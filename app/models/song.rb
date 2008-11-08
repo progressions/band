@@ -1,6 +1,8 @@
 class Song < ActiveRecord::Base
   belongs_to :setting
   
+  has_friendly_id :title, :use_slug => true
+  
   validates_presence_of :title
   
   def url
