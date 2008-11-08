@@ -55,6 +55,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   
+  map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
+  
   # map.connect 'rcss/:rcssfile.css', :controller => 'rcss', :action => 'rcss', :format => 'css'
   
   map.unsubscribe '/unsubscribe/:id', :controller => 'fans', :action => 'unsubscribe'

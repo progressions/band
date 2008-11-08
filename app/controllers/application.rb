@@ -6,9 +6,11 @@
 # TODO: Online promo stuff: links, banners, &c
 
 class ApplicationController < ActionController::Base
+  before_filter :global_settings
+  include SimpleCaptcha::ControllerHelpers  
+  
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-  before_filter :global_settings
   before_filter :new_fan
   before_filter :load_sidebar
   

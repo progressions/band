@@ -44,16 +44,22 @@ class CommentsController < ApplicationController
   def create
     @blog = Blog.find(params[:blog])
     @comment = Comment.new(params[:comment])
-    unless params[:preview_button]
+    @new_comment = Comment.new
+    #unless params[:preview_button]
+    #end
+
+    if params[:preview_button] || !simple_captcha_valid? || !@comment.save
+      @preview_comment = @comment
+      if !params[:preview_button] && !simple_captcha_valid?
+        @comment.errors.add_to_base("You must enter the code in the image.")
+      end
+      render :action => "new"
+    else
       @blog.comments << @comment
       cookies[:name] = { :value => @comment.name, :expires => 1.year.from_now }
       cookies[:email] = { :value => @comment.email, :expires => 1.year.from_now }
       cookies[:website] = { :value => @comment.website, :expires => 1.year.from_now }
-    end
-
-    if params[:preview_button] || !@comment.save
-      render :action => "new"
-    else      
+       
       for subscription in @blog.subscriptions
         Mailer.deliver_comment_subscription(subscription.email, @blog, @comment)
       end

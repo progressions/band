@@ -1,7 +1,7 @@
 
 
-<% for @comment in @blog.comments do %>
+<% for @blog_comment in @blog.comments do %>
   
-<%= render :partial => @comment %>
+<%= render :partial => "comments/comment", :locals => {:blog_comment => @blog_comment} %>
 
 <% end %>

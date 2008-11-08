@@ -20,8 +20,8 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @subscription = @blog.subscribed(cookies[:email])
     @subscribe = !@subscription.nil?
-    @new_comment = Comment.new(:name => cookies[:name], :email => cookies[:email], :website => cookies[:website])
-    @new_comment.blog = @blog
+    @comment = Comment.new(:name => cookies[:name], :email => cookies[:email], :website => cookies[:website])
+    @comment.blog = @blog
   end
 
   # GET /blogs/new
