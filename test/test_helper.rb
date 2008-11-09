@@ -1,5 +1,6 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'mocha'
 require 'test_help'
 require 'test/rails'
 require 'authenticated_test_helper'
