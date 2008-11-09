@@ -8,6 +8,8 @@
             <string>app\controllers\blogs_controller.rb</string>
             <key>comment</key>
             <string>app\models\comment.rb</string>
+            <key>comment_sub</key>
+            <string>app\views\mailer\comment_subscription.html.erb</string>
             <key>show.html</key>
             <string>app\views\blogs\show.html.erb</string>
             <key>user</key>

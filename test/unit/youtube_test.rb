@@ -171,7 +171,7 @@ class YoutubeTest < Test::Rails::TestCase
     # assert_equal options[:date], video.created_at.to_s
     assert_match /object/, video.body
     
-    assert_equal "http://www.youtube.com/v/#{options[:id]}", video.url
+    assert_match /^http:\/\/www.youtube.com\/v\/#{options[:id]}/, video.url
     assert_equal "http://www.youtube.com/watch?v=#{options[:id]}", video.link
   end
   
