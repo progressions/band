@@ -18,7 +18,11 @@ default_run_options[:pty] = true
 set :user, 'jcoleman'
 set :server, 'weracketeer.com'
 set :application, "band" 
-set :repository, "svn+ssh://#{user}@weracketeer.com/home/#{user}/svn/#{application}/trunk" 
+
+set :repository, "git://github.com/progressions/band.git"
+set :scm, "git"
+set :scm_passphrase, "spuggy" #This is your custom users password
+
 role :web, 'weracketeer.com'
 role :app, 'weracketeer.com'
 role :db,  'weracketeer.com', :primary => true
