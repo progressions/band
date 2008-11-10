@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   # GET /pages/1.xml  
   def show
     begin
+      params[:admin] = true
       @page = Page.find_by_url_or_id(params[:id])
     rescue ActiveRecord::RecordNotFound
       render_404
