@@ -89,7 +89,6 @@ class FansController < ApplicationController
   
   def add_tag
     fans = get_fans(params[:fans])
-    
   end
 
 

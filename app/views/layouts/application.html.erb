@@ -57,6 +57,11 @@
 	    <% form_for(@fan) do |f| %>
         <%= f.text_field :email, :id => "email", :value => "Email Address" %>
         <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
+        
+        <!-- need a better way of pre-filling these fields: -->
+        <%= f.hidden_field :city, :value => "Austin" %>
+        <%= f.hidden_field :state, :value => "TX" %>
+        
         <%= f.submit "SIGN UP", :class =>"signup" %>
       <% end %>
 	    

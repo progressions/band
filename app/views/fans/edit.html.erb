@@ -2,7 +2,7 @@
 
 <h1>Edit Fan <%= @fan.email %></h1>
 
-<div  id="registration">
+<div id="registration">
   <% if flash[:registration] %>
     <h4><%= flash[:registration] %></h4>
   <% end %>
@@ -13,12 +13,12 @@
 <% form_for(@fan, :url => fan_path(@fan, :f => @fan.crypted_email), :html => {:method => :put}) do |f| %>
 
   <p>
-    <b>Firstname</b><br />
+    <b>First Name</b><br />
     <%= f.text_field :firstname %>
   </p>
 
   <p>
-    <b>Lastname</b><br />
+    <b>Last Name</b><br />
     <%= f.text_field :lastname %>
   </p>  
 

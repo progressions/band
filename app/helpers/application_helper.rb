@@ -30,7 +30,7 @@ module ApplicationHelper
   end
   
   def header text, link=''
-    wrs_text = "World Racketeering Squad <span class='type'>#{text}</span>"
+    wrs_text = "#{@global_settings.artist_name} <span class='type'>#{text}</span>"
     wrs_link = link_to(wrs_text, link)
     "<h1 class='header'>#{wrs_link}</h1>"    
   end
