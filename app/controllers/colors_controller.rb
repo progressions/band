@@ -31,6 +31,14 @@ class ColorsController < ApplicationController
       format.css { render :layout => false }
     end
   end
+  
+  # TODO: Export colors as YAML
+  def export
+  end
+  
+  # TODO: Import YAML into new Colors
+  def import
+  end
 
   # GET /colors/new
   # GET /colors/new.xml

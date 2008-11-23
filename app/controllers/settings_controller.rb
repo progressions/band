@@ -1,4 +1,3 @@
-# TODO: Images into shared directory
 # TODO: Stylesheet into shared directory
 
 class SettingsController < ApplicationController
