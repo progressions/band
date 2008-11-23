@@ -20,14 +20,13 @@
     
   <%= stylesheet_link_tag 'iphone', :media => "only screen and (max-device-width: 480px)" %>
   
-  <% javascript_include_tag :all %>
-  
+  <%= javascript_include_tag 'jquery-1.2.6.min' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'audio-player' %>
   <%= javascript_include_tag 'controls' %>
-  <%= javascript_include_tag 'dragdrop' %>
-  <%= javascript_include_tag 'effects' %>
-  <%= javascript_include_tag 'prototype' %>
+  <% javascript_include_tag 'dragdrop' %>
+  <% javascript_include_tag 'effects' %>
+  <% javascript_include_tag 'prototype' %>
   
 
 
@@ -133,5 +132,49 @@
 		  
 </div> <!-- end DIV 'wrap' -->
 <%= @global_settings.footer %>
+
+<% javascript_tag do %>
+
+var EmailText = "Email Address";
+var ZipCodeText = "Zip Code";
+
+function emailTextField() {
+	return $('input#email');
+}
+
+function zipCodeTextField() {
+	return $('input#zip_code');
+}
+
+$('document').ready(function() {
+	emailTextField().attr("value", EmailText);
+	zipCodeTextField().attr("value", ZipCodeText);
+	
+	emailTextField().focus(function() {
+		if (emailTextField().attr("value") == EmailText) {
+			emailTextField().attr("value", "");
+		}
+	});
+	emailTextField().blur(function () {
+		if (emailTextField().attr("value") == "") {
+			emailTextField().attr("value", "Email Address");
+		}
+	});
+	
+	zipCodeTextField().focus(function() {
+		if (zipCodeTextField().attr("value") == ZipCodeText) {
+			zipCodeTextField().attr("value", "");
+		}
+	});
+	zipCodeTextField().blur(function () {
+		if (zipCodeTextField().attr("value") == "") {
+			zipCodeTextField().attr("value", "Zip Code");
+		}
+	});
+});
+
+
+<% end %>
+
 </body>
 </html>
