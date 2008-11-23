@@ -57,7 +57,7 @@ module ApplicationHelper
     else
       video_link = "http://www.youtube.com/#{options[:video]}"
     end
-    "<object type='application/x-shockwave-flash' style='width:418px; height:350px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object>"
+    "<div class='video'><object type='application/x-shockwave-flash' style='width:418px; height:350px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
   end
   
   
