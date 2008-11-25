@@ -74,6 +74,12 @@ WillPaginate::ViewHelpers.pagination_options[:param_name] = :p
 
 # TagList.delimiter = " "
 
+WIDESCREEN = 1
+STANDARD = 2
+
+VIDEO_HEIGHT = { WIDESCREEN => 295, STANDARD => 350 }
+VIDEO_WIDTH = { WIDESCREEN => 480, STANDARD => 415 }
+VIDEO_LABELS = { WIDESCREEN => "widescreen", STANDARD => "standard" }
 
 US_STATES = ['AL' => 'Alabama', 'AK' => 'Alaska', 'AR' => 'Arizona', 'AZ' => 'Arkansas', 'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 'DE' => 'Delaware', 'DC' => 'District of Columbia', 'FL' => 'Florida', 'GA' => 'Georgia', 'HI' =>
  'Hawaii', 'ID' => 'Idaho','IL' => 'Illinois', 'IN' => 'Indiana', 'IA' => 'Iowa', 'KS' => 'Kansas', 'KY' => 'Kentucky', 'LA' => 'Lousiana', 'ME' => 'Maine', 'MD' => 'Maryland', 'MA' => 'Massachusetts', 'MI' => 'Michigan', 'MN' => 'Minnesota', 'MS' =>

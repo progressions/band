@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :colors
+  map.resources :colors, :member => {:export => :get},
+    :collection => {:import => :post, :import => :get}
 
   map.resources :songs
 

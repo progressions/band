@@ -1,3 +1,7 @@
+YAML::add_private_type("Color") do |type, value|
+  Color.new(value)
+end
+
 class ColorsController < ApplicationController
   # caches_page :show
   # cache_sweeper :color_sweeper, :only => [:create, :update, :destroy]
@@ -34,10 +38,22 @@ class ColorsController < ApplicationController
   
   # TODO: Export colors as YAML
   def export
+    @color = Color.find(params[:id])
+    filename = "colors.yml"
+    send_data(
+      @color.to_yaml,
+      :type => 'text/yaml; charset=utf-8; header=present',
+      :filename => filename)
   end
   
   # TODO: Import YAML into new Colors
   def import
+    if params[:dump]
+      # process YAML file
+      @yaml = YAML.load(params[:dump][:file])
+      @color = Color.new(@yaml)
+      @color.save!
+    end
   end
 
   # GET /colors/new

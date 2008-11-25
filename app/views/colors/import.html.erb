@@ -1,0 +1,27 @@
+<% @page_title = "Import Colors" %>
+
+<% if @yaml %>
+<%= @yaml.inspect %>
+<% end %>
+
+<h1>Import fans from YAML file</h1>
+
+ <% form_for :dump, :url=>{:controller=>"colors", :action=>"import"}, :html => { :multipart => true } do |f| -%>
+ <tableî>
+   <tr>
+     <td>
+      <label for="dump_file">
+        Select a YAML File :
+      </label>
+     </td>
+     <td >
+       <%= f.file_field :file -%>
+     </td>
+   </tr>
+   <tr>
+     <td colspan='2'>
+       <%= submit_tag "Submit" -%>
+     </td>
+   </tr>
+ </table>
+<% end -%>

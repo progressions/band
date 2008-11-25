@@ -51,14 +51,26 @@ module ApplicationHelper
     render :partial => "/layouts/video", :locals => {:video => options[:video], :heading => options[:heading]}
   end
   
+  def default_video_format
+    @global_settings.video_format || WIDESCREEN
+  end
+  
   def youtube options
+    # standard frame is 418x350
+    # widescreen frame is 480x295
+    
+    width = options[:width] || VIDEO_WIDTH[default_video_format]
+    height = options[:height] || VIDEO_HEIGHT[default_video_format]
     if options[:full_video]
       video_link = options[:full_video]
     else
       video_link = "http://www.youtube.com/#{options[:video]}"
     end
-    "<div class='video'><object type='application/x-shockwave-flash' style='width:418px; height:350px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
+    "<div class='video'><object type='application/x-shockwave-flash' style='width:#{width}px; height:#{height}px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
   end
+  
+  
+
   
   
   def music_player song_filename, index, width=290, height=24

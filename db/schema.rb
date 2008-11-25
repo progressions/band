@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081108214444) do
+ActiveRecord::Schema.define(:version => 20081125190225) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(:version => 20081108214444) do
     t.string   "songs_host"
     t.text     "on_the_web"
     t.integer  "color_id",            :limit => 11
+    t.integer  "video_format",        :limit => 11
+    t.string   "twitter_profile"
   end
 
   create_table "shows", :force => true do |t|
