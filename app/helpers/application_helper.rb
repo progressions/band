@@ -69,10 +69,6 @@ module ApplicationHelper
     "<div class='video'><object type='application/x-shockwave-flash' style='width:#{width}px; height:#{height}px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
   end
   
-  
-
-  
-  
   def music_player song_filename, index, width=290, height=24
     string = <<END_STRING
       <script type="text/javascript" src="/javascripts/audio-player.js"></script>
@@ -106,7 +102,8 @@ END_STRING
       content += capture(&block)
       # content += '<h5 class="more">' + link_to("more #{name.downcase}...", path) + "</h5>"
     end
-    block_is_within_action_view?(block) ? concat(content, block.binding) : content
+    #block_is_within_action_view?(block) ? concat(content, block.binding) : content
+    content
   end
   
 
@@ -115,6 +112,26 @@ END_STRING
 		map = "http://maps.google.com/maps?q=#{h(show.address)}+#{h(show.city)}+#{h(show.state)}+#{show.zipcode}"
 		map
 	end
+	
+	def twitter_profile
+	  "http://www.twitter.com/#{@global_settings.twitter_profile}"
+  end
+  
+  def twitter_profile_link
+    link_to(@global_settings.twitter_profile, twitter_profile)
+  end
+  
+  def twitter_user
+    twitter.user(@global_settings.twitter_profile)
+  end
+	
+	def twitter
+	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
+  end
+  
+  def twitter_feed
+    twitter.timeline(:user, :count => MAX_TWITTER_COUNT)
+  end
 end
 
 class ActionView::Base

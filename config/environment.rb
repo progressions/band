@@ -5,7 +5,7 @@
 ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+# RAILS_GEM_VERSION = '2.2.0' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -67,8 +67,11 @@ Rails::Initializer.run do |config|
   config.load_paths += Dir["#{RAILS_ROOT}/vendor/gems/**"].map do |dir|
     File.directory?(lib = "#{dir}/lib") ? lib : dir
   end
+  
+
 end
-require 'actionwebservice'
+#require 'actionwebservice'
+require "#{RAILS_ROOT}/vendor/gems/twitter-0.3.7/lib/twitter"
 
 WillPaginate::ViewHelpers.pagination_options[:param_name] = :p
 
@@ -80,6 +83,8 @@ STANDARD = 2
 VIDEO_HEIGHT = { WIDESCREEN => 295, STANDARD => 350 }
 VIDEO_WIDTH = { WIDESCREEN => 480, STANDARD => 415 }
 VIDEO_LABELS = { WIDESCREEN => "widescreen", STANDARD => "standard" }
+
+MAX_TWITTER_COUNT = 4
 
 US_STATES = ['AL' => 'Alabama', 'AK' => 'Alaska', 'AR' => 'Arizona', 'AZ' => 'Arkansas', 'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 'DE' => 'Delaware', 'DC' => 'District of Columbia', 'FL' => 'Florida', 'GA' => 'Georgia', 'HI' =>
  'Hawaii', 'ID' => 'Idaho','IL' => 'Illinois', 'IN' => 'Indiana', 'IA' => 'Iowa', 'KS' => 'Kansas', 'KY' => 'Kentucky', 'LA' => 'Lousiana', 'ME' => 'Maine', 'MD' => 'Maryland', 'MA' => 'Massachusetts', 'MI' => 'Michigan', 'MN' => 'Minnesota', 'MS' =>

@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081125190225) do
+ActiveRecord::Schema.define(:version => 20081126212548) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "created_by", :limit => 11
+    t.integer  "created_by"
   end
 
   create_table "colors", :force => true do |t|
@@ -38,16 +38,16 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "footer_bg"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "setting_id",              :limit => 11
+    t.integer  "setting_id"
     t.string   "title"
     t.string   "module_heading_hover"
-    t.integer  "created_by",              :limit => 11
+    t.integer  "created_by"
   end
 
   create_table "comments", :force => true do |t|
     t.text     "body"
-    t.integer  "created_by", :limit => 11
-    t.integer  "blog_id",    :limit => 11
+    t.integer  "created_by"
+    t.integer  "blog_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
   create_table "entries", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.integer  "created_by", :limit => 11
+    t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
-    t.integer  "zipcode",       :limit => 11
+    t.integer  "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "salt"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "title"
     t.text     "body"
     t.string   "composer"
-    t.integer  "created_by", :limit => 11
+    t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "sent_at"
-    t.integer  "created_by", :limit => 11
+    t.integer  "created_by"
   end
 
   create_table "members", :force => true do |t|
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",                    :default => true
-    t.integer  "position",    :limit => 11
+    t.boolean  "active",      :default => true
+    t.integer  "position"
   end
 
   create_table "pages", :force => true do |t|
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "setting_id", :limit => 11
+    t.integer  "setting_id"
   end
 
   create_table "settings", :force => true do |t|
@@ -129,13 +129,13 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.text     "artist_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "show_blog",                         :default => true
-    t.boolean  "show_news",                         :default => true
-    t.boolean  "show_music",                        :default => true
-    t.boolean  "show_videos",                       :default => true
-    t.boolean  "show_shows",                        :default => true
-    t.boolean  "show_fans",                         :default => true
-    t.integer  "promo_id",            :limit => 11
+    t.boolean  "show_blog",           :default => true
+    t.boolean  "show_news",           :default => true
+    t.boolean  "show_music",          :default => true
+    t.boolean  "show_videos",         :default => true
+    t.boolean  "show_shows",          :default => true
+    t.boolean  "show_fans",           :default => true
+    t.integer  "promo_id"
     t.string   "email"
     t.string   "admin_email"
     t.string   "url"
@@ -143,16 +143,17 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "youtube_profile"
     t.string   "featured_playlist"
     t.string   "latest_playlist"
-    t.boolean  "show_featured_video",               :default => true
-    t.boolean  "show_lyrics",                       :default => true
-    t.boolean  "show_promo",                        :default => true
+    t.boolean  "show_featured_video", :default => true
+    t.boolean  "show_lyrics",         :default => true
+    t.boolean  "show_promo",          :default => true
     t.text     "header"
     t.text     "footer"
     t.string   "songs_host"
     t.text     "on_the_web"
-    t.integer  "color_id",            :limit => 11
-    t.integer  "video_format",        :limit => 11
+    t.integer  "color_id"
+    t.integer  "video_format"
     t.string   "twitter_profile"
+    t.string   "twitter_password"
   end
 
   create_table "shows", :force => true do |t|
@@ -162,13 +163,13 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zipcode",    :limit => 11
-    t.integer  "created_by", :limit => 11
+    t.integer  "zipcode"
+    t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body"
     t.string   "cover"
-    t.integer  "venue_id",   :limit => 11
+    t.integer  "venue_id"
     t.time     "end_time"
   end
 
@@ -182,7 +183,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
   create_table "slugs", :force => true do |t|
     t.string   "name"
     t.string   "sluggable_type"
-    t.integer  "sluggable_id",   :limit => 11
+    t.integer  "sluggable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -191,17 +192,17 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "songs", :force => true do |t|
-    t.integer  "length",     :limit => 11
+    t.integer  "length"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.text     "body"
     t.string   "filename"
-    t.integer  "setting_id", :limit => 11
+    t.integer  "setting_id"
   end
 
   create_table "subscriptions", :force => true do |t|
-    t.integer  "blog_id",    :limit => 11
+    t.integer  "blog_id"
     t.string   "email"
     t.boolean  "active"
     t.datetime "created_at"
@@ -209,8 +210,8 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
   end
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id",        :limit => 11
-    t.integer  "taggable_id",   :limit => 11
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
   end
@@ -240,7 +241,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zipcode",     :limit => 11
+    t.integer  "zipcode"
     t.string   "website"
     t.string   "phone"
     t.datetime "created_at"
@@ -251,7 +252,7 @@ ActiveRecord::Schema.define(:version => 20081125190225) do
     t.string   "name"
     t.string   "url"
     t.string   "image"
-    t.integer  "setting_id", :limit => 11
+    t.integer  "setting_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

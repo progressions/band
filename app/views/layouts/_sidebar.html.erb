@@ -71,5 +71,15 @@
   	    </ul>
   	  </div>
   	  <% end %>
+
+			<div id="twitter" class="module">
+				<h2 id="twitter"><%= link_to "Twitter", "" %></h2>
+				<ul>
+					<li class="heading"><%= image_tag(twitter_user.profile_image_url) %> Updates from <%= twitter_profile_link %>.</li>
+					<% twitter_feed.each do |s| %>
+						<li><%= s.text %></li>
+					<% end %>
+				</ul>
+			</div>
   	</div> <!-- end DIV 'sidebar' -->
   	
