@@ -77,6 +77,8 @@ ActionController::Routing::Routes.draw do |map|
   map.videos '/videos', :controller => 'about', :action => 'videos'
   map.web '/web', :controller => 'about', :action => 'web'
   map.photos '/photos', :controller => 'about', :action => 'photos'
+  map.twitter '/twitter', :controller => 'twitter', :action => 'index'
+  map.new_twitter '/twitter/new', :controller => 'twitter', :action => 'new'
   
   map.news '/news', :controller => 'entries', :action => 'index'
   
