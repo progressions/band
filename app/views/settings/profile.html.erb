@@ -44,6 +44,14 @@
 		<dd class="label">Featured playlist:</dd>
 		<dd class="description">The ID of the YouTube playlist to feature on your Videos page.</dd>
     <dt><%= f.text_field :featured_playlist %></dt>
+
+		<dd class="label">Default video format</dd>
+		<dd class="description">Show videos in widescreen or standard format by default.</dd>
+		<dt><%= f.radio_button :video_format, "1" %> Widescreen <%= f.radio_button :video_format, "2" %> Standard
+			
+		<dd class="label">Twitter:</dd>
+		<dd class="description">Your Twitter username, to allow the website to automatically fetch your Twitter updates and include them in your content.</dd>
+    <dt><%= f.text_field :twitter_profile %></dt>
   </dl>  
   
   <dl>
