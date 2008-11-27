@@ -10,7 +10,7 @@
   
     
   <!-- NEWS -->
-  <% if @global_settings.show_news? && !@entries.empty? %>
+  <% if @global_settings.show_news? && !@first_entry.blank? %>
   <div id="news">
     <%= header "News", entries_path %>    
     <% for @entry in @first_entry %>

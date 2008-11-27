@@ -11,7 +11,7 @@
   
   <%= stylesheet_link_tag 'styles' %>
   
-  <!-- stylesheet_link_tag formatted_color_path(@global_settings.color, "css") -->
+  <%= stylesheet_link_tag formatted_color_path(@global_settings.color, "css") %>
   
   <%= stylesheet_link_tag 'admin' if params[:admin] && logged_in? %>
   

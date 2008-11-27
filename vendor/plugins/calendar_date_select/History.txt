@@ -1,3 +1,49 @@
+== Version 1.12 ==
+ * Updated for compatibility with Rails 2.2
+ 
+== Version 1.11.1 ==
+ * properly wrap buttons if they are too big for the line
+ * more translations: german (Jonas), Added russian translation (DEkart)
+ * locale fixes:
+   * Fix: time doesn't work (using 12 hour instead of 24 hour) in Italian format.
+   * updated Portuguese translation with the "Clear" action (Daniel Luz)
+   * Portuguese was missing month of October
+ * Added a clear button (Hendy Tanata)
+ * Reverted a change that attempted to fix position in a scrollable div, but caused probles elsewhere
+ * Added :minute_interval to calendar_date_select_process_options, fixing http://code.google.com/p/calendardateselect/issues/detail?id=81
+ * Add helpers to give the list of javascripts and stylesheets (calendar_date_select_javascripts and calendar_date_select_stylesheets)
+ * Converted over to use Hoe (echoe was giving too many problems).  Refactored the directory structure to make it more gem-ish.
+
+== Version 1.11 ==
+
+ * Calendar Date Select now works as a ruby-gem (thanks, artmotion!)
+ * Applied fix outlined in Issue #83: http://code.google.com/p/calendardateselect/issues/detail?id=83 (Thanks David Bolton)
+
+== Version 1.10.5 ==
+Apr 7, 2008
+ * Javascript code refactoring!  Less mess!
+ * Bugfix - range was including element 42, which is really the 43rd element, so there was an error happening when today happens exactly 43 days after the beginning date (caught this by chance, surprised it wasn't reported before)
+
+== Version 1.10.4 ==
+Mar 24, 2008
+ * patch applied to fix issue #92: nil object option causes CalendarDateSelect.calendar_date_select(object, method, options) to not use object.  Thanks, sskirby!
+
+== Version 1.10.3 ==
+Mar 24. 2008
+ * Fixed active scaffold integration bug.  Thanks tapajos!
+
+== Version 1.10.2 ==
+Mar 10. 2008
+ * bugfix: calendar_date_select_tag doesn't format Time and Date values (thanks for the patch, sskirby!)
+ 
+== Version 1.10.1 ==
+Mar 10, 2008
+ * updated to automatically install locale folder
+ * bugfix - cds "today" was showing up as Mar 9th 2008, when it was really Mar 10th 2008 - was caused by a wrinkle in time (Day light savings time)
+ * Prototype 1.6.0.1 compatibility issue (77) resolved - thanks mike.nicholaides for the patch!
+ * patch applied from mjroghelia to fix ie ssl iframe issue (84)
+ * xhtml error fixed - &nbsp; replaced with #160;
+ 
 ==Version 1.10 ==
 Dec 3, 2007
   * You can now pass in a parameter to tell CalendarDateSelect not to allow selection of certain dates.  See the [http://www.restatesman.com/static/calendar?tab=other demo] for an example.
@@ -168,3 +214,6 @@ June 2, 2007
 June 1, 2007
 
   * Initial release!
+	
+
+

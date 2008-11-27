@@ -133,7 +133,8 @@ class FckeditorController < ActionController::Base
   end
   
   def upload_directory_path
-    uploaded = request.relative_url_root.to_s+"#{UPLOADED}/#{params[:Type]}"
+    #uploaded = request.relative_url_root.to_s+"#{UPLOADED}/#{params[:Type]}"
+    uploaded = "/#{UPLOADED}/#{params[:Type]}"
     "#{uploaded}#{params[:CurrentFolder]}"
   end
   
