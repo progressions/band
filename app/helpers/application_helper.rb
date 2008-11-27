@@ -1,6 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
-module ApplicationHelper
-    
+module ApplicationHelper    
   def color_input method, options={}
     output = ""
     output += "<dt><%= f.text_field #{method} %></dt>"
@@ -106,14 +105,7 @@ END_STRING
     content
   end
   
-
-	def map_from_address show
-	#	http://maps.google.com/maps?f=q&hl=en&q=1216+W+22nd+St+Austin+TX+78705
-		map = "http://maps.google.com/maps?q=#{h(show.address)}+#{h(show.city)}+#{h(show.state)}+#{show.zipcode}"
-		map
-	end
-	
-	def twitter_profile
+  def twitter_profile
 	  "http://www.twitter.com/#{@global_settings.twitter_profile}"
   end
   
@@ -129,9 +121,16 @@ END_STRING
 	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
   end
   
-  def twitter_feed
-    twitter.timeline(:user, :count => MAX_TWITTER_COUNT)
+  def twitter_feed(count=MAX_TWITTER_COUNT)
+    twitter.timeline(:user, :count => count)
   end
+  
+
+	def map_from_address show
+	#	http://maps.google.com/maps?f=q&hl=en&q=1216+W+22nd+St+Austin+TX+78705
+		map = "http://maps.google.com/maps?q=#{h(show.address)}+#{h(show.city)}+#{h(show.state)}+#{show.zipcode}"
+		map
+	end
 end
 
 class ActionView::Base

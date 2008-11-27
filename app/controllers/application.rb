@@ -47,4 +47,24 @@ class ApplicationController < ActionController::Base
   def set_admin
     params[:admin] = true
   end
+  
+  	def twitter_profile
+	  "http://www.twitter.com/#{@global_settings.twitter_profile}"
+  end
+  
+  def twitter_profile_link
+    link_to(@global_settings.twitter_profile, twitter_profile)
+  end
+  
+  def twitter_user
+    twitter.user(@global_settings.twitter_profile)
+  end
+	
+	def twitter
+	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
+  end
+  
+  def twitter_feed(count=MAX_TWITTER_COUNT)
+    twitter.timeline(:user, :count => count)
+  end
 end
