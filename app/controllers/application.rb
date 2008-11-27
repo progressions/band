@@ -34,6 +34,15 @@ class ApplicationController < ActionController::Base
     @members = Member.find(:all, :conditions => ["active = ?", true], :limit => 5, :order => 'name')
     @blogs = Blog.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' 
     @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now])
+    @songs = Song.find_all_with_file
+    if @global_settings.show_twitter?
+      @twitter_profile = @global_settings.twitter_profile
+      @twitter_profile_image_url = twitter_user.profile_image_url
+      @twitter_profile_url = twitter_profile_url
+      @twitter_feed = twitter_feed
+    end    
+  rescue Twitter::CantConnect
+    @twitter_error = true
   end
   
   def render_404
@@ -48,12 +57,8 @@ class ApplicationController < ActionController::Base
     params[:admin] = true
   end
   
-  	def twitter_profile
+	def twitter_profile_url
 	  "http://www.twitter.com/#{@global_settings.twitter_profile}"
-  end
-  
-  def twitter_profile_link
-    link_to(@global_settings.twitter_profile, twitter_profile)
   end
   
   def twitter_user

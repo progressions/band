@@ -123,6 +123,8 @@ END_STRING
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
     twitter.timeline(:user, :count => count)
+  rescue
+    []
   end
   
 

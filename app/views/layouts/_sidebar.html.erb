@@ -8,21 +8,21 @@
 <!--  
 
 -->
-    	  <div id="about" class="module">
-    	    <h2 id="about_module"><%= link_to "About", about_path %></h2>
-      	  <ul>
-      	    <% for @member in @members %>
-      	      <li><%= link_to @member.name, about_path(:id => @member.url) %></li>
-      	    <% end %>
-      	    <li>&nbsp;</li>
+   	  <div id="about" class="module">
+   	    <h2 id="about_module"><%= link_to "About", "" %></h2>
+     	  <ul>
+     	    <% for @member in @members %>
+     	      <li><%= link_to @member.name, about_path(:id => @member.url) %></li>
+     	    <% end %>
+     	    <li>&nbsp;</li>
+					<% unless @global_settings.email.blank? %>
       	    <li><%= mail_to sanitize(@global_settings.email), "Contact by email" %></li>
-      	  </ul>
-    	  
-    	  </div> <!-- end DIV "link" -->
+					<% end %>
+     	  </ul>
+   	  
+   	  </div> <!-- end DIV "link" -->
   	  
-  	  
-  	  <% @songs = Song.with_file %>
-  	  <% unless @songs.empty? || !@global_settings.show_music || @page_title == "Music - " %>
+  	  <% unless !@global_settings.show_music? || @songs.empty? || @page_title == "Music - " %>
     	  <div id="listen" class="module">
     	    <% sidebar_module :name => "Music" do %>     		
       		<ul>
@@ -35,18 +35,16 @@
       	</div> <!-- end DIV 'listen' -->
     	<% end %>
   	  
-  	  
-  	  <% unless !@global_settings.show_shows || @page_title == "Shows - " %>
-  	  <div id="calendar" class="module">
-    		<% sidebar_module :name => "Shows" do %>
-    		  <% for @show in @shows %>
-    		    <%= render :partial => @show, :locals => {:show_body => false, :show_byline => false, :show_map => false, :show_year => false} %>
-    		  <% end %>
-    		<% end %>
-  	  </div>
+  	  <% unless !@global_settings.show_shows? || @shows.empty? || @page_title == "Shows - " %>
+  	  	<div id="calendar" class="module">
+					<h2><%= link_to "Shows", shows_path %></h2>
+	    		  <% for @show in @shows %>
+	    		    <%= render :partial => @show, :locals => {:show_body => false, :show_byline => false, :show_map => false, :show_year => false} %>
+	    		  <% end %>
+	  	  </div>
   	  <% end %>
     	
-    	<% unless !@global_settings.show_blog || @page_title == "Blog - " %>
+    	<% unless !@global_settings.show_blog? || @blogs.empty? || @page_title == "Blog - " %>
     	<div id="recent_posts" class="module">    	  
     		<h2><%= link_to "Recent Posts", blogs_path %></h2>
     		<ul>    		    
@@ -72,14 +70,16 @@
   	  </div>
   	  <% end %>
 
-			<div id="twitter" class="module">
-				<h2 id="twitter"><%= link_to "Twitter", "" %></h2>
-				<ul>
-					<li class="heading"><%= image_tag(twitter_user.profile_image_url) %> Updates from <%= twitter_profile_link %>.</li>
-					<% twitter_feed.each do |s| %>
-						<li><%= s.text %></li>
-					<% end %>
-				</ul>
-			</div>
+			<% unless @twitter_error || !@global_settings.show_twitter? || @page_title == "Twitter - " %>
+				<div id="twitter" class="module">
+					<h2 id="twitter"><%= link_to "Twitter", twitter_path %></h2>
+					<ul>
+						<li class="heading"><%= image_tag(@twitter_profile_image_url) %> Updates from <%= link_to @twitter_profile, @twitter_profile_url %>.</li>
+						<% @twitter_feed.each do |s| %>
+							<li><%= s.text %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
   	</div> <!-- end DIV 'sidebar' -->
   	

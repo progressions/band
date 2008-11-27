@@ -9,7 +9,8 @@ class Song < ActiveRecord::Base
     "#{setting.songs_host}/#{filename}"
   end
   
-  def self.with_file
+  # TODO: paginate this?
+  def self.find_all_with_file
     self.find(:all, :conditions => "filename IS NOT NULL", :order => "created_at DESC")
   end
   

@@ -84,7 +84,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.about '/about/:id', :controller => 'members', :action => 'show'
   
-  
   map.home '', :controller => 'about', :action => 'index'
   
   # Sample resource route with options:

@@ -13,6 +13,14 @@ class Setting < ActiveRecord::Base
 	def songs_host
 	  host = attributes['songs_host'].blank? ? url : with_protocol(attributes['songs_host'])
 	end
+	
+	def show_videos?
+	  !youtube_profile.blank? && read_attribute(:show_videos)
+	end
+	
+	def show_twitter?
+	  !twitter_profile.blank? && read_attribute(:show_twitter)
+	end
   
   def url_with_protocol
 	  with_protocol(attributes['url'])

@@ -2,8 +2,7 @@
   
   <!-- PROMO -->
   <% if @global_settings.show_promo? && @global_settings.promo %>
-    <div  id="promo">
-      <% image_tag "/images/FEB-SHOW-PROMO.jpg" %>    
+    <div  id="promo">   
       <%= @global_settings.promo.body %>
     </div> <!-- end DIV "promo" -->
   <% end %>
@@ -11,7 +10,7 @@
   
     
   <!-- NEWS -->
-  <% if @global_settings.show_news && !@entries.empty? %>
+  <% if @global_settings.show_news? && !@entries.empty? %>
   <div id="news">
     <%= header "News", entries_path %>    
     <% for @entry in @first_entry %>
@@ -38,7 +37,7 @@
   <!-- END NEWS -->
   
   <!-- BLOG -->
-  <% if @global_settings.show_blog && !@blogs.empty? %>
+  <% if @global_settings.show_blog? && !@blogs.empty? %>
   <div id="blog">
     <%= header "Blog", blogs_path %>    
     <% for @blog in @blogs %>          

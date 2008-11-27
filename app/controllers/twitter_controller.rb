@@ -3,6 +3,8 @@ class TwitterController < ApplicationController
   
   def index
     @tweets = twitter_feed(50)
+  rescue
+    @tweets = []
   end
 
   def new
