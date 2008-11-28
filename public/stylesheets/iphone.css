@@ -17,6 +17,9 @@ h3 {
 
 #mailing_list .web {
 	display: none;
+}
+#mailing_list .iphone {
+	display: block;
 	font-size: 2em;
 }
 
