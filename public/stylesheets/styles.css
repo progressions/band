@@ -741,11 +741,6 @@ input#zip_code {
 }
 #mailing_list .iphone {
 	display: none;
-  color: white;
-  float :right;
-  margin: 25px;
-  padding: 10px;
-  width: 230px;
 }
 #mailing_list .iphone input {
 	font-size: 1em;
@@ -753,7 +748,7 @@ input#zip_code {
 	width: 200px;
 }
 
-#mailing_list .web {
+#mailing_list {
   color: white;
   float :right;
   margin: 25px;
