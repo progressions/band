@@ -25,6 +25,12 @@
   <%= javascript_include_tag 'prototype' %>
   <%= javascript_include_tag 'audio-player' %>
   <%= javascript_include_tag 'controls' %>
+<<<<<<< HEAD:app/views/layouts/application.html.erb
+=======
+  <% javascript_include_tag 'dragdrop' %>
+  <% javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'prototype' %>
+>>>>>>> 089f9740119c8bd704fcb38d445b074f2c0499dc:app/views/layouts/application.html.erb
   
 
 
@@ -140,6 +146,7 @@
 var EmailText = "Email Address";
 var ZipCodeText = "Zip Code";
 
+<<<<<<< HEAD:app/views/layouts/application.html.erb
 $('email').observe('focus', respondToFocusEmail);
 $('zip_code').observe('focus', respondToFocusZipCode);
 $('email').observe('blur', restoreDefaultEmailText);
@@ -172,6 +179,16 @@ function restoreDefaultZipCodeText(event) {
 		element.value = ZipCodeText;
 	}
 }
+=======
+function emailTextField() {
+	return $('email');
+}
+
+function zipCodeTextField() {
+	return $('zip_code');
+}
+
+>>>>>>> 089f9740119c8bd704fcb38d445b074f2c0499dc:app/views/layouts/application.html.erb
 
 <% end %>
 
