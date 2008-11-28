@@ -24,14 +24,13 @@
   	  
   	  <% unless !@global_settings.show_music? || @songs.empty? || @page_title == "Music - " %>
     	  <div id="listen" class="module">
-    	    <% sidebar_module :name => "Music" do %>     		
+					<h2><%= link_to "Music", songs_path %></h2>
       		<ul>
       		  <% @songs.each_with_index do |@song, i| %>
       		    <li><%= link_to @song.title, @song %></li>
       		    <li><%= music_player(@song.url,i+1,180) %></li>
       		  <% end %>
       		</ul>
-      		<% end %>
       	</div> <!-- end DIV 'listen' -->
     	<% end %>
   	  
