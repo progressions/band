@@ -15,10 +15,10 @@ h3 {
   display: none;
 }
 
-#mailing_list .web {
+#mailing_list {
 	display: none;
 }
-#mailing_list .iphone {
+#mailing_list_iphone {
   display: block;
 }
 

@@ -739,10 +739,15 @@ input#email {
 input#zip_code {
   width: 120px;
 }
-#mailing_list .iphone {
+#mailing_list_iphone {
 	display: none;
+  color: white;
+  float :right;
+  margin: 25px;
+  padding: 10px;
+  width: 230px;
 }
-#mailing_list .iphone input {
+#mailing_list_iphone input {
 	font-size: 1em;
 	height: 50px;
 	width: 200px;
