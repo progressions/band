@@ -11,7 +11,7 @@ config.cache_classes = true
 config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
 
-config.action_controller.fragment_cache_store = [:file_store, "#{RAILS_ROOT}/tmp/cache"]
+config.action_controller.cache_store = [:file_store, "#{RAILS_ROOT}/tmp/cache"]
 
 # Enable serving of images, stylesheets, and javascripts from an asset server
 # config.action_controller.asset_host                  = "http://assets.example.com"
