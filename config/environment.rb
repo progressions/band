@@ -68,6 +68,8 @@ Rails::Initializer.run do |config|
     File.directory?(lib = "#{dir}/lib") ? lib : dir
   end
   
+  config.gem "httparty"
+  
 
 end
 #require 'actionwebservice'
