@@ -23,6 +23,7 @@ h3 {
 }
 
 #mailing_list_iphone input {
+	background-color: white;
 	font-size: 20px;
 	height: 50px;
 	line-height: 40px;
@@ -35,4 +36,19 @@ h3 {
 #fans input {
 	font-size: 1em;
 	width: 500px;
+}
+
+#admin {
+	font-size: 1.2em;
+	line-height: 1.5em;
+}
+
+#admin .admin_new,
+#admin .admin_manage {
+	display: block;
+}
+
+#nav ul {
+	font-size: 1.4em;
+	height: 50px;
 }
