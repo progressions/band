@@ -1,1 +1,9 @@
 <h1>New Tweet</h1>
+
+<div class="twitter">
+	<% form_tag new_twitter_path, :method => 'post' do %>
+		<p>What are you doing right now?</p>
+		<%= text_area_tag :update %>
+	  <p><%= submit_tag "Submit" %></p>
+	<% end %>
+</div>

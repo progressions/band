@@ -11,6 +11,9 @@
     <% end %>    
     <% if @global_settings.show_lyrics? %>
       <%= link_to_unless_current "Lyric", new_lyric_path(:admin => true) %> | 
+    <% end %> 
+    <% if @global_settings.show_twitter? %>
+      <%= link_to_unless_current "Tweet", new_twitter_path(:admin => true) %>
     <% end %></span> 
     
     <% # TODO: Manage users %>

@@ -788,7 +788,10 @@ textarea#promo_title {
  	display: inline;
 }
  
- 
+.twitter textarea#update {
+	width: 400px;
+	height: 80px;
+}
  
  
  

@@ -76,4 +76,8 @@ class ApplicationController < ActionController::Base
   def twitter_feed(count=MAX_TWITTER_COUNT)
     twitter.timeline(:user, :count => count)
   end
+  
+  def update_twitter update
+    twitter.update(update)
+  end
 end

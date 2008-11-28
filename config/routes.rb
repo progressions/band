@@ -78,7 +78,8 @@ ActionController::Routing::Routes.draw do |map|
   map.web '/web', :controller => 'about', :action => 'web'
   map.photos '/photos', :controller => 'about', :action => 'photos'
   map.twitter '/twitter', :controller => 'twitter', :action => 'index'
-  map.new_twitter '/twitter/new', :controller => 'twitter', :action => 'new'
+  map.new_twitter '/twitter/new', :controller => 'twitter', :action => 'new', :conditions => {:method => :get}  
+  map.new_twitter '/twitter/new', :controller => 'twitter', :action => 'create', :conditions => {:method => :post}
   
   map.news '/news', :controller => 'entries', :action => 'index'
   

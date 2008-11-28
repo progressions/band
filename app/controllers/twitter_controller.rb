@@ -12,6 +12,11 @@ class TwitterController < ApplicationController
 
   # POST /twitter
   def create
-    
+    if twitter.update(params[:update])
+      flash[:notice] = "Successfully updated Twitter."
+    else
+      flash[:error] = "There was a problem."
+    end
+    redirect_to new_twitter_path
   end
 end
