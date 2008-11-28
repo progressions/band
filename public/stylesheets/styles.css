@@ -739,27 +739,18 @@ input#email {
 input#zip_code {
   width: 120px;
 }
-#mailing_list_iphone {
-	display: none;
-  color: white;
-  float :right;
-  margin: 25px;
-  padding: 10px;
-  width: 230px;
-}
-#mailing_list_iphone input {
-	font-size: 1em;
-	height: 50px;
-	width: 200px;
-}
 
+
+#mailing_list_iphone, 
 #mailing_list {
+	display: block;
   color: white;
   float :right;
   margin: 25px;
   padding: 10px;
   width: 230px;
 }
+#mailing_list_iphone h4,
 #mailing_list h4 {
   font-size: 0.75em;
   letter-spacing: 0.3em;
@@ -767,19 +758,26 @@ input#zip_code {
   padding: 0;
   text-transform: uppercase;
 }	
+*:first-child+html #mailing_list_iphone h4,
 *:first-child+html #mailing_list h4 {
  font-size: 1.1em;
  margin-bottom: -18px;
 }
+#mailing_list_iphone input,
 #mailing_list input {
   margin: 0;
 }
 *:first-child+html input.signup {
  width: 80px;
 }
+#mailing_list_iphone input.submit, 
 #mailing_list input.submit {
   float: right;
 }
+#mailing_list_iphone {
+	display: none;
+}
+
 #logo {
   float: left;
 }
