@@ -22,6 +22,10 @@ h3 {
 	display: block;
 }
 
+#mailing_list_iphone input {
+	font-size: 1em;
+}
+
 #fans {
 	font-size: 2em;
 }
