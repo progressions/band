@@ -90,6 +90,6 @@ class BlogsController < ApplicationController
   private
   
   def show_blog?
-    render_404 unless (@global_settings.show_blog? || params[:admin]=="true")
+    render_404 unless (@global_settings.show_blog? || admin?)
   end
 end

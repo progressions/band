@@ -127,6 +127,9 @@ END_STRING
     []
   end
   
+  def admin?
+    params[:admin]
+  end
 
 	def map_from_address show
 	#	http://maps.google.com/maps?f=q&hl=en&q=1216+W+22nd+St+Austin+TX+78705

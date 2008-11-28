@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
   
   def admin_or_user_layout
-    logged_in? && params[:admin]=="true" ? "settings" : "application"
+    logged_in? && admin? ? "settings" : "application"
   end
   
   def admin?

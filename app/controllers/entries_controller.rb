@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :login_required, :except => [:show, :index]
+  before_filter :show_news?, :only => [:show, :index]
   
   # GET /entries
   # GET /entries.xml
@@ -59,5 +60,11 @@ class EntriesController < ApplicationController
     @entry.destroy
 
     redirect_to(entries_url)
+  end
+  
+  private
+  
+  def show_news?
+    render_404 unless @global_settings.show_news? || admin?
   end
 end

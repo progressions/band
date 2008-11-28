@@ -4,10 +4,7 @@
 class SongsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   before_filter :set_admin, :except => [:index, :show]
-  
-  def no_songs
-    render_404
-  end
+  before_filter :show_music?,  :only => [:index]
   
   # GET /songs
   # GET /songs.xml
@@ -64,5 +61,11 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
     redirect_to(songs_url)
+  end
+  
+  private
+  
+  def show_music?
+    render_404 unless @global_settings.show_music? || admin?
   end
 end

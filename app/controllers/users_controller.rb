@@ -5,23 +5,23 @@ class UsersController < ApplicationController
   before_filter :login_required
   
   def index
-    params[:admin]= true
+    set_admin= true
     @users = User.find(:all)
   end
   
   # render new.rhtml
   def new
-    params[:admin]= true
+    set_admin= true
     @user = User.new
   end
   
   def show
-    params[:admin]= true
+    set_admin= true
     @user = User.find(params[:id])
   end
   
   def edit
-    params[:admin]= true
+    set_admin= true
     @user = User.find(params[:id])
   end
 

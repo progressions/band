@@ -62,10 +62,4 @@ class PromosController < ApplicationController
     @promo.destroy
     redirect_to(promos_url) 
   end
-  
-  protected
-  
-  def set_admin
-    params[:admin] = true
-  end
 end

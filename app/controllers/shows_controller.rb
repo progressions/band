@@ -1,10 +1,11 @@
 class ShowsController < ApplicationController
   before_filter :login_required, :except => [:show, :index]
+  before_filter :show_shows?, :only => [:show, :index]
   
   # GET /shows
   # GET /shows.xml
   def index
-    if params[:admin] && login_required
+    if admin? && login_required
       @shows = Show.paginate :all, :per_page => 10, :page => params[:p], :order => 'date DESC'
     else      
       @shows = Show.paginate :all, :per_page => 10, :page => params[:p], :order => 'date', :conditions => ["date > ?", Time.now]
@@ -87,5 +88,11 @@ class ShowsController < ApplicationController
     flash[:notice] = 'Show was successfully deleted.'
 
     redirect_to(shows_url)
+  end
+  
+  private
+  
+  def show_shows?
+    render_404 unless @global_settings.show_shows? || admin?
   end
 end

@@ -13,7 +13,7 @@
   
   <%= stylesheet_link_tag formatted_color_path(@global_settings.color, "css") %>
   
-  <%= stylesheet_link_tag 'admin' if params[:admin] && logged_in? %>
+  <%= stylesheet_link_tag 'admin' if admin? && logged_in? %>
   
   <link media="only screen and (max-device-width: 480px)" 
     href="iphone.css" type="text/css" rel="stylesheet" />
@@ -109,7 +109,7 @@
       <%= yield %>       
       
   	</div> <!-- end DIV "main" -->
-  	<%= sidebar @page_title unless params[:admin] %>
+  	<%= sidebar @page_title unless admin? %>
   	
   		
 	</div> <!-- end DIV 'inside-wrap' -->
