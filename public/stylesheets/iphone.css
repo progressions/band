@@ -19,10 +19,13 @@ h3 {
 	display: none;
 }
 #mailing_list .iphone {
-	display: block;
-	font-size: 2em;
+  display: block;
 }
 
 #fans {
 	font-size: 2em;
+}
+#fans input {
+	font-size: 1em;
+	width: 500px;
 }

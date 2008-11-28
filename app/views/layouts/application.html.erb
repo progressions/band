@@ -11,6 +11,7 @@
   
   <%= stylesheet_link_tag 'styles' %>
   
+  <%= stylesheet_link_tag 'iphone' if params.has_key?(:iphone) %>
   <%= stylesheet_link_tag formatted_color_path(@global_settings.color, "css") %>
   
   <%= stylesheet_link_tag 'admin' if admin? && logged_in? %>
@@ -49,22 +50,21 @@
     <% unless !@global_settings.show_fans || @body_style == "fans" %>
 	  <div id="mailing_list">
 			<div class="web">
-	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>
-	    
-	    <% form_for(@fan) do |f| %>
-        <%= f.text_field :email, :id => "email", :value => "Email Address" %>
-        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
+		    <h4 id="join_the_mailing_list">Join the mailing list:</h4>   
+		    <% form_for(@fan) do |f| %>
+	        <%= f.text_field :email, :id => "email", :value => "Email Address" %>
+	        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
         
-        <!-- need a better way of pre-filling these fields: -->
-        <%= f.hidden_field :city, :value => "Austin" %>
-        <%= f.hidden_field :state, :value => "TX" %>
+	        <!-- need a better way of pre-filling these fields: -->
+	        <%= f.hidden_field :city, :value => "Austin" %>
+	        <%= f.hidden_field :state, :value => "TX" %>
         
-        <%= f.submit "SIGN UP", :class =>"signup" %>
-      <% end %>
+	        <%= f.submit "SIGN UP", :class =>"signup" %>
+	      <% end %>
 	    </div>
 			<div class="iphone">
-				<p><%= link_to "Join the mailing list!", new_fan_path %></p>
-			</div>
+				<p><%= button_to "Join the mailing list!", new_fan_path %></p>
+			</div> <!-- end DIV 'iphone' -->
 	  </div> <!-- end DIV 'mailing_list' -->
     <% end %>
 	</div> <!-- end DIV 'header' -->
