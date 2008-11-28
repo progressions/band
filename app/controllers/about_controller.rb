@@ -2,12 +2,13 @@ require 'rss/2.0'
 require 'open-uri'
 
 class AboutController < ApplicationController
+  before_filter :show_videos?, :only => [:videos]
   
   def index    
     @playlist = YouTube::Playlist.new(:id => "B407200BFFDB8F1E")
     @body_style = "home"      
     @blogs = Blog.paginate :all, :per_page => 5, :page => params[:page], :order => 'created_at DESC' if @global_settings.show_blog?
-    @songs = Song.find(:all, :limit => 3, :order => "created_at DESC")
+    #@songs = Song.find(:all, :limit => 3, :order => "created_at DESC")
     if @global_settings.show_news?
       @entries = Entry.find(:all, :offset => 1, :limit => 3, :order => "created_at DESC")  
       @first_entry = Entry.find(:all,  :limit => 1, :order => "created_at DESC")
@@ -31,5 +32,11 @@ class AboutController < ApplicationController
     @videos = @wrs.videos[0..9]
     @featured_videos = YouTube::Playlist.new(:id => "838EB0386BC516DE")
     @latest_demo = @featured_videos.videos[0]
+  end
+  
+  private
+  
+  def show_videos?
+    render_404 unless @global_settings.show_videos? || admin?
   end
 end

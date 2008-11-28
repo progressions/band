@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController    
-  before_filter :show_blog  
+  before_filter :show_blog?
   before_filter :login_required, :except => [:show, :index]
 
   # GET /blogs
@@ -87,14 +87,9 @@ class BlogsController < ApplicationController
     end
   end
   
-  protected
+  private
   
-  
-  def show_blog
-    if @global_settings.show_blog? || params[:admin]=="true"
-      true
-    else
-      render_404
-    end
+  def show_blog?
+    render_404 unless (@global_settings.show_blog? || params[:admin]=="true")
   end
 end

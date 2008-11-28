@@ -10,8 +10,8 @@ class Song < ActiveRecord::Base
   end
   
   # TODO: paginate this?
-  def self.find_all_with_file
-    self.find(:all, :conditions => "filename IS NOT NULL", :order => "created_at DESC")
+  def self.find_all_with_file(count=5)
+    self.find(:all, :conditions => "filename IS NOT NULL", :limit => count, :order => "created_at DESC")
   end
   
   def filename

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController  
-  layout :admin_or_user
+  layout :admin_or_user_layout
   
   # GET /comments
   # GET /comments.xml

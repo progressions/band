@@ -1,5 +1,6 @@
 class LyricsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
+  before_filter :show_lyrics?
   
   # GET /lyrics
   # GET /lyrics.xml
@@ -98,5 +99,11 @@ class LyricsController < ApplicationController
       format.html { redirect_to(lyrics_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def show_lyrics?
+    render_404 unless @global_settings.show_lyrics?
   end
 end
