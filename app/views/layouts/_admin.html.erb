@@ -1,6 +1,5 @@
 
 <div id="admin">
-  <!-- <p>Welcome, <strong><%= current_user.login %></strong>!</p> -->
   <p><span class="admin_new"><strong>New:</strong> 
     
     <% if @global_settings.show_blog? %>
@@ -29,8 +28,8 @@
     <%= link_to_unless_current "Shows", shows_path(:admin => true) %> | 
     <%= link_to_unless_current "Promos", promos_path(:admin => true) %> |
     <%= link_to_unless_current "Members", members_path(:admin => true) %> | 
-    <%= link_to_unless_current "Pages", pages_path(:admin => true) %> |
-    <%= link_to_unless_current "Users", users_path(:admin => true) %>
+    <%= link_to_unless_current "Pages", pages_path(:admin => true) %> | 
+    <%= link_to_unless_current "Users", users_path(:admin => true) %> 
     
     <span class="divider">|</span> <%= link_to "Log Out", logout_path %> </span></p>
   
