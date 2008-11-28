@@ -48,6 +48,7 @@
     
     <% unless !@global_settings.show_fans || @body_style == "fans" %>
 	  <div id="mailing_list">
+			<div class="web">
 	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>
 	    
 	    <% form_for(@fan) do |f| %>
@@ -60,7 +61,10 @@
         
         <%= f.submit "SIGN UP", :class =>"signup" %>
       <% end %>
-	    
+	    </div>
+			<div class="iphone">
+				<p><% link_to "Join the mailing list!", new_fan_path %></p>
+			</div>
 	  </div> <!-- end DIV 'mailing_list' -->
     <% end %>
 	</div> <!-- end DIV 'header' -->

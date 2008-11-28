@@ -14,3 +14,12 @@ h3 {
 #sidebar {
   display: none;
 }
+
+#mailing_list .web {
+	display: none;
+	font-size: 2em;
+}
+
+#fans {
+	font-size: 2em;
+}
