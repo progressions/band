@@ -36,10 +36,10 @@ class ColorsController < ApplicationController
     end
   end
   
-  # TODO: Export colors as YAML
   def export
     @color = Color.find(params[:id])
-    filename = "colors.yml"
+    title = @color.title.gsub(/[\.|\/| ]/, "_")
+    filename = "#{title}.yml"
     send_data(
       @color.to_yaml,
       :type => 'text/yaml; charset=utf-8; header=present',
@@ -49,11 +49,23 @@ class ColorsController < ApplicationController
   # TODO: Import YAML into new Colors
   def import
     if params[:dump]
-      # process YAML file
-      @yaml = YAML.load(params[:dump][:file])
-      @color = Color.new(@yaml)
-      @color.save!
+      @yaml = YAML.load(params[:dump][:file].read)
+      @attributes = @yaml.ivars["attributes"]
+      @attributes.delete("created_at")
+      @attributes.delete("updated_at")
+      @attributes.delete("created_by")
+      @color = Color.new(@attributes)
+      if @color.save
+        flash[:notice] = 'Color was successfully created.'
+        redirect_to(colors_path)
+      else
+        flash[:error] = "There was a problem creating the new color setting."
+        render(import_colors_path)
+      end
     end
+  rescue
+    flash[:error] = "There was a problem creating the new color setting."
+    render(import_colors_path)
   end
 
   # GET /colors/new

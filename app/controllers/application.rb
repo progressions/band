@@ -6,6 +6,8 @@
 # TODO: Online promo stuff: links, banners, &c
 
 class ApplicationController < ActionController::Base
+  extend ActiveSupport::Memoizable
+  
   before_filter :global_settings
   include SimpleCaptcha::ControllerHelpers  
   
@@ -66,15 +68,17 @@ class ApplicationController < ActionController::Base
   end
   
   def twitter_user
-    @twitter_user ||= twitter.user(@global_settings.twitter_profile)
+    twitter.user(@global_settings.twitter_profile)
   end
+  memoize :twitter_user
 	
 	def twitter
-	  @twitter ||= Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
+	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
   end
+  memoize :twitter
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
-    @twitter_feed ||= twitter.timeline(:user, :count => count)
+    twitter.timeline(:user, :count => count)
   end
   
   def update_twitter update
