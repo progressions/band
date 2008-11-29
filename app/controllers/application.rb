@@ -36,8 +36,8 @@ class ApplicationController < ActionController::Base
     @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now])
     @songs = Song.find_all_with_file
     if @global_settings.show_twitter?
+      @twitter_remaining_hits = twitter.rate_limit_status.remaining_hits
       @twitter_profile = @global_settings.twitter_profile
-      @twitter_profile_image_url = twitter_user.profile_image_url
       @twitter_profile_url = twitter_profile_url
       @twitter_feed = twitter_feed
     end    
@@ -66,15 +66,15 @@ class ApplicationController < ActionController::Base
   end
   
   def twitter_user
-    twitter.user(@global_settings.twitter_profile)
+    @twitter_user ||= twitter.user(@global_settings.twitter_profile)
   end
 	
 	def twitter
-	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
+	  @twitter ||= Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
   end
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
-    twitter.timeline(:user, :count => count)
+    @twitter_feed ||= twitter.timeline(:user, :count => count)
   end
   
   def update_twitter update

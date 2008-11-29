@@ -73,9 +73,12 @@
 				<div id="twitter" class="module">
 					<h2 id="twitter"><%= link_to "Twitter", twitter_path %></h2>
 					<ul>
-						<li class="heading"><%= image_tag(@twitter_profile_image_url) %> Updates from <%= link_to @twitter_profile, @twitter_profile_url %>.</li>
+						<li class="heading">Updates from <%= link_to @twitter_profile, @twitter_profile_url %>.</li>
 						<% @twitter_feed.each do |s| %>
 							<li><%= s.text %></li>
+						<% end %>
+						<% if logged_in? %>
+							<p><%= pluralize(@twitter_remaining_hits, "hit") %> remaining</p>
 						<% end %>
 					</ul>
 				</div>
