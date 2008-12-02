@@ -42,6 +42,14 @@ module ApplicationHelper
     render :partial => "layouts/admin" if logged_in?
   end
   
+  def admin?
+    params[:admin]
+  end
+  
+  def show_sidebar?
+    !admin?
+  end
+  
   def mp3_link mp3
     "http://www.progressions.org/music/racketeering/#{mp3}.mp3"
   end
@@ -125,10 +133,6 @@ END_STRING
     twitter.timeline(:user, :count => count)
   rescue
     []
-  end
-  
-  def admin?
-    params[:admin]
   end
 
 	def map_from_address show

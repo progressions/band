@@ -48,22 +48,22 @@
     
     <% unless !@global_settings.show_fans || @body_style == "fans" %>
 	  <div id="mailing_list">
-		    <h4 id="join_the_mailing_list">Join the mailing list:</h4>   
-		    <% form_for(@fan) do |f| %>
-	        <%= f.text_field :email, :id => "email", :value => "Email Address" %>
-	        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
-        
-	        <!-- need a better way of pre-filling these fields: -->
-	        <%= f.hidden_field :city, :value => "Austin" %>
-	        <%= f.hidden_field :state, :value => "TX" %>
-        
-	        <%= f.submit "SIGN UP", :class =>"signup" %>
-	      <% end %>
-	    </div> <!-- end DIV 'mailing_list' -->
-	
-			<div id="mailing_list_iphone">
-				<%= button_to "Join the mailing list!", new_fan_path, :id => "join_mailing_list", :height => "50", :width => "200" %>
-			</div> <!-- end DIV 'iphone' -->
+	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>   
+	    <% form_for(@fan) do |f| %>
+        <%= f.text_field :email, :id => "email", :value => "Email Address" %>
+        <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
+       
+        <!-- need a better way of pre-filling these fields: -->
+        <%= f.hidden_field :city, :value => "Austin" %>
+        <%= f.hidden_field :state, :value => "TX" %>
+       
+        <%= f.submit "SIGN UP", :class =>"signup" %>
+      <% end %>
+    </div> <!-- end DIV 'mailing_list' -->
+
+		<div id="mailing_list_iphone">
+			<%= button_to "Join the mailing list!", new_fan_path, :id => "join_mailing_list", :height => "50", :width => "200" %>
+		</div> <!-- end DIV 'iphone' -->
 	  
     <% end %>
 	</div> <!-- end DIV 'header' -->
@@ -109,7 +109,7 @@
       <%= yield %>       
       
   	</div> <!-- end DIV "main" -->
-  	<%= sidebar @page_title unless admin? %>
+  	<%= sidebar @page_title if show_sidebar? %>
   	
   		
 	</div> <!-- end DIV 'inside-wrap' -->

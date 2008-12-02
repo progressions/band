@@ -33,16 +33,18 @@ class ApplicationController < ActionController::Base
   end
   
   def load_sidebar
-    @members = Member.find(:all, :conditions => ["active = ?", true], :limit => 5, :order => 'name')
-    @blogs = Blog.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' 
-    @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now])
-    @songs = Song.find_all_with_file
-    if @global_settings.show_twitter?
-      @twitter_remaining_hits = twitter.rate_limit_status.remaining_hits
-      @twitter_profile = @global_settings.twitter_profile
-      @twitter_profile_url = twitter_profile_url
-      @twitter_feed = twitter_feed
-    end    
+    if show_sidebar?
+      @members = Member.find(:all, :conditions => ["active = ?", true], :limit => 5, :order => 'name')
+      @blogs = Blog.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' 
+      @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now])
+      @songs = Song.find_all_with_file
+      if @global_settings.show_twitter?
+        @twitter_remaining_hits = twitter.rate_limit_status.remaining_hits
+        @twitter_profile = @global_settings.twitter_profile
+        @twitter_profile_url = twitter_profile_url
+        @twitter_feed = twitter_feed
+      end
+    end  
   rescue Twitter::CantConnect
     @twitter_error = true
   end
@@ -53,6 +55,10 @@ class ApplicationController < ActionController::Base
   
   def admin_or_user_layout
     logged_in? && admin? ? "settings" : "application"
+  end
+  
+  def show_sidebar?
+    !admin?
   end
   
   def admin?
