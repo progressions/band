@@ -18,6 +18,9 @@
   <dl class="email">
 		<dd class="label">Contact email:</dd>
 		<dd class="description">Your public email address, will be listed as the sender of all emails sent from your website.</dd>
+		<% unless @global_settings.can_send_mail? %>
+  		<dd class="warning">You will not be able to send email until you enter a contact email address.</dd>
+		<% end %>
     <dt><%= f.text_field :email %></dt>
     <dd class="label">Administrative email:</dd>
 		<dd class="description">Your private email address, will be used to send you updates from the website.</dd>
@@ -37,6 +40,14 @@
     <h3 id="your_social_networks">Your social networks</h3>
 
   <dl>
+		<dd class="label">Facebook:</dd>
+		<dd class="description">Your Facebook URL, or the address of your Facebook group or fan page.</dd>
+    <dt><%= f.text_field :facebook_profile %></dt>
+    
+		<dd class="label">MySpace:</dd>
+		<dd class="description">Your MySpace username.</dd>
+    <dt><%= f.text_field :facebook_profile %></dt>
+
 		<dd class="label">YouTube:</dd>
 		<dd class="description">Your YouTube username, to allow the website to automatically fetch your YouTube videos and include them in your content.</dd>
     <dt><%= f.text_field :youtube_profile %></dt>

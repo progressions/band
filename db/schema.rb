@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081127055452) do
+ActiveRecord::Schema.define(:version => 20081203005636) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -155,6 +155,8 @@ ActiveRecord::Schema.define(:version => 20081127055452) do
     t.string   "twitter_profile"
     t.string   "twitter_password"
     t.boolean  "show_twitter"
+    t.string   "facebook_profile"
+    t.string   "myspace_profile"
   end
 
   create_table "shows", :force => true do |t|
@@ -257,4 +259,5 @@ ActiveRecord::Schema.define(:version => 20081127055452) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
 end

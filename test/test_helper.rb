@@ -4,7 +4,6 @@ require 'mocha'
 require 'test_help'
 require 'test/rails'
 require 'authenticated_test_helper'
-require 'action_web_service/test_invoke'
 
 include AuthenticatedTestHelper
 

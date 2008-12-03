@@ -59,6 +59,10 @@ class ShowsController < ApplicationController
     @show.venue = Venue.find_or_create_by_name(params[:venue])
 
     if @show.venue.valid? && @show.save
+      if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
+        tweet = "New show: #{show_url(@show)}"
+        update_twitter(tweet)
+      end
       flash[:notice] = 'Show was successfully created.'
       redirect_to(@show)
     else

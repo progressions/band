@@ -1,5 +1,6 @@
 class MailsController < ApplicationController
   before_filter :login_required
+  before_filter :can_send_mail?
   
   FANS_OPTIONS = ["Everywhere", "In a specific city", "In a specific state", "In a specific postal code", "With specific tags"]
   
@@ -151,6 +152,15 @@ class MailsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(mails_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def can_send_mail?
+    unless @global_settings.can_send_mail?
+      flash[:notice] = "You must have an email address to send mail."
+      redirect_to profile_url
     end
   end
 end

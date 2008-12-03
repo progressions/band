@@ -35,6 +35,10 @@ class EntriesController < ApplicationController
       @show_byline = false
       render :action => "new"
     else
+      if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
+        tweet = "New news entry: #{entry_url(@entry)}"
+        update_twitter(tweet)
+      end
       flash[:notice] = 'News entry was successfully created.'
       redirect_to(@entry)
     end

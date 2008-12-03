@@ -21,6 +21,14 @@ class Setting < ActiveRecord::Base
 	def show_twitter?
 	  !twitter_profile.blank? && read_attribute(:show_twitter)
 	end
+	
+	def tweet_updates?
+    show_twitter?
+  end
+	
+	def can_send_mail?
+	  !email.blank? && !email.nil?
+  end
   
   def url_with_protocol
 	  with_protocol(attributes['url'])

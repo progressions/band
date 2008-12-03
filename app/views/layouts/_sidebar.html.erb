@@ -77,9 +77,11 @@
 						<% @twitter_feed.each do |s| %>
 							<li><%= s.text %></li>
 						<% end %>
+						<!--
 						<% if logged_in? %>
 							<p><%= pluralize(@twitter_remaining_hits, "hit") %> remaining</p>
 						<% end %>
+  					-->
 					</ul>
 				</div>
 			<% end %>

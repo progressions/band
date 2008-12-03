@@ -47,6 +47,11 @@ class BlogsController < ApplicationController
       render :action => "new"
     else
       flash[:notice] = 'Blog was successfully created.'
+      
+      if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
+        tweet = "New blog post: #{blog_url(@blog)}"
+        update_twitter(tweet)
+      end
       redirect_to(@blog)
     end
   end

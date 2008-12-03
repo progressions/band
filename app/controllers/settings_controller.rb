@@ -74,7 +74,7 @@ class SettingsController < ApplicationController
       flash[:notice] = 'Settings were successfully updated.'
       redirect_to admin_path
     else
-      render :action => "edit" 
+      render :action => "profile" 
     end
   end
 
