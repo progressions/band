@@ -62,7 +62,7 @@ class LyricsController < ApplicationController
           @blog.save
         end 
         flash[:notice] = 'Lyric was successfully created.'
-        update_twitter_with_new_content("New lyric: #{lyric_url(@lyric)}")
+        update_twitter_with_new_content("New lyric, \"#{@lyric.title}\": #{lyric_url(@lyric)}")
         format.html { redirect_to(@lyric) }
         format.xml  { render :xml => @lyric, :status => :created, :location => @lyric }
       else
