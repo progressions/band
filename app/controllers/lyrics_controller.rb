@@ -60,13 +60,9 @@ class LyricsController < ApplicationController
           @blog = Blog.new(:title => "New lyric: #{@lyric.title}", :body => blog_body)
           @blog.user = current_user
           @blog.save
-        end
-        
-        if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
-          tweet = "New lyric: #{lyric_url(@lyric)}"
-          update_twitter(tweet)
-        end        
+        end 
         flash[:notice] = 'Lyric was successfully created.'
+        update_twitter_with_new_content("New lyric: #{lyric_url(@lyric)}")
         format.html { redirect_to(@lyric) }
         format.xml  { render :xml => @lyric, :status => :created, :location => @lyric }
       else

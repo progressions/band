@@ -90,4 +90,10 @@ class ApplicationController < ActionController::Base
   def update_twitter update
     twitter.update(update)
   end
+  
+  def update_twitter_with_new_content update
+    if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
+      update_twitter(update)
+    end
+  end
 end

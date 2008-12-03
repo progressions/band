@@ -36,6 +36,8 @@ class SongsController < ApplicationController
 
     if @global_settings.songs << @song
       flash[:notice] = 'Song was successfully created.'
+            
+      update_twitter_with_new_content("New song: #{song_url(@song)}")
       redirect_to(@song)
     else
      render :action => "new" 
