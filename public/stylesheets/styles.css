@@ -794,21 +794,30 @@ input#zip_code {
 }
 
 
-#twitter li {
-font-size: 0.9em;
-color:#444;
-line-height: 1.2em;
-margin-bottom: 10px;
+ul.twitter li {
+	color:#444;
+	line-height: 1.2em;
+	margin-bottom: 10px;
 }
 
-#twitter li.heading a {
+#twitter ul.twitter li a {
 	display: inline;
 }
 
-.twitter textarea#update {
-width: 400px;
-height: 80px;
+ul.twitter li.text {
+	margin-bottom: 2px;
 }
+ul.twitter li.created_at {
+	color: #666;
+	font-size: 0.7em;
+	text-align: right;
+}
+
+.twitter textarea#update {
+	width: 400px;
+	height: 80px;
+}
+
 
 
 

@@ -1,13 +1,4 @@
-
-  	  	<div id="sidebar">
-  	  	  
-  	  	  
-  <% render :partial => "/layouts/front_admin" if logged_in? %>
-
-  
-<!--  
-
--->
+  <div id="sidebar">
    	  <div id="about" class="module">
    	    <h2 id="about_module"><%= link_to "About", "" %></h2>
      	  <ul>
@@ -19,8 +10,24 @@
       	    <li><%= mail_to sanitize(@global_settings.email), "Contact by email" %></li>
 					<% end %>
      	  </ul>
-   	  
-   	  </div> <!-- end DIV "link" -->
+   	  </div> <!-- end DIV "about" -->
+    	
+    	<% unless !@global_settings.has_web_profiles? || @page_title == "On the Web - " %>
+  	  <div id="links" class="module">
+  	    <h2 id="on_the_web"><%= link_to "On The Web", web_path %></h2>
+  	    <ul>
+  	      <% unless @global_settings.facebook_profile.blank? %>
+  	        <li><%= link_to "Facebook", @global_settings.facebook_profile %></li>
+  	      <% end %>
+  	      <% unless @global_settings.myspace_profile.blank? %>
+  	        <li><%= link_to "MySpace", myspace_link(@global_settings.myspace_profile) %></li>
+  	      <% end %>
+  	      <% for web_profile in @global_settings.web_profiles %>
+  	        <li><%= link_to web_profile.name, web_profile.url %></li>
+  	      <% end %>
+  	    </ul>
+  	  </div>
+  	  <% end %>
   	  
   	  <% unless !@global_settings.show_music? || @songs.empty? || @page_title == "Music - " %>
     	  <div id="listen" class="module">
@@ -49,39 +56,26 @@
     		<ul>    		    
     		    <% for @blog in @blogs do %>    		    
               <li class="post_title" id="post_title_<%= @blog.id %>"><%= link_to(@blog.title, blog_path(@blog)) %></li>
-    		    <% end %>
-    		    
+    		    <% end %>		    
     		</ul>
     		<h5 class="more">
     		  <%= link_to "more posts...", blogs_path %>
     		</h5>
     	</div> <!-- end DIV 'recent_posts' -->
     	<% end %>
-    	
-    	<% unless @global_settings.web_profiles.empty? || @page_title == "On the Web - " %>
-  	  <div id="links" class="module">
-  	    <h2 id="on_the_web"><%= link_to "On The Web", web_path %></h2>
-  	    <ul>  	      
-  	      <% for web_profile in @global_settings.web_profiles %>
-  	        <li><%= link_to web_profile.name, web_profile.url %></li>
-  	      <% end %>
-  	    </ul>
-  	  </div>
-  	  <% end %>
 
 			<% unless @twitter_error || !@global_settings.show_twitter? || @page_title == "Twitter - " %>
 				<div id="twitter" class="module">
 					<h2 id="twitter"><%= link_to "Twitter", twitter_path %></h2>
-					<ul>
+					<ul class="twitter">
 						<li class="heading">Updates from <%= link_to @twitter_profile, @twitter_profile_url %>.</li>
 						<% @twitter_feed.each do |s| %>
-							<li><%= s.text %></li>
+							<li class="text"><%= add_twitter_links(s.text) %></li>
+							<li class="created_at"><%= time_ago_in_words(s.created_at) %> ago</li>
 						<% end %>
-						<!--
-						<% if logged_in? %>
+						<% if logged_in? && @twitter_remaining_hits < 99 %>
 							<p><%= pluralize(@twitter_remaining_hits, "hit") %> remaining</p>
 						<% end %>
-  					-->
 					</ul>
 				</div>
 			<% end %>

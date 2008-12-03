@@ -22,6 +22,10 @@ class Setting < ActiveRecord::Base
 	  !twitter_profile.blank? && read_attribute(:show_twitter)
 	end
 	
+	def has_web_profiles?
+    !web_profiles.empty? || !facebook_profile.blank? || !myspace_profile.blank?
+	end
+	
 	def tweet_updates?
     show_twitter?
   end

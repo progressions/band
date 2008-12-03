@@ -134,6 +134,19 @@ END_STRING
   rescue
     []
   end
+  
+  def add_twitter_links(text)
+    text = add_links(text)
+    text = text.gsub(/@[^\s]*/) {|s| "<a href='http://www.twitter.com/#{s.gsub('@','')}'>#{s}</a>"}
+  end
+  
+  def add_links(text)
+    text.gsub(/http[^\s]*/) {|s| "<a href='#{s}'>#{s}</a>"}
+  end
+  
+  def myspace_link profile
+    "http://www.myspace.com/#{profile}"
+  end
 
 	def map_from_address show
 	#	http://maps.google.com/maps?f=q&hl=en&q=1216+W+22nd+St+Austin+TX+78705
