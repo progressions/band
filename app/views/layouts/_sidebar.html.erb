@@ -71,7 +71,7 @@
 						<li class="heading">Updates from <%= link_to @twitter_profile, @twitter_profile_url %>.</li>
 						<% @twitter_feed.each do |s| %>
 							<li class="text"><%= add_twitter_links(s.text) %></li>
-							<li class="created_at"><%= time_ago_in_words(s.created_at) %> ago</li>
+							<li class="byline"><%= time_ago_in_words(s.created_at) %> ago from <%= s.source %></li>
 						<% end %>
 						<% if logged_in? && @twitter_remaining_hits < 99 %>
 							<p><%= pluralize(@twitter_remaining_hits, "hit") %> remaining</p>

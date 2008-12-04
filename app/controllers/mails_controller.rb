@@ -159,7 +159,7 @@ class MailsController < ApplicationController
   
   def can_send_mail?
     unless @global_settings.can_send_mail?
-      flash[:notice] = "You must have an email address to send mail."
+      flash[:notice] = "You must have a valid email address and website URL to send mail."
       redirect_to profile_url
     end
   end

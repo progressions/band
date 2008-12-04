@@ -7,21 +7,24 @@
 
 <% form_for(@setting) do |f| %>
   <dl class="names">
-  <dd class="label">Artist name</dd>
-  <dd class="description">Your name, or the name of your band.</dd>
-  <dt><%= f.text_field :artist_name %></dt>
-  <dd class="label">Website title</dd>
-  <dd class="description">Full name to display in the title bar of the website.</dd>
-  <dt><%= f.text_field :site_name %></dt>
+    <dd class="label">Artist name</dd>
+    <dd class="description">Your name, or the name of your band.</dd>
+    <dt><%= f.text_field :artist_name %></dt>
+    
+    <dd class="label">Website title</dd>
+    <dd class="description">Full name to display in the title bar of the website.</dd>
+    <dt><%= f.text_field :site_name %></dt>
+
+    <dd class="label">Composer</dd>
+    <dd class="description">Name of default composer or composing team for lyric credits.</dd>
+    <dt><%= f.text_field :composer %></dt>
   </dl>
     
   <dl class="email">
 		<dd class="label">Contact email:</dd>
 		<dd class="description">Your public email address, will be listed as the sender of all emails sent from your website.</dd>
-		<% unless @global_settings.can_send_mail? %>
-  		<dd class="warning">You will not be able to send email until you enter a contact email address.</dd>
-		<% end %>
     <dt><%= f.text_field :email %></dt>
+    
     <dd class="label">Administrative email:</dd>
 		<dd class="description">Your private email address, will be used to send you updates from the website.</dd>
     <dt><%= f.text_field :admin_email %></dt>

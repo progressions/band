@@ -9,6 +9,8 @@ class Setting < ActiveRecord::Base
   
 	validates_email_veracity_of :email, :message => "Email is invalid"
 	validates_email_veracity_of :admin_email, :message => "Email is invalid"
+	
+	# TODO: validate format of :url
 		
 	def songs_host
 	  host = attributes['songs_host'].blank? ? url : with_protocol(attributes['songs_host'])
@@ -31,7 +33,7 @@ class Setting < ActiveRecord::Base
   end
 	
 	def can_send_mail?
-	  !email.blank? && !email.nil?
+	  !email.blank? && !url.blank?
   end
   
   def url_with_protocol

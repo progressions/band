@@ -807,7 +807,7 @@ ul.twitter li {
 ul.twitter li.text {
 	margin-bottom: 2px;
 }
-ul.twitter li.created_at {
+ul.twitter li.byline {
 	color: #666;
 	font-size: 0.7em;
 	text-align: right;
@@ -818,6 +818,9 @@ ul.twitter li.created_at {
 	height: 80px;
 }
 
+.fieldWithErrors input {
+	border: 2px solid red;
+}
 
 
 

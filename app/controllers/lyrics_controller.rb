@@ -50,7 +50,7 @@ class LyricsController < ApplicationController
     @lyric = Lyric.new(params[:lyric])
     @lyric.user = current_user
     
-    @lyric.composer = "J.Coleman/R.Oliver" unless params[:lyric]
+    @lyric.composer = @global_settings.composer unless params[:lyric]
 
     respond_to do |format|
       if @lyric.save  
