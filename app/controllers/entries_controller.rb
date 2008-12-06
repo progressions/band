@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
       @show_byline = false
       render :action => "new"
     else
-      update_twitter_with_new_content("New news entry: #{entry_url(@entry)}")
+      update_twitter_with_new_content("New news entry: #{truncate(@entry.title, :length => 100)} #{entry_url(@entry)}")
       flash[:notice] = 'News entry was successfully created.'
       redirect_to(@entry)
     end

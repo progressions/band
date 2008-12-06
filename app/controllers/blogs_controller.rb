@@ -47,7 +47,7 @@ class BlogsController < ApplicationController
       render :action => "new"
     else
       flash[:notice] = 'Blog was successfully created.'
-      update_twitter_with_new_content("New blog post: #{blog_url(@blog)}")
+      update_twitter_with_new_content("New blog post: #{truncate(@blog.title, :length => 100)} #{blog_url(@blog)}")
       redirect_to(@blog)
     end
   end
