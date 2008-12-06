@@ -61,7 +61,6 @@ class SettingsController < ApplicationController
   # PUT /settings/1
   # PUT /settings/1.xml
   def update
-    # raise "OMG"
     @setting = Setting.find(params[:id])
     if params[:setting][:promo_id]
       params[:setting][:promo] = Promo.find(params[:setting][:promo_id])
@@ -70,7 +69,8 @@ class SettingsController < ApplicationController
       params[:setting][:color] = Color.find(params[:setting][:color_id])
     end
 
-    if @setting.update_attributes(params[:setting])      
+    if @setting.update_attributes(params[:setting])
+      raise "WTF" unless @setting.composer == params[:setting][:composer]
       flash[:notice] = 'Settings were successfully updated.'
       redirect_to admin_path
     else
