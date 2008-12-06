@@ -52,7 +52,9 @@ h3 {
 	font-size: 1.7em;
 	height: 60px;
 }
-
+.web-only {
+	display: none;
+}
 div.iphone-only {
 	display: block;
 }
