@@ -52,3 +52,10 @@ h3 {
 	font-size: 1.7em;
 	height: 60px;
 }
+
+div.iphone-only {
+	display: block;
+}
+img.iphone-only {
+	display: inline;
+}

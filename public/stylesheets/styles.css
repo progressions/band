@@ -822,5 +822,8 @@ ul.twitter li.byline {
 	border: 2px solid red;
 }
 
+.iphone-only {
+	display: none;
+}
 
 
