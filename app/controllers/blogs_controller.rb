@@ -1,4 +1,7 @@
 class BlogsController < ApplicationController    
+  
+  include ActionView::Helpers::TextHelper # so we get truncate method
+
   before_filter :show_blog?
   before_filter :login_required, :except => [:show, :index]
 

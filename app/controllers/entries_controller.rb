@@ -1,4 +1,7 @@
 class EntriesController < ApplicationController
+  
+  include ActionView::Helpers::TextHelper # so we get truncate method
+
   before_filter :login_required, :except => [:show, :index]
   before_filter :show_news?, :only => [:show, :index]
   
