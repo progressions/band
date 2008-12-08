@@ -41,7 +41,7 @@ class Mailer < ActionMailer::Base
     
   def mail fan, mail
     recipients  fan.email
-    from        global_settings.email
+    from        "#{global_settings.artist_name} <#{global_settings.email}>"
     subject     "[#{global_settings.mail_tag}] #{mail.title}"
     body        :fan => fan, :mail => mail, :global_settings => global_settings
     content_type "text/html"
