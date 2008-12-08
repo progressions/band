@@ -5,7 +5,7 @@ class Fan < ActiveRecord::Base
   
 	validates_presence_of :email, :zipcode
 	validates_email_veracity_of :email
-	validates_uniqueness_of :email
+	validates_uniqueness_of :email, :case_sensitive => false
 	#validates_numericality_of :zipcode
 	#validates_inclusion_of :zipcode, :in => 00501..99999, :message => "must be 5 digits"
 		

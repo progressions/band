@@ -1,2 +1,15 @@
 <%= @mail.body %>
-<p><%= link_to @global_settings.artist_name, @global_settings.url %></p><p style="font-size: 0.8em">You are receiving these emails because <%= @fan.email %> is subscribed to the <%= @global_settings.artist_name %> mailing list. If you do not want to receive these emails, you can <%= link_to "unsubscribe here", unsubscribe_url(@fan, :f => @fan.crypted_email, :host => @global_settings.url) %> or reply to this email with the word "unsubscribe" in the title.</p>
+
+<p><%= @global_settings.artist_name %><br />
+<%= link_to "website", @global_settings.url %> 
+<% unless @global_settings.myspace_profile.blank? %>
+ | <%= link_to "myspace", myspace_link(@global_settings.myspace_profile) %>
+<% end %>
+<% unless @global_settings.facebook_profile.blank? %>
+ | <%= link_to "facebook", @global_settings.facebook_profile %>
+<% end %>
+<% if @global_settings.show_twitter? %>
+ | <%= link_to "twitter", twitter_profile %>
+<% end %>
+</p>
+<p style="font-size: 0.8em">You are receiving these emails because <%= @fan.email %> is subscribed to the <%= @global_settings.artist_name %> mailing list. If you do not want to receive these emails, you can <%= link_to "unsubscribe here", unsubscribe_url(@fan, :f => @fan.crypted_email, :host => @global_settings.url) %> or reply to this email with the word "unsubscribe" in the title.</p>
