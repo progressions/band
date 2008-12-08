@@ -794,20 +794,20 @@ input#zip_code {
 }
 
 
-ul.twitter li {
+#sidebar #twitter ul.twitter li {
 	color:#444;
 	line-height: 1.2em;
 	margin-bottom: 10px;
 }
 
-#twitter ul.twitter li a {
+#sidebar #twitter ul.twitter li a {
 	display: inline;
 }
 
-ul.twitter li.text {
+#sidebar #twitter ul.twitter li.text {
 	margin-bottom: 2px;
 }
-ul.twitter li.byline {
+#sidebar #twitter ul.twitter li.byline {
 	color: #666;
 	font-size: 0.7em;
 	text-align: right;
@@ -817,6 +817,8 @@ ul.twitter li.byline {
 	width: 400px;
 	height: 80px;
 }
+
+
 
 .fieldWithErrors input {
 	border: 2px solid red;

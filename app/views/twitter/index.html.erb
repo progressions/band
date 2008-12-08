@@ -1,8 +1,7 @@
 <% @page_title = "Twitter" %>
-
+<div id="twitter">
 <h1>Twitter</h1>
 
-<% @tweets.each do |tweet| %>
-<p><%= tweet.text %></p>
+<%= render :partial => "layouts/twitter" %>
 
-<% end %>
+</div>

@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
     twitter.timeline(:user, :count => count)
   end
   
-  def update_twitter update
+  def update_twitter(update)
     twitter.update(update)
   end
   
@@ -95,5 +95,11 @@ class ApplicationController < ActionController::Base
     if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
       update_twitter(update)
     end
+  end
+  
+  def convert_to_html(text)
+    text.gsub("&lt;", "<")
+    text.gsub("&gt;", ">")
+    text.gsub("&quot;", '"')
   end
 end

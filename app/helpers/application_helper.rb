@@ -62,7 +62,7 @@ module ApplicationHelper
     @global_settings.video_format || WIDESCREEN
   end
   
-  def youtube options
+  def youtube(options)
     # standard frame is 418x350
     # widescreen frame is 480x295
     
@@ -76,7 +76,7 @@ module ApplicationHelper
     "<div class='video'><object type='application/x-shockwave-flash' style='width:#{width}px; height:#{height}px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
   end
   
-  def music_player song_filename, index, width=290, height=24
+  def music_player(song_filename, index, width=290, height=24)
     string = <<END_STRING
       <script type="text/javascript" src="/javascripts/audio-player.js"></script>
 <object type="application/x-shockwave-flash" data="/javascripts/player.swf" id="audioplayer#{index}" height="#{height}" width="#{width}">
@@ -89,28 +89,14 @@ module ApplicationHelper
 END_STRING
   end
   
-  def preview item, params, show_byline=true
+  def preview(item, params, show_byline=true)
     if params[:preview_button]
       render :partial => item, :locals => {:show_byline => show_byline}
     end
   end
 
-  def unsubscribe_link fan, text="unsubscribe"
+  def unsubscribe_link(fan, text="unsubscribe")
     link_to text, unsubscribe_url(fan, :f => fan.crypted_email, :host => 'www.worldracketeeringsquad.com')
-  end
-  
-
-  def sidebar_module options, &block
-    name = options[:name]
-    path = eval("#{name.downcase}_path")
-    content = ""
-    if block_given?
-      content += "<h2>" + link_to(name.capitalize, path) + "</h2>"
-      content += capture(&block)
-      # content += '<h5 class="more">' + link_to("more #{name.downcase}...", path) + "</h5>"
-    end
-    #block_is_within_action_view?(block) ? concat(content, block.binding) : content
-    content
   end
   
   def twitter_profile
@@ -136,12 +122,24 @@ END_STRING
   end
   
   def add_twitter_links(text)
-    text = add_links(text)
+    text = auto_link(text)
     text = text.gsub(/@[^\s]*/) {|s| "<a href='http://www.twitter.com/#{s.gsub('@','')}'>#{s}</a>"}
   end
   
   def add_links(text)
     text.gsub(/http[^\s]*/) {|s| "<a href='#{s}'>#{s}</a>"}
+  end
+  
+  def convert_to_html(text)
+    text.gsub!("&lt;", "<")
+    text.gsub!("&gt;", ">")
+    text.gsub!("&quot;", '"')
+    text
+  end
+  
+  def post_twitter_update(s)
+		"<li class=\"text\">#{add_twitter_links(s.text)}</li>
+		<li class=\"byline\">#{time_ago_in_words(s.created_at)} ago from #{convert_to_html(s.source)}</li>"
   end
   
   def myspace_link profile
