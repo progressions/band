@@ -1,7 +1,7 @@
 <%= @mail.body %>
 
 <p><%= @global_settings.artist_name %><br />
-<%= link_to "website", "http://@global_settings.url" %> 
+<%= link_to "website", "http://#{@global_settings.url}" %> 
 <% unless @global_settings.myspace_profile.blank? %>
  | <%= link_to "myspace", "http://www.myspace.com/#{@global_settings.myspace_profile}" %>
 <% end %>
