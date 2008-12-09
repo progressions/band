@@ -10,7 +10,9 @@ module ApplicationHelper
   end
   
   def fckeditor_tag model, attribute="body", options={}
-    options = {:toolbarSet => 'Basic', :width => '464px', :height => '400px'}.merge(options)
+    options = {:toolbarSet => 'Basic', :width => 464, :height => 400}.merge(options)
+    options[:height] = "#{options[:height].to_i}px"
+    options[:width] = "#{options[:width].to_i}px"
     fckeditor_textarea(model, attribute, options) 
   end
   

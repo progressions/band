@@ -1,5 +1,7 @@
 <% @page_title = "Edit Profile" %>
 
+<%= javascript_include_tag :fckeditor %>
+
 <div  id="edit_profile">
 <h1>Edit Profile</h1>
 
@@ -38,6 +40,14 @@
     <dd class="label">Mailing list announcement tag:</dd>
 		<dd class="description">A short identifier included in the subject of all your mailing list emails.  Example: "WRS" becomes "[WRS] Three new gigs coming up!"</dd>
     <dt><%= f.text_field :mail_tag %></dt>
+    
+    <dd class="label">Mailing list header:</dd>
+		<dd class="description">Header which appears at the top of all your mailing list emails.</dd>
+    <dt><%= fckeditor_tag :setting, :mail_header, :height => 150 %></dt>
+    
+    <dd class="label">Mailing list footer:</dd>
+		<dd class="description">Footer which appears at the bottom of all your mailing list emails.</dd>
+    <dt><%= fckeditor_tag :setting, :mail_footer, :height => 150 %></dt>
   </dl>
     
     <h3 id="your_social_networks">Your social networks</h3>
