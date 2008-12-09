@@ -1,8 +1,3 @@
-<% show_byline = true unless show_byline == false %>
-<% show_body ||= true unless show_body == false %>
-<% show_map ||= true unless show_map == false %>
-<% show_year ||= true unless show_year == false %>
-
 <div class="show_date">
 	<h3><%= @show.date.strftime("%A %b") + " " + strip_leading_zero(@show.date.strftime("%d"))  + " " + ("#{@show.date.strftime("%Y") unless show_year == false}") %></h3> 
 	<ul>

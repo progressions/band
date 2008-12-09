@@ -144,14 +144,19 @@ END_STRING
 		<li class=\"byline\">#{time_ago_in_words(s.created_at)} ago from #{convert_to_html(s.source)}</li>"
   end
   
-  def myspace_link profile
+  def myspace_link(profile)
     "http://www.myspace.com/#{profile}"
   end
 
-	def map_from_address show
+	def map_from_address(show)
 	#	http://maps.google.com/maps?f=q&hl=en&q=1216+W+22nd+St+Austin+TX+78705
 		map = "http://maps.google.com/maps?q=#{h(show.address)}+#{h(show.city)}+#{h(show.state)}+#{show.zipcode}"
 		map
+	end
+	
+	def shows(options={})
+	  options = {:show_body => true, :show_byline => true, :show_map => true, :show_year => true}.merge(options)
+	  render :partial => @show, :locals => options
 	end
 end
 
