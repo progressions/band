@@ -1,5 +1,5 @@
 <div class="show_date">
-	<h3><%= @show.date.strftime("%A %b") + " " + strip_leading_zero(@show.date.strftime("%d"))  + " " + ("#{@show.date.strftime("%Y") unless show_year == false}") %></h3> 
+	<h3><%= @show.date.strftime("%A %b") + " " + strip_leading_zero(@show.date.strftime("%d"))  + " " + ("#{@show.date.strftime("%Y") if show_year}") %></h3> 
 	<ul>
 	    <% unless @show.title.blank? %>
 	      <li class="title"><%= h @show.title %></li>
