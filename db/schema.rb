@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081209042205) do
+ActiveRecord::Schema.define(:version => 20081217214156) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -129,12 +129,12 @@ ActiveRecord::Schema.define(:version => 20081209042205) do
     t.text     "artist_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "show_blog",           :default => true
-    t.boolean  "show_news",           :default => true
-    t.boolean  "show_music",          :default => true
-    t.boolean  "show_videos",         :default => true
-    t.boolean  "show_shows",          :default => true
-    t.boolean  "show_fans",           :default => true
+    t.boolean  "show_blog",             :default => true
+    t.boolean  "show_news",             :default => true
+    t.boolean  "show_music",            :default => true
+    t.boolean  "show_videos",           :default => true
+    t.boolean  "show_shows",            :default => true
+    t.boolean  "show_fans",             :default => true
     t.integer  "promo_id"
     t.string   "email"
     t.string   "admin_email"
@@ -143,9 +143,9 @@ ActiveRecord::Schema.define(:version => 20081209042205) do
     t.string   "youtube_profile"
     t.string   "featured_playlist"
     t.string   "latest_playlist"
-    t.boolean  "show_featured_video", :default => true
-    t.boolean  "show_lyrics",         :default => true
-    t.boolean  "show_promo",          :default => true
+    t.boolean  "show_featured_video",   :default => true
+    t.boolean  "show_lyrics",           :default => true
+    t.boolean  "show_promo",            :default => true
     t.text     "header"
     t.text     "footer"
     t.string   "songs_host"
@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(:version => 20081209042205) do
     t.string   "composer"
     t.text     "mail_footer"
     t.text     "mail_header"
+    t.string   "recaptcha_public_key"
+    t.string   "recaptcha_private_key"
   end
 
   create_table "shows", :force => true do |t|
@@ -177,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20081209042205) do
     t.string   "cover"
     t.integer  "venue_id"
     t.time     "end_time"
+    t.text     "notes"
   end
 
   create_table "simple_captcha_data", :force => true do |t|

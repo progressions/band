@@ -87,7 +87,15 @@
 		<dd class="label">Songs host:</dd>
 		<dd class="description">The website where your mp3s are hosted.  Leave this blank unless your mp3s are hosted on a different server than the website.</dd>
     <dt><%= f.text_field :songs_host %></dt>
+<!--    
+    <dd class="label">ReCaptcha public key</dd>
+		<dd class="description">Public key to validate your site at ReCaptcha.net.</dd>
+    <dt><%= f.text_field :recaptcha_public_key %></dt>
     
+    <dd class="label">ReCaptcha private key</dd>
+		<dd class="description">Private key to validate your site at ReCaptcha.net.</dd>
+    <dt><%= f.text_field :recaptcha_private_key %></dt>
+-->    
 		<dd class="label">Header:</dd>
 		<dd class="description">Header code, appears at the top of the website.  Use this to display an ad banner.</dd>
     <dt><%= f.text_area :header %></dt>
@@ -95,7 +103,6 @@
 		<dd class="label">Footer:</dd>
 		<dd class="description">Footer code, appears at the bottom of the website.  Use this to display an ad banner or any tracking code.</dd>
     <dt><%= f.text_area :footer %></dt>
-    
   </dl>
   <p>
     <%= f.submit "Update" %>

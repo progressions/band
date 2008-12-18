@@ -5,7 +5,11 @@
 # TODO: Downloadable promo materials--images, wallpapers, &c
 # TODO: Online promo stuff: links, banners, &c
 
+require 'recaptcha'
+
 class ApplicationController < ActionController::Base
+  include ReCaptcha::AppHelper
+    
   extend ActiveSupport::Memoizable
   
   before_filter :global_settings

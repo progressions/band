@@ -3,7 +3,6 @@
   <h3>Leave a comment</h3>
   
   <% if params[:preview_button] %>
-    <% raise "WTF" unless @preview_comment %>
     <%= render :partial => "comments/comment", :locals => {:blog_comment => @preview_comment, :show_byline => :false} %>
   <% end %>
     
@@ -19,7 +18,10 @@
     
     <p><%= check_box_tag "subscribe", "1", @subscribe %> Notify me by email of further comments to this post.</p>
 
-    <p><%= show_simple_captcha %></p>
+    
+    <div id="captcha">
+      <%= get_captcha(:options => {:theme => 'white'}) %>
+    </div>
 
     <p>
       <%= f.submit "Preview", :name => "preview_button" %>

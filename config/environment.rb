@@ -69,11 +69,13 @@ Rails::Initializer.run do |config|
   end
   
   config.gem "httparty"
-  
 
 end
 #require 'actionwebservice'
 require "#{RAILS_ROOT}/vendor/gems/twitter-0.3.7/lib/twitter"
+
+RCC_PUB = "6LfxUQQAAAAAAEwuipNG2xYZyC7kZyDOm6QEcbBn"
+RCC_PRIV= "6LfxUQQAAAAAAAXACByW_uKKsn26uDuYWLCgBEI4"
 
 WillPaginate::ViewHelpers.pagination_options[:param_name] = :p
 

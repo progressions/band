@@ -45,12 +45,12 @@ class CommentsController < ApplicationController
     @blog = Blog.find(params[:blog])
     @comment = Comment.new(params[:comment])
     @new_comment = Comment.new
-    #unless params[:preview_button]
-    #end
 
-    if params[:preview_button] || !simple_captcha_valid? || !@comment.save
+    valid_recaptcha = validate_recap(params, @comment.errors)
+    
+    if params[:preview_button] || !valid_recaptcha || !@comment.save
       @preview_comment = @comment
-      if !params[:preview_button] && !simple_captcha_valid?
+      if !params[:preview_button] && !valid_recaptcha
         @comment.errors.add_to_base("You must enter the code in the image.")
       end
       render :action => "new"
