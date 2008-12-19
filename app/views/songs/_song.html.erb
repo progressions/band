@@ -6,7 +6,7 @@
   <h3 class="post_title"><%= link_to_unless_current @song.title, song_path(@song) %></h3>
   
 <ul>
-  <li><%= link_to @song.title, @song.url %></li>
+  <li><%= @song.title %> (<%= link_to "download", @song.url %>)</li>
   <li><%= music_player(@song.url,1,180) %></li>
 </ul>
 
