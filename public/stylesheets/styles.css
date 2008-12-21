@@ -784,6 +784,7 @@ input#zip_code {
 }
 
 #logo {
+  background: url(/images/site/footer_bg.png) #000 top left repeat-x;
   float: left;
 }
     
