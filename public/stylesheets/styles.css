@@ -7,14 +7,14 @@ color:#444;
 font-family:"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
 }
 body {	  
-background: black url(/images/site/bg.jpg) no-repeat scroll 50% 0pt;
+background: black url(/images/bg.jpg) no-repeat scroll 50% 0pt;
 }
 body.sessions, 
 html body.sessions {
  background: #9dbacf;
 }
 #sessions {
- background: url(/images/site/sidebar_bg.png) #9dbacf top left repeat-x;
+ background: url(/images/sidebar_bg.png) #9dbacf top left repeat-x;
  border: 1px solid white;
  color: white;
  margin: auto;
@@ -61,7 +61,7 @@ margin:0 auto;
 width:852px;
 }
 #inside-wrap {
-  background: url(/images/site/sidebar_bg.png) #9dbacf top left repeat-x;
+  background: url(/images/sidebar_bg.png) #9dbacf top left repeat-x;
   border: 1px solid white;
 }
 #inside-wrap {	  
@@ -85,7 +85,7 @@ padding: 30px;
 }
 
 #sidebar {
- background: url(/images/site/sidebar_bg.png) #9dbacf top left repeat-x;
+ background: url(/images/sidebar_bg.png) #9dbacf top left repeat-x;
   float:left;
 width:300px;
 }
@@ -100,7 +100,7 @@ width: 850px;
 
 #nav ul
 {
-  background: url(/images/site/nav_wide_bg.png) #fff bottom left repeat-x;
+  background: url(/images/nav_wide_bg.png) #fff bottom left repeat-x;
   height: 35px;
   list-style: none;
   padding: 0;
@@ -131,7 +131,7 @@ width: 850px;
 }
 #nav li a:hover
 { 
-  background: url(/images/site/nav_bg.png) #fff bottom left repeat-x;
+  background: url(/images/nav_bg.png) #fff bottom left repeat-x;
 }
 
 /* Hide from IE5-Mac \*/
@@ -204,7 +204,7 @@ body.sessions #notice {
  padding: 0;
 }
 #video {
-  background: url(/images/site/video_bg.png) #102e46 top left repeat-x;
+  background: url(/images/video_bg.png) #102e46 top left repeat-x;
  text-align: center;
  margin: 0 -30px;
  padding: 20px 0;
@@ -240,7 +240,7 @@ body.sessions #notice {
  padding-top: 0;
 }
 h1.header {
- background: url(/images/site/header.png) #c9d1de top left repeat-x;
+ background: url(/images/header.png) #c9d1de top left repeat-x;
  color: #1e5b88;
  display: block;	
  margin: 0 -30px;
@@ -634,7 +634,7 @@ div.color {
  color: white;
 }
 #sidebar div.module h2:hover {
-  background: url(/images/site/sidebar_head_bg.png) #1f5c8b top left repeat-x;
+  background: url(/images/sidebar_head_bg.png) #1f5c8b top left repeat-x;
 }
 #sidebar div.module ul, 
 #sidebar div.module h3, 
@@ -674,7 +674,7 @@ div.color {
 }
 
 #footer {
-  background: url(/images/site/footer_bg.png) #000 top left repeat-x;
+  background: url(/images/footer_bg.png) #000 top left repeat-x;
   color: #bbb;
 clear:both;
 font-size: 0.8em;
