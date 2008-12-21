@@ -1,8 +1,8 @@
 xml.instruct! :xml, :version => "1.0" 
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "World Racketeering Squad blog comments"
-    xml.description "Comments on the official blog of World Racketeering Squad, rock and roll pop band from Austin, Texas."
+    xml.title "#{@global_settings.artist_name} blog comments"
+    xml.description "Comments on the official blog of #{@global_settings.artist_name}."
     xml.link formatted_comments_url(:rss)
 
     for comment in @comments
