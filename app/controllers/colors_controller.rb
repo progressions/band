@@ -46,7 +46,6 @@ class ColorsController < ApplicationController
       :filename => filename)
   end
   
-  # TODO: Import YAML into new Colors
   def import
     if params[:dump]
       @yaml = YAML.load(params[:dump][:file].read)
