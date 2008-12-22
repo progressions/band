@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe User do
+describe Blog do
   it "should be invalid with only title" do
     @blog = Blog.create(:title => "This is a blog")
     @blog.should_not be_valid

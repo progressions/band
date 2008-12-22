@@ -8,13 +8,7 @@ class Blog < ActiveRecord::Base
   # TODO: Allow tagging of blog posts by the poster
   
   validates_presence_of :title, :body
-  
-=begin
-  def to_param
-    "#{created_at.strftime("%Y-%m-%d")}-#{title.gsub(" ","-").downcase.gsub(/[^a-z0-9-]/,"")}" 
-  end
-=end
-  
+    
   def subscribe email
     sub = self.subscriptions.find_or_create_by_email(email)
     sub.save
