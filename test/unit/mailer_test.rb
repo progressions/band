@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require File.dirname(__FILE__) + '/../../vendor/rails/actionpack/lib/action_view/helpers/sanitize_helper'
+#require File.dirname(__FILE__) + '/../../vendor/rails/actionpack/lib/action_view/helpers/sanitize_helper'
 
 # use "sanitize" to test the mailer views
-include ActionView::Helpers::SanitizeHelper
+#include ActionView::Helpers::SanitizeHelper
 
 class MailerTest < ActionMailer::TestCase
   fixtures :users, :blogs, :comments, :fans, :mails, :settings
