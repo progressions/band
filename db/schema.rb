@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081217214156) do
+ActiveRecord::Schema.define(:version => 20081227145604) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -123,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20081217214156) do
     t.integer  "setting_id"
   end
 
+  create_table "rateables", :force => true do |t|
+    t.integer  "show_id"
+    t.integer  "show_rating_id"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "settings", :force => true do |t|
     t.string   "site_name"
     t.string   "artist_name"
@@ -164,6 +172,29 @@ ActiveRecord::Schema.define(:version => 20081217214156) do
     t.string   "recaptcha_private_key"
   end
 
+  create_table "show_ratings", :force => true do |t|
+    t.integer  "rateable_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "show_reports", :force => true do |t|
+    t.integer  "show_id"
+    t.text     "notes"
+    t.integer  "attendance"
+    t.integer  "yes_rsvps"
+    t.integer  "maybe_rsvps"
+    t.integer  "no_rsvps"
+    t.integer  "fliers_distributed"
+    t.integer  "posters_distributed"
+    t.integer  "cds_distributed"
+    t.integer  "merchandise_distributed"
+    t.integer  "created_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shows", :force => true do |t|
     t.string   "title"
     t.datetime "date"
@@ -180,6 +211,8 @@ ActiveRecord::Schema.define(:version => 20081217214156) do
     t.integer  "venue_id"
     t.time     "end_time"
     t.text     "notes"
+    t.string   "facebook_event"
+    t.string   "myspace_event"
   end
 
   create_table "simple_captcha_data", :force => true do |t|

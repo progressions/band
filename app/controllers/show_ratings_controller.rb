@@ -1,0 +1,2 @@
+class ShowRatingsController < ApplicationController
+end

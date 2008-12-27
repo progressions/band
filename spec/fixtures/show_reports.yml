@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  show_id: 1
+  notes: MyText
+  attendance: 1
+  yes_rsvps: 1
+  maybe_rsvps: 1
+  fliers_distributed: 1
+  cds_distributed: 1
+  posters_distributed: 1
+
+two:
+  show_id: 1
+  notes: MyText
+  attendance: 1
+  yes_rsvps: 1
+  maybe_rsvps: 1
+  fliers_distributed: 1
+  cds_distributed: 1
+  posters_distributed: 1

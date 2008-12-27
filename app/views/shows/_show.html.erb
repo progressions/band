@@ -32,7 +32,7 @@
   <p class="byline">
 posted on <%= @show.created_at.strftime("%b %d %Y") %>   by <strong><%= @show.user.full_name %></strong>. 
     <% if logged_in? %>
-      (<%= link_to "edit", edit_show_path(@show) %> | <%= link_to 'delete', @show, :confirm => 'Are you sure?', :method => :delete %>)
+      (<%= link_to "edit", edit_show_path(@show) %> | <%= link_to 'delete', @show, :confirm => 'Are you sure?', :method => :delete %> | <% link_to "report", show_report_path(@show) %>)
     <% end %>
   </p>
   <% end %>

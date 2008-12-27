@@ -1,0 +1,2 @@
+class ShowReportsController < ApplicationController
+end
