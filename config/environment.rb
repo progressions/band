@@ -71,7 +71,7 @@ Rails::Initializer.run do |config|
   config.gem "httparty"
 
 end
-#require 'actionwebservice'
+require 'try'
 require "#{RAILS_ROOT}/vendor/gems/twitter-0.3.7/lib/twitter"
 
 RCC_PUB = "6LfxUQQAAAAAAEwuipNG2xYZyC7kZyDOm6QEcbBn"
