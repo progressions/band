@@ -12,7 +12,7 @@
   <%= stylesheet_link_tag 'styles' %>
   
   <%= stylesheet_link_tag 'iphone' if params.has_key?(:iphone) %>
-  <%= stylesheet_link_tag formatted_color_path(@global_settings.color, "css") %>
+  <%= stylesheet_link_tag style_path(@global_settings.style, :format => :css) %>
   
   <%= stylesheet_link_tag 'admin' if admin? && logged_in? %>
   

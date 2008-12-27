@@ -1,0 +1,17 @@
+<% title "Show Reports" %>
+
+<table>
+  <tr>
+    <th>Show</th>
+  </tr>
+  <% for show_report in @show_reports %>
+    <tr>
+      <td><%=h show_report.show_id %></td>
+      <td><%= link_to "Show", show_report %></td>
+      <td><%= link_to "Edit", edit_show_report_path(show_report) %></td>
+      <td><%= link_to "Destroy", show_report, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Show Report", new_show_report_path %></p>

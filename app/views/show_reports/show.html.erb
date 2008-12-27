@@ -1,0 +1,12 @@
+<% title "Show Report" %>
+
+<p>
+  <strong>Show:</strong>
+  <%=h @show_report.show_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_show_report_path(@show_report) %> |
+  <%= link_to "Destroy", @show_report, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", show_reports_path %>
+</p>

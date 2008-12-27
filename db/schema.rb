@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081227152730) do
+ActiveRecord::Schema.define(:version => 20081227154129) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(:version => 20081227152730) do
     t.text     "mail_header"
     t.string   "recaptcha_public_key"
     t.string   "recaptcha_private_key"
+    t.integer  "style_id"
   end
 
   create_table "show_ratings", :force => true do |t|

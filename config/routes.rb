@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :colors, :member => {:export => :get},
+  map.resources :show_reports
+
+  map.resources :styles, :member => {:export => :get},
     :collection => {:import => :post, :import => :get}
 
   map.resources :songs
@@ -22,8 +24,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :shows
   
-  map.resources :show_reports
-
   map.resources :comments
 
   map.resources :blogs, :member => {:unsubscribe => :get}
