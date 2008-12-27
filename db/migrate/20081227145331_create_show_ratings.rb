@@ -1,9 +1,10 @@
 class CreateShowRatings < ActiveRecord::Migration
   def self.up
     create_table :show_ratings do |t|
-      t.integer :rateable_id
+      t.integer :show_id
       t.integer :rating
 
+      t.integer :created_by
       t.timestamps
     end
   end

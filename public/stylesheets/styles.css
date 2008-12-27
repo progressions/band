@@ -274,15 +274,15 @@ h3.post_title {
 #news h3.post_title a:hover {
  color: #ce102b;
 }
-#colors h3.post_title, 
-#colors p.byline {
+#styles h3.post_title, 
+#styles p.byline {
  display: inline;
 }
-#colors div.color {
+#styles div.style {
  margin: 5px 0;
  width: 100%;
 }
-#colors form.edit_setting {
+#styles form.edit_setting {
  margin-bottom: 20px;
 }
 #archive {
@@ -523,7 +523,7 @@ dl.music dd {
   font-size: 0.9em;
 }
 
-.color dl, 
+.style dl, 
 #edit_profile dl {
   color: #555;    
   font-size: 0.7em;
@@ -531,10 +531,10 @@ dl.music dd {
   width: 510px;    
 }
 
-.color dl dt, 
+.style dl dt, 
 #edit_profile dl dt { 
 }
-.color dl dt input,
+.style dl dt input,
 #edit_profile dl dt input {
   color: #555;
   width: 300px;
@@ -543,14 +543,14 @@ dl.music dd {
   color: #555;
   width: 500px;
 }
-.color dl dd.label,
+.style dl dd.label,
 #edit_profile dl dd.label { 
   font-size: 1.5em;
   font-weight: bold;
   margin: 15px 0 0 0;
   padding: 0;  
 }
-.color dl dd.description,
+.style dl dd.description,
 #edit_profile dl dd.description { 
   margin: 0 0 3px 0;
   padding: 0;
@@ -560,35 +560,35 @@ dl.music dd {
   padding: 0;
 	color: red;
 }
-.color dl dt input {
+.style dl dt input {
   width: 55px;
 }
-.color dl dt input#color_title {
+.style dl dt input#style_title {
   width: 84px;
 }
-.color dl dd {
+.style dl dd {
   margin: 0;
   padding: 0;
 }
-.color dl dt {
+.style dl dt {
   clear: both;
   float: left;
   margin: 0;
   padding: 0;
   width: 100px;
 }
-.color dl dd.label,
-.color dl dd.description {
+.style dl dd.label,
+.style dl dd.description {
   margin: 0;
   padding: 0;
   width: 270px;
 }
-.color dl dd.description {
+.style dl dd.description {
   clear: both;
   margin-left: 100px;
   margin-bottom: 15px;
 }
-div.color {
+div.style {
   float: left;
   width: 380px;
 }

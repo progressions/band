@@ -21,6 +21,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :venues
 
   map.resources :shows
+  
+  map.resources :show_reports
 
   map.resources :comments
 

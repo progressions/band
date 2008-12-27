@@ -1,0 +1,123 @@
+
+  body, html {
+    color: <%= @style.body %>;
+  }
+
+  h1.header span.type, 
+	#news h3.post_title a {
+    color: <%= @style.news_heading %>;
+	}
+	
+	#sidebar div.module,
+  #shows .show_date h3,
+  #shows .show_date .time,
+  #shows .show_date .address,
+	h1.header a, 
+	h1.header a:visited,
+  a {
+    color: <%= @style.link %>;
+  }
+  a:visited {
+    color: <%= @style.link_visited %>;
+  }
+  a:hover,  
+	#news h3.post_title a:hover {
+    color: <%= @style.link_hover %>;
+  }
+	
+	#archive h2,
+	p.byline, 	
+  .lyric h4.composer {
+    color: <%= @style.utility %>;
+	}
+	#archive h2 {
+	  border-bottom: 1px solid <%= @style.utility %>;
+  }
+	
+	#main {
+    background-color: <%= @style.main_bg %>;
+	}
+	
+	#sidebar {
+    background-color: <%= @style.sidebar_bg %>;
+	}
+	#sidebar div.module {
+    background-color: <%= @style.module_bg %>;
+	}
+	#inside-wrap {
+    background: url(/images/sidebar_bg.png) <%= @style.sidebar_bg %> top left repeat-x;
+    border: 1px solid <%= @style.main_bg %>;
+	}
+	
+	
+	#nav ul
+  {
+    background: url(/images/nav_wide_bg.png) <%= @style.main_bg %> bottom left repeat-x;
+  }
+  #nav li
+  {
+    color: <%= @style.utility %>;
+  }
+  #nav li a:hover
+  { 
+    background: url(/images/nav_bg.png) <%= @style.main_bg %> bottom left repeat-x;
+  }
+  
+  
+  input#email, input#zip_code {    
+    border: 1px solid black;
+    background-color: <%= @style.sidebar_bg %>;
+    color: <%= @style.main_bg %>;
+  }
+  #mailing_list {
+    color: <%= @style.main_bg %>;
+  }
+	
+	
+	#sidebar div.module h2,
+	#sidebar div.module h2 a,
+	#sidebar div.module h2 a:visited {
+    background-color: <%= @style.module_heading_bg %>; 
+    color: <%= @style.module_heading %>;
+	}
+  
+  
+	
+	#sidebar div.module h2:hover a,
+	#sidebar div.module h2:hover a:hover,
+	#sidebar div.module h2:hover {
+    background: url(/images/sidebar_head_bg.png) <%= @style.module_heading_bg_hover %> top left repeat-x;
+	  color: <%= @style.module_heading_hover %>;
+	}
+  
+  #footer {
+    background-color: <%= @style.footer_bg %>;
+  }
+  
+  #footer, 
+	#footer #copyright_notice {
+    color: <%= @style.footer %>;
+  }
+	
+  #footer a,
+  #footer a:visited {    
+    color: <%= @style.footer_link %>;
+  }
+  
+  
+	#fans #fans_list table td.tags a,	
+	#fans #fans_list table td.tags a:visited {
+	  color: <%= @style.news_heading %>;
+	}
+	#fans #fans_list table td.tags a:hover {
+	  background-color: <%= @style.news_heading %>;
+	  color: <%= @style.main_bg %>;
+	}
+	
+	ul.twitter li {
+  	color: <%= @style.body %>;
+	}
+  ul.twitter li.created_at {
+    color: <%= @style.utility %>;
+  }
+  

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081227145604) do
+ActiveRecord::Schema.define(:version => 20081227152730) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -173,8 +173,9 @@ ActiveRecord::Schema.define(:version => 20081227145604) do
   end
 
   create_table "show_ratings", :force => true do |t|
-    t.integer  "rateable_id"
+    t.integer  "show_id"
     t.integer  "rating"
+    t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -241,6 +242,31 @@ ActiveRecord::Schema.define(:version => 20081227145604) do
     t.text     "body"
     t.string   "filename"
     t.integer  "setting_id"
+  end
+
+  create_table "styles", :force => true do |t|
+    t.string   "title",                   :default => "Untitled Styles"
+    t.string   "body"
+    t.string   "heading"
+    t.string   "news_heading"
+    t.string   "link"
+    t.string   "link_visited"
+    t.string   "link_hover"
+    t.string   "utility"
+    t.string   "main_bg"
+    t.string   "sidebar_bg"
+    t.string   "module_bg"
+    t.string   "module_heading"
+    t.string   "module_heading_bg"
+    t.string   "module_heading_hover"
+    t.string   "module_heading_bg_hover"
+    t.string   "footer"
+    t.string   "footer_link"
+    t.string   "footer_bg"
+    t.integer  "setting_id"
+    t.integer  "created_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriptions", :force => true do |t|

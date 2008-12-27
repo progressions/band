@@ -1,6 +1,6 @@
 class Setting < ActiveRecord::Base
   has_one :promo
-  has_one :color
+  has_one :style
   
   has_many :members
   has_many :pages
@@ -44,7 +44,6 @@ class Setting < ActiveRecord::Base
   
   def with_protocol link
 	  link = link.match(/^http:\/\//) ? link : "http://#{link}"
-	  #link = link.match(/\/$/) ? link : "#{link}/"
 	  link.gsub(/\/$/, "")
   end
 end

@@ -1,0 +1,28 @@
+<% @page_title = "Styles" %>
+
+<div id="styles">
+
+<h1>Styles</h1>
+
+<p><%= link_to 'New styles', new_style_path %> | <%= link_to 'Import styles', import_styles_path %></p>
+
+<p>Choose style scheme: <br />
+
+<% form_for(@setting) do |f| %>
+  
+<%= f.collection_select :style_id, Style.find(:all), :id, :title, :prompt => true %>
+ 
+    <%= f.submit "Update" %>
+<% end %></p>
+
+<% for @style in @styles %>
+<% @style.user = current_user if @style.user.blank? %>
+<div class="style">
+<h3 class="post_title"><%= @style.title %></h3>
+  <p class="byline"> 
+posted on <%= @style.created_at.strftime("%b %d %Y") %> by <strong><%= link_to(@style.user.full_name, styles_path(:author => @style.user.full_name)) %></strong>.
+      (<%= link_to "edit", edit_style_path(@style) %> | <%= link_to "export", export_style_path(@style) %> | <%= link_to 'delete', @style, :confirm => 'Are you sure?', :method => :delete %>)
+  </p>
+</div>
+<% end %>  
+</div> <!-- end DIV "styles" -->
