@@ -163,6 +163,10 @@ END_STRING
 	  options = {:show_body => true, :show_byline => true, :show_map => true, :show_year => true}.merge(options)
 	  render :partial => @show, :locals => options
 	end
+	
+	def post_tweet_check_box(message="Post on Twitter?")
+	  "#{check_box_tag :post_tweet, 'yes', true} #{message}"
+	end
 end
 
 class ActionView::Base

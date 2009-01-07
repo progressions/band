@@ -45,12 +45,11 @@ class BlogsController < ApplicationController
     @blog.user = current_user
     
     if params[:preview_button] || !@blog.save
-      flash[:notice] = "User is valid? #{current_user.valid?}"
       @show_byline = false
       render :action => "new"
     else
       flash[:notice] = 'Blog was successfully created.'
-      update_twitter_with_new_content("New blog post: #{truncate(@blog.title, :length => 100)} #{blog_url(@blog)}")
+      update_twitter_with_new_content("New blog post: #{truncate(@blog.title, :length => 100)} #{blog_url(@blog)}") if params[:post_tweet]
       redirect_to(@blog)
     end
   end

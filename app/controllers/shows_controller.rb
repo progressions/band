@@ -60,7 +60,7 @@ class ShowsController < ApplicationController
 
     if @show.venue.valid? && @show.save
       flash[:notice] = 'Show was successfully created.'
-      update_twitter_with_new_content("New show: #{show_url(@show)}")
+      update_twitter_with_new_content("New show: #{@show.venue.name} on #{@show.date.strftime('%b %d')} at #{@show.date.strftime("%I:%M%p").downcase}: #{show_url(@show)}") if params[:post_tweet]
       redirect_to(@show)
     else
       render :action => "new"

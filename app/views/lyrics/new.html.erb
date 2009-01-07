@@ -13,7 +13,8 @@
   </p>
 
 
-    <%= fckeditor_tag("lyric") %>
+    <% fckeditor_tag("lyric") %>
+    <%= f.text_area :body %>
 
   <p>
     <b>Composer</b><br />
@@ -22,8 +23,8 @@
   
   <% if @global_settings.show_blog? %>
   <p>
-    <b>Post a blog about new lyric?</b><br />
-    <%= check_box_tag "post_blog", "yes", true %>
+    <%= check_box_tag "post_blog", "yes", true %> Post a blog about new lyric? 
+    <br /><%= post_tweet_check_box %>
   </p>
   <% end %>
   
