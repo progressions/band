@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081227154129) do
+ActiveRecord::Schema.define(:version => 20090108165354) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(:version => 20081227154129) do
     t.text     "notes"
     t.string   "facebook_event"
     t.string   "myspace_event"
+    t.boolean  "active"
   end
 
   create_table "simple_captcha_data", :force => true do |t|
