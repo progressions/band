@@ -80,7 +80,10 @@ module ApplicationHelper
     else
       video_link = "http://www.youtube.com/#{options[:video]}"
     end
-    "<div class='video'><object type='application/x-shockwave-flash' style='width:#{width}px; height:#{height}px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
+    #"<div class='video'><object type='application/x-shockwave-flash' style='width:#{width}px; height:#{height}px;' data='#{video_link}'><param name='movie' value='#{video_link}' /></object></div>"
+    
+    "<div class='video'><object width='#{width}' height='#{height}'><param name='movie' value='#{video_link}'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='#{video_link}' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='#{width}' height='#{height}'></embed></object></div>"
+
   end
   
   def music_player(song_filename, index, width=290, height=24)
