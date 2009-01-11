@@ -18,6 +18,8 @@ class SettingsController < ApplicationController
     @entries = Entry.find(:all)
     @lyrics = Lyric.find(:all)
     @fans = Fan.find(:all)
+    @shows_to_date = Show.find(:all, :conditions => ["date < ?", Time.now])
+    @shows_upcoming = Show.find(:all, :conditions => ["date >= ?", Time.now])
   end
   
   def profile
