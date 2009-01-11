@@ -1,6 +1,6 @@
 class AddActiveToShows < ActiveRecord::Migration
   def self.up
-    add_column :shows, :active, :boolean
+    add_column :shows, :active, :boolean, :default => true
   end
 
   def self.down

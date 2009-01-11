@@ -11,7 +11,7 @@
 <%= will_paginate @shows %>
 
 <% for @show in @shows %>
-  <%= shows %>
+  <%= shows if @show.active? || admin? %>
 <% end %>
 
 <%= will_paginate @shows %>

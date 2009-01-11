@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(:version => 20090108165354) do
     t.text     "notes"
     t.string   "facebook_event"
     t.string   "myspace_event"
-    t.boolean  "active"
+    t.boolean  "active",         :default => true
   end
 
   create_table "simple_captcha_data", :force => true do |t|
