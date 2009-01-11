@@ -164,8 +164,8 @@ END_STRING
 	  render :partial => @show, :locals => options
 	end
 	
-	def post_tweet_check_box(message="Post on Twitter?")
-	  "#{check_box_tag :post_tweet, 'yes', true} #{message}"
+	def post_tweet_check_box(checked=true, message="Post on Twitter?")
+	  "#{check_box_tag :post_tweet, 'yes', checked} #{message}"
 	end
 end
 

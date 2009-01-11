@@ -21,6 +21,7 @@ class ShowsController < ApplicationController
   # GET /shows/new
   # GET /shows/new.xml
   def new
+    @post_tweet = true
     @show = Show.new
     @venue = Venue.new
     @venues = Venue.find(:all)
@@ -46,6 +47,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1/edit
   def edit
+    @post_tweet = false
     @show = Show.find(params[:id])
     @venue = @show.venue.nil? ? Venue.new : @show.venue
     @venues = Venue.find(:all)
@@ -70,11 +72,13 @@ class ShowsController < ApplicationController
   # PUT /shows/1
   # PUT /shows/1.xml
   def update
+    @post_tweet = params[:post_tweet] || false
     @show = Show.find(params[:id])    
     @show.venue = Venue.find_or_create_by_name(params[:venue]) if @show.venue.nil?
 
     if @show.update_attributes(params[:show]) && @show.venue.update_attributes(params[:venue])
       flash[:notice] = "Show was successfully updated."
+      update_twitter_with_new_content("Updated show: #{@show.venue.name} on #{@show.date.strftime('%b %d')} at #{@show.date.strftime("%I:%M%p").downcase}: #{show_url(@show)}") if @post_tweet
       redirect_to(@show)
     else
       render :action => "edit"
