@@ -1,0 +1,124 @@
+
+  body, html {
+    background-color: <%= @color.main_bg %>;
+    color: <%= @color.body %>;
+  }
+
+  h1.header span.type, 
+	#news h3.post_title a {
+    color: <%= @color.news_heading %>;
+	}
+	
+	#sidebar div.module,
+  #shows .show_date h3,
+  #shows .show_date .time,
+  #shows .show_date .address,
+	h1.header a, 
+	h1.header a:visited,
+  a {
+    color: <%= @color.link %>;
+  }
+  a:visited {
+    color: <%= @color.link_visited %>;
+  }
+  a:hover,  
+	#news h3.post_title a:hover {
+    color: <%= @color.link_hover %>;
+  }
+	
+	#archive h2,
+	p.byline, 	
+  .lyric h4.composer {
+    color: <%= @color.utility %>;
+	}
+	#archive h2 {
+	  border-bottom: 1px solid <%= @color.utility %>;
+  }
+	
+	#main {
+    background-color: <%= @color.main_bg %>;
+	}
+	
+	#sidebar {
+    background-color: <%= @color.sidebar_bg %>;
+	}
+	#sidebar div.module {
+    background-color: <%= @color.module_bg %>;
+	}
+	#inside-wrap {
+    background: url(/images/sidebar_bg.png) <%= @color.sidebar_bg %> top left repeat-x;
+    border: 1px solid <%= @color.main_bg %>;
+	}
+	
+	
+	#nav ul
+  {
+    background: url(/images/nav_wide_bg.png) <%= @color.main_bg %> bottom left repeat-x;
+  }
+  #nav li
+  {
+    color: <%= @color.utility %>;
+  }
+  #nav li a:hover
+  { 
+    background: url(/images/nav_bg.png) <%= @color.main_bg %> bottom left repeat-x;
+  }
+  
+  
+  input#email, input#zip_code {    
+    border: 1px solid black;
+    background-color: <%= @color.sidebar_bg %>;
+    color: <%= @color.main_bg %>;
+  }
+  #mailing_list {
+    color: <%= @color.main_bg %>;
+  }
+	
+	
+	#sidebar div.module h2,
+	#sidebar div.module h2 a,
+	#sidebar div.module h2 a:visited {
+    background-color: <%= @color.module_heading_bg %>; 
+    color: <%= @color.module_heading %>;
+	}
+  
+  
+	
+	#sidebar div.module h2:hover a,
+	#sidebar div.module h2:hover a:hover,
+	#sidebar div.module h2:hover {
+    background: url(/images/sidebar_head_bg.png) <%= @color.module_heading_bg_hover %> top left repeat-x;
+	  color: <%= @color.module_heading_hover %>;
+	}
+  
+  #footer {
+    background-color: <%= @color.footer_bg %>;
+  }
+  
+  #footer, 
+	#footer #copyright_notice {
+    color: <%= @color.footer %>;
+  }
+	
+  #footer a,
+  #footer a:visited {    
+    color: <%= @color.footer_link %>;
+  }
+  
+  
+	#fans #fans_list table td.tags a,	
+	#fans #fans_list table td.tags a:visited {
+	  color: <%= @color.news_heading %>;
+	}
+	#fans #fans_list table td.tags a:hover {
+	  background-color: <%= @color.news_heading %>;
+	  color: <%= @color.main_bg %>;
+	}
+	
+	ul.twitter li {
+  	color: <%= @color.body %>;
+	}
+  ul.twitter li.created_at {
+    color: <%= @color.utility %>;
+  }
+  
