@@ -27,6 +27,12 @@
 	    <% unless @show.body.blank? || show_body == false %>
 	      <li class="body"><%= @show.body %></li>
 	    <% end %>
+	    <% if @show.has_rsvp? %>
+	      <li class="rsvp">
+	        RSVP: <%= link_to("Facebook", @show.facebook_event) if @show.facebook_event? %>
+                <%= link_to("MySpace", @show.myspace_event) if @show.myspace_event? %>
+	    <% end %>
+	    <li>
 	</ul>
 	<% unless show_byline == false %>
   <p class="byline">

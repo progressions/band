@@ -1,28 +1,30 @@
- 
   <p>
+		<%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  
+  
+  <p>Date and time:  
+  <%= calendar_date_select :show, :date, :embedded => true, :time => true %>
+  </p>
+  
+  <p>
+		<%= f.label :end_time %><br />
+    <%= f.time_select :end_time, {:include_seconds => false, :minute_step => 15} %>
+  </p>
+  
+  <p>
+<%= f.collection_select :venue_id, Venue.find(:all), :id, :name, :prompt => "Select a venue" %>
+  or create one (required):</p>
+  <div id="venue">
+    <% render :partial => @venue, :locals => {:f => f} %>
+    
+    
+  
   <% fields_for @venue do |v| %>
-    <%= f.collection_select :venue_id, Venue.find(:all), :id, :name, :prompt => "Select a Venue" %>
-  or create one:
-  <%= v.text_field :name %>
-  <% end %>
+
+  <p><%= v.text_field :name %>
   </p>
-  
-  <%= fckeditor_textarea("show", "body", :toolbarSet => 'Basic', :width => '100%', :height => '200px') %>
-  
-  <p>
-		<%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </p>
-  <p>
-		<%= f.label :time %><br />
-    <%= f.time_select :time, {:include_seconds => false, :minute_step => 15} %>
-  </p>
-  <p>
-		<%= f.label :cover %><br />
-    <%= f.text_field :cover %>
-  </p>
-  
-  <% fields_for @venue do |v| %>
   <p>
 		<%= v.label :address %><br />
     <%= v.text_field :address %>
@@ -39,39 +41,32 @@
 		<%= v.label :zipcode %><br />
     <%= v.text_field :zipcode %>
   </p>
-  <% end %> <p>
-		<%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <% end %>
+    
+  </div> <!-- end DIV "venue" -->
+
+  <p>
+		<%= f.label :cover %><br />
+    <%= f.text_field :cover %>
   </p>
+
+  <p>
+		<%= f.label :facebook_event %><br />
+    <%= f.text_field :facebook_event %>
+  </p>
+
+  <p>
+		<%= f.label :myspace_event, "MySpace event" %><br />
+    <%= f.text_field :myspace_event %>
+  </p>
+
   
-  <%= fckeditor_textarea("show", "body", :toolbarSet => 'Basic', :width => '100%', :height => '200px') %>
+  <%= fckeditor_tag("show", "body", :height => "200px") %>
   
   <p>
-		<%= f.label :date %><br />
-    <%= f.date_select :date %>
+    <%= post_tweet_check_box(@post_tweet) %>
   </p>
   <p>
-		<%= f.label :time %><br />
-    <%= f.time_select :time, {:include_seconds => false, :minute_step => 15} %>
-  </p>
-  <p>
-		<%= f.label :venue %><br />
-    <%= f.text_field :venue %>
-  </p>
-  <p>
-		<%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-		<%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </p>
-  <p>
-		<%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </p>
-  <p>
-		<%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode %>
+    <%= f.check_box :active %> Active?
   </p>
   

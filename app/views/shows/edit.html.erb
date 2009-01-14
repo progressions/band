@@ -8,70 +8,9 @@
 <%= error_messages_for :show %>
 
 <% form_for(@show) do |f| %>
- 
-  <p>
-		<%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  
-  
-  <p>Date and time:  
-  <%= calendar_date_select :show, :date, :embedded => true, :time => true %>
-  </p>
-  
-  <p>
-		<%= f.label :end_time %><br />
-    <%= f.time_select :end_time, {:include_seconds => false, :minute_step => 15} %>
-  </p>
-  
-  <p>
-<%= f.collection_select :venue_id, Venue.find(:all), :id, :name, :prompt => "Select a venue" %>
-  or create one (required):</p>
-  <div id="venue">
-    <% render :partial => @venue, :locals => {:f => f} %>
-    
-    
-  
-  <% fields_for @venue do |v| %>
 
-  <p><%= v.text_field :name %>
-  </p>
-  <p>
-		<%= v.label :address %><br />
-    <%= v.text_field :address %>
-  </p>
-  <p>
-		<%= v.label :city %><br />
-    <%= v.text_field :city %>
-  </p>
-  <p>
-		<%= v.label :state %><br />
-    <%= v.text_field :state %>
-  </p>
-  <p>
-		<%= v.label :zipcode %><br />
-    <%= v.text_field :zipcode %>
-  </p>
-  <% end %>
-    
-  </div> <!-- end DIV "venue" -->
-  
-  
-  <p>
-		<%= f.label :cover %><br />
-    <%= f.text_field :cover %>
-  </p>
-  
-  <%= fckeditor_tag("show", "body", :height => "200px") %>
-  
-  
-  <p>
-    <%= post_tweet_check_box(@post_tweet) %>
-  </p>
-  <p>
-    <%= f.check_box :active %> Active?
-  </p>
-  
+ <%= render :partial => "form", :locals => {:f => f} %>
+
   <p>
     <%= f.submit "Update" %>
   </p>

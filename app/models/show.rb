@@ -5,4 +5,16 @@ class Show < ActiveRecord::Base
   has_many :ratings, :class_name => "ShowRating"
   
   validates_presence_of :date, :venue
+  
+  def has_rsvp?
+    facebook_event? || myspace_event?
+  end
+  
+  def facebook_event?
+    !facebook_event.blank?
+  end
+  
+  def myspace_event?
+    !myspace_event.blank?
+  end
 end
