@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2007 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
  *
@@ -25,14 +25,6 @@
  * See FCKConfig.TemplatesXmlPath in the configuration file.
 -->
 <Templates imagesBasePath="fck_template/images/">
-  <Template title="YouTube video" image="template1.gif">
-		<Description>An embedded YouTube video.</Description>
-		<Html>
-			<![CDATA[
-				<object type='application/x-shockwave-flash' style='width:418px; height:350px;' data='http://www.youtube.com/VIDEO_ID'><param name='movie' value='http://www.youtube.com/VIDEO_ID' /></object>
-			]]>
-		</Html>
-	</Template>
 	<Template title="Image and Title" image="template1.gif">
 		<Description>One main image with a title and text that surround the image.</Description>
 		<Html>
