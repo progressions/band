@@ -2,7 +2,7 @@
 <% show_byline = true if show_byline.nil? %>
 
 
-  <% title = show_body ? @mail.title : truncate(@mail.title, 30) %>
+  <% title = show_body ? @mail.title : truncate(@mail.title, :length => 30) %>
   <h3 class="post_title">
     <%= link_to_unless_current @mail.title, @mail %>
   </h3>

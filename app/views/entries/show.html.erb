@@ -1,3 +1,3 @@
-<% @page_title = truncate(@entry.title,30) %>
+<% @page_title = truncate(@entry.title, :length => 30) %>
 
 <%= render :partial => @entry %>  
