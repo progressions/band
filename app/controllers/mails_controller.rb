@@ -74,7 +74,7 @@ class MailsController < ApplicationController
       @fans = Fan.find(:all) if @fans.nil?
       
       @fans.each do |f|
-        Mailer.deliver_mail(f, @mail)
+        Mailer.send_later(:deliver_mail, f, @mail)
       end
       @mail.sent_at = Time.now
       @mail.save
