@@ -1,6 +1,0 @@
-mailer:
-  address: localhost
-  port: 25
-  domain: worldracketeeringsquad
-  user_name: isaac@worldracketeeringsquad.com
-  password: spuggy
