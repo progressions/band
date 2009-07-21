@@ -28,11 +28,10 @@ config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
   :address  => APP_CONFIG['address'],
-  :port  => APP_CONFIG['port'], 
-  :domain  => APP_CONFIG['domain'],
+  :port  => APP_CONFIG['port'],
   :user_name  => APP_CONFIG['user_name'],
   :password  => APP_CONFIG['password'],
-  :authentication  => :login
+  :authentication  => APP_CONFIG['authentication'].to_sym
 }
 
 =begin
