@@ -1,19 +1,21 @@
-rails_root = "/home/jcoleman/band/current"
+RAILS_ROOT = "/home/jcoleman/band/current"
 
-1.times do |num|
-  God.watch do |w|
-    w.name     = "dj-#{num}"
-    w.group    = 'dj'
-    w.interval = 30.seconds
-    w.start    = "rake -f #{rails_root}/Rakefile -I #{rails_root} production jobs:work"
-
-    w.uid = 'git'
-    w.gid = 'git'
+God.watch do |w|
+  script = "#{RAILS_ROOT}/script/delayed_job"
+  w.name = "delayed_job"
+  w.interval = 20.seconds
+  w.start = "#{script} start"
+  w.restart = "#{script} restart"
+  w.stop = "#{script} stop"
+  w.start_grace = 20.seconds
+  w.restart_grace = 20.seconds
+  w.pid_file = "#{RAILS_ROOT}/tmp/pids/delayed_job.pid"
+  w.behavior(:clean_pid_file)
 
     # retart if memory gets too high
     w.transition(:up, :restart) do |on|
       on.condition(:memory_usage) do |c|
-        c.above = 300.megabytes
+        c.above = 10.megabytes
         c.times = 2
       end
     end
@@ -46,5 +48,4 @@ rails_root = "/home/jcoleman/band/current"
         c.running = false
       end
     end
-  end
 end
