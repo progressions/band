@@ -9,38 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090720134524) do
+ActiveRecord::Schema.define(:version => 20090726062350) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "created_by"
-  end
-
-  create_table "colors", :force => true do |t|
-    t.string   "body"
-    t.string   "heading"
-    t.string   "news_heading"
-    t.string   "link"
-    t.string   "link_visited"
-    t.string   "link_hover"
-    t.string   "utility"
-    t.string   "main_bg"
-    t.string   "sidebar_bg"
-    t.string   "module_bg"
-    t.string   "module_heading"
-    t.string   "module_heading_bg"
-    t.string   "module_heading_bg_hover"
-    t.string   "footer"
-    t.string   "footer_link"
-    t.string   "footer_bg"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "setting_id"
-    t.string   "title"
-    t.string   "module_heading_hover"
     t.integer  "created_by"
   end
 

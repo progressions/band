@@ -22,6 +22,7 @@ class RemoveColor < ActiveRecord::Migration
       t.string :footer_link
       t.string :footer_bg
 
-      t.timestamps    
+      t.timestamps
+    end    
   end
 end
