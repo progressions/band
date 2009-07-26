@@ -1,6 +1,7 @@
 
 Version 1.2 (in Git)
 
+- Add Lighthouse hooks
 - added Cucumber
 - upgraded to Rails 2.3.3.1
 - Added "player code" and "mini player code" to songs so we can embed Bandcamp (or any other player).
