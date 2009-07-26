@@ -20,6 +20,12 @@ Factory.sequence :email do |num|
   "name#{num}@example.com"
 end
 
+Factory.define :style do |f|
+  f.title             "Default"
+end
+
 Factory.define :setting do |f|
-  
+  f.site_name         "World Racketeering Squad"
+  f.artist_name       "World Racketeering Squad"
+  f.association       :style
 end
