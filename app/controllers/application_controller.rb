@@ -75,20 +75,21 @@ class ApplicationController < ActionController::Base
   memoize :twitter_user
 	
 	def twitter
-	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
+	  httpauth = Twitter::HTTPAuth.new(@global_settings.twitter_profile, @global_settings.twitter_password)
+    Twitter::Base.new(httpauth)
   end
   memoize :twitter
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
-    twitter.timeline(:user, :count => count)
+    twitter.user_timeline.first(count)
   end
   
   def update_twitter(update)
     twitter.update(update)
   end
   
-  def update_twitter_with_new_content update
-    if @global_settings.tweet_updates? && ENV['RAILS_ENV'] == 'production'
+  def update_twitter_with_new_content(update)
+    if @global_settings.tweet_updates? && Rails.env.production?
       update_twitter(update)
     end
   end

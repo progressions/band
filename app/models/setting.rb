@@ -23,14 +23,12 @@ class Setting < ActiveRecord::Base
 	
 	# TODO: fix twitter
 	def show_twitter?
-    # !twitter_profile.blank? && read_attribute(:show_twitter)
-    false
+    !twitter_profile.blank? && read_attribute(:show_twitter)
 	end
 	
 	# TODO: fix twitter
 	def tweet_updates?
-    # show_twitter?
-    false
+    show_twitter?
   end
 	
 	def has_web_profiles?

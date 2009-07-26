@@ -1,14 +1,12 @@
-require 'vendor/gems/twitter-0.3.7/lib/twitter'
+require 'vendor/gems/twitter-0.6.12/lib/twitter'
 
-print "username: "
-get username
-print "password: "
-get password
+# print "username: "
+# get username
+# print "password: "
+# get password
 
-	Twitter::Base.new(username, password).update('trying stuff out.')
-	
-		puts "Public Timeline", "=" * 50
-	Twitter::Base.new(username, password).timeline(:friends).each do |s|
-	  puts s.text, s.user.name
-	  puts
-	end
+httpauth = Twitter::HTTPAuth.new(username, password)
+base = Twitter::Base.new(httpauth)
+
+puts base.user_timeline
+# puts base.verify_credentials
