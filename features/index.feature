@@ -3,6 +3,10 @@ Feature: Show the index page and the stuff on it
   As a random web user
   I want to see the band's pages
   
+  Scenario: Go to the index page
+    
+  
+  
   
 
   
