@@ -21,17 +21,22 @@ class Setting < ActiveRecord::Base
 	  !youtube_profile.blank? && read_attribute(:show_videos)
 	end
 	
+	# TODO: fix twitter
 	def show_twitter?
-	  !twitter_profile.blank? && read_attribute(:show_twitter)
+    # !twitter_profile.blank? && read_attribute(:show_twitter)
+    false
 	end
+	
+	# TODO: fix twitter
+	def tweet_updates?
+    # show_twitter?
+    false
+  end
 	
 	def has_web_profiles?
     !web_profiles.empty? || !facebook_profile.blank? || !myspace_profile.blank?
 	end
 	
-	def tweet_updates?
-    show_twitter?
-  end
 	
 	def can_send_mail?
 	  !email.blank? && !url.blank?
