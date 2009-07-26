@@ -11,7 +11,7 @@
     <%= will_paginate %>
     <% unless @songs.empty? %>    
       <% for @song in @songs %>
-          <%= render :partial => @song %>
+          <%= render :partial => @song, :locals => {:show_byline => true} %>
       <% end %>
     <% end %>
     

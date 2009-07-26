@@ -35,7 +35,11 @@
       		<ul>
       		  <% @songs.each_with_index do |@song, i| %>
       		    <li><%= link_to @song.title, @song %></li>
-      		    <li><%= music_player(@song.url,i+1,180) %></li>
+      		    <% if @song.mini_player_code.blank? %>
+        		    <li><%= music_player(@song.url,i+1,180) %></li>
+      		    <% else %>
+      		      <li><%= @song.mini_player_code %></li>
+      		    <% end %>
       		  <% end %>
       		</ul>
       	</div> <!-- end DIV 'listen' -->

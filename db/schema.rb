@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090726065804) do
+ActiveRecord::Schema.define(:version => 20090726071254) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20090726065804) do
     t.string   "filename"
     t.integer  "setting_id"
     t.text     "player_code"
+    t.text     "mini_player_code"
   end
 
   create_table "styles", :force => true do |t|
