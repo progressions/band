@@ -11,6 +11,7 @@ class Setting < ActiveRecord::Base
 	validates_email_veracity_of :admin_email, :message => "Email is invalid"
 	
 	# TODO: validate format of :url
+	
 		
 	def songs_host
 	  host = attributes['songs_host'].blank? ? url : with_protocol(attributes['songs_host'])

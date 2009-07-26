@@ -17,6 +17,11 @@
     <%= f.text_field :filename %>
   </p>
   
+  <p>
+    <%= f.label :player_code %><br />
+    <%= f.text_area :player_code %>
+  </p>
+  
   <p>Description:</p>
   <%= fckeditor_tag("song") %>
 

@@ -4,24 +4,30 @@
 <div class="post" id="post_<%= @song.id %>">
   
   <h3 class="post_title"><%= link_to_unless_current @song.title, song_path(@song) %></h3>
-  
-<ul>
-  <li><%= @song.title %> (<%= link_to "download", @song.url %>)</li>
-  <li><%= music_player(@song.url,1,180) %></li>
-</ul>
 
-  <div class="post_body" id="post_body_<%= @song.id %>">
-    <%= @song.body %>
-  </div> <!-- end DIV "post_body" -->
+<% if @song.player_code.blank? %>  
+  <ul>
+    <li><%= @song.title %> (<%= link_to "download", @song.url %>)</li>
+    <li><%= music_player(@song.url,1,180) %></li>
+  </ul>
+
+    <div class="post_body" id="post_body_<%= @song.id %>">
+      <%= @song.body %>
+    </div> <!-- end DIV "post_body" -->
   
-  <% unless @show_byline == false || @song.created_at.nil?  %>
-  <p class="byline">
-posted on <%= @song.created_at.strftime("%b %d %Y") %>.
-    <% if logged_in? %>
-      (<%= link_to "edit", edit_song_path(@song) %> | <%= link_to 'delete', @song, :confirm => 'Are you sure?', :method => :delete %>)
+    <% unless @show_byline == false || @song.created_at.nil?  %>
+    <p class="byline">
+  posted on <%= @song.created_at.strftime("%b %d %Y") %>.
+      <% if logged_in? %>
+        (<%= link_to "edit", edit_song_path(@song) %> | <%= link_to 'delete', @song, :confirm => 'Are you sure?', :method => :delete %>)
+      <% end %>
+    </p>
     <% end %>
-  </p>
-  <% end %>
+<% else %>
+
+<%= @song.player_code %>
+
+<% end %>
 
 </div> <!-- end DIV "post" -->
   
