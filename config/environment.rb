@@ -63,7 +63,7 @@ Rails::Initializer.run do |config|
   #config.action_web_service = Rails::OrderedOptions.new
   #config.load_paths += %W( #{RAILS_ROOT}/app/apis )
   
-  config.load_paths << "#{RAILS_ROOT}/app/sweepers"
+  # config.load_paths << "#{RAILS_ROOT}/app/sweepers"
   
   config.load_paths += %W( #{RAILS_ROOT}/app/apis )
   config.load_paths += Dir["#{RAILS_ROOT}/vendor/gems/**"].map do |dir|
