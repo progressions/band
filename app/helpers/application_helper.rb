@@ -1,10 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
-module ApplicationHelper    
-    
-  require 'recaptcha'
-
-  include ReCaptcha::ViewHelper
-  
+module ApplicationHelper
   def color_input method, options={}
     output = ""
     output += "<dt><%= f.text_field #{method} %></dt>"

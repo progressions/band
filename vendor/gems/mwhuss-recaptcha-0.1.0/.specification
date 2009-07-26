@@ -1,0 +1,75 @@
+--- !ruby/object:Gem::Specification 
+name: mwhuss-recaptcha
+version: !ruby/object:Gem::Version 
+  version: 0.1.0
+platform: ruby
+authors: 
+- Jason L. Perry
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-02-08 00:00:00 -06:00
+default_executable: 
+dependencies: []
+
+description: This plugin adds helpers for the ReCAPTCHA API
+email: jasper@ambethia.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- CHANGELOG
+- lib/recaptcha/recaptcha.rb
+- lib/recaptcha.rb
+- LICENSE
+- README.rdoc
+- tasks/recaptcha_tasks.rake
+files: 
+- CHANGELOG
+- init.rb
+- lib/recaptcha/recaptcha.rb
+- lib/recaptcha.rb
+- LICENSE
+- Manifest
+- Rakefile
+- README.rdoc
+- tasks/recaptcha_tasks.rake
+- test/recaptcha_test.rb
+- test/verify_recaptcha_test.rb
+- recaptcha.gemspec
+has_rdoc: true
+homepage: http://github.com/ambethia/recaptcha/tree/master
+post_install_message: 
+rdoc_options: 
+- --line-numbers
+- --inline-source
+- --title
+- Recaptcha
+- --main
+- README.rdoc
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "1.2"
+  version: 
+requirements: []
+
+rubyforge_project: recaptcha
+rubygems_version: 1.3.1
+signing_key: 
+specification_version: 2
+summary: This plugin adds helpers for the ReCAPTCHA API
+test_files: 
+- test/recaptcha_test.rb
+- test/verify_recaptcha_test.rb

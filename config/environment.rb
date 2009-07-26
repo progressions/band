@@ -71,13 +71,13 @@ Rails::Initializer.run do |config|
   end
   
   config.gem "httparty"
-
+  config.gem "twitter"
+  config.gem "mwhuss-recaptcha", :lib => "recaptcha", :source => "http://gems.github.com"
 end
-require 'try'
-require "#{RAILS_ROOT}/vendor/gems/twitter-0.3.7/lib/twitter"
 
-RCC_PUB = "6LfxUQQAAAAAAEwuipNG2xYZyC7kZyDOm6QEcbBn"
-RCC_PRIV= "6LfxUQQAAAAAAAXACByW_uKKsn26uDuYWLCgBEI4"
+
+ENV["RECAPTCHA_PUBLIC_KEY"] = "6LfxUQQAAAAAAEwuipNG2xYZyC7kZyDOm6QEcbBn"
+ENV["RECAPTCHA_PRIVATE_KEY"] = "6LfxUQQAAAAAAAXACByW_uKKsn26uDuYWLCgBEI4"
 
 WillPaginate::ViewHelpers.pagination_options[:param_name] = :p
 

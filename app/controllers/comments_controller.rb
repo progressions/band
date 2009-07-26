@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @new_comment = Comment.new
 
-    valid_recaptcha = validate_recap(params, @comment.errors)
+    valid_recaptcha = verify_recaptcha(:model => @comment)
     
     if params[:preview_button] || !valid_recaptcha || !@comment.save
       @preview_comment = @comment
