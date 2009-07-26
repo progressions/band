@@ -1,0 +1,5 @@
+
+Version 1.2
+
+2009-07-27 
+- Added "player code" and "mini player code" to songs so we can embed Bandcamp (or any other player).
