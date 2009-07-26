@@ -1,6 +1,3 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 # TODO: Merchandise page/online store
 # TODO: Downloadable promo materials--images, wallpapers, &c
 # TODO: Online promo stuff: links, banners, &c
