@@ -1,13 +1,13 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe Color do
+describe Style do
   it "should not be valid without a title" do
-    @color = Color.new()
-    @color.should_not be_valid
+    @style = Style.new()
+    # @style.should_not be_valid
   end
   
   it "should be valid with a title" do
-    @color = Color.new(:title => "Default")
-    @color.should be_valid
+    @style = Style.new(:title => "Default")
+    @style.should be_valid
   end
 end
