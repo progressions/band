@@ -164,7 +164,7 @@ END_STRING
 	
 	# TODO: fix twitter
 	def post_tweet_check_box(checked=true, message="Post on Twitter?")
-    # "#{check_box_tag :post_tweet, 'yes', checked} #{message}"
+    "#{check_box_tag :post_tweet, 'yes', checked} #{message}"
 	end
 end
 
