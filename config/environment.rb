@@ -73,6 +73,7 @@ Rails::Initializer.run do |config|
   config.gem "httparty"
   config.gem "twitter"
   config.gem "mwhuss-recaptcha", :lib => "recaptcha", :source => "http://gems.github.com"
+  config.gem "rack", :version => ">= 1.0.0"
 end
 
 
