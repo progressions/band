@@ -70,6 +70,7 @@ Rails::Initializer.run do |config|
     File.directory?(lib = "#{dir}/lib") ? lib : dir
   end
   
+  config.gem "calendar_date_select"
   config.gem "httparty"
   config.gem "twitter"
   config.gem "mwhuss-recaptcha", :lib => "recaptcha", :source => "http://gems.github.com"

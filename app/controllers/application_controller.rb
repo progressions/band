@@ -41,8 +41,6 @@ class ApplicationController < ActionController::Base
         @twitter_feed = twitter_feed
       end
     end  
-  rescue Twitter::CantConnect
-    @twitter_error = true
   end
   
   def render_404
