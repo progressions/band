@@ -29,6 +29,7 @@ config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   :address  => APP_CONFIG['address'],
   :port  => APP_CONFIG['port'],
+  :doman => APP_CONFIG['domain'],
   :user_name  => APP_CONFIG['user_name'],
   :password  => APP_CONFIG['password'],
   :authentication  => APP_CONFIG['authentication'].to_sym
