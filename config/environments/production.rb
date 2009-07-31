@@ -22,27 +22,25 @@ config.action_controller.cache_store = [:file_store, "#{RAILS_ROOT}/tmp/cache"]
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-APP_CONFIG = YAML.load_file("#{RAILS_ROOT}/config/config.yml")['mailer']
+# APP_CONFIG = YAML.load_file("#{RAILS_ROOT}/config/config.yml")['mailer']
+# 
+# config.action_mailer.delivery_method = :smtp
+# 
+# config.action_mailer.smtp_settings = {
+#   :address  => APP_CONFIG['address'],
+#   :port  => APP_CONFIG['port'],
+#   :domain => APP_CONFIG['domain'],
+#   :user_name  => APP_CONFIG['user_name'],
+#   :password  => APP_CONFIG['password'],
+#   :authentication  => APP_CONFIG['authentication'].to_sym
+# }
 
 config.action_mailer.delivery_method = :smtp
-
 config.action_mailer.smtp_settings = {
-  :address  => APP_CONFIG['address'],
-  :port  => APP_CONFIG['port'],
-  :doman => APP_CONFIG['domain'],
-  :user_name  => APP_CONFIG['user_name'],
-  :password  => APP_CONFIG['password'],
-  :authentication  => APP_CONFIG['authentication'].to_sym
-}
-
-=begin
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :address  => "localhost",
+  :address  => "127.0.0.1",
   :port  => 25, 
-  :domain  => "www.worldracketeeringsquad.com",
-  :user_name  => "mail@example.com",
-  :password  => "foobar",
-  :authentication  => :login
+  :domain  => "colemanation.org",
+  :user_name  => "isaac.colemanation",
+  :password  => "qwerty123",
+  :authentication  => :plain
 }
-=end
