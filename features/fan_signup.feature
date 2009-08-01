@@ -9,7 +9,9 @@ Feature: Fan signup
     And I am on the home page
     And I fill in "email" with "fred@gmail.com"
     And I fill in "zip_code" with "78723"
-    # And I press "SIGN UP"
+    And I press "SIGN UP"
+    Then I should see "Thanks for joining the World Racketeering Squad mailing list."
+    And the "Zipcode" field should contain "78723"
   
   
 

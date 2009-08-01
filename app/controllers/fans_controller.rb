@@ -207,9 +207,8 @@ class FansController < ApplicationController
     @fan = Fan.new(params[:fan])
 
     if @fan.save
-      m = Mailer.deliver_signup_confirmation(@fan)
-      Mailer.deliver(m)
-      Mailer.deliver_signup_report(@fan)
+      Mailer.send_later(:deliver_signup_confirmation, @fan)
+      Mailer.send_later(:deliver_signup_report, @fan)
       flash[:registration] = "Thanks for joining the #{@global_settings.artist_name} mailing list.  If you'd like to tell us your name, you can do it here."
       redirect_to edit_fan_path(@fan, :f => @fan.crypted_email)
     else

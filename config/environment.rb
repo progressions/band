@@ -71,11 +71,12 @@ Rails::Initializer.run do |config|
   end
   
   config.gem "calendar_date_select"
+  config.gem "collectiveidea-delayed_job", :lib => "delayed_job", :source => "http://gems.github.com"
+  config.gem "haml"
   config.gem "httparty"
   config.gem "twitter"
   config.gem "mwhuss-recaptcha", :lib => "recaptcha", :source => "http://gems.github.com"
   config.gem "rack", :version => ">= 1.0.0"
-  config.gem "collectiveidea-delayed_job", :lib => "delayed_job", :source => "http://gems.github.com"
 end
 
 

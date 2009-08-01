@@ -1,0 +1,44 @@
+- @page_title = "Edit Fan"
+
+%h1 
+  Edit Fan
+  = @fan.email
+
+#registration
+  - if flash[:registration]
+    %h4= flash[:registration]
+    
+    
+= error_messages_for :fan
+
+- form_for(@fan, :url => fan_path(@fan, :f => @fan.crypted_email), :html => {:method => :put}) do |f|
+
+  %p
+    = f.label :firstname, "First Name"
+    %br
+    = f.text_field :firstname
+
+  %p
+    =f.label :lastname, "Last Name"
+    %br
+    =f.text_field :lastname  
+
+  %p
+    =f.label :city
+    %br
+    =f.text_field :city
+  
+  %p
+    =f.label :state
+    %br
+    =f.text_field :state
+  
+  %p
+    =f.label :zipcode
+    %br
+    =f.text_field :zipcode
+  
+  %p
+    =f.submit "Update"
+
+
