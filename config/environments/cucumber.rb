@@ -15,7 +15,15 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-config.gem "cucumber",    :lib => false,        :version => ">=0.3.90" unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber'))
-config.gem "webrat",      :lib => false,        :version => ">=0.4.4" unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
-config.gem "rspec",       :lib => false,        :version => ">=1.2.6" unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
-config.gem "rspec-rails", :lib => 'spec/rails', :version => ">=1.2.6" unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
+config.gem "cucumber",    :lib => false,        :version => ">=0.3.9"
+config.gem "webrat",      :lib => false,        :version => ">=0.4.4"
+config.gem "rspec",       :lib => false,        :version => ">=1.2.6"
+config.gem "rspec-rails", :lib => 'spec/rails', :version => ">=1.2.6"
+config.gem "nokogiri",    :version => ">=1.2.1"
+config.gem 'thoughtbot-factory_girl', 
+           :lib => 'factory_girl', 
+           :source => 'http://gems.github.com', 
+           :version => '~> 1.2.0'
+config.gem 'bmabey-email_spec', :lib => 'email_spec'
+config.gem 'database_cleaner'
+config.gem 'ianwhite-pickle', :lib => 'pickle'

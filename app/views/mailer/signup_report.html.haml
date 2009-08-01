@@ -1,0 +1,6 @@
+%p New fan signup
+
+%p= "#{@fan.email} has subscribed to the #{@global_settings.artist_name} mailing list. View their details on their #{link_to 'settings page', fan_url(@fan)}."
+
+%p= "If you don't want them to receive emails, #{link_to 'unsubscribe', unsubscribe_url(@fan, :f => @fan.crypted_email)} them."
+

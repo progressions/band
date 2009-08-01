@@ -23,7 +23,7 @@ class FansController < ApplicationController
     @remove_tags = @tags.flatten.uniq
     render :update do |page|      
       page.replace_html 'tag_options', :partial => 'tag_options', :locals => {:remove_tags => @remove_tags}
-    end      
+    end
   end
   
   def check_all
@@ -99,7 +99,7 @@ class FansController < ApplicationController
   #
   def use_crypted_email
     begin
-      if params[:f] || login_required  
+      if params[:f] || login_required
         @fan = Fan.find(:first, :conditions => ["id = ? AND crypted_email = ?", params[:id], params[:f]])  
       end
       if @fan.nil? && login_required
@@ -209,7 +209,7 @@ class FansController < ApplicationController
     if @fan.save
       Mailer.send_later(:deliver_signup_confirmation, @fan)
       Mailer.send_later(:deliver_signup_report, @fan)
-      flash[:registration] = "Thanks for joining the #{@global_settings.artist_name} mailing list.  If you'd like to tell us your name, you can do it here."
+      flash[:registration] = "Thanks for joining the #{@global_settings.artist_name} mailing list, #{@fan.email}.  If you'd like to tell us your name, you can do it here."
       redirect_to edit_fan_path(@fan, :f => @fan.crypted_email)
     else
       render :action => "new"

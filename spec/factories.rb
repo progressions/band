@@ -28,4 +28,7 @@ Factory.define :setting do |f|
   f.site_name         "World Racketeering Squad"
   f.artist_name       "World Racketeering Squad"
   f.association       :style
+  f.url               "http://www.weracketeer.com"
+  f.mail_tag          "WRS"
+  f.admin_email       "admin@weracketeer.com"
 end

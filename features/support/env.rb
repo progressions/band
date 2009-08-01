@@ -2,7 +2,8 @@
 ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require 'cucumber/rails/world'
-
+require 'email_spec/cucumber'
+  
 # Comment out the next line if you don't want Cucumber Unicode support
 require 'cucumber/formatter/unicode'
 
@@ -34,3 +35,12 @@ require 'pickle/world'
 #   config.map 'I', 'myself', 'me', 'my', :to => 'user: "me"'
 # end
 require 'pickle/path/world'
+
+Before do
+  # bypass delayed_job and do it now
+  class Mailer
+    def self.send_later(*args)
+      send(*args)
+    end
+  end
+end

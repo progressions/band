@@ -59,6 +59,8 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   
+  config.action_mailer.default_url_options = { :host => "weracketeer.com" }
+  
   #config.frameworks += [:action_web_service]
   #config.action_web_service = Rails::OrderedOptions.new
   #config.load_paths += %W( #{RAILS_ROOT}/app/apis )

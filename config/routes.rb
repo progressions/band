@@ -60,16 +60,13 @@ ActionController::Routing::Routes.draw do |map|
   
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   
-  # map.connect 'rcss/:rcssfile.css', :controller => 'rcss', :action => 'rcss', :format => 'css'
-  
-  map.unsubscribe '/unsubscribe/:id', :controller => 'fans', :action => 'unsubscribe'
+  map.unsubscribe '/unsubscribe/:id', :controller => 'fans', :action => 'unsubscribe', :conditions => {:method => :get}
        
   map.signup '/register', :controller => 'users', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'new'
   map.login  '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   
-  # map.admin '/admin', :controller => 'admin', :action => 'index'
   map.admin '/admin', :controller => 'settings', :action => 'index'
   map.profile '/profile', :controller => 'settings', :action => 'profile'
   map.rss '/rss', :controller => 'about', :action => 'rss'
