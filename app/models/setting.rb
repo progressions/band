@@ -48,6 +48,18 @@ class Setting < ActiveRecord::Base
 	  write_attribute(:url, with_protocol(link))
   end
   
+  def scan_and_retweet?
+    show_twitter?
+  end
+  
+  def retweet_count
+    3
+  end
+  
+  def retweet_replied?
+    false
+  end
+  
   protected
   
   def with_protocol link
