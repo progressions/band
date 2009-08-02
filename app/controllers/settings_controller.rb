@@ -7,10 +7,13 @@ class SettingsController < ApplicationController
   before_filter :login_required
   before_filter :set_admin
   
-  # TODO: Add "web profiles" to setting
-  
-  # GET /settings
-  # GET /settings.xml
+  # TODO: Settings > Profile
+  # TODO: Settings > Mailing List
+  # TODO: Settings > Social Networks
+  # TODO: Settings > Music
+  # TODO: Settings > Modules
+  # TODO: Settings > Website (Modules + Header/Footer)
+  #
   def index
     @setting = @global_settings
     @blogs = Blog.find(:all)

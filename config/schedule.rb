@@ -22,3 +22,7 @@
 every 5.minutes do
   rake "twitter:check_for_tweets"
 end
+
+every :sunday, :at => "9am" do
+  rakse "mailer:status_report"
+end

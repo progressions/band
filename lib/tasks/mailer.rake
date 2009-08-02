@@ -1,4 +1,9 @@
 namespace :mailer do
+  desc "Deliver periodical status report"
+  task :status_report => :environment do
+    Mailer.deliver_status_report
+  end
+  
   desc "Send a test email"
   task :send => :environment do
     ENV["RAILS_ENV"] = "production"

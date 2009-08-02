@@ -24,12 +24,10 @@ class Setting < ActiveRecord::Base
 	  !youtube_profile.blank? && read_attribute(:show_videos)
 	end
 	
-	# TODO: fix twitter
 	def show_twitter?
     !twitter_profile.blank? && read_attribute(:show_twitter)
 	end
 	
-	# TODO: fix twitter
 	def tweet_updates?
     show_twitter?
   end
