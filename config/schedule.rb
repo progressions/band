@@ -26,7 +26,7 @@ every count.minutes do
 end
 
 every 1.day do
-  rakse "twitter:check_for_show_notes"
+  rake "twitter:check_for_show_notes"
 end
 
 every 2.hours do
