@@ -1,7 +1,22 @@
 namespace :mailer do
   desc "Deliver periodical status report"
   task :status_report => :environment do
-    Mailer.deliver_status_report
+    report = Mailer.deliver_status_report
+  end
+  
+  desc "Test status report"
+  task :test_status_report => :environment do
+    report = Mailer.deliver_status_report
+    
+    body = report.body
+    body.gsub!("\\n", "\n")
+    body.gsub!("\\t", "\n")
+    body.gsub!("\\\"", "\"")
+    
+    File.open("#{RAILS_ROOT}/digest.html", "w") do |f|
+      f.write(body)
+    end
+    system "open #{RAILS_ROOT}/digest.html"    
   end
   
   desc "Send a test email"

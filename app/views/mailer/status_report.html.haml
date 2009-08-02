@@ -1,5 +1,53 @@
-%p Hello,
+%h2= "Status report for #{@global_settings.artist_name}"
 
-%p= "#{@global_settings.artist_name} is doing great!"
+%h3= "July 26, 2009 to August 2, 2009"
 
+#mailing_list
+  %h4 Mailing list
+
+  %ul{:style => "list-decoration: none;"}
+    %li 10 new fans subscribed to the mailing list
+    %li 3 fans unsubscribed from the mailing list
+    %li 312 fans total
+    %li 2 newsletters delivered to 312 fans
+
+#shows
+  %h4 Shows
+
+  %ul{:style => "list-decoration: none;"}
+    %li 
+      3 new shows scheduled
+      %ul
+        %li "WRS at The Parlor" on August 6
+        %li "WRS at Headhunters" on August 13
+        %li "WRS at Jonathan and Kitara's" on August 29
+    %li 
+      1 show performed
+      %ul
+        %li "WRS at Rockin Tomato" on July 21
+        %li 
+          Notes:
+          .notes
+            %p Show felt good, about 30 people there
+            %p Made about $40 in tips
+            %p [isaac] guitar sounded great to me #shownotes
+            %p= link_to "View the rest...", ""
+
+#website
+  %h4 Website
+
+  %ul{:style => "list-decoration: none;"}
+    %li 
+      9 new blogs posted
+      %ul
+        %li "I saw a funny thing today"
+        %li "Cats are cute"
+        %li "A cool video"
+        %li= link_to "View the rest...", ""
+    %li 
+      1 news entry posted
+      %ul
+        %li Hey gang we are rocking the world next month!
+    
+        
 %p Goodbye.

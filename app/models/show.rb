@@ -6,6 +6,11 @@ class Show < ActiveRecord::Base
   
   validates_presence_of :date, :venue
   
+  
+  def self.most_recent
+    scoped(:conditions => ["date < ?", Time.now], :order => "date DESC").first
+  end
+  
   def has_rsvp?
     facebook_event? || myspace_event?
   end
