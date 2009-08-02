@@ -24,7 +24,6 @@ class TwitterWorker
       end
       
       global_settings.update_attribute(:last_checked_for_show_notes, Time.now)
-      puts global_settings.last_checked_for_show_notes.inspect
     rescue StandardError => e
       # puts e.inspect
     end
