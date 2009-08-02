@@ -560,6 +560,9 @@ dl.music dd {
   padding: 0;
 	color: red;
 }
+#edit_profile textarea {
+	height: 75px;
+}
 .style dl dt input {
   width: 55px;
 }

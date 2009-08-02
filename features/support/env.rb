@@ -3,7 +3,12 @@ ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require 'cucumber/rails/world'
 require 'email_spec/cucumber'
-  
+require 'spec/rails'
+require 'cucumber/rails/rspec'
+
+# http://www.brynary.com/2009/2/3/cucumber-step-definition-tip-stubbing-time
+require 'spec/mocks'
+
 # Comment out the next line if you don't want Cucumber Unicode support
 require 'cucumber/formatter/unicode'
 
@@ -37,6 +42,13 @@ require 'pickle/world'
 require 'pickle/path/world'
 
 Before do
+  # http://www.brynary.com/2009/2/3/cucumber-step-definition-tip-stubbing-time
+  $rspec_mocks ||= Spec::Mocks::Space.new
+
+  def current_user
+    controller.send(:current_user)
+  end
+
   # bypass delayed_job and do it now
   class Mailer
     def self.send_later(*args)
@@ -44,3 +56,13 @@ Before do
     end
   end
 end
+
+After do
+  # http://www.brynary.com/2009/2/3/cucumber-step-definition-tip-stubbing-time
+  begin
+    $rspec_mocks.verify_all
+  ensure
+    $rspec_mocks.reset_all
+  end
+end  
+

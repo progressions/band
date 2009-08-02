@@ -1,0 +1,113 @@
+- @page_title = "Edit Profile"
+
+= javascript_include_tag :fckeditor 
+
+#edit_profile
+
+  %h1 Edit Profile
+
+  = error_messages_for :setting 
+
+  - form_for(@setting) do |f| 
+    %dl.names
+      %dd.label= f.label :artist_name, "Artist name"
+      %dd.description Your name, or the name of your band.
+      %dt= f.text_field :artist_name 
+    
+      %dd.label= f.label :site_name, "Website title"
+      %dd.description Full name to display in the title bar of the website.
+      %dt= f.text_field :site_name 
+
+      %dd.label= f.label :composer, "Composer"
+      %dd.description Name of default composer or composing team for lyric credits.
+      %dt= f.text_field :composer 
+  
+    %dl.email
+      %dd.label= f.label :email, "Contact email"
+      %dd.description Your public email address, will be listed as the sender of all emails sent from your website.
+      %dt= f.text_field :email 
+    
+      %dd.label= f.label :admin_email, "Administrative email"
+      %dd.description Your private email address, will be used to send you updates from the website.
+      %dt= f.text_field :admin_email 
+  
+  
+    %dl.misc
+      %dd.label= f.label :url, "Website URL"
+      %dd.description The address of your website.  Example: www.thebeatles.com, www.greenday.com
+      %dt= f.text_field :url 
+    
+      %dd.label= f.label :mail_tag, "Mailing list announcement tag"
+      %dd.description A short identifier included in the subject of all your mailing list emails.  Example: "WRS"becomes "[WRS] Three new gigs coming up!"
+      %dt= f.text_field :mail_tag 
+    
+      %dd.label= f.label "#{@setting.id}_mail_header_editor", "Mailing list header"
+      %dd.description Header which appears at the top of all your mailing list emails.
+      %dt= fckeditor_tag :setting, :mail_header, :height => 150
+    
+      %dd.label= f.label "#{@setting.id}_mail_footer_editor", "Mailing list footer"
+      %dd.description Footer which appears at the bottom of all your mailing list emails.
+      %dt= fckeditor_tag :setting, :mail_footer, :height => 150 
+  
+    
+    %h3#your_social_networks Your social networks
+
+    %dl
+      %dd.label= f.label :facebook_profile, "Facebook"
+      %dd.description Your Facebook URL, or the address of your Facebook group or fan page.
+      %dt= f.text_field :facebook_profile 
+    
+      %dd.label= f.label :myspace_profile, "MySpace"
+      %dd.description Your MySpace username.
+      %dt= f.text_field :myspace_profile 
+
+      %dd.label= f.label :youtube_profile, "YouTube"
+      %dd.description Your YouTube username, to allow the website to automatically fetch your YouTube videos and include them in your content.
+      %dt= f.text_field :youtube_profile 
+
+      %dd.label= f.label :featured_playlist, "Featured playlist"
+      %dd.description The ID of the YouTube playlist to feature on your Videos page.
+      %dt= f.text_field :featured_playlist 
+
+      %dd.label= "Default video format"
+      %dd.description Show videos in widescreen or standard format by default.
+      %dt
+      = f.radio_button(:video_format, '1')
+      = f.label :video_format_1, "Widescreen"
+      = f.radio_button(:video_format, '2')
+      = f.label :video_format_2, "Standard"
+    	
+      %dd.label= f.label :twitter_profile, "Twitter"
+      %dd.description Your Twitter username, to allow the website to automatically fetch your Twitter updates and include them in your content.
+      %dt= f.text_field :twitter_profile 
+
+      %dd.label= f.label :twitter_password, "Twitter password"
+      %dd.description Your Twitter password.
+      %dt= f.password_field :twitter_password
+      
+    %dl
+      %dd.label Captcha security settings
+      %dd.description Security measures to prevent spam. Require users to fill out a captcha:
+      %dt
+        = f.check_box :use_captcha_for_fans
+        = f.label :use_captcha_for_fans, "to join the mailing list"
+      
+      %dt
+        = f.check_box :use_captcha_for_comments
+        = f.label :use_captcha_for_comments, "to post comments"
+
+    %dl
+      %dd.label= f.label :songs_host, "Songs host"
+      %dd.description The website where your mp3s are hosted.  Leave this blank unless your mp3s are hosted on a different server than the website.
+      %dt= f.text_field :songs_host 
+
+      %dd.label= f.label :header, "Header"
+      %dd.description Header code, appears at the top of the website.  Use this to display an ad banner.
+      %dt= f.text_area :header
+    
+      %dd.label= f.label :footer, "Footer"
+      %dd.description Footer code, appears at the bottom of the website.  Use this to display an ad banner or any tracking code.
+      %dt= f.text_area :footer
+  
+    %p= f.submit "Update"
+  

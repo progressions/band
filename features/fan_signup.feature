@@ -1,3 +1,4 @@
+@fans @captcha @mailer
 Feature: Fan signup
   In order to know what the band is up to
   As a fan
@@ -78,7 +79,7 @@ Feature: Fan signup
     | stan@marvel.com | 10001   | Stan       | Lee       |
     | joe@simon.com   | 21041   | Joe        | Simon     |
     
-  @wip
+  
   Scenario Outline: Fan signs up with a duplicate email address
     When a new fan signs up with email: "<email>", zipcode: "<zipcode>"
     Given a clear email queue
@@ -96,4 +97,43 @@ Feature: Fan signup
     | joe@simon.com   | 21041   | Joe        | Simon     |
   
   
+  Scenario Outline: Fan signs up with valid captcha
+    Given a global setting exists with use_captcha_for_fans: true
+    And I am on the home page
+    And I fill in "email" with "<email>"
+    And I fill in "zip_code" with "<zipcode>"
+    And I press "SIGN UP"
+    Then I should see "New Fan"
+    And I should see "You are almost done signing up for the World Racketeering Squad mailing list."
+    And I should see "Please fill in the CAPTCHA below to complete your signup."
+    And I fill in the captcha so it is true
+    And I press "Create"
+    Then I should see "Thanks for joining the World Racketeering Squad mailing list, <email>."
+  
+    Examples:
+    | email           | zipcode | first_name | last_name |
+    | jack@kirby.com  | 78701   | Jack       | Kirby     |
+    | stan@marvel.com | 10001   | Stan       | Lee       |
+    | joe@simon.com   | 21041   | Joe        | Simon     |
+  
+  @wip
+  Scenario Outline: Fan signs up with invalid captcha
+    Given a global setting exists with use_captcha_for_fans: true
+    And I am on the home page
+    And I fill in "email" with "<email>"
+    And I fill in "zip_code" with "<zipcode>"
+    And I press "SIGN UP"
+    Then I should see "New Fan"
+    And I should see "You are almost done signing up for the World Racketeering Squad mailing list."
+    And I should see "Please fill in the CAPTCHA below to complete your signup."
+    And I fill in the captcha so it is false
+    And I press "Create"
+    Then I should not see "Thanks for joining the World Racketeering Squad mailing list, <email>."
+    And I should see "Captcha response is incorrect, please try again."
+  
+    Examples:
+    | email           | zipcode | first_name | last_name |
+    | jack@kirby.com  | 78701   | Jack       | Kirby     |
+    | stan@marvel.com | 10001   | Stan       | Lee       |
+    | joe@simon.com   | 21041   | Joe        | Simon     |
   

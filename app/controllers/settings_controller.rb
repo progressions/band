@@ -42,11 +42,6 @@ class SettingsController < ApplicationController
     @setting = Setting.new
   end
 
-  # GET /settings/1/edit
-  def edit
-    @setting = Setting.find(params[:id])
-  end
-
   # POST /settings
   # POST /settings.xml
   def create

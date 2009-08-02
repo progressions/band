@@ -46,12 +46,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @new_comment = Comment.new
 
-    valid_recaptcha = verify_recaptcha(:model => @comment)
+    valid_recaptcha = !@global_settings.use_captcha_for_comments? || verify_recaptcha(:model => @comment)
     
     if params[:preview_button] || !valid_recaptcha || !@comment.save
       @preview_comment = @comment
-      if !params[:preview_button] && !valid_recaptcha
-        @comment.errors.add_to_base("You must enter the code in the image.")
+      if params[:preview_button]
+        flash[:notice] = "Previewing comment."
       end
       render :action => "new"
     else

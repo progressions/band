@@ -1,0 +1,36 @@
+
+- @page_title =  "New Fan" 
+
+#fans
+
+  %h1 New fan
+  - if flash[:registration]
+    %h4= flash[:registration]
+  
+  = error_messages_for :fan 
+
+  - form_for(@fan) do |f| 
+  
+    %p
+      = f.label :firstname, "First Name"
+      = f.text_field :firstname 
+  
+    %p
+      = f.label :lastname, "Last Name"
+      = f.text_field :lastname 
+  
+    %p
+      = f.label :email
+      = f.text_field :email
+
+    %p
+      = f.label :zipcode
+      = f.text_field :zipcode 
+  
+    - if @global_settings.use_captcha_for_fans?
+      #captcha
+        = recaptcha_tags 
+    
+    %p
+      = f.submit "Create" 
+  

@@ -205,13 +205,18 @@ class FansController < ApplicationController
   # POST /fans.xml
   def create
     @fan = Fan.new(params[:fan])
+    
+    valid_recaptcha = !@global_settings.use_captcha_for_fans? || (!params[:homepage] && verify_recaptcha(:model => @fan))
 
-    if @fan.save
+    if valid_recaptcha && @fan.save
       Mailer.send_later(:deliver_signup_confirmation, @fan)
       Mailer.send_later(:deliver_signup_report, @fan)
       flash[:registration] = "Thanks for joining the #{@global_settings.artist_name} mailing list, #{@fan.email}.  If you'd like to tell us your name, you can do it here."
       redirect_to edit_fan_path(@fan, :f => @fan.crypted_email)
     else
+      if params[:homepage]
+        flash[:registration] = "You are almost done signing up for the World Racketeering Squad mailing list. Please fill in the CAPTCHA below to complete your signup."
+      end
       render :action => "new"
     end
   end

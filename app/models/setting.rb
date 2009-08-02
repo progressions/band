@@ -10,9 +10,12 @@ class Setting < ActiveRecord::Base
 	validates_email_veracity_of :email, :message => "Email is invalid"
 	validates_email_veracity_of :admin_email, :message => "Email is invalid"
 	
-	# TODO: validate format of :url
+	# TODO: validate format of URL
+   
+  def url_filled?
+    !url.blank?
+  end 
 	
-		
 	def songs_host
 	  host = attributes['songs_host'].blank? ? url : with_protocol(attributes['songs_host'])
 	end
@@ -35,13 +38,16 @@ class Setting < ActiveRecord::Base
     !web_profiles.empty? || !facebook_profile.blank? || !myspace_profile.blank?
 	end
 	
-	
 	def can_send_mail?
 	  !email.blank? && !url.blank?
   end
   
   def url_with_protocol
 	  with_protocol(attributes['url'])
+  end
+  
+  def url= link
+	  write_attribute(:url, with_protocol(link))
   end
   
   protected

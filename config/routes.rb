@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :promos
 
-  map.resources :settings
+  map.resources :settings, :except => [:edit, :show]
 
   map.resources :fans, :collection => {:import => :post, :tag => :post, :import => :get, :export => :get}
 

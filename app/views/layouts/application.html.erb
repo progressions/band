@@ -50,6 +50,7 @@
 	  <div id="mailing_list">
 	    <h4 id="join_the_mailing_list">Join the mailing list:</h4>   
 	    <% form_for(@fan) do |f| %>
+        <%= hidden_field_tag :homepage, true %>
         <%= f.text_field :email, :id => "email", :value => "Email Address" %>
         <%= f.text_field :zipcode, :id =>"zip_code", :value => "Zip Code" %>
        

@@ -32,3 +32,16 @@ Factory.define :setting do |f|
   f.mail_tag          "WRS"
   f.admin_email       "admin@weracketeer.com"
 end
+
+Factory.define :user do |f|
+  f.email                   { Factory.next(:email) }
+  f.password                "password"
+  f.password_confirmation   "password"
+end
+
+Factory.define :blog do |f|
+  f.association             :user
+  f.title                   "Too many dicks on the dancefloor"
+  f.body                    "There are just too many dicks on the dancefloor. Peace out."
+end
+
