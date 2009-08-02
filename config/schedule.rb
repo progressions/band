@@ -23,6 +23,6 @@ every 5.minutes do
   rake "twitter:check_for_tweets"
 end
 
-every :day, :at => "9am" do
+every 1.day, :at => "9:00 am" do
   rake "mailer:status_report"
 end
