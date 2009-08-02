@@ -3,7 +3,9 @@ RAILS_ROOT = "/home/jcoleman/band/current"
 God.watch do |w|
   w.name     = "delayed_job"
   w.interval = 30.seconds
-  w.start    = "rake -f #{RAILS_ROOT}/Rakefile production jobs:work"
+  w.start    = "#{RAILS_ROOT}/script/delayed_job -e production start"
+  w.stop     = "#{RAILS_ROOT}/script/delayed_job -e production stop"
+  w.restart  = "#{RAILS_ROOT}/script/delayed_job -e production restart"
 
   # w.uid = 'git'
   # w.gid = 'git'
