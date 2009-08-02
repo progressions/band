@@ -25,15 +25,17 @@ namespace :twitter do
 end
 
 def post_update(member, text)
-  if member.twitter_tag.blank?
-    update = text
-  else
-    update = "[#{member.twitter_tag}] #{text}"
-  end
-  if Rails.env.production?
-    twitter.update(update)
-  else
-    puts update
+  unless text =~ /^\@/
+    if member.twitter_tag.blank?
+      update = text
+    else
+      update = "[#{member.twitter_tag}] #{text}"
+    end
+    if Rails.env.production?
+      twitter.update(update)
+    else
+      puts update
+    end
   end
 end
 
