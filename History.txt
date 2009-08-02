@@ -1,6 +1,6 @@
 
 Version 1.2 (in Git)
-
+- Added global settings to use 'captcha' when creating new comments and joining the mailing list
 - Added Factory Girl and Pickle
 - Added Lighthouse hooks
 - Added Cucumber

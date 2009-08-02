@@ -67,7 +67,6 @@ class SettingsController < ApplicationController
     end
 
     if @setting.update_attributes(params[:setting])
-      # raise "WTF" unless @setting.composer == params[:setting][:composer]
       flash[:notice] = 'Settings were successfully updated.'
       redirect_to profile_path
     else
