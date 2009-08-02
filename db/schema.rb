@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090801204236) do
+ActiveRecord::Schema.define(:version => 20090802045305) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -90,8 +90,13 @@ ActiveRecord::Schema.define(:version => 20090801204236) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",      :default => true
+    t.boolean  "active",           :default => true
     t.integer  "position"
+    t.datetime "last_tweeted"
+    t.string   "twitter_username"
+    t.string   "twitter_password"
+    t.string   "twitter_tag"
+    t.string   "nickname"
   end
 
   create_table "pages", :force => true do |t|

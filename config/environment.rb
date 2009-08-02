@@ -73,6 +73,7 @@ Rails::Initializer.run do |config|
   end
   
   config.gem "calendar_date_select"
+  config.gem "chronic"
   config.gem "collectiveidea-delayed_job", :lib => "delayed_job", :source => "http://gems.github.com"
   config.gem "haml"
   config.gem "httparty"
