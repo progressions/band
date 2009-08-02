@@ -1,5 +1,7 @@
 
 Version 1.2 (in Git)
+- Created regular status email sent to admin summarizing activity for the band and the site
+- Created Twitter bot that retweets the updates of band members
 - Added global settings to use 'captcha' when creating new comments and joining the mailing list
 - Added Factory Girl and Pickle
 - Added Lighthouse hooks
