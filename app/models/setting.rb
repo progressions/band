@@ -56,7 +56,7 @@ class Setting < ActiveRecord::Base
     3
   end
   
-  def retweet_replied?
+  def retweet_replies?
     false
   end
   
