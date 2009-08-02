@@ -1,5 +1,6 @@
 
 Version 1.2 (in Git)
+- Created Twitter bot that posts #shownotes tweets to the show notes for the latest show
 - Created regular status email sent to admin summarizing activity for the band and the site
 - Created Twitter bot that retweets the updates of band members
 - Added global settings to use 'captcha' when creating new comments and joining the mailing list
