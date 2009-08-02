@@ -24,5 +24,5 @@ every 5.minutes do
 end
 
 every :sunday, :at => "9am" do
-  rakse "mailer:status_report"
+  rake "mailer:status_report"
 end
