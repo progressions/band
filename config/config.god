@@ -7,8 +7,8 @@ God.watch do |w|
   w.stop     = "#{RAILS_ROOT}/script/delayed_job -e production stop"
   w.restart  = "#{RAILS_ROOT}/script/delayed_job -e production restart"
 
-  # w.uid = 'git'
-  # w.gid = 'git'
+  w.uid = 'jcoleman'
+  w.gid = 'jcoleman'
 
   # retart if memory gets too high
   w.transition(:up, :restart) do |on|
