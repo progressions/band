@@ -7,7 +7,7 @@ class Show < ActiveRecord::Base
   validates_presence_of :date, :venue
 
   named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
-  named_scope :performed_since, lambda {|since_date| {:conditions => ["date >= ?", since_date]}}
+  named_scope :performed_since, lambda {|since_date| {:conditions => ["date >= ? and date <= ?", since_date, Time.now]}}
   
   def self.most_recent
     scoped(:conditions => ["date < ?", Time.now], :order => "date DESC").first

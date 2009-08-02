@@ -33,6 +33,10 @@
                 <%= link_to("MySpace", @show.myspace_event) if @show.myspace_event? %>
 	    <% end %>
 	    <li>
+	    <% if logged_in? && @show.notes? %>
+	    <li>NOTES:<br />
+	      <%= simple_format @show.notes %></li>
+	    <% end %>
 	</ul>
 	<% unless show_byline == false %>
   <p class="byline">

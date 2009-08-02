@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090802142636) do
+ActiveRecord::Schema.define(:version => 20090802160516) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -139,12 +139,12 @@ ActiveRecord::Schema.define(:version => 20090802142636) do
     t.text     "artist_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "show_blog",                :default => true
-    t.boolean  "show_news",                :default => true
-    t.boolean  "show_music",               :default => true
-    t.boolean  "show_videos",              :default => true
-    t.boolean  "show_shows",               :default => true
-    t.boolean  "show_fans",                :default => true
+    t.boolean  "show_blog",                   :default => true
+    t.boolean  "show_news",                   :default => true
+    t.boolean  "show_music",                  :default => true
+    t.boolean  "show_videos",                 :default => true
+    t.boolean  "show_shows",                  :default => true
+    t.boolean  "show_fans",                   :default => true
     t.integer  "promo_id"
     t.string   "email"
     t.string   "admin_email"
@@ -153,9 +153,9 @@ ActiveRecord::Schema.define(:version => 20090802142636) do
     t.string   "youtube_profile"
     t.string   "featured_playlist"
     t.string   "latest_playlist"
-    t.boolean  "show_featured_video",      :default => true
-    t.boolean  "show_lyrics",              :default => true
-    t.boolean  "show_promo",               :default => true
+    t.boolean  "show_featured_video",         :default => true
+    t.boolean  "show_lyrics",                 :default => true
+    t.boolean  "show_promo",                  :default => true
     t.text     "header"
     t.text     "footer"
     t.string   "songs_host"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20090802142636) do
     t.integer  "song_host_id"
     t.boolean  "use_captcha_for_fans"
     t.boolean  "use_captcha_for_comments"
+    t.datetime "last_checked_for_show_notes"
   end
 
   create_table "show_ratings", :force => true do |t|
