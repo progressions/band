@@ -6,7 +6,7 @@ namespace :twitter do
         @url = "http://twitter.com/statuses/user_timeline.json?screen_name=#{member.twitter_username}"
         tweets = HTTParty.get(@url).reverse
       
-        tweets.last(5).each do |tweet|
+        tweets.last(3).each do |tweet|
           begin
             last_tweeted = Time.parse(tweet["created_at"])
       
