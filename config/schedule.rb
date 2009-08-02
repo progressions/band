@@ -25,6 +25,10 @@ every count.minutes do
   rake "twitter:check_for_tweets"
 end
 
+every 1.day do
+  rakse "twitter:check_for_show_notes"
+end
+
 every 1.day, :at => "9:00 am" do
   rake "mailer:status_report"
 end

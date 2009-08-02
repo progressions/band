@@ -1,12 +1,11 @@
 class TwitterWorker
   def self.check_for_show_notes
     begin
-      tweets = user_timeline(global_settings.twitter_profile).reverse
+      tweets = Twitter::Search.new('#shownotes')
       tweets.each do |tweet|
         begin
-          last_tweeted = Time.parse(tweet["created_at"])
-          
-          if tweet.text =~ /#shownote/
+          if true || tweet["from_user"] == global_settings.twitter_profile
+            last_tweeted = Time.parse(tweet["created_at"])
             tweet_date = Time.parse(tweet["created_at"])
             last_checked = global_settings.last_checked_for_show_notes || 1.year.ago
             if last_checked < tweet_date
@@ -19,13 +18,15 @@ class TwitterWorker
               puts show_notes
             end
           end
-        rescue
+        rescue  e
+          # puts e.inspect
         end
       end
       
       global_settings.update_attribute(:last_checked_for_show_notes, Time.now)
       puts global_settings.last_checked_for_show_notes.inspect
     rescue StandardError => e
+      # puts e.inspect
     end
   end
   
