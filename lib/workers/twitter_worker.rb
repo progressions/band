@@ -1,24 +1,26 @@
 class TwitterWorker
   def self.scan_and_retweet
-    begin
-      Member.active.twitter_enabled.each do |member|
-        @url = "http://twitter.com/statuses/user_timeline.json?screen_name=#{member.twitter_username}"
-        tweets = HTTParty.get(@url).reverse
+    if global_setting.scan_and_retweet?
+      begin
+        Member.active.twitter_enabled.each do |member|
+          @url = "http://twitter.com/statuses/user_timeline.json?screen_name=#{member.twitter_username}"
+          tweets = HTTParty.get(@url).reverse
     
-        tweets.last(global_settings.scan_tweet_count).each do |tweet|
-          begin
-            last_tweeted = Time.parse(tweet["created_at"])
+          tweets.last(global_settings.scan_tweet_count).each do |tweet|
+            begin
+              last_tweeted = Time.parse(tweet["created_at"])
     
-            if member.last_tweeted.nil? || last_tweeted > member.last_tweeted
-              post_update(member, tweet["text"])
-              member.update_attribute(:last_tweeted, last_tweeted)
+              if member.last_tweeted.nil? || last_tweeted > member.last_tweeted
+                post_update(member, tweet["text"])
+                member.update_attribute(:last_tweeted, last_tweeted)
+              end
+            rescue StandardError => e
             end
-          rescue StandardError => e
           end
         end
+      rescue StandardError => e
+        # logger.info("There was an error connecting to Twitter. #{e.inspect}")
       end
-    rescue StandardError => e
-      # logger.info("There was an error connecting to Twitter. #{e.inspect}")
     end
   end
 
