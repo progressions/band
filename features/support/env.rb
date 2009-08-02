@@ -3,11 +3,16 @@ ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require 'cucumber/rails/world'
 require 'email_spec/cucumber'
+# require 'database_cleaner'  
 require 'spec/rails'
 require 'cucumber/rails/rspec'
 
+# DatabaseCleaner.strategy = :truncation
+
 # http://www.brynary.com/2009/2/3/cucumber-step-definition-tip-stubbing-time
 require 'spec/mocks'
+
+require "#{Rails.root}/spec/factories"
 
 # Comment out the next line if you don't want Cucumber Unicode support
 require 'cucumber/formatter/unicode'
@@ -27,9 +32,6 @@ Webrat.configure do |config|
   config.mode = :rails
 end
 
-
-require "#{Rails.root}/spec/factories"
-
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
 require 'pickle/world'
@@ -42,6 +44,8 @@ require 'pickle/world'
 require 'pickle/path/world'
 
 Before do
+  # DatabaseCleaner.clean
+    
   # http://www.brynary.com/2009/2/3/cucumber-step-definition-tip-stubbing-time
   $rspec_mocks ||= Spec::Mocks::Space.new
 

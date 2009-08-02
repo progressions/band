@@ -6,10 +6,14 @@ class Fan < ActiveRecord::Base
 	validates_presence_of :email, :zipcode
 	validates_email_veracity_of :email
 	validates_uniqueness_of :email, :case_sensitive => false
-	#validates_numericality_of :zipcode
-	#validates_inclusion_of :zipcode, :in => 00501..99999, :message => "must be 5 digits"
 		
 	before_save :encrypt_email
+	before_save :set_active
+	
+  named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
+  named_scope :unsubscribed_since, lambda {|since_date| {:conditions => ["unsubscribed_at >= ?", since_date]}}
+  named_scope :active, :conditions => {:active => true}
+  named_scope :unsubscribed, :conditions => {:active => false}
 	
 	def tag	  
   end
@@ -45,6 +49,10 @@ class Fan < ActiveRecord::Base
   def address
     [[city, state].join(', '), zipcode].join(' ')
   end
+  
+  def deactivate
+    update_attribute(:active, false)
+  end
 	
 	def self.search(search, page)
 	  search.strip!
@@ -75,6 +83,10 @@ class Fan < ActiveRecord::Base
   end
   
   protected
+    def set_active
+      active = true
+    end
+
     def encrypt_email
       return if email.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--") if new_record?

@@ -47,11 +47,11 @@ class Mailer < ActionMailer::Base
     content_type "text/html"
   end
   
-  def status_report
-    recipients  global_settings.admin_email
-    from        "#{global_settings.artist_name} <#{global_settings.email}>"
+  def status_report(status_presenter)
+    recipients  status_presenter.site.admin_email
+    from        "#{status_presenter.site.artist_name} <#{status_presenter.site.email}>"
     subject     "[#{mail_tag}] Status Report"
-    body        :global_settings => global_settings
+    body        :status_presenter => status_presenter
     content_type  "text/html"
   end
   

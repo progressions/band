@@ -1,53 +1,72 @@
-%h2= "Status report for #{@global_settings.artist_name}"
+%h2= "Status report for #{@status_presenter.site.artist_name}"
 
-%h3= "July 26, 2009 to August 2, 2009"
+%h3= "#{@status_presenter.from_date} to #{@status_presenter.to_date}"
 
 #mailing_list
   %h4 Mailing list
 
   %ul{:style => "list-decoration: none;"}
-    %li 10 new fans subscribed to the mailing list
-    %li 3 fans unsubscribed from the mailing list
-    %li 312 fans total
-    %li 2 newsletters delivered to 312 fans
+    %li= "#{pluralize(@status_presenter.new_fans_count, 'new fan')} subscribed to the mailing list"
+    %li= "#{pluralize(@status_presenter.new_unsubscribed_fans_count, 'fan')} unsubscribed from the mailing list"
+    %li= "#{pluralize(@status_presenter.total_fan_count, 'fan')} total"
+    %li= "#{pluralize(@status_presenter.new_deliveries_count, 'newsletter')} delivered to #{pluralize(@status_presenter.new_deliveries_fan_count, 'fan')}"
 
 #shows
   %h4 Shows
 
   %ul{:style => "list-decoration: none;"}
     %li 
-      3 new shows scheduled
+      = "#{pluralize(@status_presenter.new_scheduled_shows_count, 'new show')} scheduled"
       %ul
-        %li "WRS at The Parlor" on August 6
-        %li "WRS at Headhunters" on August 13
-        %li "WRS at Jonathan and Kitara's" on August 29
+        - @status_presenter.new_scheduled_shows.first(3).each do |new_show|
+          %li= "#{new_show.title}"
     %li 
-      1 show performed
+      = "#{pluralize(@status_presenter.new_performed_shows_count, 'show')} performed"
       %ul
-        %li "WRS at Rockin Tomato" on July 21
-        %li 
-          Notes:
-          .notes
-            %p Show felt good, about 30 people there
-            %p Made about $40 in tips
-            %p [isaac] guitar sounded great to me #shownotes
-            %p= link_to "View the rest...", ""
+        - @status_presenter.new_performed_shows.first(3).each do |show|
+          %li
+            = show.title
+           
+            - if show.notes?
+              %p Notes:
+              .notes
+                %p Show felt good, about 30 people there
+                %p Made about $40 in tips
+                %p [isaac] guitar sounded great to me #shownotes
+                %p= link_to "View the rest...", ""
 
 #website
   %h4 Website
 
   %ul{:style => "list-decoration: none;"}
     %li 
-      9 new blogs posted
+      = "#{pluralize(@status_presenter.new_blogs_count, 'new blog')} posted"
       %ul
-        %li "I saw a funny thing today"
-        %li "Cats are cute"
-        %li "A cool video"
-        %li= link_to "View the rest...", ""
+        - @status_presenter.new_blogs.first(3).each do |blog|
+          %li= link_to blog.title, blog_url(blog)
+        - if @status_presenter.new_blogs_count > 3
+          %li= link_to "View the rest...", blogs_url
     %li 
-      1 news entry posted
+      = "#{pluralize(@status_presenter.new_entries_count, 'new entry')} posted"
       %ul
-        %li Hey gang we are rocking the world next month!
-    
+        - @status_presenter.new_entries.first(3).each do |entry|
+          %li= link_to entry.title, entry_url(entry)
+        - if @status_presenter.new_entries_count > 3
+          %li= link_to "View the rest...", entries_url
+
+- if false
+  #finances
+    %h4 Band fund
+  
+    %ul{:style => "list-decoration: none;"}
+      %li $127 in the band fun
+      %li 
+        Latest transactions:
+        %ul
+          %li 7/23/09 Added $23: tips from show
+          %li 7/20/09 Removed $52: buy a mic
+          %li 6/08/09 Added $21: tips from show
+          %li= link_to "View the rest..", ""
         
+  
 %p Goodbye.

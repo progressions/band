@@ -1,5 +1,6 @@
 class Mail < ActiveRecord::Base  
   belongs_to :user, :foreign_key => "created_by"
+  has_many :deliveries
   
   validates_presence_of :title, :body
   

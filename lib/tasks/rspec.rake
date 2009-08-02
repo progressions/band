@@ -4,6 +4,7 @@ desc 'Run all model and controller specs'
 task :spec do
   Rake::Task["spec:models"].invoke       rescue got_error = true
   Rake::Task["spec:controllers"].invoke rescue got_error = true
+  Rake::Task["spec:presenters"].invoke  rescue got_error = true
 
   # not yet supported
   #if File.exist?("spec/integration")
@@ -14,6 +15,11 @@ task :spec do
 end
 
 namespace :spec do
+  desc "Run the specs under spec/presenters"
+  Spec::Rake::SpecTask.new(:presenters => "db:test:prepare") do |t|
+    t.spec_files = FileList['spec/presenters/**/*_spec.rb']
+  end
+  
   desc "Run the specs under spec/models"
   Spec::Rake::SpecTask.new(:models => "db:test:prepare") do |t|
     t.spec_files = FileList['spec/models/**/*_spec.rb']

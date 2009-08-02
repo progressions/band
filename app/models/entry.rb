@@ -4,4 +4,6 @@ class Entry < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
   
   validates_presence_of :title, :body
+
+  named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
 end

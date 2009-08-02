@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090802045305) do
+ActiveRecord::Schema.define(:version => 20090802142636) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20090802045305) do
     t.datetime "updated_at"
   end
 
+  create_table "deliveries", :force => true do |t|
+    t.integer  "mail_id"
+    t.integer  "fan_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "entries", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -62,6 +69,8 @@ ActiveRecord::Schema.define(:version => 20090802045305) do
     t.string   "crypted_email"
     t.string   "city"
     t.string   "state"
+    t.boolean  "active"
+    t.datetime "unsubscribed_at"
   end
 
   create_table "lyrics", :force => true do |t|

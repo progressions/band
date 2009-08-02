@@ -27,23 +27,23 @@ class MailsController < ApplicationController
     if params[:fans_by_zipcode]
       zipcode = params[:fans_by_zipcode][:zipcode]      
       zipcode ||= params[:fans_by_zipcode]
-      @fans = Fan.find_all_by_zipcode(zipcode.to_i)
+      @fans = Fan.active.find_all_by_zipcode(zipcode.to_i)
     end
     if params[:fans_by_city]
       city = params[:fans_by_city][:city]
       city ||= params[:fans_by_city]
-      @fans = Fan.find_all_by_city(city)
+      @fans = Fan.active.find_all_by_city(city)
     end
     if params[:fans_by_state]
       state = params[:fans_by_state][:state]
       state ||= params[:fans_by_state]
-      @fans = Fan.find_all_by_state(state)
+      @fans = Fan.active.find_all_by_state(state)
     end
     if params[:fans_by_tags]
       tags = params[:fans_by_tags]
-      @fans = Fan.find_tagged(tags)
+      @fans = Fan.active.find_tagged(tags)
     end
-    @fans = Fan.find(:all) if @fans.nil?
+    @fans = Fan.active.find(:all) if @fans.nil?
     render :update do |page|
       page.replace_html 'fan_count', :partial => 'fan_count', :locals => {:fan_count => @fans.length}
     end
@@ -57,26 +57,27 @@ class MailsController < ApplicationController
     if params[:deliver_button]
       if params[:fans_by_zipcode]
         zipcode = params[:fans_by_zipcode][:zipcode]      
-        @fans = Fan.find_all_by_zipcode(zipcode.to_i)
+        @fans = Fan.active.find_all_by_zipcode(zipcode.to_i)
       end
       if params[:fans_by_city]
         city = params[:fans_by_city][:city]
-        @fans = Fan.find_all_by_city(city)
+        @fans = Fan.active.find_all_by_city(city)
       end
       if params[:fans_by_state]
         state = params[:fans_by_state][:state]
-        @fans = Fan.find_all_by_state(state)
+        @fans = Fan.active.find_all_by_state(state)
       end
       if params[:fans_by_tags]
         tags = params[:fans_by_tags]
-        @fans = Fan.find_tagged(tags)
+        @fans = Fan.active.find_tagged(tags)
       end
-      @fans = Fan.find(:all) if @fans.nil?
+      @fans = Fan.active.find(:all) if @fans.nil?
       
       @fans.each do |f|
         logger.info("SENDING MAIL TO DELAYED_JOBS FOR #{f.email}")
         Mailer.send_later(:deliver_mail, f, @mail)
       end
+      Delivery.create(:mail => @mail, :fan_count => @fans.length)
       @mail.sent_at = Time.now
       @mail.save
       flash[:notice] = "Mail was successfully delivered to #{@fans.length} fans."

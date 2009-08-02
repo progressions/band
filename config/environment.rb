@@ -66,6 +66,10 @@ Rails::Initializer.run do |config|
   #config.load_paths += %W( #{RAILS_ROOT}/app/apis )
   
   # config.load_paths << "#{RAILS_ROOT}/app/sweepers"
+
+  %W(frameworks presenters workers).each do |lib|
+    config.load_paths << "#{RAILS_ROOT}/lib/#{lib}"
+  end
   
   config.load_paths += %W( #{RAILS_ROOT}/app/apis )
   config.load_paths += Dir["#{RAILS_ROOT}/vendor/gems/**"].map do |dir|
@@ -73,7 +77,6 @@ Rails::Initializer.run do |config|
   end
   
   config.gem "calendar_date_select"
-  # config.gem "chronic"
   config.gem "collectiveidea-delayed_job", :lib => "delayed_job", :source => "http://gems.github.com"
   config.gem "haml"
   config.gem "httparty"

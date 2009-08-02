@@ -120,18 +120,18 @@ class FansController < ApplicationController
   def index
     @fans = []
     @show_sidebar = false    
-    @fan_total = Fan.count(:all)
+    @fan_total = Fan.active.count
     if params[:tag]
-      @fans = Fan.paginate_tagged_with(params[:tag], :page => params[:p])
+      @fans = Fan.active.paginate_tagged_with(params[:tag], :page => params[:p])
     elsif params[:search]
-      @fans = Fan.search(params[:search], params[:p])
+      @fans = Fan.active.search(params[:search], params[:p])
     elsif @fans.empty?
       if params[:sort]
         order_by = params[:sort]
       else
         order_by = "created_at DESC"
       end
-      @fans = Fan.paginate :all, :per_page => 25, :page => params[:p], :order => order_by
+      @fans = Fan.active.paginate :all, :per_page => 25, :page => params[:p], :order => order_by
     end
     @fan_count = @fans.length
     if @fans.empty?
@@ -165,7 +165,7 @@ class FansController < ApplicationController
   # GET /fans/export
   # POST /fans/export
   def export
-    @fans = Fan.find(:all)
+    @fans = Fan.active.find(:all)
 
     csv_string = FasterCSV.generate do |csv|
       csv << ["Name", "E-mail", "Notes", "Section 1 - Description", "Section 1 - Email", "Section 1 - IM", "Section 1 - Phone", "Section 1 - Mobile", "Section 1 - Pager", "Section 1 - Fax", "Section 1 - Company", "Section 1 - Title", "Section 1 - Other", "Section 1 - Address"]
@@ -239,7 +239,7 @@ class FansController < ApplicationController
   # DELETE /fans/1.xml
   def destroy
     Mailer.deliver_unsubscribe_report(@fan)
-    @fan.destroy
+    @fan.deactivate
     flash[:notice] = "#{@fan.email} was successfully unsubscribed."
 
     if logged_in?

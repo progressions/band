@@ -8,6 +8,9 @@ class Blog < ActiveRecord::Base
   # TODO: Allow tagging of blog posts by the poster
   
   validates_presence_of :title, :body
+
+  named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
+
     
   def subscribe email
     sub = self.subscriptions.find_or_create_by_email(email)
