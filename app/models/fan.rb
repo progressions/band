@@ -84,7 +84,7 @@ class Fan < ActiveRecord::Base
   
   protected
     def set_active
-      active = true
+      self.active = true
     end
 
     def encrypt_email

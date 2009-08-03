@@ -116,7 +116,7 @@ Feature: Fan signup
     | stan@marvel.com | 10001   | Stan       | Lee       |
     | joe@simon.com   | 21041   | Joe        | Simon     |
   
-  @wip
+  
   Scenario Outline: Fan signs up with invalid captcha
     Given a global setting exists with use_captcha_for_fans: true
     And I am on the home page
@@ -137,3 +137,18 @@ Feature: Fan signup
     | stan@marvel.com | 10001   | Stan       | Lee       |
     | joe@simon.com   | 21041   | Joe        | Simon     |
   
+  @wip
+  Scenario Outline: Fan signs up and is made active
+    When a new fan signs up with email: "<email>", zipcode: "<zipcode>"
+    Given a user: "john" exists
+    When I login as user: "john"
+    And I go to the fans page
+    Then I should see "<email>"
+  
+    Examples:
+    | email           | zipcode | first_name | last_name |
+    | jack@kirby.com  | 78701   | Jack       | Kirby     |
+    | stan@marvel.com | 10001   | Stan       | Lee       |
+    | joe@simon.com   | 21041   | Joe        | Simon     |
+    
+    
