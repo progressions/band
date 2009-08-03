@@ -74,8 +74,10 @@ class MailsController < ApplicationController
       @fans = Fan.active.find(:all) if @fans.nil?
       
       @fans.each do |f|
-        logger.info("SENDING MAIL TO DELAYED_JOBS FOR #{f.email}")
-        Mailer.send_later(:deliver_mail, f, @mail)
+        if f.active?
+          logger.info("SENDING MAIL TO DELAYED_JOBS FOR #{f.email}")
+          Mailer.send_later(:deliver_mail, f, @mail)
+        end
       end
       Delivery.create(:mail => @mail, :fan_count => @fans.length)
       @mail.sent_at = Time.now
