@@ -41,7 +41,7 @@ class Presenter
     method_names.each do |method_name|
       count_method = "#{method_name}_count".to_sym
       send :define_method, count_method do
-        send(method_name).try(:count) || 0
+        send(method_name).try(:size) || 0
       end
     
       any_method = "#{method_name}?".to_sym

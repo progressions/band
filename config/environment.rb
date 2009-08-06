@@ -66,8 +66,12 @@ Rails::Initializer.run do |config|
   #config.load_paths += %W( #{RAILS_ROOT}/app/apis )
   
   # config.load_paths << "#{RAILS_ROOT}/app/sweepers"
+  
+  %W(presenters workers).each do |app|
+    config.load_paths << "#{RAILS_ROOT}/app/#{app}"
+  end
 
-  %W(frameworks presenters workers).each do |lib|
+  %W(frameworks).each do |lib|
     config.load_paths << "#{RAILS_ROOT}/lib/#{lib}"
   end
   
