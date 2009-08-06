@@ -35,7 +35,6 @@ class ApplicationController < ActionController::Base
       @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now])
       @songs = Song.find_all_with_file
       if @global_settings.show_twitter?
-        @twitter_remaining_hits = twitter.rate_limit_status.remaining_hits
         @twitter_profile = @global_settings.twitter_profile
         @twitter_profile_url = twitter_profile_url
         @twitter_feed = twitter_feed
@@ -79,7 +78,14 @@ class ApplicationController < ActionController::Base
   memoize :twitter
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
-    twitter.user_timeline.first(count)
+    if @global_settings.show_twitter?
+      username = @global_settings.twitter_profile
+      url = user_timeline_url(username).try(:reverse)
+      HTTParty.get(url).try(:last, count)
+    end
+  rescue
+    @twitter_error = true
+    []
   end
   
   def update_twitter(update)

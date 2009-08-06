@@ -3,7 +3,4 @@
 	<% @twitter_feed.each do |s| %>
 	  <%= post_twitter_update(s) %>
 	<% end %>
-	<% if logged_in? && @twitter_remaining_hits < 99 %>
-		<p><%= pluralize(@twitter_remaining_hits, "hit") %> remaining</p>
-	<% end %>
 </ul>

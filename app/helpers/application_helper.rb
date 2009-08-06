@@ -108,28 +108,14 @@ END_STRING
 	  "http://www.twitter.com/#{@global_settings.twitter_profile}"
   end
   
-  def twitter_profile_link
-    link_to(@global_settings.twitter_profile, twitter_profile)
-  end
-  
-  def twitter_user
-    twitter.user(@global_settings.twitter_profile)
-  end
-	
-	def twitter
-	  Twitter::Base.new(@global_settings.twitter_profile, @global_settings.twitter_password)
-  end
-  
-  def twitter_feed(count=MAX_TWITTER_COUNT)
-    twitter.timeline(:user, :count => count)
-  rescue
-    []
-  end
-  
-  def add_twitter_links(text)
-    text = auto_link(text)
-    text = text.gsub(/@[^\s]*/) {|s| "<a href='http://www.twitter.com/#{s.gsub('@','')}'>#{s}</a>"}
-  end
+    def twitter_profile_link
+      link_to(@global_settings.twitter_profile, twitter_profile)
+    end
+
+    def add_twitter_links(text)
+      text = auto_link(text)
+      text = text.gsub(/@[^\s]*/) {|s| "<a href='http://www.twitter.com/#{s.gsub('@','')}'>#{s}</a>"}
+    end
   
   def add_links(text)
     text.gsub(/http[^\s]*/) {|s| "<a href='#{s}'>#{s}</a>"}
