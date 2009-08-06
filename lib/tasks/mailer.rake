@@ -1,12 +1,12 @@
 namespace :mailer do
   desc "Deliver periodical status report"
   task :status_report => :environment do
-    StatusReporter.send_status_report
+    StatusPresenter.send_status_report
   end
   
   desc "Test status report"
   task :test_status_report => :environment do
-    report = StatusReporter.send_status_report
+    report = StatusPresenter.send_status_report
     
     body = report.body
     body.gsub!("\\n", "\n")
