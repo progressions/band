@@ -51,7 +51,7 @@ class Fan < ActiveRecord::Base
   end
   
   def deactivate
-    update_attribute(:active, false)
+    update_attributes(:active => false, :unsubscribed_at => Time.now)
   end
 	
 	def self.search(search, page)
