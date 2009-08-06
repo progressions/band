@@ -23,6 +23,7 @@ class SettingsController < ApplicationController
     @fans = Fan.find(:all)
     @shows_to_date = Show.find(:all, :conditions => ["date < ?", Time.now])
     @shows_upcoming = Show.find(:all, :conditions => ["date >= ?", Time.now])
+    @deliveries = Delivery.scoped(:order => "created_at DESC")
   end
   
   def profile

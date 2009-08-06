@@ -29,7 +29,7 @@ every 1.day do
   rake "twitter:check_for_show_notes"
 end
 
-every 1.day, :at => "9:00am" do
+every 1.day, :at => "7:00am" do
   rake "mailer:status_report"
 end
 

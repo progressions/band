@@ -59,6 +59,12 @@ Before do
       send(*args)
     end
   end
+  
+  class Mail
+    def send_later(*args)
+      send(*args)
+    end
+  end
 end
 
 After do

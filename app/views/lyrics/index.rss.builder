@@ -3,7 +3,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "#{@global_settings.artist_name} lyrics"
     xml.description "Song lyrics of #{@global_settings.artist_name}."
-    xml.link formatted_lyrics_url(:rss)
+    xml.link lyrics_url(:format => :rss)
 
     for lyric in @lyrics
       xml.item do

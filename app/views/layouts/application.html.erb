@@ -116,13 +116,13 @@
 	</div> <!-- end DIV 'inside-wrap' -->
   	<div id="footer">
   	    <p><% if @global_settings.show_blog? %>
-    	    Subscribe: <%= link_to "Blog", formatted_blogs_url(:rss) %> | 
+    	    Subscribe: <%= link_to "Blog", blogs_url(:format => :rss) %> | 
     	  <% end %>
     	  <% if @global_settings.show_news? %>
-    	    <%= link_to "News", formatted_entries_url(:rss) %> | 
+    	    <%= link_to "News", entries_url(:format => :rss) %> | 
     	  <% end %>
     	  <% if @global_settings.show_lyrics? %>
-    	    <%= link_to "Lyrics", formatted_lyrics_url(:rss) %> | 
+    	    <%= link_to "Lyrics", lyrics_url(:format => :rss) %> | 
     	  <% end %>
     	  <% if @global_settings.show_videos? %>
     	    <%= link_to "Videos (YouTube)", "http://www.youtube.com/rss/user/#{@global_settings.youtube_profile}/videos.rss" %>

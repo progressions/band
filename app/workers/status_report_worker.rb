@@ -1,4 +1,4 @@
-class StatusReporter < Worker
+class StatusReportWorker < Worker
   def self.send_status_report
     @global_settings = Setting.find(1)
     

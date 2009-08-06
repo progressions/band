@@ -18,19 +18,3 @@ config.action_controller.perform_caching             = true
 config.action_mailer.raise_delivery_errors = true
 
 config.action_mailer.delivery_method = :test
-
-
-
-require 'tlsmail'
-Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
-
-config.action_mailer.smtp_settings = {
-:address => 'smtp.gmail.com',
-:port => 587,
-:domain => 'gmail.com',
-:authentication => :plain,
-:user_name => 'worldracketeeringsquad@gmail.com',
-:password => 'sylvia69'
-}
-
-

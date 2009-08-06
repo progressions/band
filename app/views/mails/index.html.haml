@@ -1,0 +1,10 @@
+- @page_title = "Mails"
+
+- @show_byline ||= true
+- @show_body ||= true 
+
+#mails
+  %h1 Mailing List Messages
+  %p= link_to "Create New Mail", new_mail_path
+  - for @mail in @mails
+    = render :partial => @mail, :locals => {:show_body => false}

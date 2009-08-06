@@ -1,0 +1,23 @@
+- @page_title = "New Mail"
+= javascript_include_tag :fckeditor
+
+
+#mail
+
+%h1 New Mail
+
+= preview(@mail, params, false)
+
+= error_messages_for :mail
+
+- form_for(@mail) do |f|
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+    = fckeditor_tag("mail")
+
+    %p
+      = f.submit "Preview", :name => "preview_button"
+      = f.submit "Create"
+      

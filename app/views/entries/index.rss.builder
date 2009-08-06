@@ -3,7 +3,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "#{@global_settings.artist_name} News"
     xml.description "The official news feed of #{@global_settings.artist_name}."
-    xml.link formatted_entries_url(:rss)
+    xml.link entries_url(:format => :rss)
 
     for entry in @entries
       xml.item do

@@ -137,7 +137,7 @@ Feature: Fan signup
     | stan@marvel.com | 10001   | Stan       | Lee       |
     | joe@simon.com   | 21041   | Joe        | Simon     |
   
-  @wip
+
   Scenario Outline: Fan signs up and is made active
     When a new fan signs up with email: "<email>", zipcode: "<zipcode>"
     Given a user: "john" exists

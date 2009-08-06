@@ -73,16 +73,15 @@ class MailsController < ApplicationController
       end
       @fans = Fan.active.find(:all) if @fans.nil?
       
+      delivery = Delivery.create(:mail => @mail, :fan_count => 0)
       @fans.each do |f|
         if f.active?
-          logger.info("SENDING MAIL TO DELAYED_JOBS FOR #{f.email}")
-          Mailer.send_later(:deliver_mail, f, @mail)
+          @mail.send_later(:deliver, f, delivery)
         end
       end
-      Delivery.create(:mail => @mail, :fan_count => @fans.length)
       @mail.sent_at = Time.now
       @mail.save
-      flash[:notice] = "Mail was successfully delivered to #{@fans.length} fans."
+      flash[:notice] = "Mail was successfully queued for delivery to #{@fans.length} fans."
       redirect_to mails_path
     end
   end

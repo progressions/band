@@ -20,8 +20,17 @@ Factory.sequence :email do |num|
   "name#{num}@example.com"
 end
 
-Factory.define :style do |f|
-  f.title             "Default"
+
+Factory.define :blog do |f|
+  f.association             :user
+  f.title                   "Too many dicks on the dancefloor"
+  f.body                    "There are just too many dicks on the dancefloor. Peace out."
+end
+
+
+Factory.define :fan do |f|
+  f.email             { Factory.next(:email) }
+  f.zipcode           "78723"
 end
 
 Factory.define :setting do |f|
@@ -31,17 +40,16 @@ Factory.define :setting do |f|
   f.url               "http://www.weracketeer.com"
   f.mail_tag          "WRS"
   f.admin_email       "admin@weracketeer.com"
+  f.email             "wrs@weracketeer.com"
+end
+
+Factory.define :style do |f|
+  f.title             "Default"
 end
 
 Factory.define :user do |f|
   f.email                   { Factory.next(:email) }
   f.password                "password"
   f.password_confirmation   "password"
-end
-
-Factory.define :blog do |f|
-  f.association             :user
-  f.title                   "Too many dicks on the dancefloor"
-  f.body                    "There are just too many dicks on the dancefloor. Peace out."
 end
 

@@ -1,4 +1,4 @@
-class TwitterWorker
+class TwitterWorker < Worker
   def self.check_for_show_notes
     begin
       tweets = Twitter::Search.new('#shownotes')

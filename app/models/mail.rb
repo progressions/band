@@ -14,4 +14,10 @@ class Mail < ActiveRecord::Base
       find(:all)
     end
   end
+  
+  def deliver(fan, delivery)
+    if Mailer.deliver_mail(fan, self)
+      delivery.increment!(:fan_count)
+    end
+  end
 end
