@@ -1,4 +1,3 @@
-@wip
 Feature: Delivering mail to fans
   In order to communicate with our fans
   As a user
