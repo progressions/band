@@ -108,14 +108,14 @@ END_STRING
 	  "http://www.twitter.com/#{@global_settings.twitter_profile}"
   end
   
-    def twitter_profile_link
-      link_to(@global_settings.twitter_profile, twitter_profile)
-    end
+  def twitter_profile_link
+    link_to(@global_settings.twitter_profile, twitter_profile)
+  end
 
-    def add_twitter_links(text)
-      text = auto_link(text)
-      text = text.gsub(/@[^\s]*/) {|s| "<a href='http://www.twitter.com/#{s.gsub('@','')}'>#{s}</a>"}
-    end
+  def add_twitter_links(text)
+    text = auto_link(text)
+    text = text.gsub(/@[^\s]*/) {|s| "<a href='http://www.twitter.com/#{s.gsub('@','')}'>#{s}</a>"}
+  end
   
   def add_links(text)
     text.gsub(/http[^\s]*/) {|s| "<a href='#{s}'>#{s}</a>"}
@@ -129,8 +129,8 @@ END_STRING
   end
   
   def post_twitter_update(s)
-		"<li class=\"text\">#{add_twitter_links(s.text)}</li>
-		<li class=\"byline\">#{time_ago_in_words(s.created_at)} ago from #{convert_to_html(s.source)}</li>"
+		"<li class=\"text\">#{add_twitter_links(s['text'])}</li>
+		<li class=\"byline\">#{time_ago_in_words(s['created_at'])} ago from #{convert_to_html(s['source'])}</li>"
   end
   
   def myspace_link(profile)

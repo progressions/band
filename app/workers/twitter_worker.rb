@@ -64,7 +64,7 @@ class TwitterWorker < Worker
   end
   
   def self.user_timeline_url(username)
-    "http://twitter.com/statuses/user_timeline.json?screen_name=#{username}"
+    "https://twitter.com/statuses/user_timeline.json?screen_name=#{username}"
   end
 
   def self.post_update(member, text)

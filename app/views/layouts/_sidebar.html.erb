@@ -1,3 +1,4 @@
+
   <div id="sidebar">
    	  <div id="about" class="module">
    	    <h2 id="about_module"><%= link_to "About", "" %></h2>
@@ -72,7 +73,7 @@
     		</h5>
     	</div> <!-- end DIV 'recent_posts' -->
     	<% end %>
-
+    	
 			<% unless @twitter_error || !@global_settings.show_twitter? || @page_title == "Twitter - " %>
 				<div id="twitter" class="module">
 					<h2 id="twitter"><%= link_to "Twitter", twitter_path %></h2>

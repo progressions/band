@@ -79,13 +79,15 @@ class ApplicationController < ActionController::Base
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
     if @global_settings.show_twitter?
-      username = @global_settings.twitter_profile
-      url = user_timeline_url(username).try(:reverse)
-      HTTParty.get(url).try(:last, count)
+      TwitterWorker.user_timeline(@global_settings.twitter_profile).first(5)
     end
   rescue
     @twitter_error = true
     []
+  end
+  
+  def user_timeline_url(username)
+    "http://twitter.com/statuses/user_timeline.json?screen_name=#{username}"
   end
   
   def update_twitter(update)
