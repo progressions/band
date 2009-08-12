@@ -39,7 +39,7 @@ class TwitterWorker < Worker
             begin
               last_tweeted = Time.parse(tweet["created_at"])
     
-              if member.last_tweeted.nil? || last_tweeted > member.last_tweeted
+              if retweet?(tweet)
                 text = tweet["text"]
                 if global_settings.retweet_replies? || text !~ /^\@/
                   post_update(member, text)
@@ -57,6 +57,11 @@ class TwitterWorker < Worker
   end
 
   protected
+
+  def self.retweet?(tweet)
+    text = tweet["text"]
+    (member.last_tweeted.nil? || last_tweeted > member.last_tweeted) && (global_settings.retweet_replies? || text !~ /^\@/) && (text !~ /^RT \@#{global_settings.twitter_profile}/)
+  end
   
   def self.user_timeline(username)
     url = user_timeline_url(username)

@@ -67,6 +67,7 @@ Feature: Manage global settings
     | Pop Will Eat Itself      | Time to get ugly!                        | Vestan Pance       |
     | World Racketeering Squad | Rock and roll pop music from the future! | J.Coleman/R.Oliver |
 
+  @wip
   Scenario Outline: User changes some email settings with valid emails
     When I login as user: "john"
     And I go to the profile page
@@ -80,7 +81,7 @@ Feature: Manage global settings
     Examples:
     | contact_email | admin_email |
     | brian@nems.co.uk | eggman@thebeatles.com |
-    | clint@pweination.org | clint@pweination.org |
+    | clint@google.com | clint@google.com |
     | wrs@weracketeer.com | isaac@weracketeer.com |
     
     

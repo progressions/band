@@ -149,7 +149,7 @@ END_STRING
 	end
 	
 	def post_tweet_check_box(checked=true, message="Post on Twitter?")
-    "#{check_box_tag :post_tweet, 'yes', checked} #{message}"
+    "#{check_box_tag :post_tweet, 'yes', checked} #{label_tag :post_tweet, message}"
 	end
 end
 
