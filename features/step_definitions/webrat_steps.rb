@@ -19,6 +19,10 @@ When /^I follow "([^\"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^I follow "([^\"]*)" within "([^\"]*)"$/ do |link, parent|
+  click_link_within(parent, link)
+end
+
 When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
   fill_in(field, :with => value) 
 end
@@ -104,7 +108,8 @@ Then /^I should not see "([^\"]*)"$/ do |text|
 end
 
 Then /^I should not see \/([^\/]*)\/$/ do |regexp|
-  response.should_not contain(text)
+  regexp = Regexp.new(regexp)
+  response.should_not contain(regexp)
 end
 
 Then /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
