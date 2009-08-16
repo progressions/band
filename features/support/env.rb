@@ -7,7 +7,7 @@ require 'email_spec/cucumber'
 require 'spec/rails'
 require 'cucumber/rails/rspec'
 
-# DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.strategy = :truncation
 
 # http://www.brynary.com/2009/2/3/cucumber-step-definition-tip-stubbing-time
 require 'spec/mocks'
