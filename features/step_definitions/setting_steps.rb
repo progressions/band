@@ -1,5 +1,7 @@
 Given %r{^a global setting exists$} do
-  Given "a setting: \"global\" exists with id: 1"
+  unless Setting.find_by_id(1)
+    Given "a setting: \"global\" exists with id: 1"
+  end
 end
 
 Given %r{^a global setting exists with #{capture_fields}$} do |fields|
