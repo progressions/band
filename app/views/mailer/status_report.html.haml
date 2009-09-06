@@ -38,8 +38,8 @@
       %li 
         upcoming shows:
         %ul
-        - @status_presenter.upcoming_shows.first(3).each do |show|
-          %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{show.title}"
+          - @status_presenter.upcoming_shows.first(3).each do |show|
+            %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{link_to(show.title, show)}"
 
 #website
   %h4 Website
