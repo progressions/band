@@ -6,7 +6,7 @@
   %h4 Mailing list
 
   %ul{:style => "list-decoration: none;"}
-    %li= "#{pluralize(@status_presenter.new_fans_count, 'new fan')} subscribed to the mailing list"
+    %li= "#{pluralize(@status_presenter.new_fans_count, 'new fan')} subscribed to the mailing list: #{@status_presenter.new_fans_list}"
     %li= "#{pluralize(@status_presenter.new_unsubscribed_fans_count, 'fan')} unsubscribed from the mailing list"
     %li= "#{pluralize(@status_presenter.total_fan_count, 'fan')} total"
     %li= "#{pluralize(@status_presenter.new_deliveries_count, 'newsletter')} delivered to #{pluralize(@status_presenter.new_deliveries_fan_count, 'fan')}"
@@ -34,10 +34,12 @@
                 %p Made about $40 in tips
                 %p [isaac] guitar sounded great to me #shownotes
                 %p= link_to "View the rest...", ""
-      / %li 
-      /   upcoming shows:
-      /   %ul
-      /     %li= "2 days until #{link_to 'WRS at The Parlor', ''}"
+    - if @status_presenter.upcoming_shows?
+      %li 
+        upcoming shows:
+        %ul
+        - @status_presenter.upcoming_shows.first(3).each do |show|
+          %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{show.title}"
 
 #website
   %h4 Website
@@ -63,7 +65,7 @@
     %h4 Band fund
   
     %ul{:style => "list-decoration: none;"}
-      %li $127 in the band fun
+      %li $127.64 in the band fund
       %li 
         Latest transactions:
         %ul

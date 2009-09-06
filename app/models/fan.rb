@@ -46,6 +46,14 @@ class Fan < ActiveRecord::Base
 	  [firstname, lastname].join(' ')
   end
   
+  def name_and_email
+    if name.blank?
+      email
+    else
+      "#{name} (#{email})"
+    end
+  end
+  
   def address
     [[city, state].join(', '), zipcode].join(' ')
   end

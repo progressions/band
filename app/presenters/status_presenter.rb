@@ -1,4 +1,4 @@
-module MailingListPresenter
+module FansPresenter
   def self.included(klass)
     klass.send :extend, ClassMethods
     klass.send :include, InstanceMethods
@@ -10,6 +10,12 @@ module MailingListPresenter
   end
   
   module InstanceMethods
+    def new_fans_list
+      new_fans.map do |fan|
+        fan.name_and_email
+      end.join(", ")
+    end
+    
     def new_fans
       @new_fans ||= Fan.created_since(since_date)
     end
@@ -37,7 +43,7 @@ module ShowsPresenter
     klass.send :extend, ClassMethods
     klass.send :include, InstanceMethods
     
-    klass.send :present, :new_scheduled_shows, :new_performed_shows
+    klass.send :present, :new_scheduled_shows, :new_performed_shows, :upcoming_shows
   end
 
   module ClassMethods
@@ -45,11 +51,19 @@ module ShowsPresenter
   
   module InstanceMethods    
     def new_scheduled_shows
-      @new_scheduled_shows ||= Show.created_since(since_date)
+      @new_scheduled_shows ||= shows.created_since(since_date)
     end
   
     def new_performed_shows
-      @new_performed_shows ||= Show.performed_since(since_date)
+      @new_performed_shows ||= shows.performed_since(since_date)
+    end
+    
+    def upcoming_shows
+      @upcoming_shows ||= shows.upcoming
+    end
+    
+    def shows
+      Show.scoped
     end
   end
 end
@@ -77,7 +91,7 @@ module WebsitePresenter
 end
 
 class StatusPresenter < Presenter
-  include MailingListPresenter
+  include FansPresenter
   include ShowsPresenter
   include WebsitePresenter
   
