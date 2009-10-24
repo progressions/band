@@ -38,30 +38,28 @@ class TwitterWorker < Worker
           tweets.last(global_settings.retweet_count).each do |tweet|
             begin
               last_tweeted = Time.parse(tweet["created_at"])
+              
+              text = tweet["text"]
     
-              if retweet?(tweet)
+              if (member.last_tweeted.nil? || last_tweeted > member.last_tweeted) && (global_settings.retweet_replies? || text !~ /^\@/) && (text !~ /^RT \@#{global_settings.twitter_profile}/)
                 text = tweet["text"]
                 if global_settings.retweet_replies? || text !~ /^\@/
                   post_update(member, text)
                   member.update_attribute(:last_tweeted, last_tweeted)
                 end
               end
-            rescue StandardError => e
+            # rescue StandardError => e
             end
           end
         end
-      rescue StandardError => e
-        # logger.info("There was an error connecting to Twitter. #{e.inspect}")
+      # rescue StandardError => e
+      #   # logger.info("There was an error connecting to Twitter. #{e.inspect}")
       end
     end
   end
 
   protected
 
-  def self.retweet?(tweet)
-    text = tweet["text"]
-    (member.last_tweeted.nil? || last_tweeted > member.last_tweeted) && (global_settings.retweet_replies? || text !~ /^\@/) && (text !~ /^RT \@#{global_settings.twitter_profile}/)
-  end
   
   def self.user_timeline(username)
     url = user_timeline_url(username)
