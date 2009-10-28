@@ -14,7 +14,7 @@ class Member < ActiveRecord::Base
   
   def twitter_tag
     if read_attribute(:twitter_tag).blank?
-      nickname.downcase
+      nickname
     else
       read_attribute(:twitter_tag)
     end
