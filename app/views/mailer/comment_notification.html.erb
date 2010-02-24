@@ -8,7 +8,7 @@
 
 <p><%= @user.full_name %>,</p>
 
-<p><%= mail_to(sanitize(@comment.email), sanitize(@comment.name), :host => @global_settings.url) %> has left a comment on your blog post titled "<%= link_to sanitize(@blog.title), blog_url(@blog.to_param, :host => @global_settings.url) %>":
+<p><%= mail_to(sanitize(@comment.email), sanitize(@comment.name), :host => @global_settings.url) %> has left a comment on your blog post titled "<%= link_to(sanitize(@blog.title), blog_url(@blog.to_param, :host => @global_settings.url)) %>":
   
 <div id="comment_body">
   <%= sanitize @comment.body %>

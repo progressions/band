@@ -45,7 +45,7 @@ class Setting < ActiveRecord::Base
   end
   
   def url= link
-	  write_attribute(:url, with_protocol(link))
+      write_attribute(:url, without_protocol(link))
   end
   
   def scan_and_retweet?
@@ -62,7 +62,11 @@ class Setting < ActiveRecord::Base
   
   protected
   
-  def with_protocol link
+  def without_protocol(link)
+    link.gsub(/^http:\/\//, "")
+  end
+  
+  def with_protocol(link)
 	  link = link.match(/^http:\/\//) ? link : "http://#{link}"
 	  link.gsub(/\/$/, "")
   end

@@ -237,6 +237,7 @@ body.sessions #notice {
 
 #blog {
  font-size: 0.9em;
+ overflow: hidden;
  padding-top: 0;
 }
 h1.header {
