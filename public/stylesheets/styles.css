@@ -237,8 +237,10 @@ body.sessions #notice {
 
 #blog {
  font-size: 0.9em;
- overflow: hidden;
  padding-top: 0;
+}
+.blog {
+  overflow: hidden;
 }
 h1.header {
  background: url(/images/header.png) #c9d1de top left repeat-x;
