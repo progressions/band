@@ -2,7 +2,11 @@
 
 <div  id="shows">
   
-<h1>Upcoming Shows</h1>
+<h1>Upcoming Shows
+<% if @venue %>
+  for <%= @venue.name %>
+<% end %>
+</h1>
 
 <% if logged_in? %>
   <p><%= link_to "Create New Show", new_show_path %></p>

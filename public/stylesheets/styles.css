@@ -809,6 +809,7 @@ input#zip_code {
 
 #sidebar #twitter ul.twitter li.text {
 	margin-bottom: 2px;
+	overflow: hidden;
 }
 #sidebar #twitter ul.twitter li.byline {
 	color: #666;

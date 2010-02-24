@@ -1,0 +1,16 @@
+%h1 Listing venues
+
+- for venue in @venues
+  .venue
+  %h3= link_to(venue.name, venue)
+  %p= venue.description
+  %p.shows_count
+    = link_to(pluralize(venue.shows.count, "show"), shows_url(:venue_id => venue.id))
+  %p.byline
+    created on
+    = venue.created_at.strftime("%b %d %Y")
+    = " (#{link_to('edit', edit_venue_path(venue))} | #{link_to('destroy', venue, :confirm => 'Are you sure?', :method => :delete)})"
+
+%p= will_paginate(@venues)
+
+%p= link_to('New venue', new_venue_path)

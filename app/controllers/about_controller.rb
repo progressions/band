@@ -7,7 +7,7 @@ class AboutController < ApplicationController
   def index    
     @playlist = YouTube::Playlist.new(:id => "B407200BFFDB8F1E")
     @body_style = "home"      
-    @blogs = Blog.paginate :all, :per_page => 5, :page => params[:page], :order => 'created_at DESC' if @global_settings.show_blog?
+    @blogs = Blog.paginate(:all, :per_page => 10, :page => params[:page], :order => 'created_at DESC') if @global_settings.show_blog?
     #@songs = Song.find(:all, :limit => 3, :order => "created_at DESC")
     if @global_settings.show_news?
       @entries = Entry.find(:all, :offset => 1, :limit => 3, :order => "created_at DESC")  

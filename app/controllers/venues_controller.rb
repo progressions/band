@@ -5,7 +5,7 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.xml
   def index
-    @venues = Venue.find(:all)
+    @venues = Venue.paginate(:all, :per_page => 25, :page => params[:p], :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

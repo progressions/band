@@ -5,11 +5,18 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.xml
   def index
+    options = {
+      :per_page => 10, :page => params[:p], :order => 'date DESC'
+    }
     if admin? && login_required
-      @shows = Show.paginate :all, :per_page => 10, :page => params[:p], :order => 'date DESC'
-    else      
-      @shows = Show.paginate :all, :per_page => 10, :page => params[:p], :order => 'date', :conditions => ["date > ?", Time.now]
+    else
+      options = options.merge(:conditions => ["date > ?", Time.now])
     end
+    @venue = Venue.find(params[:venue_id])
+    if @venue
+      options = options.merge(:conditions => ["venue_id = ?", params[:venue_id]])
+    end
+    @shows = Show.paginate(:all, options)
   end
   
   # GET /shows/1
