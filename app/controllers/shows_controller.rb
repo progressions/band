@@ -12,7 +12,7 @@ class ShowsController < ApplicationController
     else
       options = options.merge(:conditions => ["date > ?", Time.now])
     end
-    @venue = Venue.find(params[:venue_id])
+    @venue = Venue.find(params[:venue_id]) if params[:venue_id]
     if @venue
       options = options.merge(:conditions => ["venue_id = ?", params[:venue_id]])
     end
