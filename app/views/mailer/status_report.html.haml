@@ -26,20 +26,12 @@
         - @status_presenter.new_performed_shows.first(3).each do |show|
           %li
             = show.title
-           
-            - if show.notes?
-              %p Notes:
-              .notes
-                %p Show felt good, about 30 people there
-                %p Made about $40 in tips
-                %p [isaac] guitar sounded great to me #shownotes
-                %p= link_to "View the rest...", ""
     - if @status_presenter.upcoming_shows?
       %li 
         upcoming shows:
         %ul
           - @status_presenter.upcoming_shows.first(3).each do |show|
-            %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{link_to(show.title, show)}"
+            %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{link_to(show.title, show_url}"
 
 #website
   %h4 Website
@@ -59,20 +51,6 @@
           %li= link_to entry.title, entry_url(entry)
         - if @status_presenter.new_entries_count > 3
           %li= link_to "View the rest...", entries_url
-
-- if false
-  #finances
-    %h4 Band fund
-  
-    %ul{:style => "list-decoration: none;"}
-      %li $127.64 in the band fund
-      %li 
-        Latest transactions:
-        %ul
-          %li 7/23/09 Added $23: tips from show
-          %li 7/20/09 Removed $52: buy a mic
-          %li 6/08/09 Added $21: tips from show
-          %li= link_to "View the rest..", ""
         
   
 %p Goodbye.
