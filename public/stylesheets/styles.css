@@ -836,3 +836,6 @@ input#zip_code {
 }
 
 
+#header_code {
+  float: left;
+}
