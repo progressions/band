@@ -55,7 +55,11 @@
     %dl
       %dd.label= f.label :facebook_profile, "Facebook"
       %dd.description Your Facebook URL, or the address of your Facebook group or fan page.
-      %dt= f.text_field :facebook_profile 
+      %dt= f.text_field :facebook_profile
+      
+      %dd.label= f.label :facebook_widget, "Facebook Widget"
+      %dd.description Your Facebook fan page widget.
+      %dt= f.text_area :facebook_widget
     
       %dd.label= f.label :myspace_profile, "MySpace"
       %dd.description Your MySpace username.

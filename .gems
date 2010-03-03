@@ -1,0 +1,7 @@
+mwhuss-recaptcha --source gems.github.com
+calendar_date_select --version "1.15"
+fastercsv
+haml
+httparty
+twitter
+rack

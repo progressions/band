@@ -13,10 +13,11 @@
      	  </ul>
    	  </div> <!-- end DIV "about" -->
    	  
-   	  <div class="module" style="padding-bottom: 5px;">
-<script src="http://www.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> <script type="text/javascript">FB.init("dd77e50f28bf7ac125776bbee727f879", "");</script>
-<fb:fan width="240" connections="8" stream="0" profile_id="22943099607"></fb:fan>
- 	    </div>
+   	  <% unless @global_settings.facebook_widget.blank? %>
+     	  <div id="facebook_widget" class="module">
+          <%= @global_settings.facebook_widget %>
+   	    </div>
+   	  <% end %>
     	
     	<% unless !@global_settings.has_web_profiles? || @page_title == "On the Web - " %>
   	  <div id="links" class="module">

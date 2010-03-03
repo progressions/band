@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'calendar_date_select'
+
 class ShowsController < ApplicationController
   before_filter :login_required, :except => [:show, :index]
   before_filter :show_shows?, :only => [:show, :index]

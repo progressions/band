@@ -30,8 +30,10 @@ class AboutController < ApplicationController
   def videos
     @wrs = YouTube::User.new(:id => @global_settings.youtube_profile)
     @videos = @wrs.videos[0..9]
-    @featured_videos = YouTube::Playlist.new(:id => "838EB0386BC516DE")
-    @latest_demo = @featured_videos.videos[0]
+    unless @global_settings.featured_playlist.blank?
+      @featured_videos = YouTube::Playlist.new(:id => @global_settings.featured_playlist) 
+      @latest_demo = @featured_videos.videos[0]
+    end
   end
   
   private

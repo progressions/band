@@ -2,7 +2,7 @@
   
 <div id="videos_main">
  
-  <%= video(:video => @latest_demo, :heading => "Our latest demo video:") %>
+  <%= video(:video => @latest_demo, :heading => "Our latest demo video:") if @latest_demo %>
 
 <p>You can see all our videos on <%= link_to "YouTube", "http://www.youtube.com/#{@global_settings.youtube_profile}" %>.</p>
 

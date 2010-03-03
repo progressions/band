@@ -18,16 +18,14 @@
   
   <%= stylesheet_link_tag 'iphone', :media => "only screen and (max-device-width: 480px)" %>
   
-  <% javascript_include_tag 'jquery-1.2.6.min' %>
+  <%= javascript_include_tag 'prototype' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'effects' %>
   <%= javascript_include_tag 'dragdrop' %>
-  <%= javascript_include_tag 'prototype' %>
   <%= javascript_include_tag 'audio-player' %>
   <%= javascript_include_tag 'controls' %>
-
-
-<%= auto_discovery_link_tag(:rss, "/rss.rss", {:title => "#{@global_settings.artist_name} Unified RSS Feed"})  %>
+  
+  <%= auto_discovery_link_tag(:rss, "/rss.rss", {:title => "#{@global_settings.artist_name} Unified RSS Feed"})  %>
 
 <!-- Individual RSS Feeds -->
 <!-- Un-comment these to make them available automatically -->
@@ -46,7 +44,7 @@
       <%= @global_settings.header %>
     </div>
     <div id="logo">  
-      <%= link_to_unless_current(image_tag("/images/logo_cartoon.png", :size => "505x150"), home_path) %>
+      <%= link_to_unless_current(image_tag("/1x1.gif", :size => "505x150", :id => "logo_image"), home_path) %>
     </div> <!-- end DIV 'logo' -->
     
     <% unless !@global_settings.show_fans || @body_style == "fans" %>
@@ -79,22 +77,22 @@
   			<li><%= link_to_unless_current "News", entries_path %></li>
   			<% end %>
   			<% if @global_settings.show_blog? %>
-  			<li><%= link_to_unless_current "BLOG", blogs_path %></li>
+  			<li><%= link_to_unless_current "Blog", blogs_path %></li>
   			<% end %>
   			<% if @global_settings.show_videos? %>
-  			<li><%= link_to_unless_current "videos", videos_path %></li>
+  			<li><%= link_to_unless_current "Videos", videos_path %></li>
   			<% end %>
   			<% if @global_settings.show_music? %>			
-  			<li><%= link_to_unless_current "music", music_path %></li>
+  			<li><%= link_to_unless_current "Music", music_path %></li>
   			<% end %>
   			<% if @global_settings.show_lyrics? %>
-  			<li><%= link_to_unless_current "lyrics", lyrics_path %></li>		
+  			<li><%= link_to_unless_current "Lyrics", lyrics_path %></li>		
   			<!--<li><%= link_to_unless_current "photos", photos_path %></li>-->
   			<% end %>
   			<% if @global_settings.show_shows? %>
-  			<li><%= link_to_unless_current "SHOWS", shows_path %></li>
+  			<li><%= link_to_unless_current "Shows", shows_path %></li>
   			<% end %>
-  			<!--<li><%= link_to_unless_current "ABOUT", about_path %></li>-->
+  			<!--<li><%= link_to_unless_current "About", about_path %></li>-->
   		</ul>
   	</div> <!-- end DIV 'nav' -->
   	

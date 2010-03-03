@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090802160516) do
+ActiveRecord::Schema.define(:version => 20100225024423) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -125,14 +125,6 @@ ActiveRecord::Schema.define(:version => 20090802160516) do
     t.integer  "setting_id"
   end
 
-  create_table "rateables", :force => true do |t|
-    t.integer  "show_id"
-    t.integer  "show_rating_id"
-    t.integer  "member_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "settings", :force => true do |t|
     t.string   "site_name"
     t.string   "artist_name"
@@ -177,27 +169,13 @@ ActiveRecord::Schema.define(:version => 20090802160516) do
     t.boolean  "use_captcha_for_fans"
     t.boolean  "use_captcha_for_comments"
     t.datetime "last_checked_for_show_notes"
+    t.datetime "last_sent_status_update"
+    t.text     "facebook_widget"
   end
 
   create_table "show_ratings", :force => true do |t|
     t.integer  "show_id"
     t.integer  "rating"
-    t.integer  "created_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "show_reports", :force => true do |t|
-    t.integer  "show_id"
-    t.text     "notes"
-    t.integer  "attendance"
-    t.integer  "yes_rsvps"
-    t.integer  "maybe_rsvps"
-    t.integer  "no_rsvps"
-    t.integer  "fliers_distributed"
-    t.integer  "posters_distributed"
-    t.integer  "cds_distributed"
-    t.integer  "merchandise_distributed"
     t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -679,6 +679,10 @@ div.style {
  display: block;
 }
 
+#sidebar div.module#facebook_widget {
+  padding-bottom: 5px;
+}
+
 #footer {
   background: url(/images/footer_bg.png) #000 top left repeat-x;
   color: #bbb;

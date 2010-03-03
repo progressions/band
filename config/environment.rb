@@ -90,7 +90,6 @@ Rails::Initializer.run do |config|
   config.gem "rack", :version => ">= 1.0.0"
 end
 
-
 ENV["RECAPTCHA_PUBLIC_KEY"] = "6LfxUQQAAAAAAEwuipNG2xYZyC7kZyDOm6QEcbBn"
 ENV["RECAPTCHA_PRIVATE_KEY"] = "6LfxUQQAAAAAAAXACByW_uKKsn26uDuYWLCgBEI4"
 
@@ -112,3 +111,38 @@ US_STATES = ['AL' => 'Alabama', 'AK' => 'Alaska', 'AR' => 'Arizona', 'AZ' => 'Ar
  'Mississippi', 'MO' => 'Missouri', 'MT' => 'Montana', 'NC' => 'North Carolina', 'ND' => 'North Dakota', 'NE' => 'Nebraska', 'NH' => 'New Hampshire', 'NJ' => 'New Jersey', 'NM' => 'New Mexico', 'NV' => 'Nevada', 'NY' => 'New York', 'OH' => 'Ohio', 'OK' =>
  'Oklahoma', 'OR' => 'Oregon', 'PA' => 'Pennsylvania', 'RI' => 'Rhode Island', 'SC' => 'South Carolina', 'SD' => 'South Dakota', 'TN' => 'Tennessee', 'TX' => 'Texas', 'UT' => 'Utah', 'VT' => 'Vermont', 'VA' => 'Virgina', 'WA' => 'Washington', 'WV' =>
  'West Virginia', 'WI' => 'Wisconsin', 'WY' => 'Wyoming']
+
+# 
+# require "calendar_date_select/calendar_date_select.rb"
+# require "calendar_date_select/form_helpers.rb"
+# require "calendar_date_select/includes_helper.rb"
+# 
+# if Object.const_defined?(:Rails) && File.directory?(Rails.root.to_s + "/public")
+#   ActionView::Helpers::FormHelper.send(:include, CalendarDateSelect::FormHelpers)
+#   ActionView::Base.send(:include, CalendarDateSelect::FormHelpers)
+#   ActionView::Base.send(:include, CalendarDateSelect::IncludesHelper)
+#   
+#   # Filthy backwards compatibility hooks... grumble
+#   if ([Rails::VERSION::MAJOR, Rails::VERSION::MINOR] <=> [2, 2]) == -1
+#     ActionView::Helpers::InstanceTag.class_eval do
+#       def self.new_with_backwards_compatibility(object_name, method_name, template_object, object = nil)
+#         new(object_name, method_name, template_object, nil, object)
+#       end
+#     end
+#     
+#   else
+#     ActionView::Helpers::InstanceTag.class_eval do
+#       class << self; alias new_with_backwards_compatibility new; end
+#     end
+#   end
+# 
+#   # install files
+#   unless File.exists?(RAILS_ROOT + '/public/javascripts/calendar_date_select/calendar_date_select.js')
+#     ['/public', '/public/javascripts/calendar_date_select', '/public/stylesheets/calendar_date_select', '/public/images/calendar_date_select', '/public/javascripts/calendar_date_select/locale'].each do |dir|
+#       source = File.dirname(__FILE__) + "/../#{dir}"
+#       dest = RAILS_ROOT + dir
+#       FileUtils.mkdir_p(dest)
+#       FileUtils.cp(Dir.glob(source+'/*.*'), dest)
+#     end
+#   end
+# end
