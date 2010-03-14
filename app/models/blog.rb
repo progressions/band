@@ -10,7 +10,7 @@ class Blog < ActiveRecord::Base
   validates_presence_of :title, :body
 
   named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
-
+  named_scope :active, {:conditions => {:active => true}}
     
   def subscribe email
     sub = self.subscriptions.find_or_create_by_email(email)

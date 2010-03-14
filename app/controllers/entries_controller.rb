@@ -20,7 +20,7 @@ class EntriesController < ApplicationController
   # GET /entries/new
   # GET /entries/new.xml
   def new
-    @entry = Entry.new
+    @entry = Entry.new(:active => true)
   end
 
   # GET /entries/1/edit

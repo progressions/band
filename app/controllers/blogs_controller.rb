@@ -30,7 +30,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   # GET /blogs/new.xml
   def new
-    @blog = Blog.new 
+    @blog = Blog.new(:active => true)
   end
 
   # GET /blogs/1/edit
@@ -44,13 +44,22 @@ class BlogsController < ApplicationController
     @blog = Blog.new(params[:blog])
     @blog.user = current_user
     
-    if params[:preview_button] || !@blog.save
-      @show_byline = false
-      render :action => "new"
-    else
-      flash[:notice] = 'Blog was successfully created.'
-      update_twitter_with_new_content("New blog post: #{truncate(@blog.title, :length => 100)} #{blog_url(@blog)}") if params[:post_tweet]
-      redirect_to(@blog)
+    respond_to do |format|
+      format.html {
+        if params[:preview_button] || !@blog.save
+          @show_byline = false
+          render :action => "new"
+        else
+          flash[:notice] = 'Blog was successfully created.'
+          update_twitter_with_new_content("New blog post: #{truncate(@blog.title, :length => 100)} #{blog_url(@blog)}") if params[:post_tweet]
+          redirect_to(@blog)
+        end
+      }
+      format.js {
+        render :json => {
+          :success => params[:blog][:body]
+        }
+      }
     end
   end
 
@@ -96,3 +105,4 @@ class BlogsController < ApplicationController
     render_404 unless (@global_settings.show_blog? || admin?)
   end
 end
+

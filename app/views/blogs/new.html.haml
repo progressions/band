@@ -17,8 +17,13 @@
   = fckeditor_tag("blog") 
 
   %p= post_tweet_check_box
+  
+  %p
+    = f.check_box :active
+    = f.label :active
 
   %p
     = f.submit "Preview", :name => "preview_button" 
     = f.submit "Create"  
 
+/ javascript_include_tag("saver")
