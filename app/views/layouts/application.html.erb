@@ -184,6 +184,10 @@ function restoreDefaultZipCodeText(event) {
     cookie : true, // enable cookies to allow the server to access the session
     xfbml  : true  // parse XFBML
   });
+  
+  document.observe("dom:loaded", function() {
+    FB.XFBML.parse();
+  });
 </script>
 
 </body>
