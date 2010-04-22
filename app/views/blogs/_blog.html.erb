@@ -17,7 +17,10 @@ posted on <%= @blog.created_at.strftime("%b %d %Y") %>   by <strong><%= link_to(
   </p>
   <% end %>
 
-  <p><fb:share-button href="<%= blog_url(@blog) %>" type="box_count"></fb:share-button></p>
+  <p><fb:like href="<%= blog_url(@blog) %>" layout="standard" show-faces="true" width="450" action="like" colorscheme="light" /></p>
+  <script type="text/javascript">
+  FB.XFBML.parse();
+  </script>
 
 </div> <!-- end DIV "post" -->
   
