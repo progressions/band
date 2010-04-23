@@ -38,7 +38,7 @@
       %dt= f.text_field :url 
     
       %dd.label= f.label :mail_tag, "Mailing list announcement tag"
-      %dd.description A short identifier included in the subject of all your mailing list emails.  Example: "WRS"becomes "[WRS] Three new gigs coming up!"
+      %dd.description A short identifier included in the subject of all your mailing list emails.  Example: "WRS" becomes "[WRS] Three new gigs coming up!"
       %dt= f.text_field :mail_tag 
     
       %dd.label= f.label "#{@setting.id}_mail_header_editor", "Mailing list header"
@@ -52,7 +52,11 @@
     
     %h3#your_social_networks Your social networks
     
-    %p= <fb:login-button></fb:login-button>
+    %p
+      - if @cookie
+        You are logged in to Facebook.
+      - else
+        <fb:login-button></fb:login-button>
 
     %dl
       %dd.label= f.label :facebook_profile, "Facebook"

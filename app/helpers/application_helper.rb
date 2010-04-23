@@ -129,6 +129,7 @@ END_STRING
   end
   
   def post_twitter_update(s)
+    Rails.logger.info("twitter update: #{s.inspect}")
 		"<li class=\"text\">#{add_twitter_links(s['text'])}</li>
 		<li class=\"byline\">#{time_ago_in_words(s['created_at'])} ago from #{convert_to_html(s['source'])}</li>"
   end

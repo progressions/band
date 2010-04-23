@@ -75,7 +75,7 @@
     	</div> <!-- end DIV 'recent_posts' -->
     	<% end %>
     	
-			<% unless @twitter_error || !@global_settings.show_twitter? || @page_title == "Twitter - " %>
+			<% unless true || @twitter_error || !@global_settings.show_twitter? || @page_title == "Twitter - " %>
 				<div id="twitter" class="module">
 					<h2 id="twitter"><%= link_to "Twitter", twitter_path %></h2>
 					<%= render :partial => 'layouts/twitter' %>

@@ -1,4 +1,5 @@
 # TODO: Stylesheet into shared directory
+require 'digest/md5'
 
 class SettingsController < ApplicationController
   layout 'application'
@@ -27,6 +28,36 @@ class SettingsController < ApplicationController
   end
   
   def profile
+    @raw_facebook_cookie = cookies["fbs_#{FACEBOOK['api_key']}"]
+    
+    if @raw_facebook_cookie
+      @raw_facebook_cookie.gsub!(/^#{34.chr}/, "")
+      @raw_facebook_cookie.gsub!(/#{34.chr}$/, "")
+      @cookie = {}
+      @raw_facebook_cookie.split("&").each do |arg|
+        key, value = arg.split("=")
+        @cookie[key] = value
+      end
+    
+      @payload = ""
+      @cookie.keys.sort.each do |key|
+        unless key == "sig"
+          @payload += key + "=" + @cookie[key]
+        end
+      end
+      
+      @digest = Digest::MD5.hexdigest(@payload + FACEBOOK["application_secret"])
+    
+      if @digest != @cookie["sig"]
+        @cookie = nil
+      end
+      
+      if @cookie
+        @fb_profile = HTTParty.get("https://graph.facebook.com/me/friends?access_token=#{CGI.escape(@cookie['access_token'])}")
+        Rails.logger.info("@fb_profile: #{@fb_profile.inspect}")
+      end
+    end
+    
     @setting = @global_settings
   end
 
