@@ -3,6 +3,7 @@ log/*.log
 tmp/**/*
 config/config.yml
 config/database.yml
+config/facebook.yml
 config/deploy.rb
 db/*.sqlite3
 public/images
