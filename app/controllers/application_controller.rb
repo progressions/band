@@ -3,7 +3,6 @@
 # TODO: Online promo stuff: links, banners, &c
 
 class ApplicationController < ActionController::Base
-  extend ActiveSupport::Memoizable
   
   before_filter :global_settings
   
@@ -69,13 +68,13 @@ class ApplicationController < ActionController::Base
   def twitter_user
     twitter.user(@global_settings.twitter_profile)
   end
-  memoize :twitter_user
+  # memoize :twitter_user
 	
 	def twitter
 	  httpauth = Twitter::HTTPAuth.new(@global_settings.twitter_profile, @global_settings.twitter_password)
     Twitter::Base.new(httpauth)
   end
-  memoize :twitter
+  # memoize :twitter
   
   def twitter_feed(count=MAX_TWITTER_COUNT)
     if @global_settings.show_twitter?

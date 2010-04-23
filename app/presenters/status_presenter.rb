@@ -90,10 +90,31 @@ module WebsitePresenter
   end
 end
 
+module FacebookPresenter
+  def self.included(klass)
+    klass.send :extend, ClassMethods
+    klass.send :include, InstanceMethods
+  end
+
+  module ClassMethods
+  end
+  
+  module InstanceMethods
+    def facebook_fans?
+      facebook_fan_count > 0
+    end
+    
+    def facebook_fan_count
+      @facebook_fans ||= HTTParty.get("https://graph.facebook.com/weracketeeer/")["fan_count"]
+    end
+  end
+end
+
 class StatusPresenter < Presenter
   include FansPresenter
   include ShowsPresenter
   include WebsitePresenter
+  include FacebookPresenter
   
   attr_accessor :since_date, :site
   

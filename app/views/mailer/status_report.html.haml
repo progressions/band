@@ -10,6 +10,7 @@
     %li= "#{pluralize(@status_presenter.new_unsubscribed_fans_count, 'fan')} unsubscribed from the mailing list"
     %li= "#{pluralize(@status_presenter.total_fan_count, 'fan')} total"
     %li= "#{pluralize(@status_presenter.new_deliveries_count, 'newsletter')} delivered to #{pluralize(@status_presenter.new_deliveries_fan_count, 'fan')}"
+    %li= "#{pluralize(@status_presenter.facebook_fan_count, 'Facebook fan')} total"
 
 #shows
   %h4 Shows
@@ -31,7 +32,7 @@
         upcoming shows:
         %ul
           - @status_presenter.upcoming_shows.first(3).each do |show|
-            %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{link_to(show.title, show_url}"
+            %li= "#{distance_of_time_in_words(Time.now, show.date)} until #{link_to(show.title, show_url)}"
 
 #website
   %h4 Website
