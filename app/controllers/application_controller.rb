@@ -104,4 +104,32 @@ class ApplicationController < ActionController::Base
     text.gsub("&gt;", ">")
     text.gsub("&quot;", '"')
   end
+  
+  def facebook_cookie
+    @raw_facebook_cookie = cookies["fbs_#{FACEBOOK['api_key']}"]
+    
+    if @raw_facebook_cookie
+      @raw_facebook_cookie.gsub!(/^#{34.chr}/, "")
+      @raw_facebook_cookie.gsub!(/#{34.chr}$/, "")
+      @cookie = {}
+      @raw_facebook_cookie.split("&").each do |arg|
+        key, value = arg.split("=")
+        @cookie[key] = value
+      end
+    
+      @payload = ""
+      @cookie.keys.sort.each do |key|
+        unless key == "sig"
+          @payload += key + "=" + @cookie[key]
+        end
+      end
+      
+      @digest = Digest::MD5.hexdigest(@payload + FACEBOOK["application_secret"])
+    
+      if @digest != @cookie["sig"]
+        @cookie = nil
+      end
+    end
+    @cookie
+  end
 end
