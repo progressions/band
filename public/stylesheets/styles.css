@@ -851,3 +851,13 @@ input#zip_code {
 .hidden .post_body {
   color: #aaa;
 }
+
+
+#sidebar div#mailing_list_signup.module {
+  padding-bottom: 0;
+}
+
+#sidebar div#mailing_list_signup.module p {
+  margin: 0;
+  padding: 0;
+}
