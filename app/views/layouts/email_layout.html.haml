@@ -72,16 +72,18 @@
                             = link_to(image_tag("http://#{@host_name}/images/mail/feed.png", :border => "0"), rss_feed_url(:format => :rss))
                             
                   - if @global_settings.free_download?
+                    
+                    / Free MP3
+
                     %tr
                       %td
-                    
-                        / Free MP3
-                      
                         = link_to(image_tag("http://#{@host_name}/images/mail/free-mp3.png", :alt => "Download a free mp3 of '#{@global_settings.free_download_name}'."), downloads_url(:email => @fan.email))
                       
                   / Upcoming shows
                   
                   - if @shows && @shows.any?
+                    - @shows = @shows.sort do |a,b|
+                      - a.date <=> b.date
                     %tr
                       %td
                         %table{:cellpadding => "0", :cellspacing => "0", :style => "margin-top: 10px; font-size: 12px;"}
@@ -89,7 +91,7 @@
                             %td
                               %h2= link_to("Upcoming Shows", shows_url, :style => "color: #534887; text-decoration: none;")
                         
-                          - for show in @shows.first(5)
+                          - @shows.each do |show|
                             %tr
                               %td
                                 %h3{:style => "margin-bottom: 5px;"}= link_to(show.title, show_url(show), :style => "color: #534887; text-decoration: none;")
