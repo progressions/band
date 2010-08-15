@@ -45,7 +45,7 @@ class Mailer < ActionMailer::Base
     recipients  fan.email
     from        "#{global_settings.artist_name} <#{global_settings.email}>"
     subject     "[#{global_settings.mail_tag}] #{mail.title}"
-    body        :fan => fan, :mail => mail, :global_settings => global_settings, :shows => Show.upcoming, :blogs => Blog.active.posted_yet.find(:all, :limit => 3), :title => mail.title
+    body        :fan => fan, :mail => mail, :global_settings => global_settings, :shows => Show.upcoming, :blogs => Blog.active.posted_yet.find(:all, :limit => 3, :order => "posted_at DESC, created_at DESC"), :title => mail.title
     content_type "text/html"
   end
   

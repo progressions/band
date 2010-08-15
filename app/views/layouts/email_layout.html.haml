@@ -1,5 +1,5 @@
 - @host_name = @global_settings.url
-- @host_name = "0.0.0.0:3000"
+- @host_name = "0.0.0.0:3000" if Rails.env.development? || Rails.env.test?
 
 %html
   %head
