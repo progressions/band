@@ -40,11 +40,16 @@
             %li= music_player(song.url, i+1, 180)
   
   - @shows ||= []
-  - unless !@global_settings.show_shows? || @shows.empty? || @page_title == "Shows -"
+  - unless !@global_settings.show_shows? || @shows.empty? || @page_title == "Shows - "
     #calendar.module
       %h2= link_to("Shows", shows_url)
-      - for @show in @shows do
-        = shows(:show_body => false, :show_byline => false, :show_map => false, :show_year => false)
+      - for show in @shows do
+        %h3= show.date.strftime("%A %b") + " " + strip_leading_zero(show.date.strftime("%d"))
+        
+        %p
+          = link_to(show.title, show_url(show))
+          at
+          = show.venue.name
         
   - @blogs ||= []
   - unless !@global_settings.show_blog? || @blogs.empty? || @page_title == "Blog - "

@@ -678,6 +678,14 @@ div.style {
 #sidebar div.module a {
  display: block;
 }
+#sidebar div#calendar.module h3 {
+  color: #444;
+  margin-bottom: 10px;
+}
+#sidebar div#calendar.module p a {
+  display: inline;
+  font-weight: bold;
+}
 
 #sidebar div.module#facebook_widget {
   padding-bottom: 5px;
