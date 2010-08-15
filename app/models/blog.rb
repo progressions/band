@@ -14,7 +14,10 @@ class Blog < ActiveRecord::Base
   named_scope :active, {:conditions => {:active => true}}
   named_scope :hidden, {:conditions => {:active => false}}
   named_scope :posted_yet, lambda {
-    {:conditions => ["posted_at < ?", Time.now]}
+    {
+      :conditions => ["posted_at < ?", Time.now],
+      :order => "posted_at DESC, created_at DESC"
+    }
   }
   
   def posted_yet?

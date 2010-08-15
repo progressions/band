@@ -29,7 +29,7 @@
 	        
   - @songs ||= []
   - unless !@global_settings.show_music? || @songs.empty? || @page_title == "Music - "
-    %listen.module
+    #listen.module
       %h2= link_to("Music", songs_url)
       %ul
         - @songs.each_with_index do |song, i|
