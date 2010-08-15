@@ -93,7 +93,7 @@ end
 ENV["RECAPTCHA_PUBLIC_KEY"] = "6LfxUQQAAAAAAEwuipNG2xYZyC7kZyDOm6QEcbBn"
 ENV["RECAPTCHA_PRIVATE_KEY"] = "6LfxUQQAAAAAAAXACByW_uKKsn26uDuYWLCgBEI4"
 
-FACEBOOK = YAML.load_file("#{Rails.root}/config/facebook.yml")
+# FACEBOOK = YAML.load_file("#{Rails.root}/config/facebook.yml")
 
 WillPaginate::ViewHelpers.pagination_options[:param_name] = :p
 
