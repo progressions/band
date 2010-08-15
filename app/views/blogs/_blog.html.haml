@@ -8,6 +8,9 @@
         - unless @blog.active?
           %span.hidden_post
             [HIDDEN]
+        - unless @blog.posted_yet?
+          %span.upcoming
+            [UPCOMING]
         
       .post_body{:id => "post_body_#{@blog.id}"}
         = @blog.body

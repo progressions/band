@@ -844,7 +844,8 @@ input#zip_code {
   float: left;
 }
 
-.hidden_post {
+span.upcoming,
+span.hidden_post {
   color: red;
 }
 

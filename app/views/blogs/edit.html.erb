@@ -29,6 +29,12 @@
     Blog post date:
     <%= calendar_date_select(:blog, :posted_at, :embedded => true, :time => false) %>
   </p>
+  
+  <p>
+    <%= f.check_box :active %>
+    <%= f.label :active %>
+  </p>
+
 
   <p>
     <%= f.submit "Preview", :name => "preview_button" %>
