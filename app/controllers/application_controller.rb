@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def load_sidebar
     if show_sidebar?
       @members = Member.find(:all, :conditions => ["active = ?", true], :limit => 5, :order => 'name') || []
-      @blogs = Blog.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' || []
+      @blogs = Blog.active.posted_yet.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' || []
       @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now]) || []
       @songs = Song.find_all_with_file || []
     end  
