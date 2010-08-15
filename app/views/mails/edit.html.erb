@@ -14,7 +14,7 @@
 		<%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
-  <%= fckeditor_textarea("mail", "body", :toolbarSet => 'Basic', :width => '100%', :height => '400px') %>
+  <%= fckeditor_tag("mail") %>
 
     <p>
       <%= f.submit "Preview", :name => "preview_button" %>

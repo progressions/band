@@ -9,7 +9,7 @@
     %table{:cellpadding => "0", :cellspacing => "0", :style => "width: 800px;"}
       %tr
         %td
-          = link_to(image_tag("http://#{@host_name}/images/mail/header.png"), @global_settings.url_with_protocol)
+          = link_to(image_tag("http://#{@host_name}/images/mail/header.png", :alt => @global_settings.site_name), @global_settings.url_with_protocol)
       
       %tr
         %td
