@@ -1,3 +1,4 @@
+<%= calendar_date_select_includes "silver" %>
 <%= javascript_include_tag :fckeditor %>
 
 <% @page_title = "Edit blog post" %>
@@ -20,10 +21,15 @@
   
   <% else %>
 
-
     <%= fckeditor_tag("blog") %>
 
   <% end %>
+
+  <p> 
+    Blog post date:
+    <%= calendar_date_select(:blog, :posted_at, :embedded => true, :time => false) %>
+  </p>
+
   <p>
     <%= f.submit "Preview", :name => "preview_button" %>
     <%= f.submit "Update" %>

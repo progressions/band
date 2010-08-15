@@ -7,6 +7,14 @@
   - if flash[:registration]
     %h4= flash[:registration]
     
+  - if @global_settings.free_download?
+    %p 
+      To thank you for joining our mailing list, we're offering a 
+      %strong= link_to("free download", downloads_url(:email => @fan.email))
+      of our song, 
+      = "\"#{@global_settings.free_download_name}\"."
+      = link_to("Download it now.", downloads_url(:email => @fan.email))
+    
 = error_messages_for :fan
 
 - form_for(@fan, :url => fan_path(@fan, :f => @fan.crypted_email), :html => {:method => :put}) do |f|

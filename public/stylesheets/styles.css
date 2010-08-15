@@ -843,3 +843,11 @@ input#zip_code {
 #header_code {
   float: left;
 }
+
+.hidden_post {
+  color: red;
+}
+
+.hidden .post_body {
+  color: #aaa;
+}

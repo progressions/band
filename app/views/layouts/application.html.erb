@@ -18,7 +18,7 @@
   <%= stylesheet_link_tag 'styles' %>
   
   <%= stylesheet_link_tag 'iphone' if params.has_key?(:iphone) %>
-  <%= stylesheet_link_tag style_path(@global_settings.style, :format => "css") %>
+  <%= stylesheet_link_tag style_path(global_settings.style, :format => "css") if global_settings.style %>
   
   <%= stylesheet_link_tag 'admin' if admin? && logged_in? %>
   
@@ -88,8 +88,9 @@
   			<% if @global_settings.show_videos? %>
   			<li><%= link_to_unless_current "Videos", videos_path %></li>
   			<% end %>
-  			<% if @global_settings.show_music? %>			
-  			<li><%= link_to_unless_current "Music", music_path %></li>
+  			<% if @global_settings.show_music? %>
+  			<% music_link = @global_settings.music_link || music_path %>
+  			<li><%= link_to_unless_current "Music", music_link %></li>
   			<% end %>
   			<% if @global_settings.show_lyrics? %>
   			<li><%= link_to_unless_current "Lyrics", lyrics_path %></li>		

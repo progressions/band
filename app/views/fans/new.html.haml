@@ -4,8 +4,15 @@
 #fans
 
   %h1 New fan
+  
   - if flash[:registration]
     %h4= flash[:registration]
+  
+  - if @global_settings.free_download?
+    %p 
+      Enter your information below to be 
+      %strong taken to your free download.  
+      Thanks!
   
   = error_messages_for :fan 
 

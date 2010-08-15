@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :downloads
+  
   map.resources :show_reports
 
   map.resources :styles, :member => {:export => :get},

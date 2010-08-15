@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   
   
   def global_settings
-    @global_settings = Setting.find_or_create_by_id(:id => 1)
+    @global_settings = Setting.first || Setting.create
     @site_name = @global_settings.site_name
   end
   
@@ -29,15 +29,10 @@ class ApplicationController < ActionController::Base
   
   def load_sidebar
     if show_sidebar?
-      @members = Member.find(:all, :conditions => ["active = ?", true], :limit => 5, :order => 'name')
-      @blogs = Blog.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' 
-      @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now])
-      @songs = Song.find_all_with_file
-      if @global_settings.show_twitter?
-        @twitter_profile = @global_settings.twitter_profile
-        @twitter_profile_url = twitter_profile_url
-        @twitter_feed = twitter_feed
-      end
+      @members = Member.find(:all, :conditions => ["active = ?", true], :limit => 5, :order => 'name') || []
+      @blogs = Blog.paginate :all, :per_page => 5, :page => params[:p], :order => 'created_at DESC' || []
+      @shows = Show.find(:all, :limit => 3, :order => 'date', :conditions => ["date > ?", Time.now]) || []
+      @songs = Song.find_all_with_file || []
     end  
   end
   
@@ -106,30 +101,30 @@ class ApplicationController < ActionController::Base
   end
   
   def facebook_cookie
-    @raw_facebook_cookie = cookies["fbs_#{FACEBOOK['api_key']}"]
-    
-    if @raw_facebook_cookie
-      @raw_facebook_cookie.gsub!(/^#{34.chr}/, "")
-      @raw_facebook_cookie.gsub!(/#{34.chr}$/, "")
-      @cookie = {}
-      @raw_facebook_cookie.split("&").each do |arg|
-        key, value = arg.split("=")
-        @cookie[key] = value
-      end
-    
-      @payload = ""
-      @cookie.keys.sort.each do |key|
-        unless key == "sig"
-          @payload += key + "=" + @cookie[key]
-        end
-      end
-      
-      @digest = Digest::MD5.hexdigest(@payload + FACEBOOK["application_secret"])
-    
-      if @digest != @cookie["sig"]
-        @cookie = nil
-      end
-    end
-    @cookie
+    # @raw_facebook_cookie = cookies["fbs_#{FACEBOOK['api_key']}"]
+    # 
+    # if @raw_facebook_cookie
+    #   @raw_facebook_cookie.gsub!(/^#{34.chr}/, "")
+    #   @raw_facebook_cookie.gsub!(/#{34.chr}$/, "")
+    #   @cookie = {}
+    #   @raw_facebook_cookie.split("&").each do |arg|
+    #     key, value = arg.split("=")
+    #     @cookie[key] = value
+    #   end
+    # 
+    #   @payload = ""
+    #   @cookie.keys.sort.each do |key|
+    #     unless key == "sig"
+    #       @payload += key + "=" + @cookie[key]
+    #     end
+    #   end
+    #   
+    #   @digest = Digest::MD5.hexdigest(@payload + FACEBOOK["application_secret"])
+    # 
+    #   if @digest != @cookie["sig"]
+    #     @cookie = nil
+    #   end
+    # end
+    # @cookie
   end
 end

@@ -1,0 +1,27 @@
+- if logged_in? || (@blog.active? && @blog.posted_yet?)
+  .blog
+
+    .post{:id => "post_#{@blog.id}", :class => ("hidden" if @blog.hidden?)}
+
+      %h3.post_title
+        = link_to_unless_current(@blog.title, blog_url(@blog))
+        - unless @blog.active?
+          %span.hidden_post
+            [HIDDEN]
+        
+      .post_body{:id => "post_body_#{@blog.id}"}
+        = @blog.body
+
+      - unless @show_byline == false
+        %p.byline
+          posted on
+          = @blog.posted_at.strftime("%b %d %Y")
+          by
+          %strong
+            = "#{link_to(@blog.user.full_name, blogs_path(:author => @blog.user.full_name))}."
+          = link_to_unless_current pluralize(@blog.comments.length, "comment"), @blog
+          
+          - if logged_in?
+            = link_to("edit", edit_blog_path(@blog))
+            |
+            = link_to('delete', @blog, :confirm => 'Are you sure?', :method => :delete)

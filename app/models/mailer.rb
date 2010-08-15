@@ -43,7 +43,7 @@ class Mailer < ActionMailer::Base
     recipients  fan.email
     from        "#{global_settings.artist_name} <#{global_settings.email}>"
     subject     "[#{global_settings.mail_tag}] #{mail.title}"
-    body        :fan => fan, :mail => mail, :global_settings => global_settings
+    body        :fan => fan, :mail => mail, :global_settings => global_settings, :shows => Show.upcoming, :blogs => Blog.active.posted_yet.find(:all, :limit => 3)
     content_type "text/html"
   end
   
@@ -58,7 +58,7 @@ class Mailer < ActionMailer::Base
   protected
   
   def global_settings
-    Setting.find(1)
+    Setting.first
   end
   
   def mail_tag

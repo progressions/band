@@ -7,7 +7,7 @@ Feature: Readers can comment on blog entries
   Background:
     Given a global setting exists
     Given a user: "paul" exists
-    Given a blog: "hello" exists with user: user "paul", title: "It was 20 years ago today", body: "Sergeant Pepper taught the band to play."
+    Given a blog: "hello" exists with user: user "paul", title: "It was 20 years ago today", body: "Sergeant Pepper taught the band to play.", active: true
     When I go to the blog: "hello"'s page
   
   Scenario: Everything's where it should be

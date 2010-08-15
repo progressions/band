@@ -1,7 +1,7 @@
 %p Thank you for joining!
 
 %p
-  = "#{@fan.email} has subscribed to the #{@global_settings.artist_name} mailing list. You'll receive news and updates about what's happening."
+  = "#{@fan.email} has subscribed to the #{link_to(@global_settings.artist_name, @global_settings.url_with_protocol)} mailing list. You'll receive news and updates about what's happening."
 
 = render :partial => 'footer', :locals => {:fan => @fan, :global_settings => @global_settings}
 

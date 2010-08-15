@@ -1,4 +1,119 @@
-= @global_settings.mail_header
-= @mail.body
-= @global_settings.mail_footer
-= render :partial => 'footer', :locals => {:fan => @fan, :global_settings => @global_settings}
+- @host_name = @global_settings.url
+- @host_name = "0.0.0.0:3000"
+
+%html
+  %head
+    %title= @mail.title
+    
+  %body
+    %table{:cellpadding => "0", :cellspacing => "0", :style => "width: 600px;"}
+      %tr
+        %td{:style => "background-color: purple; color: white;"}
+          = link_to(image_tag("http://#{@host_name}/images/mail/header.png"), @global_settings.url_with_protocol)
+      
+      %tr
+        %td
+          %table{:cellpadding => "0", :cellspacing => "0", :style => "width: 600px; font-family: Arial, Helvetica, sans-serif; margin-top: 10px;"}
+            %tr
+              %td{:style => "width: 400px; padding: 10px; font-size: 12px; background-color: #e7e3ee; color: #5f5b6a;", :valign => "top"}
+              
+                / BODY
+                
+                %h3{:style => "font-size: 12px; text-transform: uppercase; font-weight: normal; margin-bottom: 5px;"} Sunday, August 22
+                
+                %h1{:style => "font-size: 16px; border-bottom: 1px solid #5f5b6a;"}= @mail.title
+                
+                = @mail.body
+                
+                %p= link_to(@global_settings.artist_name, @global_settings.url_with_protocol, :style => "color: #534887; text-decoration: none;")
+                
+              %td{:style => "width: 10px; background-color: white;"}
+                
+              %td{:style => "padding: 10px; background-color: #d1cadf; color: #5f5b6a; font-size: 12px;"}
+              
+                / SIDEBAR
+                
+                %table{:cellpadding => "0", :cellspacing => "0", :style => "font-size: 12px;"}
+                  %tr
+                    %td
+                    
+                      / Artist name
+                      
+                      %h1{:style => "font-size: 16px; text-align: center;"}
+                        = link_to(@global_settings.artist_name, @global_settings.url_with_protocol, :style => "color: #534887; text-decoration: none;")
+                        
+                      / Artist description
+                      
+                      %h2{:style => "font-size: 12px; font-weight: normal; font-style: italic; text-align: center;"}
+                        = @global_settings.artist_description
+                  %tr
+                    %td
+                    
+                      / Social network icons
+                      
+                      %table{:cellpadding => "0", :cellspacing => "8", :style => "margin-top: 10px;"}
+                        %tr
+                          - if @global_settings.facebook_profile?
+                            %td
+                              = link_to(image_tag("http://#{@host_name}/images/mail/facebook.png", :border => "0"), @global_settings.facebook_profile)
+                          - if @global_settings.twitter_profile?
+                            %td
+                              = link_to(image_tag("http://#{@host_name}/images/mail/twitter.png", :border => "0"), "http://www.twitter.com/#{@global_settings.twitter_profile}")
+                          - if @global_settings.myspace_profile?
+                            %td
+                              = link_to(image_tag("http://#{@host_name}/images/mail/myspace.png", :border => "0"), "http://www.myspace.com/#{@global_settings.myspace_profile}")
+                          - if @global_settings.youtube_profile?
+                            %td
+                              = link_to(image_tag("http://#{@host_name}/images/mail/youtube.png", :border => "0"), "http://www.youtube.com/#{@global_settings.youtube_profile}")
+                          %td
+                            = link_to(image_tag("http://#{@host_name}/images/mail/flickr.png", :border => "0"), "http://www.flickr.com/photos/progressions")
+                          %td
+                            = link_to(image_tag("http://#{@host_name}/images/mail/feed.png", :border => "0"), rss_feed_url(:format => :rss))
+                            
+                  - if @global_settings.free_download?
+                    %tr
+                      %td
+                    
+                        / Free MP3
+                      
+                        = link_to(image_tag("http://#{@host_name}/images/mail/free-mp3.png", :alt => "Download a free mp3 of '#{@global_settings.free_download_name}'."), downloads_url(:email => @fan.email))
+                      
+                  / Upcoming shows
+                  
+                  - if @shows && @shows.any?
+                    %tr
+                      %td
+                        %table{:cellpadding => "0", :cellspacing => "0", :style => "margin-top: 10px; font-size: 12px;"}
+                          %tr
+                            %td
+                              %h2= link_to("Upcoming Shows", shows_url, :style => "color: #534887; text-decoration: none;")
+                        
+                          - for show in @shows.first(5)
+                            %tr
+                              %td
+                                %h3{:style => "margin-bottom: 5px;"}= link_to(show.title, show_url(show), :style => "color: #534887; text-decoration: none;")
+                                %p{:style => "margin: 0;"}
+                                  = show.date.strftime("%m/%d").gsub(/^0/, "")
+                                  at
+                                  = show.venue.name
+                              
+                      
+                  / Latest Blogs
+                  
+                  - if @blogs && @blogs.first(5).any?
+                    %tr
+                      %td
+                        %table{:cellpadding => "0", :cellspacing => "0", :style => "margin-top: 10px; font-size: 12px;"}
+                          %tr
+                            %td
+                              %h2{:style => "margin-bottom: 5px;"}= link_to("Latest Blogs", blogs_url, :style => "color: #534887; text-decoration: none;")
+                        
+                          - for blog in @blogs
+                            %tr
+                              %td
+                                %h3
+                                  = link_to(blog.title, blog_url(blog), :style => "color: #534887; text-decoration: none;")
+    
+      %tr
+        %td{:style => "font-family: Arial, Helvetica, sans-serif; font-size: 10px; padding-top: 10px;"}
+          = render :partial => 'footer', :locals => {:fan => @fan, :global_settings => @global_settings}

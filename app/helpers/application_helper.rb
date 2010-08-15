@@ -1,5 +1,9 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def global_settings
+    @global_settings = Setting.find_or_create_by_id(:id => 1)  
+  end
+  
   def color_input method, options={}
     output = ""
     output += "<dt><%= f.text_field #{method} %></dt>"
@@ -45,7 +49,7 @@ module ApplicationHelper
   end
   
   def admin?
-    params[:admin]
+    logged_in? && params[:admin]
   end
   
   def show_sidebar?

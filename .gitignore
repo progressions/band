@@ -1,9 +1,11 @@
 .DS_Store
 log/*.log
 tmp/**/*
+tmp/*
 config/config.yml
 config/database.yml
 config/facebook.yml
+config/smtp_credentials.yml
 config/deploy.rb
 db/*.sqlite3
 public/images

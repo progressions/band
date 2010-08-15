@@ -8,7 +8,6 @@ class FansController < ApplicationController
   before_filter :use_crypted_email, :only => [:show, :update, :edit, :destroy, :unsubscribe]
   before_filter :set_admin
   
-  
   DEFAULT_ZIPCODE = 78701
   
   def update_select 
@@ -194,7 +193,7 @@ class FansController < ApplicationController
   # GET /fans/new
   # GET /fans/new.xml
   def new
-    @fan = Fan.new
+    @fan = Fan.new(:email => params[:email])
   end
 
   # GET /fans/1/edit

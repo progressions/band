@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100307160718) do
+ActiveRecord::Schema.define(:version => 20100815162420) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20100307160718) do
     t.datetime "updated_at"
     t.integer  "created_by"
     t.boolean  "active"
+    t.datetime "posted_at"
   end
 
   create_table "comments", :force => true do |t|
@@ -171,8 +172,13 @@ ActiveRecord::Schema.define(:version => 20100307160718) do
     t.boolean  "use_captcha_for_fans"
     t.boolean  "use_captcha_for_comments"
     t.datetime "last_checked_for_show_notes"
-    t.datetime "last_sent_status_update"
     t.text     "facebook_widget"
+    t.string   "twitter_widget"
+    t.string   "music_link"
+    t.string   "mailing_list_signup"
+    t.boolean  "free_download"
+    t.string   "free_download_filename"
+    t.string   "free_download_name"
   end
 
   create_table "show_ratings", :force => true do |t|

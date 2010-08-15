@@ -18,6 +18,10 @@
 
   %p= post_tweet_check_box
   
+  %p 
+    Date and time:
+    = calendar_date_select(:blog, :posted_at, :embedded => true, :time => true)
+  
   %p
     = f.check_box :active
     = f.label :active

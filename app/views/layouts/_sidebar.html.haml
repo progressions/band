@@ -1,0 +1,59 @@
+#sidebar
+  - if @global_settings.mailing_list_signup.present?
+    #mailing_list_signup.module
+      = @global_settings.mailing_list_signup
+    
+  - if @members && @members.any?
+    #about.module
+      %h2#about_module= link_to("About", "")
+      %ul
+        - for member in @members do
+          %li= link_to(member.name, about_path(:id => member.url))
+          %li &nbsp;
+          - unless @global_settings.email.blank?
+            %li= mail_to(sanitize(@global_settings.email), "Contact by email")
+      
+  - if @global_settings.facebook_widget.present?
+    #facebook_widget.module= @global_settings.facebook_widget
+	      
+  - unless !@global_settings.has_web_profiles? || @page_title == "On the Web - "
+    #links.module
+      %h2#on_the_web= link_to("On the Web", web_path)
+      %ul
+        - ["Facebook", "Twitter", "MySpace"].each do |name|
+          - if @global_settings["#{name.downcase}_profile"].present?
+            %li= link_to(name, @global_settings["#{name.downcase}_profile"])
+	          
+        - for web_profile in @global_settings.web_profiles do
+          %li= link_to(web_profile.name), web_profile.url
+	        
+  - @songs ||= []
+  - unless !@global_settings.show_music? || @songs.empty? || @page_title == "Music - "
+    %listen.module
+      %h2= link_to("Music", songs_url)
+      %ul
+        - @songs.each_with_index do |song, i|
+          %li= link_to song.title, song
+          - if song.mini_player_code.present?
+            %li= song.mini_player_code
+          - else
+            %li= music_player(song.url, i+1, 180)
+  
+  - @shows ||= []
+  - unless !@global_settings.show_shows? || @shows.empty? || @page_title == "Shows -"
+    #calendar.module
+      %h2= link_to("Shows", shows_url)
+      - for @show in @shows do
+        = shows(:show_body => false, :show_byline => false, :show_map => false, :show_year => false)
+        
+  - @blogs ||= []
+  - unless !@global_settings.show_blog? || @blogs.empty? || @page_title == "Blog - "
+    #recent_posts.module
+      %h2= link_to("Recent Posts", blogs_url)
+      %ul
+        - for @blog in @blogs do
+          %li.post_title{:id => "post_title_#{@blog.id}"}
+            = link_to(@blog.title, blog_url(@blog))
+      %h5.more
+        = link_to("more posts...", blogs_url)
+
