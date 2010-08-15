@@ -681,6 +681,7 @@ div.style {
 #sidebar div#calendar.module h3 {
   color: #444;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 #sidebar div#calendar.module p a {
   display: inline;
