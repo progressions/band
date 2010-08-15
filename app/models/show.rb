@@ -16,7 +16,10 @@ class Show < ActiveRecord::Base
   }
   named_scope :upcoming, lambda {|since_date| 
     since_date ||= Time.now
-    {:conditions => ["date >= ?", since_date]}
+    {
+      :conditions => ["date >= ?", since_date],
+      :order => "date ASC"
+    }
   }
   
   def self.most_recent
