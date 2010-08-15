@@ -9,9 +9,9 @@
       %ul
         - for member in @members do
           %li= link_to(member.name, about_path(:id => member.url))
-          %li &nbsp;
-          - unless @global_settings.email.blank?
-            %li= mail_to(sanitize(@global_settings.email), "Contact by email")
+        %li &nbsp;
+        - unless @global_settings.email.blank?
+          %li= mail_to(sanitize(@global_settings.email), "Contact by email")
       
   - if @global_settings.facebook_widget.present?
     #facebook_widget.module= @global_settings.facebook_widget
