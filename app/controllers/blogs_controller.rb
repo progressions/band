@@ -41,6 +41,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.xml
   def create
+    params[:blog][:posted_at] = Time.now
     @blog = Blog.new(params[:blog])
     @blog.user = current_user
     
