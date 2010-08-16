@@ -3,6 +3,8 @@ require 'digest/sha1'
 class Fan < ActiveRecord::Base
   acts_as_taggable
   
+  has_many :downloads
+  
 	validates_presence_of :email, :zipcode
 	validates_email_veracity_of :email
 	validates_uniqueness_of :email, :case_sensitive => false
