@@ -1,0 +1,14 @@
+%h1 Downloads
+
+%table
+  %tr
+    %th Email
+    %th Date
+    %th Song title
+    
+  - for download in @downloads do
+    %tr
+      %td= download.email
+      %td= download.date
+      %td= download.name
+      

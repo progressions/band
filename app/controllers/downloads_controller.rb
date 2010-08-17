@@ -1,4 +1,6 @@
 class DownloadsController < ApplicationController
+  before_filter :login_required, :only => [:report]
+  
   def index
     if @global_settings.free_download?
       email = params[:email]
@@ -11,5 +13,9 @@ class DownloadsController < ApplicationController
     else
       redirect_to home_url
     end
+  end
+
+  def report
+    @downloads = Download.all
   end
 end

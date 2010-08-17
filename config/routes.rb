@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :downloads
+  map.resources :downloads, :collection => {:report => :get}
   
   map.resources :show_reports
 
