@@ -77,7 +77,11 @@
 
                     %tr
                       %td
-                        = link_to(image_tag("http://#{@host_name}/images/mail/free-mp3.png", :alt => "Download a free mp3 of '#{@global_settings.free_download_name}'."), downloads_url(:email => @fan.email))
+                        - if @fan
+                          - link = downloads_url(:email => @fan.email)
+                        - else
+                          - link = downloads_url
+                        = link_to(image_tag("http://#{@host_name}/images/mail/free-mp3.png", :alt => "Download a free mp3 of '#{@global_settings.free_download_name}'."), link)
                       
                   / Upcoming shows
                   

@@ -21,8 +21,8 @@ Feature: Fan signup
     Examples:
     | email           | zipcode | first_name | last_name |
     | jack@kirby.com  | 78701   | Jack       | Kirby     |
-    # | stan@marvel.com | 10001   | Stan       | Lee       |
-    # | joe@simon.com   | 21041   | Joe        | Simon     |
+    | stan@marvel.com | 10001   | Stan       | Lee       |
+    | joe@simon.com   | 21041   | Joe        | Simon     |
     
   Scenario Outline: Fan signs up and edits their info
     When a new fan signs up with email: "<email>", zipcode: "<zipcode>"

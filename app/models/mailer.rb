@@ -31,10 +31,10 @@ class Mailer < ActionMailer::Base
     subject     "[Unsubscribed] #{fan.email} has unsubscribed from the mailing list!"
     body        :fan => fan, 
                 :global_settings => global_settings, 
-                :title => "#{fan.email} has unsubscribed from the mailing list!"
-    content_type "text/html",
+                :title => "#{fan.email} has unsubscribed from the mailing list!",
                 :shows => Show.find(:all, :limit => 3, :order => 'date ASC', :conditions => ["date > ?", Time.now]), 
                 :blogs => Blog.active.posted_yet.find(:all, :limit => 3, :order => "posted_at DESC, created_at DESC")
+    content_type "text/html"
   end
   
   def comment_notification user, blog, comment
