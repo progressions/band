@@ -31,6 +31,13 @@
   <%= fckeditor_tag("song") %>
 
   <p>
+    <%= f.label(:thumbnail, "Thumbnail image URL") %>
+    (should be 215x100)
+    <br />
+    <%= f.text_field :thumbnail %>
+  </p>
+
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
