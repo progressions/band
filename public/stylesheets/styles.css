@@ -872,7 +872,9 @@ span.hidden_post {
   padding: 0;
 }
 
-#sidebar div.module ul,
+#sidebar div#listen.module ul,
+#sidebar div#recent_posts.module ul,
+#sidebar div#calendar.module ul,
 .thumbnail {
   margin: 5px;
   padding: 0;
