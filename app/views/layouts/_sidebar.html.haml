@@ -33,7 +33,9 @@
       %h2= link_to("Music", songs_url)
       %ul
         - @songs.each_with_index do |song, i|
-          %li= link_to song.title, song
+          - if song.thumbnail?
+            %li.thumbnail= link_to(image_tag(song.thumbnail), song)
+          %li.title= link_to song.title, song
           - if song.mini_player_code.present?
             %li= song.mini_player_code
           - else
@@ -45,8 +47,8 @@
       %h2= link_to("Shows", shows_url)
       - for show in @shows do
         %ul
-          - if show.thumbnail
-            %li.thumbnail= link_to(image_tag(show.thumbnail), show_url(show))
+          - if show.thumbnail?
+            %li.thumbnail= link_to(image_tag(show.thumbnail), show)
         
           %li.title
             - m = show.date.strftime("%m").gsub(/^0/, "")
@@ -61,11 +63,11 @@
     #recent_posts.module
       %h2= link_to("Recent Posts", blogs_url)
       %ul
-        - for @blog in @blogs do
-          - if @blog.active?
-            - if @blog.thumbnail?
-              %li.thumbnail= image_tag(@blog.thumbnail)
-            %li.title= link_to(@blog.title, blog_url(@blog))
+        - for blog in @blogs.first(5) do
+          - if blog.active?
+            - if blog.thumbnail?
+              %li.thumbnail= link_to(image_tag(blog.thumbnail), blog)
+            %li.title= link_to(blog.title, blog)
       %h5.more
         = link_to("more posts...", blogs_url)
 
