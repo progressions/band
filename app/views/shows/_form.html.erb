@@ -59,7 +59,13 @@
 		<%= f.label :myspace_event, "MySpace event" %><br />
     <%= f.text_field :myspace_event %>
   </p>
-
+  
+  <p>
+    <%= f.label(:thumbnail, "Thumbnail image URL") %>
+    (should be 215x100)
+    <br />
+    <%= f.text_field :thumbnail %>
+  </p>
   
   <%= fckeditor_tag("show", "body", :height => "200px") %>
   

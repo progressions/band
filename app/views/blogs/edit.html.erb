@@ -25,6 +25,13 @@
 
   <% end %>
 
+  <p>
+    <%= f.label(:thumbnail, "Thumbnail image URL") %>
+    (should be 215x100)
+    <br />
+    <%= f.text_field :thumbnail %>
+  </p>
+  
   <p> 
     Blog post date:
     <%= calendar_date_select(:blog, :posted_at, :embedded => true, :time => false) %>

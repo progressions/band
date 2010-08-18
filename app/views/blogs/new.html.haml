@@ -15,12 +15,14 @@
     = f.text_field :title
 
   = fckeditor_tag("blog") 
+  
+  %p
+    = f.label(:thumbnail, "Thumbnail image URL")
+    (should be 215x100)
+    %br
+    = f.text_field :thumbnail
 
   %p= post_tweet_check_box
-  
-  %p 
-    Date and time:
-    = calendar_date_select(:blog, :posted_at, :embedded => true, :time => true)
   
   %p
     = f.check_box :active
@@ -29,5 +31,3 @@
   %p
     = f.submit "Preview", :name => "preview_button" 
     = f.submit "Create"  
-
-/ javascript_include_tag("saver")

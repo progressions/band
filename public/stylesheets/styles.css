@@ -871,3 +871,30 @@ span.hidden_post {
   margin: 0;
   padding: 0;
 }
+
+#sidebar div.module ul,
+.thumbnail {
+  margin: 5px;
+  padding: 0;
+}
+.thumbnail {
+  border: 1px solid #aaa;
+  padding: 2px;
+  overflow: hidden;
+}
+.thumbnail img {
+  background-color: #aaa;
+}
+.thumbnail img,
+.thumbnail {
+  height: 100px;
+  width: 215px;
+}
+.title {
+  color: #444;
+  margin-left: 5px;
+}
+#sidebar li.title a {
+  display: inline;
+}
+

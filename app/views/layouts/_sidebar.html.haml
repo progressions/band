@@ -44,12 +44,17 @@
     #calendar.module
       %h2= link_to("Shows", shows_url)
       - for show in @shows do
-        %h3= show.date.strftime("%A %b") + " " + strip_leading_zero(show.date.strftime("%d"))
+        %ul
+          - if show.thumbnail
+            %li.thumbnail= link_to(image_tag(show.thumbnail), show_url(show))
         
-        %p
-          = link_to(show.title, show_url(show))
-          at
-          = show.venue.name
+          %li.title
+            - m = show.date.strftime("%m").gsub(/^0/, "")
+            - d = show.date.strftime("%d").gsub(/^0/, "")
+            = "#{m}/#{d}"
+            = link_to(show.title, show_url(show))
+            at
+            = show.venue.name
         
   - @blogs ||= []
   - unless !@global_settings.show_blog? || @blogs.empty? || @page_title == "Blog - "
@@ -57,8 +62,10 @@
       %h2= link_to("Recent Posts", blogs_url)
       %ul
         - for @blog in @blogs do
-          %li.post_title{:id => "post_title_#{@blog.id}"}
-            = link_to(@blog.title, blog_url(@blog))
+          - if @blog.active?
+            - if @blog.thumbnail?
+              %li.thumbnail= image_tag(@blog.thumbnail)
+            %li.title= link_to(@blog.title, blog_url(@blog))
       %h5.more
         = link_to("more posts...", blogs_url)
 
