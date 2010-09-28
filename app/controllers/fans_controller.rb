@@ -147,6 +147,9 @@ class FansController < ApplicationController
       @parsed_file.each do |row|
         fan = Fan.new(:name => row[0], :email => row[1], :zipcode => DEFAULT_ZIPCODE)
         if fan.save
+          Mailer.send_later(:deliver_signup_confirmation, fan)
+          Mailer.send_later(:deliver_signup_report, fan)
+          
           @n=@n+1
           GC.start if @n%50==0
         end

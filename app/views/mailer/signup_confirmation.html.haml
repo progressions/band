@@ -1,8 +1,23 @@
-%p Thank you for joining!
+%p You are now a card carrying Racketeer!
 
-%p
-  = "#{@fan.email} has subscribed to the #{link_to(@global_settings.artist_name, @global_settings.url_with_protocol)} mailing list. You'll receive news and updates about what's happening."
+%p 
+  To thank you for joining, we're giving you a 
+  = link_to("free download of our song, '#{@global_settings.free_download_name}'.", downloads_url(:email => @fan.email))
 
-= render :partial => 'footer', :locals => {:fan => @fan, :global_settings => @global_settings}
+%p 
+  If you've seen us a show recently, or if you have heard our music online, please tell your friends on 
+  = link_to("Facebook", @global_settings.facebook_profile) + ","
+  = link_to("Twitter", "http://www.twitter.com/#{@global_settings.twitter_profile)}" + ","
+  or even in real life!
 
+%p 
+  Our first album, "What is Nerdwave?" is available to purchase on 
+  = link_to("our website", "http://weracketeer.bandcamp.com")
+  or on 
+  = link_to("iTunes.", "http://itunes.apple.com/us/album/what-is-nerdwave/id388305304")
+  Please spread the word!
+  
+%p Thanks,
+
+%p Isaac, Reed and Bruce
 
