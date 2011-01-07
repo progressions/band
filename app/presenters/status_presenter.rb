@@ -105,7 +105,7 @@ module FacebookPresenter
     end
     
     def facebook_fan_count
-      @facebook_fans ||= HTTParty.get("https://graph.facebook.com/weracketeeer/")["fan_count"]
+      @facebook_fans ||= HTTParty.get("https://graph.facebook.com/weracketeeer/")["likes"]
     end
   end
 end
