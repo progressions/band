@@ -65,12 +65,13 @@ class Mailer < ActionMailer::Base
                 :blogs => Blog.active.posted_yet.find(:all, :limit => 3, :order => "posted_at DESC, created_at DESC")
   end
     
-  def mail fan, mail
+  def mail(fan, mail)
     recipients  fan.email
     from        "#{global_settings.artist_name} <#{global_settings.email}>"
     subject     "[#{global_settings.mail_tag}] #{mail.title}"
     body        :fan => fan, 
                 :mail => mail, 
+                :body => process_mail_body(mail.body, fan),
                 :global_settings => global_settings, 
                 :shows => Show.find(:all, :limit => 3, :order => 'date ASC', :conditions => ["date > ?", Time.now]), 
                 :blogs => Blog.active.posted_yet.find(:all, :limit => 3, :order => "posted_at DESC, created_at DESC"), 
@@ -87,6 +88,15 @@ class Mailer < ActionMailer::Base
                 :shows => Show.find(:all, :limit => 3, :order => 'date ASC', :conditions => ["date > ?", Time.now]), 
                 :blogs => Blog.active.posted_yet.find(:all, :limit => 3, :order => "posted_at DESC, created_at DESC")
     content_type  "text/html"
+  end
+  
+  def process_mail_body(body, fan=nil)
+    if fan
+      url = downloads_url(:email => fan.email)
+    else
+      url = downloads_url
+    end
+    body.to_s.gsub("<%= @download_url %>", url)
   end
   
   protected
