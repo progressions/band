@@ -1,1 +1,1 @@
-%p= "On #{delivery.created_at}, delivered mail \"#{delivery.mail.title}\" to #{pluralize(delivery.fan_count, 'fan')}."
+%p= "On #{delivery.created_at}, delivered mail \"#{delivery.mail.try(:title)}\" to #{pluralize(delivery.fan_count, 'fan')}."
