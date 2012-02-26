@@ -1,4 +1,4 @@
-Wrs::Application.routes.draw do
+WRS::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
