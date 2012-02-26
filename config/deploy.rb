@@ -1,0 +1,130 @@
+###### INSTRUCTIONS ##########
+### Requirements: This requires an LxAdmin VPS configured to use Apache and Passenger
+
+### First Run ###
+# 1. Setup your application under version control using either Git or Subversion
+# 2. Install any gems your application needs on your VPS as the root user using the gem install command
+# 3. On your local machine change to your application directory and run "capify ."
+# 4. Place this deploy.rb in your /config directory
+# 5. Edit all of the variables below
+# 6. In LxAdmin, click on Domains, then the domain for this application, next click Document Root and set the document root to: applicationname/current/public. This should be the same as the applicationname you set blow
+# 7. Make sure you database.yml is updated with your current production database settings
+# 7. Run: "cap deploy:setup" , this will setup the capistrano directory structure
+# 8. Run "cap deploy:cold", this will deploy your application on to the server and run your database migration.
+
+### Deploy a new revision ###
+# 1. Run "cap deploy"
+
+##############################
+# The following variables will need to be changed:
+
+# The ip address of your VPS
+set :ip_address, "74.63.14.91"
+
+# Your svn / git login name
+set :scm_username , "progressions"
+
+# Your repository type, by default we use subversion.
+set :scm, :git
+# If you are using git, uncomment the following line and comment out the line above.
+#set :scm, :git
+
+# The name of your application, this will also be the folder were your application
+# will be deployed to
+set :application, "band"
+
+# the url for your repository
+set :repository,  "git@github.com:progressions/band.git"
+
+###### There is no need to edit anything below this line ######
+
+ssh_options[:forward_agent] = true
+set :deploy_via, :checkout
+
+set :user , "jcoleman"
+# set :scm_passphrase do
+#   Capistrano::CLI.ui.ask "Enter your git password: "
+# end
+# set :git_enable_submodules, 1
+set :deploy_to, "/home/#{user}/#{application}"
+set :shared_directory, "#{deploy_to}/shared"
+set :use_sudo, false
+set :group_writable, false
+default_run_options[:pty] = true
+
+role :app, ip_address
+role :web, ip_address
+role :db,  ip_address, :primary => true
+
+task :after_update_code, :roles => [:web, :db, :app] do
+  run "chmod 755 #{release_path}/public"
+  run "chmod 755 #{release_path}/downloads"
+  run "chown jcoleman:jcoleman #{release_path} -R"
+end
+
+namespace :deploy do
+  desc "restart passenger"
+  task :restart do
+   passenger::restart
+  end
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
+  end
+end
+
+namespace :god do
+  desc "Restart god"
+  task :restart do
+    run "cd #{current_path} && god -c ./config/config.god"
+  end
+end
+
+namespace :passenger do
+   desc "Restart passenger"
+   task :restart do
+     run "touch #{current_path}/tmp/restart.txt"
+   end
+end
+
+desc "Creates symbolic links to shared directories"
+task :share_files do
+  # run "rm -f -d -r #{application}/current/public/images"
+  run "ln -s /home/#{user}/#{application}/current/public/ /home/#{user}/public_html/#{application}"
+  run "ln -s /home/#{user}/#{application}/shared/images/ #{current_path}/public/images"
+end
+
+
+desc "Does stuff after deployment"
+task :after_deploy do
+   run "cp #{application}/shared/secrets/database.yml #{application}/current/config/database.yml &&
+        cp #{application}/shared/secrets/config.yml #{application}/current/config/config.yml"
+   share_files
+   deploy::update_crontab
+   god::restart
+   delayed_job::restart
+end
+
+namespace :delayed_job do
+  desc "Stop the delayed_job process"
+  task :stop, :roles => :app do
+   run "god stop delayed_job"
+  end
+
+  desc "Start the delayed_job process"
+  task :start, :roles => :app do
+   run "god start delayed_job"
+  end
+
+  desc "Restart the delayed_job process"
+  task :restart, :roles => :app do
+   run "god restart delayed_job"
+  end
+end
+
+namespace :deploy do
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :app do
+   run "cd #{current_path} && whenever --update-crontab #{application}"
+  end
+end
