@@ -5,9 +5,9 @@ class AboutController < ApplicationController
   before_filter :show_videos?, :only => [:videos]
   
   def index    
-    @playlist = YouTube::Playlist.new(:id => "B407200BFFDB8F1E")
-    @body_style = "home"      
-    @blogs = Blog.paginate(:all, :per_page => 10, :page => params[:page], :order => 'posted_at DESC, created_at DESC') if @global_settings.show_blog?
+    #@playlist = YouTube::Playlist.new(:id => "B407200BFFDB8F1E")
+    @body_style = "home"
+    @blogs = Blog.order('posted_at DESC, created_at DESC').paginate(:per_page => 10, :page => params[:page]) if @global_settings.show_blog?
     if @global_settings.show_news?
       @entries = Entry.find(:all, :offset => 1, :limit => 3, :order => "created_at DESC")  
       @first_entry = Entry.find(:all,  :limit => 1, :order => "created_at DESC")
@@ -27,7 +27,7 @@ class AboutController < ApplicationController
   end
   
   def videos
-    @wrs = YouTube::User.new(:id => @global_settings.youtube_profile)
+    #@wrs = YouTube::User.new(:id => @global_settings.youtube_profile)
     @videos = @wrs.videos[0..9]
     unless @global_settings.featured_playlist.blank?
       @featured_videos = YouTube::Playlist.new(:id => @global_settings.featured_playlist) 

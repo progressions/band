@@ -25,6 +25,7 @@ end
 gem 'jquery-rails'
 gem 'fastercsv'
 gem 'calendar_date_select'
+gem 'will_paginate'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
