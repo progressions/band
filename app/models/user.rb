@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :email,    :within => 3..100
-	# validates_email_veracity_of :email
+	# # validates_email_veracity_of :email
 	
   validates_uniqueness_of   :email, :case_sensitive => false
   before_save :encrypt_password

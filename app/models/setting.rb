@@ -7,8 +7,8 @@ class Setting < ActiveRecord::Base
   has_many :web_profiles
   has_many :songs
   
-	validates_email_veracity_of :email, :message => "Email is invalid"
-	validates_email_veracity_of :admin_email, :message => "Email is invalid"
+	# validates_email_veracity_of :email, :message => "Email is invalid"
+	# validates_email_veracity_of :admin_email, :message => "Email is invalid"
 	
 	# TODO: validate format of URL
    
