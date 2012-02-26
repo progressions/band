@@ -6,15 +6,15 @@ class Show < ActiveRecord::Base
   
   validates_presence_of :date, :venue
 
-  named_scope :created_since, lambda {|since_date| 
+  scope :created_since, lambda {|since_date| 
     since_date ||= Time.now
     {:conditions => ["created_at >= ?", since_date]}
   }
-  named_scope :performed_since, lambda {|since_date| 
+  scope :performed_since, lambda {|since_date| 
     since_date ||= Time.now
     {:conditions => ["date >= ? and date <= ?", since_date, Time.now]}
   }
-  named_scope :upcoming, lambda {|since_date| 
+  scope :upcoming, lambda {|since_date| 
     since_date ||= Time.now
     {
       :conditions => ["date >= ?", since_date],

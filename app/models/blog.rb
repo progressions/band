@@ -3,17 +3,17 @@ class Blog < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   
-  has_friendly_id :title, :use_slug => true
+  # has_friendly_id :title, :use_slug => true
   
   # TODO: Allow tagging of blog posts by the poster
   
   validates_presence_of :title, :body
 
-  named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
-  named_scope :posted_since, lambda {|since_date| {:conditions => ["posted_at >= ?", since_date]}}
-  named_scope :active, {:conditions => {:active => true}}
-  named_scope :hidden, {:conditions => {:active => false}}
-  named_scope :posted_yet, lambda {
+  scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
+  scope :posted_since, lambda {|since_date| {:conditions => ["posted_at >= ?", since_date]}}
+  scope :active, {:conditions => {:active => true}}
+  scope :hidden, {:conditions => {:active => false}}
+  scope :posted_yet, lambda {
     {
       :conditions => ["posted_at < ?", Time.now],
       :order => "posted_at DESC, created_at DESC"

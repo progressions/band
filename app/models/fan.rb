@@ -12,10 +12,10 @@ class Fan < ActiveRecord::Base
 	before_save :encrypt_email
 	before_create :set_active
 	
-  named_scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
-  named_scope :unsubscribed_since, lambda {|since_date| {:conditions => ["unsubscribed_at >= ?", since_date]}}
-  named_scope :active, :conditions => {:active => true}
-  named_scope :unsubscribed, :conditions => ["active <> ?", true]
+  scope :created_since, lambda {|since_date| {:conditions => ["created_at >= ?", since_date]}}
+  scope :unsubscribed_since, lambda {|since_date| {:conditions => ["unsubscribed_at >= ?", since_date]}}
+  scope :active, :conditions => {:active => true}
+  scope :unsubscribed, :conditions => ["active <> ?", true]
 	
 	def tag	  
   end
