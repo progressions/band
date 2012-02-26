@@ -40,3 +40,13 @@ gem 'capistrano'
 # gem 'ruby-debug'
 
 gem 'rails-upgrade'
+
+group :test do
+  gem "rspec"
+  gem "rspec-core"
+  gem "rspec-rails"
+  gem 'capybara'
+  gem 'launchy'
+  gem "factory_girl_rails"
+  gem "email_spec"
+end
