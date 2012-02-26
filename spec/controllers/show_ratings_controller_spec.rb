@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
-context "The ShowRatingsController" do
+describe "The ShowRatingsController" do
   # fixtures :show_ratings
   # controller_name :show_ratings
   # 

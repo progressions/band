@@ -7,6 +7,7 @@ describe Fan do
   end
   
   it "should be invalid without proper email" do
+    pending
     @fan = Fan.create(:email => "fred@flinstone", :zipcode => "12345")
     @fan.should_not be_valid
     

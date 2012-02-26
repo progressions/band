@@ -7,20 +7,20 @@ class MailsController < ApplicationController
   # GET /mails
   # GET /mails.xml
   def index
-    @mails = Mail.paginate :all, :per_page => 20, :page => params[:p], :order => 'created_at DESC'
+    @mails = Email.paginate :all, :per_page => 20, :page => params[:p], :order => 'created_at DESC'
   end
 
   # GET /mails/1
   # GET /mails/1.xml
   def show
-    @mail = Mail.find(params[:id])
+    @mail = Email.find(params[:id])
   end
     
   # GET /mails/1/select
   # 
   def select    
     @fans_options = FANS_OPTIONS
-    @mail = Mail.find(params[:id])
+    @mail = Email.find(params[:id])
   end
   
   def update_fan_count
@@ -53,7 +53,7 @@ class MailsController < ApplicationController
   #
   def deliver
     @fans_options = FANS_OPTIONS
-    @mail = Mail.find(params[:id])
+    @mail = Email.find(params[:id])
     if params[:deliver_button]
       if params[:fans_by_zipcode]
         zipcode = params[:fans_by_zipcode][:zipcode]      
@@ -111,18 +111,18 @@ class MailsController < ApplicationController
   # GET /mails/new
   # GET /mails/new.xml
   def new
-    @mail = Mail.new
+    @mail = Email.new
   end
 
   # GET /mails/1/edit
   def edit
-    @mail = Mail.find(params[:id])
+    @mail = Email.find(params[:id])
   end
 
   # POST /mails
   # POST /mails.xml
   def create
-    @mail = Mail.new(params[:mail])
+    @mail = Email.new(params[:mail])
     @mail.user = current_user
     
     if params[:preview_button] || !@mail.save
@@ -136,7 +136,7 @@ class MailsController < ApplicationController
   # PUT /mails/1
   # PUT /mails/1.xml
   def update
-    @mail = Mail.find(params[:id])    
+    @mail = Email.find(params[:id])    
     if !@mail.update_attributes(params[:mail]) || params[:preview_button]
       
       render :action => "edit"
@@ -149,7 +149,7 @@ class MailsController < ApplicationController
   # DELETE /mails/1
   # DELETE /mails/1.xml
   def destroy
-    @mail = Mail.find(params[:id])
+    @mail = Email.find(params[:id])
     @mail.destroy
 
     respond_to do |format|

@@ -3,7 +3,7 @@ require 'digest/md5'
 
 class SettingsController < ApplicationController
   layout 'application'
-  in_place_edit_for :setting, :site_name
+  # in_place_edit_for :setting, :site_name
   
   before_filter :login_required
   before_filter :set_admin

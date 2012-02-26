@@ -1,4 +1,5 @@
-class Mail < ActiveRecord::Base  
+class Email < ActiveRecord::Base
+  self.table_name = "mail"
   belongs_to :user, :foreign_key => "created_by"
   has_many :deliveries
   
