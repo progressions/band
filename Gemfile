@@ -41,9 +41,11 @@ gem 'capistrano'
 
 gem 'rails-upgrade'
 
+group :development do
+  gem "rspec-rails"
+end
+
 group :test do
-  gem "rspec"
-  gem "rspec-core"
   gem "rspec-rails"
   gem 'capybara'
   gem 'launchy'
